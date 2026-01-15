@@ -1,0 +1,147 @@
+{
+  "useCase": "discover-enums",
+  "description": "API calls for discover-enums",
+  "steps": [
+    {
+      "step": 1,
+      "endpoint": "GET /api/meta/types/typedefs?type=enum",
+      "response": {
+        "status": 200,
+        "body": {
+          "enumDefs": [
+            {
+              "category": "ENUM",
+              "guid": "24cdc24b-9155-4c82-a7cd-a1600da7d3e0",
+              "createdBy": "service-account-atlan-argo",
+              "updatedBy": "service-account-atlan-argo",
+              "createTime": 1646880651221,
+              "updateTime": 1767832400723,
+              "version": 291,
+              "name": "AtlasGlossaryTermRelationshipStatus",
+              "description": "How reliable the relationship is between two glossary terms.",
+              "typeVersion": "1.0",
+              "serviceType": "atlas_core",
+              "elementDefs": [
+                {
+                  "value": "DRAFT",
+                  "description": "DRAFT means the relationship is under development.",
+                  "ordinal": 0
+                },
+                {
+                  "value": "ACTIVE",
+                  "description": "ACTIVE means the relationship is validated and in use.",
+                  "ordinal": 1
+                },
+                {
+                  "value": "DEPRECATED",
+                  "description": "DEPRECATED means the the relationship is being phased out.",
+                  "ordinal": 2
+                },
+                {
+                  "value": "OBSOLETE",
+                  "description": "OBSOLETE means that the relationship should not be used anymore.",
+                  "ordinal": 3
+                },
+                {
+                  "value": "OTHER",
+                  "description": "OTHER means that there is another status.",
+                  "ordinal": 99
+                }
+              ]
+            },
+            {
+              "category": "ENUM",
+              "guid": "f39c3120-1e9a-4675-a591-2932c3a32b5d",
+              "createdBy": "service-account-atlan-argo",
+              "updatedBy": "service-account-atlan-argo",
+              "createTime": 1741134425142,
+              "updateTime": 1768350487170,
+              "version": 362,
+              "name": "FormFieldType",
+              "description": "Type of the field in a form.",
+              "typeVersion": "1.0",
+              "serviceType": "atlas_core",
+              "elementDefs": [
+                {
+                  "value": "INT",
+                  "ordinal": 0
+                },
+                {
+                  "value": "STRING",
+                  "ordinal": 1
+                },
+                {
+                  "value": "DATE",
+                  "ordinal": 2
+                },
+                {
+                  "value": "BOOLEAN",
+                  "ordinal": 3
+                },
+                {
+                  "value": "LONG",
+                  "ordinal": 4
+                },
+                {
+                  "value": "JSON",
+                  "ordinal": 5
+                }
+              ]
+            },
+            {
+              "category": "ENUM",
+              "guid": "3d74713e-ece4-42d6-8d24-2a720a645abf",
+              "createdBy": "service-account-atlan-argo",
+              "updatedBy": "service-account-atlan-argo",
+              "createTime": 1685082283351,
+              "updateTime": 1767832400838,
+              "version": 203,
+              "name": "OpenLineageRunState",
+              "description": "Defines the states of a run. Check https://github.com/OpenLineage/OpenLineage/blob/03c3bcef15d952e95f2a8338951bdaf333248d32/client/python/openlineage/client/run.py#L14 for the different kinds.",
+              "typeVersion": "1.0",
+              "serviceType": "atlas_core",
+              "elementDefs": [
+                {
+                  "value": "START",
+                  "description": "Start state of a run.",
+                  "ordinal": 0
+                },
+                {
+                  "value": "RUNNING",
+                  "description": "Running state of a run.",
+                  "ordinal": 1
+                },
+                {
+                  "value": "COMPLETE",
+                  "description": "Complete state of a run.",
+                  "ordinal": 2
+                },
+                {
+                  "value": "ABORT",
+                  "description": "Abort state of a run.",
+                  "ordinal": 3
+                },
+                {
+                  "value": "FAIL",
+                  "description": "Fail state of a run.",
+                  "ordinal": 4
+                },
+                {
+                  "value": "OTHER",
+                  "description": "Other state of a run.",
+                  "ordinal": 5
+                }
+              ]
+            },
+            "... (131 more items)"
+          ],
+          "structDefs": [],
+          "classificationDefs": [],
+          "entityDefs": [],
+          "relationshipDefs": [],
+          "businessMetadataDefs": []
+        }
+      }
+    }
+  ]
+}

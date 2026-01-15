@@ -1,0 +1,99 @@
+openapi: 3.1.0
+info:
+  title: Atlan REST API
+  version: 0.1.0
+  description: |
+    OpenAPI specification for Atlan's REST APIs.
+    
+    ## Documentation Views
+    - **Use Cases**: Step-by-step guides organized by task (recommended)
+    - **Endpoints**: Raw endpoint reference for advanced users
+    
+    ## Authentication
+    All endpoints require Bearer token authentication via an Atlan API token.
+    Generate tokens in **Atlan Settings → API Tokens**.
+    
+    ## Base URL
+    Replace `{tenant}` with your Atlan tenant subdomain (e.g., `acme`, `field-sandbox`).
+    
+    ## Resources
+    - [Developer Docs](https://developer.atlan.com)
+    - [SDK Documentation](https://developer.atlan.com/sdks/)
+  contact:
+    name: Atlan Developer Experience
+    url: https://developer.atlan.com
+  license:
+    name: Proprietary
+    url: https://atlan.com
+
+servers:
+  - url: https://{tenant}.atlan.com
+    description: Atlan tenant
+    variables:
+      tenant:
+        default: your-tenant
+        description: Tenant subdomain
+
+security:
+  - AtlanToken: []
+
+# Simplified tags - just endpoint categories, not use cases
+# Use cases are now in the separate use-cases/ directory
+tags:
+  # ─── Core Meta API ───────────────────────────────────────────────────────────
+  - name: Entity
+    description: Create, read, update, and delete entities (assets)
+    externalDocs:
+      url: https://developer.atlan.com/endpoints/
+
+  - name: Search
+    description: Search for entities using Elasticsearch DSL
+    externalDocs:
+      url: https://developer.atlan.com/search/
+
+  - name: Lineage
+    description: Query and traverse lineage relationships
+    externalDocs:
+      url: https://developer.atlan.com/snippets/common-examples/lineage/
+
+  - name: Types
+    description: Manage type definitions (custom metadata, tags, etc.)
+    externalDocs:
+      url: https://developer.atlan.com/endpoints/
+
+  - name: Audit
+    description: Query entity audit history
+    externalDocs:
+      url: https://developer.atlan.com/snippets/advanced-examples/history/
+
+  - name: Tasks
+    description: Query background tasks
+    externalDocs:
+      url: https://developer.atlan.com/endpoints/
+
+  # ─── Service API ─────────────────────────────────────────────────────────────
+  - name: Workflows
+    description: Manage and submit workflows (crawlers, packages)
+    externalDocs:
+      url: https://developer.atlan.com/snippets/workflows/
+
+  - name: Runs
+    description: Query workflow execution runs
+    externalDocs:
+      url: https://developer.atlan.com/snippets/workflows/manage/
+
+  - name: Health
+    description: Service health checks
+    externalDocs:
+      url: https://developer.atlan.com/endpoints/
+
+paths:
+  $ref: './paths/_index.yaml'
+
+components:
+  securitySchemes:
+    $ref: './components/security.yaml#/securitySchemes'
+  schemas:
+    $ref: './components/schemas/_index.yaml'
+  parameters:
+    $ref: './components/parameters/_index.yaml'

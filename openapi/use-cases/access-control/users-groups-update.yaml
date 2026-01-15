@@ -1,0 +1,182 @@
+# Use Case: Updating users and groups
+# Auto-generated from: https://developer.atlan.com/snippets/users-groups/update/
+# Generated at: 2026-01-13T02:58:00.310Z
+
+id: users-groups-update
+title: "Updating users and groups"
+category: access-control
+icon: zap
+
+description: >-
+  You can update basic properties of both users and groups, again using the builder pattern.
+
+externalDocs:
+  url: https://developer.atlan.com/snippets/users-groups/update/
+  description: Official Atlan documentation
+
+steps:
+  - step: 1
+    title: "Update a group"
+    description: >-
+      0.0.13
+      1.3.3
+      4.0.0
+      
+      For example, to update a group:
+    notes:
+      - type: warning
+        title: "Values are all arrays of strings"
+        content: >-
+          Note that every value for an attribute is an array of strings, even when there is only a single value.
+    method: POST
+    endpoint: /api/service/groups/e79cb8eb-2bb6-4821-914c-f8dfd21fedc7
+    examples:
+      - key: example-1-1
+        summary: "POST /api/service/groups/e79cb8eb-2bb6-4821-914c-f8dfd21fedc7"
+        request: {
+                    "id": "e79cb8eb-2bb6-4821-914c-f8dfd21fedc7",
+                    "path": "/example_group",
+                    "attributes": {
+                              "description": [
+                                        "Now with a description!"
+                              ],
+                              "isDefault": [
+                                        "false"
+                              ]
+                    }
+          }
+      - key: example-1-2
+        summary: "POST /api/service/groups/e79cb8eb-2bb6-4821-914c-f8dfd21fedc7/members/remove"
+        request: {
+                    "users": [
+                              "da213751-95de-4f96-8bee-a2c73e2ef8c8"
+                    ]
+          }
+  - step: 2
+    title: "Remove users from group"
+    description: >-
+      0.0.13
+      1.3.3
+      4.0.0
+      
+      To remove one or more users from a group:
+    method: POST
+    endpoint: /api/service/groups/e79cb8eb-2bb6-4821-914c-f8dfd21fedc7/members/remove
+    examples:
+      - key: example-2-1
+        summary: "POST /api/service/groups/e79cb8eb-2bb6-4821-914c-f8dfd21fedc7/members/remove"
+        request: {
+                    "users": [
+                              "da213751-95de-4f96-8bee-a2c73e2ef8c8"
+                    ]
+          }
+  - step: 3
+    title: "Update a user"
+    description: >-
+      0.0.13
+      1.3.3
+      1.0.0
+      
+      To update a user, begin by building the minimal update object:
+    notes:
+      - type: recommendation
+        title: "Specific operations below"
+        content: >-
+          The specific operations for updating a user are all listed below - there is no update object to build in the Python SDK.
+      - type: recommendation
+        title: "Specific operations below"
+        content: >-
+          The specific operations for updating a user are all listed below - there is no update object to build in the Go SDK.
+      - type: recommendation
+        title: "Implicit in the API calls below"
+        content: >-
+          There is nothing specific to do for this step when using the raw APIs   constructing the object is simply what you place in the payload of the API calls in the steps below.
+      - type: recommendation
+        title: "Use the RoleCache to find the right GUID"
+        content: >-
+          The changeRole() method requires the GUID of the role you want to move the user to. In order to find that GUID, you can use the RoleCache.getIdForName() and provide the name of the role.
+      - type: recommendation
+        title: "Use the RoleCache to find the right GUID"
+        content: >-
+          The user.change_role() method requires the GUID of the role you want to move the user to. In order to find that GUID, you can use the RoleCache.get_id_for_name() and provide the name of the role.
+      - type: recommendation
+        title: "Use the RoleCache to find the right GUID"
+        content: >-
+          The changeRole() method requires the GUID of the role you want to move the user to. In order to find that GUID, you can use the RoleCache.getIdForName() and provide the name of the role.
+      - type: recommendation
+        title: "Use the RoleCache to find the right GUID"
+        content: >-
+          The UserClient.ChangeUserRole() method requires the GUID of the role you want to move the user to. In order to find that GUID, you can use the assets.GetRoleIDForRoleName() and provide the name of the role.
+      - type: warning
+        title: "You probably need to look this up first"
+        content: >-
+          When using the raw API, you will need to lookup the role GUID yourself. You can GET /api/service/roles, and the GUID will be the id field in the response for each role.
+      - type: warning
+        title: "This cannot be done programmatically"
+        content: >-
+          You can only deactivate users as an Admin user (via the UI), API tokens do not have access to deactivate users.
+      - type: warning
+        title: "This cannot be done programmatically"
+        content: >-
+          You can only reactivate users as an Admin user (via the UI), API tokens do not have access to reactivate users.
+    method: POST
+    endpoint: /api/service/users/da213751-95de-4f96-8bee-a2c73e2ef8c8/groups
+    examples:
+      - key: example-3-1
+        summary: "POST /api/service/users/da213751-95de-4f96-8bee-a2c73e2ef8c8/groups"
+        request: {
+                    "groups": [
+                              "e79cb8eb-2bb6-4821-914c-f8dfd21fedc7"
+                    ]
+          }
+      - key: example-3-2
+        summary: "POST /api/service/users/da213751-95de-4f96-8bee-a2c73e2ef8c8/update"
+        request: {
+                    "roleId": "0d1c39de-7323-4490-98d9-43240307eea7"
+          }
+  - step: 4
+    title: "Add user to groups"
+    description: >-
+      0.0.13
+      1.3.3
+      4.0.0
+      
+      Once you have the update object, to add a user to one or more groups:
+    method: POST
+    endpoint: /api/service/users/da213751-95de-4f96-8bee-a2c73e2ef8c8/groups
+    examples:
+      - key: example-4-1
+        summary: "POST /api/service/users/da213751-95de-4f96-8bee-a2c73e2ef8c8/groups"
+        request: {
+                    "groups": [
+                              "e79cb8eb-2bb6-4821-914c-f8dfd21fedc7"
+                    ]
+          }
+  - step: 5
+    title: "Change role of user"
+    description: >-
+      0.0.13
+      6.0.0
+      4.0.0
+      
+      Once you have the update object, to change the role of a user:
+    method: POST
+    endpoint: /api/service/users/da213751-95de-4f96-8bee-a2c73e2ef8c8/update
+    examples:
+      - key: example-5-1
+        summary: "POST /api/service/users/da213751-95de-4f96-8bee-a2c73e2ef8c8/update"
+        request: {
+                    "roleId": "0d1c39de-7323-4490-98d9-43240307eea7"
+          }
+  - step: 6
+    title: "Deactivate a user"
+    description: >-
+      This cannot be done programmatically
+      
+      You can only deactivate users as an Admin user (via the UI), API tokens do not have access to deactivate users.
+  - step: 7
+    title: "Reactivate a user"
+    description: >-
+      This cannot be done programmatically
+      
+      You can only reactivate users as an Admin user (via the UI), API tokens do not have access to reactivate users.

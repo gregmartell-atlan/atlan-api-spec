@@ -1,0 +1,341 @@
+post:
+  operationId: traverseLineage
+  summary: Traverse lineage graph
+  description: |
+    Traverse the lineage graph starting from a specific asset.
+    Returns upstream (sources) or downstream (targets) lineage.
+
+    ## Use cases
+    - [Traverse lineage](https://developer.atlan.com/snippets/common-examples/lineage/traverse/)
+  externalDocs:
+    url: https://developer.atlan.com/snippets/common-examples/lineage/traverse/
+    description: Lineage traversal examples
+  tags:
+    - "Traverse lineage"
+  security:
+    - AtlanToken: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/Lineage.yaml#/LineageListRequest'
+        examples:
+          traverse_lineage_0:
+            summary: "Traverse lineage - downstream"
+            x-useCaseTag: "Traverse lineage"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/lineage/traverse/
+            x-atlanSnippet: |-
+              {
+                "guid": "495b1516-aaaf-4390-8cfd-b11ade7a7799", // (1)
+                "depth": 1000000, // (2)
+                "direction": "OUTPUT", // (3)
+                "from": 0, // (4)
+                "size": 10, // (5)
+                "attributes": [ // (6)
+                  "name"
+                ],
+                "excludeMeanings": true,
+                "excludeClassifications": true
+              }
+            value:
+              guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+              depth: 1000000
+              direction: OUTPUT
+              from: 0
+              size: 10
+              attributes:
+                  - name
+              excludeMeanings: true
+              excludeClassifications: true
+
+          traverse_lineage_1:
+            summary: "Traverse lineage - downstream"
+            x-useCaseTag: "Traverse lineage"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/lineage/traverse/
+            x-atlanSnippet: |-
+              {
+                "guid": "495b1516-aaaf-4390-8cfd-b11ade7a7799", // (1)
+                "depth": 1000000,
+                "direction": "OUTPUT", // (2)
+                "from": 0,
+                "size": 10,
+                "excludeMeanings": true,
+                "excludeClassifications": true
+              }
+            value:
+              guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+              depth: 1000000
+              direction: OUTPUT
+              from: 0
+              size: 10
+              excludeMeanings: true
+              excludeClassifications: true
+
+          traverse_lineage_2:
+            summary: "Traverse lineage - upstream"
+            x-useCaseTag: "Traverse lineage"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/lineage/traverse/
+            x-atlanSnippet: |-
+              {
+                "guid": "495b1516-aaaf-4390-8cfd-b11ade7a7799", // (1)
+                "depth": 1000000,
+                "direction": "INPUT", // (2)
+                "from": 0,
+                "size": 10,
+                "excludeMeanings": true,
+                "excludeClassifications": true
+              }
+            value:
+              guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+              depth: 1000000
+              direction: INPUT
+              from: 0
+              size: 10
+              excludeMeanings: true
+              excludeClassifications: true
+
+          traverse_lineage_3:
+            summary: "Traverse lineage - upstream"
+            x-useCaseTag: "Traverse lineage"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/lineage/traverse/
+            x-atlanSnippet: |-
+              {
+                "guid": "495b1516-aaaf-4390-8cfd-b11ade7a7799",
+                "depth": 1000000,
+                "direction": "INPUT",
+                "entityFilters": { // (1)
+                  "condition": "AND",
+                  "criterion": [ // (2)
+                    {
+                      "attributeName": "certificateStatus",
+                      "operator": "contains",
+                      "attributeValue": "VERIFIED"
+                    }
+                  ]
+                },
+                "from": 0,
+                "size": 10,
+                "excludeMeanings": true,
+                "excludeClassifications": true
+              }
+            value:
+              guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+              depth: 1000000
+              direction: INPUT
+              entityFilters:
+                condition: AND
+                criterion:
+                    - attributeName: certificateStatus
+                      operator: contains
+                      attributeValue: VERIFIED
+              from: 0
+              size: 10
+              excludeMeanings: true
+              excludeClassifications: true
+
+          traverse_lineage_4:
+            summary: "Traverse lineage - downstream"
+            x-useCaseTag: "Traverse lineage"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/lineage/traverse/
+            x-atlanSnippet: |-
+              {
+                "guid": "495b1516-aaaf-4390-8cfd-b11ade7a7799",
+                "depth": 1000000,
+                "direction": "OUTPUT",
+                "entityFilters": {
+                  "condition": "AND",
+                  "criterion": [
+                    {
+                      "attributeName": "__state",
+                      "operator": "=",
+                      "attributeValue": "ACTIVE"
+                    }
+                  ]
+                },
+                "entityTraversalFilters": { // (1)
+                  "condition": "AND",
+                  "criterion": [
+                    {
+                      "attributeName": "__state",
+                      "operator": "=",
+                      "attributeValue": "ACTIVE"
+                    }
+                  ]
+                },
+                "from": 0,
+                "size": 10,
+                "excludeMeanings": true,
+                "excludeClassifications": true
+              }
+            value:
+              guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+              depth: 1000000
+              direction: OUTPUT
+              entityFilters:
+                condition: AND
+                criterion:
+                    - attributeName: __state
+                      operator: =
+                      attributeValue: ACTIVE
+              entityTraversalFilters:
+                condition: AND
+                criterion:
+                    - attributeName: __state
+                      operator: =
+                      attributeValue: ACTIVE
+              from: 0
+              size: 10
+              excludeMeanings: true
+              excludeClassifications: true
+
+          traverse_lineage_5:
+            summary: "Traverse lineage - downstream"
+            x-useCaseTag: "Traverse lineage"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/lineage/traverse/
+            x-atlanSnippet: |-
+              {
+                "guid": "495b1516-aaaf-4390-8cfd-b11ade7a7799",
+                "depth": 1000000,
+                "direction": "OUTPUT",
+                "attributes": [ // (1)
+                  "description"
+                ],
+                "from": 0,
+                "size": 10,
+                "excludeClassifications": false, // (2)
+                "excludeMeanings": false // (3)
+              }
+            value:
+              guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+              depth: 1000000
+              direction: OUTPUT
+              attributes:
+                  - description
+              from: 0
+              size: 10
+              excludeClassifications: false
+              excludeMeanings: false
+
+  responses:
+    '200':
+      description: Lineage traversal results
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Lineage.yaml#/LineageListResponse'
+          examples:
+            downstream_lineage:
+              summary: Downstream lineage from a Table
+              description: Returns downstream assets (OUTPUT direction) from a source table
+              value:
+                searchParameters:
+                  guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+                  depth: 1000000
+                  direction: OUTPUT
+                  from: 0
+                  size: 10
+                approximateCount: 5
+                entities:
+                  - typeName: ColumnProcess
+                    attributes:
+                      qualifiedName: default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/lineage/process_001
+                      name: ETL_TRANSFORM_CUSTOMERS
+                    guid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                    status: ACTIVE
+                    displayText: ETL_TRANSFORM_CUSTOMERS
+                  - typeName: Table
+                    attributes:
+                      qualifiedName: default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER
+                      name: DIM_CUSTOMER
+                      __hasLineage: true
+                    guid: b2c3d4e5-f6a7-8901-bcde-f23456789012
+                    status: ACTIVE
+                    displayText: DIM_CUSTOMER
+                hasMore: false
+            upstream_lineage:
+              summary: Upstream lineage to a Table
+              description: Returns upstream assets (INPUT direction) to a target table
+              value:
+                searchParameters:
+                  guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+                  depth: 1000000
+                  direction: INPUT
+                  from: 0
+                  size: 10
+                approximateCount: 3
+                entities:
+                  - typeName: Table
+                    attributes:
+                      qualifiedName: default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/BRONZE/RAW_CUSTOMERS
+                      name: RAW_CUSTOMERS
+                    guid: c3d4e5f6-a7b8-9012-cdef-345678901234
+                    status: ACTIVE
+                    displayText: RAW_CUSTOMERS
+                  - typeName: Process
+                    attributes:
+                      qualifiedName: default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/lineage/ingest_001
+                      name: INGEST_CUSTOMERS
+                    guid: d4e5f6a7-b8c9-0123-defa-456789012345
+                    status: ACTIVE
+                hasMore: false
+            lineage_with_filter:
+              summary: Filtered lineage (only VERIFIED assets)
+              description: Lineage filtered to only show assets with VERIFIED certificate
+              value:
+                searchParameters:
+                  guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+                  depth: 1000000
+                  direction: INPUT
+                  entityFilters:
+                    condition: AND
+                    criterion:
+                      - attributeName: certificateStatus
+                        operator: contains
+                        attributeValue: VERIFIED
+                approximateCount: 1
+                entities:
+                  - typeName: Table
+                    attributes:
+                      qualifiedName: default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/SILVER/CLEANED_CUSTOMERS
+                      name: CLEANED_CUSTOMERS
+                      certificateStatus: VERIFIED
+                    guid: e5f6a7b8-c9d0-1234-efab-567890123456
+                    status: ACTIVE
+                hasMore: false
+    '400':
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+          examples:
+            missing_from:
+              summary: Missing required 'from' parameter
+              value:
+                error: "The 'from' parameter is missing or invalid"
+            invalid_direction:
+              summary: Invalid direction value
+              value:
+                error: "Cannot deserialize value of type LineageDirection from String \"BOTH\": not one of the values accepted for Enum class: [OUTPUT, INPUT]"
+    '401':
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '404':
+      description: Asset not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+          example:
+            errorCode: ATLAS-404-00-005
+            errorMessage: "Given instance guid 495b1516-aaaf-4390-8cfd-b11ade7a7799 is invalid/not found"
+    '500':
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'

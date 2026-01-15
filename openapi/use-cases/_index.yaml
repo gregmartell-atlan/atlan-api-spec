@@ -1,0 +1,219 @@
+# Use Cases Index
+# Auto-generated from developer.atlan.com/snippets with full documentation context
+# Generated at: 2026-01-13
+
+version: "1.0"
+
+categories:
+  # ============================================
+  # COMMON ASSET ACTIONS
+  # ============================================
+  - id: common-actions
+    name: Common Asset Actions
+    description: Everyday operations on assets - tagging, descriptions, owners, etc.
+    icon: zap
+    useCases:
+      - $ref: './common-actions/common-examples-tags.yaml'
+      - $ref: './common-actions/common-examples-certificates.yaml'
+      - $ref: './common-actions/common-examples-descriptions.yaml'
+      - $ref: './common-actions/common-examples-owners.yaml'
+      - $ref: './common-actions/common-examples-announcements.yaml'
+      - $ref: './common-actions/common-examples-term-assignment.yaml'
+      - $ref: './common-actions/common-examples-domain-assignment.yaml'
+      - $ref: './common-actions/common-examples-readme.yaml'
+      - $ref: './common-actions/common-examples-resources.yaml'
+      - $ref: './common-actions/common-examples-custom-metadata.yaml'
+      - $ref: './common-actions/common-examples-relationship-attributes.yaml'
+      - $ref: './common-actions/common-examples-profiling-and-popularity.yaml'
+      - $ref: './common-actions/common-examples-profiling-and-popularity-popularity.yaml'
+      - $ref: './common-actions/common-examples-profiling-and-popularity-profiling.yaml'
+
+  # ============================================
+  # SEARCH & DISCOVERY
+  # ============================================
+  - id: search
+    name: Search & Discovery
+    description: Find assets using Elasticsearch DSL and search patterns
+    icon: search
+    useCases:
+      - $ref: './common-actions/common-examples-finding.yaml'
+      - $ref: './common-actions/common-examples-finding-examples.yaml'
+      - $ref: './search/search-logs.yaml'
+
+  # ============================================
+  # ASSET CRUD OPERATIONS
+  # ============================================
+  - id: asset-crud
+    name: Asset CRUD Operations
+    description: Create, read, update, and delete assets
+    icon: database
+    useCases:
+      - $ref: './crud/advanced-examples-create.yaml'
+      - $ref: './crud/advanced-examples-read.yaml'
+      - $ref: './crud/advanced-examples-update.yaml'
+      - $ref: './crud/advanced-examples-delete.yaml'
+      - $ref: './crud/advanced-examples-restore.yaml'
+      - $ref: './crud/advanced-examples-search.yaml'
+      - $ref: './crud/advanced-examples-combine.yaml'
+      - $ref: './crud/advanced-examples-history.yaml'
+      - $ref: './crud/advanced-examples-suggestions.yaml'
+
+  # ============================================
+  # LINEAGE
+  # ============================================
+  - id: lineage
+    name: Lineage
+    description: Create and traverse data lineage
+    icon: git-branch
+    useCases:
+      - $ref: './common-actions/common-examples-lineage-manage.yaml'
+      - $ref: './common-actions/common-examples-lineage-traverse.yaml'
+      - $ref: './common-actions/common-examples-lineage-parse-sql.yaml'
+
+  # ============================================
+  # GLOSSARY
+  # ============================================
+  - id: glossary
+    name: Glossary
+    description: Manage glossaries, terms, and categories
+    icon: book-open
+    useCases:
+      - $ref: './common-actions/common-examples-glossary-create.yaml'
+      - $ref: './common-actions/common-examples-glossary-retrieve-by-name.yaml'
+      - $ref: './common-actions/common-examples-glossary-create-hierarchy.yaml'
+      - $ref: './common-actions/common-examples-glossary-categorize-terms.yaml'
+      - $ref: './common-actions/common-examples-glossary-hierarchy.yaml'
+
+  # ============================================
+  # GOVERNANCE
+  # ============================================
+  - id: governance
+    name: Governance
+    description: Custom metadata, tag definitions, data contracts
+    icon: shield
+    useCases:
+      # Custom Metadata
+      - $ref: './governance/custom-metadata-create.yaml'
+      - $ref: './governance/custom-metadata-read.yaml'
+      - $ref: './governance/custom-metadata-update.yaml'
+      - $ref: './governance/custom-metadata-delete.yaml'
+      - $ref: './governance/custom-metadata-badge.yaml'
+      - $ref: './governance/custom-metadata-enums.yaml'
+      # Tags
+      - $ref: './governance/tags-manage.yaml'
+      - $ref: './governance/tags-monitor-propagation.yaml'
+
+  # ============================================
+  # DATA MESH
+  # ============================================
+  - id: data-mesh
+    name: Data Mesh
+    description: Data domains and data products
+    icon: network
+    useCases:
+      - $ref: './data-mesh/datamesh-datadomains.yaml'
+      - $ref: './data-mesh/datamesh-dataproducts.yaml'
+
+  # ============================================
+  # DATA CONTRACTS
+  # ============================================
+  - id: data-contracts
+    name: Data Contracts
+    description: Manage data contracts and their specifications
+    icon: file-text
+    useCases:
+      - $ref: './data-contracts/datacontract-manage.yaml'
+      - $ref: './data-contracts/datacontract-manage-via-sdks.yaml'
+
+  # ============================================
+  # ACCESS CONTROL
+  # ============================================
+  - id: access-control
+    name: Access Control
+    description: Personas, purposes, policies, users and groups
+    icon: users
+    useCases:
+      - $ref: './access-control/access-personas.yaml'
+      - $ref: './access-control/access-purposes.yaml'
+      - $ref: './access-control/access-policies.yaml'
+      - $ref: './access-control/access-tokens.yaml'
+      - $ref: './access-control/access-events.yaml'
+      - $ref: './access-control/access-queries.yaml'
+      - $ref: './access-control/users-groups-create.yaml'
+      - $ref: './access-control/users-groups-read.yaml'
+      - $ref: './access-control/users-groups-update.yaml'
+      - $ref: './access-control/users-groups-delete.yaml'
+      - $ref: './access-control/users-groups-sso-group-mapping.yaml'
+
+  # ============================================
+  # ASSET-SPECIFIC OPERATIONS
+  # ============================================
+  - id: asset-specific
+    name: Asset-Specific Operations
+    description: Operations specific to certain asset types
+    icon: file
+    useCases:
+      - $ref: './asset-specific/files.yaml'
+
+  # ============================================
+  # WORKFLOWS
+  # ============================================
+  - id: workflows
+    name: Workflows
+    description: Manage and monitor workflows and schedules
+    icon: workflow
+    useCases:
+      - $ref: './workflows/workflows-manage-workflows.yaml'
+      - $ref: './workflows/workflows-manage-schedules.yaml'
+
+  # ============================================
+  # CRAWLER PACKAGES
+  # ============================================
+  - id: crawlers
+    name: Crawler Packages
+    description: Source-specific metadata crawlers
+    icon: refresh-cw
+    useCases:
+      # Data Warehouses
+      - $ref: './workflows/workflows-packages-snowflake-assets.yaml'
+      - $ref: './workflows/workflows-packages-snowflake-miner.yaml'
+      - $ref: './workflows/workflows-packages-bigquery-assets.yaml'
+      - $ref: './workflows/workflows-packages-redshift-assets.yaml'
+      - $ref: './workflows/workflows-packages-databricks-assets.yaml'
+      - $ref: './workflows/workflows-packages-databricks-miner.yaml'
+      # Databases
+      - $ref: './workflows/workflows-packages-postgres-assets.yaml'
+      - $ref: './workflows/workflows-packages-oracle-assets.yaml'
+      - $ref: './workflows/workflows-packages-sql-server-assets.yaml'
+      # AWS
+      - $ref: './workflows/workflows-packages-athena-assets.yaml'
+      - $ref: './workflows/workflows-packages-glue-assets.yaml'
+      - $ref: './workflows/workflows-packages-dynamodb-assets.yaml'
+      # NoSQL & Streaming
+      - $ref: './workflows/workflows-packages-mongodb-assets.yaml'
+      - $ref: './workflows/workflows-packages-confluent-kafka-assets.yaml'
+      # Transformation
+      - $ref: './workflows/workflows-packages-dbt-assets.yaml'
+      # BI Tools
+      - $ref: './workflows/workflows-packages-looker-assets.yaml'
+      - $ref: './workflows/workflows-packages-tableau-assets.yaml'
+      - $ref: './workflows/workflows-packages-powerbi-assets.yaml'
+      - $ref: './workflows/workflows-packages-sigma-assets.yaml'
+      # Enrichment
+      - $ref: './workflows/workflows-packages-fivetran-enrichment.yaml'
+
+  # ============================================
+  # UTILITY PACKAGES
+  # ============================================
+  - id: utility-packages
+    name: Utility Packages
+    description: Asset import/export, lineage builders, etc.
+    icon: package
+    useCases:
+      - $ref: './workflows/workflows-packages-asset-import.yaml'
+      - $ref: './workflows/workflows-packages-asset-export-basic.yaml'
+      - $ref: './workflows/workflows-packages-relational-assets-builder.yaml'
+      - $ref: './workflows/workflows-packages-lineage-builder.yaml'
+      - $ref: './workflows/workflows-packages-lineage-generator-nt.yaml'
+      - $ref: './workflows/workflows-packages-connection-delete.yaml'
+      - $ref: './workflows/workflows-packages-api-token-connection-admin.yaml'

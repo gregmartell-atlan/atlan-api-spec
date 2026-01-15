@@ -1,0 +1,81 @@
+post:
+  operationId: searchTasks
+  summary: Search background tasks
+  description: |
+    Search for background tasks (async operations) in Atlan.
+
+    This can be used to monitor the status of long-running operations.
+  tags:
+    - Workflows
+  security:
+    - AtlanToken: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            dsl:
+              type: object
+              description: Elasticsearch-style query for tasks.
+          required:
+            - dsl
+        examples:
+          recentTasks:
+            summary: Get recent tasks
+            value:
+              dsl:
+                from: 0
+                size: 50
+                query:
+                  match_all: {}
+                sort:
+                  - createdTime:
+                      order: desc
+  responses:
+    '200':
+      description: Task search results
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              approximateCount:
+                type: integer
+              tasks:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    guid:
+                      type: string
+                    type:
+                      type: string
+                    status:
+                      type: string
+                      enum: [PENDING, IN_PROGRESS, COMPLETE, FAILED]
+                    createdTime:
+                      type: integer
+                    updatedTime:
+                      type: integer
+                    createdBy:
+                      type: string
+    '400':
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '401':
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '500':
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'

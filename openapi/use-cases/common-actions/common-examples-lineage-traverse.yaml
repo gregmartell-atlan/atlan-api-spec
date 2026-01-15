@@ -1,0 +1,540 @@
+id: common-examples-lineage-traverse
+title: Traverse lineage
+category: common-actions
+icon: zap
+relatedTypes:
+  - ColumnProcess
+  - Process
+description: Traverse lineage graphs. Navigate upstream and downstream lineage to understand data dependencies and impact analysis.
+externalDocs:
+  url: https://developer.atlan.com/snippets/common-examples/lineage/traverse/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Retrieve lineage
+    description: |-
+      2.5.3 3.1.1
+      To fetch lineage, you need to request lineage from Atlan from a particular starting point:
+    method: POST
+    endpoint: /api/meta/lineage/list
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/lineage/list
+        request:
+          guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+          depth: 1000000
+          direction: OUTPUT
+          from: 0
+          size: 10
+          attributes:
+            - name
+          excludeMeanings: true
+          excludeClassifications: true
+        response:
+          searchParameters:
+            guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+            depth: 1000000
+            direction: OUTPUT
+            from: 0
+            size: 10
+          approximateCount: 5
+          entities:
+            - typeName: ColumnProcess
+              attributes:
+                qualifiedName: default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/lineage/process_001
+                name: ETL_TRANSFORM_CUSTOMERS
+              guid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+              status: ACTIVE
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER
+                name: DIM_CUSTOMER
+                __hasLineage: true
+              guid: b2c3d4e5-f6a7-8901-bcde-f23456789012
+              status: ACTIVE
+          hasMore: false
+  - step: 2
+    title: Traverse lineage
+    description: |-
+      The new lineage list API returns results in breadth-first order. So you can traverse the lineage by progressing through the result list in the order they are returned, even across multiple pages of results.
+      2.5.3 3.1.1
+      To traverse downstream assets in lineage:
+    method: POST
+    endpoint: /api/meta/lineage/list
+    examples:
+      - key: example-2-1
+        summary: Downstream lineage traversal
+        request:
+          guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+          depth: 1000000
+          direction: OUTPUT
+          from: 0
+          size: 10
+          excludeMeanings: true
+          excludeClassifications: true
+        response:
+          searchParameters:
+            guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+            direction: OUTPUT
+          approximateCount: 3
+          entities:
+            - typeName: Process
+              attributes:
+                qualifiedName: default/snowflake/lineage/etl_transform
+                name: ETL_TRANSFORM
+              guid: proc-1234-5678-abcd
+              status: ACTIVE
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/DW/GOLD/CUSTOMERS_DIM
+                name: CUSTOMERS_DIM
+              guid: tbl-downstream-001
+              status: ACTIVE
+          hasMore: false
+      - key: example-2-2
+        summary: Upstream lineage traversal
+        request:
+          guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+          depth: 1000000
+          direction: INPUT
+          from: 0
+          size: 10
+          excludeMeanings: true
+          excludeClassifications: true
+        response:
+          searchParameters:
+            guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+            direction: INPUT
+          approximateCount: 2
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/BRONZE/RAW_CUSTOMERS
+                name: RAW_CUSTOMERS
+              guid: tbl-upstream-001
+              status: ACTIVE
+          hasMore: false
+  - step: 3
+    title: Downstream assets
+    description: |-
+      2.5.3 3.1.1
+      To traverse downstream assets in lineage:
+    method: POST
+    endpoint: /api/meta/lineage/list
+    examples:
+      - key: example-3-1
+        summary: POST /api/meta/lineage/list
+        request:
+          guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+          depth: 1000000
+          direction: OUTPUT
+          from: 0
+          size: 10
+          excludeMeanings: true
+          excludeClassifications: true
+        response:
+          searchParameters:
+            guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+            depth: 1000000
+            direction: OUTPUT
+            from: 0
+            size: 10
+          approximateCount: 3
+          entities:
+            - typeName: Process
+              attributes:
+                qualifiedName: default/snowflake/lineage/process_output
+                name: ETL_OUTPUT_PROCESS
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/DW/GOLD/TARGET_TABLE
+                name: TARGET_TABLE
+                __hasLineage: true
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+          hasMore: false
+  - step: 4
+    title: Upstream assets
+    description: |-
+      2.5.3 3.1.1
+      To traverse upstream assets in lineage:
+    method: POST
+    endpoint: /api/meta/lineage/list
+    examples:
+      - key: example-4-1
+        summary: POST /api/meta/lineage/list
+        request:
+          guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+          depth: 1000000
+          direction: INPUT
+          from: 0
+          size: 10
+          excludeMeanings: true
+          excludeClassifications: true
+        response:
+          searchParameters:
+            guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+            depth: 1000000
+            direction: INPUT
+            from: 0
+            size: 10
+          approximateCount: 3
+          entities:
+            - typeName: Process
+              attributes:
+                qualifiedName: default/snowflake/lineage/process_input
+                name: ETL_INPUT_PROCESS
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/DW/BRONZE/TARGET_TABLE
+                name: TARGET_TABLE
+                __hasLineage: true
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+          hasMore: false
+  - step: 5
+    title: Filter lineage
+    description: |-
+      You can also filter the information fetched through lineage. This can help improve performance of your code by limiting the results it will fetch to only those you require.
+      Retrieve only active assets
+      In most cases for lineage you only care about active assets. By filtering to only active assets, you can improve the performance of lineage retrieval by as much as 10x. (The new FluentLineage interface will do this automatically, unless you explicitly request the inclusion of archived assets.)
+      Not possible to filter by custom metadata
+      You currently cannot filter lineage based on the values of custom metadata.
+      1.9.5 4.0.0
+      You can limit the assets you will see in the response through entity filters. These restrict what assets will be included in the results, but still traverse all of the lineage:
+    notes:
+      - type: recommendation
+        title: Retrieve only active assets
+        content: In most cases for lineage you only care about active assets. By filtering to only active assets, you can improve the performance of lineage retrieval by as much as 10x. (The new FluentLineage interface will do this automatically, unless you explicitly request the inclusion of archived assets.)
+      - type: warning
+        title: Not possible to filter by custom metadata
+        content: You currently cannot filter lineage based on the values of custom metadata.
+      - type: recommendation
+        title: FluentLineage.ACTIVE constant
+        content: "Note that the FluentLineage.ACTIVE example here is a predefined filter constant. If you look at its code, it is equivalent to writing any other lineage filter: Asset.STATUS.inLineage.eq(AtlanStatus.ACTIVE)"
+      - type: recommendation
+        title: FluentLineage.ACTIVE constant
+        content: "Note that the FluentLineage.ACTIVE example here is a predefined filter constant. If you look at its code, it is equivalent to writing any other lineage filter: Asset.STATUS.in_lineage.eq(EntityStatus.ACTIVE)"
+      - type: recommendation
+        title: FluentLineage.ACTIVE constant
+        content: "Note that the FluentLineage.ACTIVE example here is a predefined filter constant. If you look at its code, it is equivalent to writing any other lineage filter: Asset.STATUS.inLineage.eq(AtlanStatus.ACTIVE)"
+    method: POST
+    endpoint: /api/meta/lineage/list
+    examples:
+      - key: example-5-1
+        summary: POST /api/meta/lineage/list
+        request:
+          guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+          depth: 1000000
+          direction: INPUT
+          entityFilters:
+            condition: AND
+            criterion:
+              - attributeName: certificateStatus
+                operator: contains
+                attributeValue: VERIFIED
+          from: 0
+          size: 10
+          excludeMeanings: true
+          excludeClassifications: true
+        response:
+          searchParameters:
+            guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+            depth: 1000000
+            direction: INPUT
+            from: 0
+            size: 10
+          approximateCount: 3
+          entities:
+            - typeName: Process
+              attributes:
+                qualifiedName: default/snowflake/lineage/process_input
+                name: ETL_INPUT_PROCESS
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/DW/BRONZE/TARGET_TABLE
+                name: TARGET_TABLE
+                __hasLineage: true
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+          hasMore: false
+      - key: example-5-2
+        summary: POST /api/meta/lineage/list
+        request:
+          guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+          depth: 1000000
+          direction: OUTPUT
+          entityFilters:
+            condition: AND
+            criterion:
+              - attributeName: __state
+                operator: "="
+                attributeValue: ACTIVE
+          entityTraversalFilters:
+            condition: AND
+            criterion:
+              - attributeName: __state
+                operator: "="
+                attributeValue: ACTIVE
+          from: 0
+          size: 10
+          excludeMeanings: true
+          excludeClassifications: true
+        response:
+          searchParameters:
+            guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+            depth: 1000000
+            direction: OUTPUT
+            from: 0
+            size: 10
+          approximateCount: 3
+          entities:
+            - typeName: Process
+              attributes:
+                qualifiedName: default/snowflake/lineage/process_output
+                name: ETL_OUTPUT_PROCESS
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/DW/GOLD/TARGET_TABLE
+                name: TARGET_TABLE
+                __hasLineage: true
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+          hasMore: false
+      - key: example-5-3
+        summary: POST /api/meta/lineage/list
+        request:
+          guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+          depth: 1000000
+          direction: OUTPUT
+          attributes:
+            - description
+          from: 0
+          size: 10
+          excludeClassifications: false
+          excludeMeanings: false
+        response:
+          searchParameters:
+            guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+            depth: 1000000
+            direction: OUTPUT
+            from: 0
+            size: 10
+          approximateCount: 3
+          entities:
+            - typeName: Process
+              attributes:
+                qualifiedName: default/snowflake/lineage/process_output
+                name: ETL_OUTPUT_PROCESS
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/DW/GOLD/TARGET_TABLE
+                name: TARGET_TABLE
+                __hasLineage: true
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+          hasMore: false
+  - step: 6
+    title: Limit assets in response
+    description: |-
+      1.9.5 4.0.0
+      You can limit the assets you will see in the response through entity filters. These restrict what assets will be included in the results, but still traverse all of the lineage:
+    method: POST
+    endpoint: /api/meta/lineage/list
+    examples:
+      - key: example-6-1
+        summary: POST /api/meta/lineage/list
+        request:
+          guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+          depth: 1000000
+          direction: INPUT
+          entityFilters:
+            condition: AND
+            criterion:
+              - attributeName: certificateStatus
+                operator: contains
+                attributeValue: VERIFIED
+          from: 0
+          size: 10
+          excludeMeanings: true
+          excludeClassifications: true
+        response:
+          searchParameters:
+            guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+            depth: 1000000
+            direction: INPUT
+            from: 0
+            size: 10
+          approximateCount: 3
+          entities:
+            - typeName: Process
+              attributes:
+                qualifiedName: default/snowflake/lineage/process_input
+                name: ETL_INPUT_PROCESS
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/DW/BRONZE/TARGET_TABLE
+                name: TARGET_TABLE
+                __hasLineage: true
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+          hasMore: false
+  - step: 7
+    title: Limit lineage traversal
+    description: |-
+      1.9.5 4.0.0
+      You can also limit how much of the lineage is traversed. You can do this both at an asset-level and a relationship-level:
+    method: POST
+    endpoint: /api/meta/lineage/list
+    examples:
+      - key: example-7-1
+        summary: POST /api/meta/lineage/list
+        request:
+          guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+          depth: 1000000
+          direction: OUTPUT
+          entityFilters:
+            condition: AND
+            criterion:
+              - attributeName: __state
+                operator: "="
+                attributeValue: ACTIVE
+          entityTraversalFilters:
+            condition: AND
+            criterion:
+              - attributeName: __state
+                operator: "="
+                attributeValue: ACTIVE
+          from: 0
+          size: 10
+          excludeMeanings: true
+          excludeClassifications: true
+        response:
+          searchParameters:
+            guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+            depth: 1000000
+            direction: OUTPUT
+            from: 0
+            size: 10
+          approximateCount: 3
+          entities:
+            - typeName: Process
+              attributes:
+                qualifiedName: default/snowflake/lineage/process_output
+                name: ETL_OUTPUT_PROCESS
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/DW/GOLD/TARGET_TABLE
+                name: TARGET_TABLE
+                __hasLineage: true
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+          hasMore: false
+  - step: 8
+    title: Limit asset details
+    description: |-
+      1.4.0 4.0.0
+      You can also limit the details for each asset returned by lineage:
+    method: POST
+    endpoint: /api/meta/lineage/list
+    examples:
+      - key: example-8-1
+        summary: POST /api/meta/lineage/list
+        request:
+          guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+          depth: 1000000
+          direction: OUTPUT
+          attributes:
+            - description
+          from: 0
+          size: 10
+          excludeClassifications: false
+          excludeMeanings: false
+        response:
+          searchParameters:
+            guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+            depth: 1000000
+            direction: OUTPUT
+            from: 0
+            size: 10
+          approximateCount: 3
+          entities:
+            - typeName: Process
+              attributes:
+                qualifiedName: default/snowflake/lineage/process_output
+                name: ETL_OUTPUT_PROCESS
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/DW/GOLD/TARGET_TABLE
+                name: TARGET_TABLE
+                __hasLineage: true
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+          hasMore: false
+  - step: 9
+    title: Original API
+    description: |-
+      Deprecated and removed
+      The original lineage API was previously deprecated, and now no longer exists in the latest releases of the SDKs. It is slower, does not support paging, and will not receive any enhancements. We would therefore strongly recommend using the newer API (described above); however, the original API is described here for completeness.
+      To fetch lineage, you need to request lineage from Atlan from a particular starting point:
+    notes:
+      - type: warning
+        title: Deprecated and removed
+        content: The original lineage API was previously deprecated, and now no longer exists in the latest releases of the SDKs. It is slower, does not support paging, and will not receive any enhancements. We would therefore strongly recommend using the newer API (described above); however, the original API is described here for completeness.
+      - type: warning
+        title: If you expect extensive lineage, change the default!
+        content: The default value of 0 can result in a long-running API call with a very large response payload. If you expect your lineage to be extensive, you may want to try smaller depths first.
+      - type: warning
+        title: Use true if you want to use the SDK's traversal helpers
+        content: Currently the SDK's traversal logic only works when this is set to true. Unless you want to code your own traversal logic, set hideProcess to true.
+      - type: warning
+        title: If you expect extensive lineage, change the default!
+        content: The default value of 0 can result in a long-running API call with a very large response payload. If you expect your lineage to be extensive, you may want to try smaller depths first.
+      - type: warning
+        title: Use True if you want to use the SDK's traversal helpers
+        content: Currently the SDK's traversal logic only works when this is set to True. Unless you want to code your own traversal logic, set hide_process to True.
+      - type: warning
+        title: If you expect extensive lineage, change the default!
+        content: The default value of 0 can result in a long-running API call with a very large response payload. If you expect your lineage to be extensive, you may want to try smaller depths first.
+      - type: recommendation
+        title: Multiple API calls
+        content: You may either need to make multiple API calls using the approaches above, or retrieve all downstream lineage and in your code traverse the returned relationships.
+    method: POST
+    endpoint: /api/meta/lineage/getlineage
+    examples:
+      - key: example-9-1
+        summary: POST /api/meta/lineage/getlineage
+        request:
+          guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+          depth: 0
+          direction: BOTH
+          hideProcess: true
+          allowDeletedProcess: false
+      - key: example-9-2
+        summary: POST /api/meta/lineage/getlineage
+        request:
+          guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+          depth: 1
+          direction: OUTPUT
+      - key: example-9-3
+        summary: POST /api/meta/lineage/getlineage
+        request:
+          guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+          depth: 1
+          direction: INPUT

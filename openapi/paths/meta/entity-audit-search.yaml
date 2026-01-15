@@ -1,0 +1,169 @@
+post:
+  operationId: searchAssetAuditHistory
+  summary: Search asset audit history
+  description: |
+    Search for audit events (changes) on assets using Elasticsearch DSL.
+
+    Returns a history of all changes made to assets, including who made them,
+    when, and what changed.
+
+    ## Use cases
+    - [Review changes](https://developer.atlan.com/snippets/advanced-examples/history/)
+  externalDocs:
+    url: https://developer.atlan.com/snippets/advanced-examples/history/
+    description: Viewing the history of an asset – Raw REST API examples
+  tags:
+    - Review changes
+  security:
+    - AtlanToken: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            dsl:
+              type: object
+              description: Elasticsearch-style query for audit events.
+              properties:
+                from:
+                  type: integer
+                  default: 0
+                size:
+                  type: integer
+                  default: 10
+                query:
+                  type: object
+                sort:
+                  type: array
+                  items:
+                    type: object
+          required:
+            - dsl
+        examples:
+          auditByGuid:
+            summary: Get audit history for an asset by GUID
+            value:
+              dsl:
+                from: 0
+                size: 10
+                query:
+                  bool:
+                    filter:
+                      - term:
+                          entityId: "b4113341-251b-4adc-81fb-2420501c30e6"
+                sort:
+                  - created:
+                      order: desc
+  responses:
+    '200':
+      description: Audit search results
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              count:
+                type: integer
+                description: Total number of audit events matching the query.
+              entityAudits:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    entityId:
+                      type: string
+                      format: uuid
+                    action:
+                      type: string
+                      description: Type of action (e.g., ENTITY_CREATE, ENTITY_UPDATE).
+                    user:
+                      type: string
+                      description: Username who performed the action.
+                    timestamp:
+                      type: integer
+                      format: int64
+                      description: Unix timestamp of the action.
+                    details:
+                      type: object
+                      description: Details of what changed.
+          examples:
+            audit_history:
+              summary: Audit history for an asset
+              description: Shows the change history for a specific asset
+              value:
+                count: 15
+                entityAudits:
+                  - entityId: b4113341-251b-4adc-81fb-2420501c30e6
+                    typeName: Table
+                    action: ENTITY_UPDATE
+                    user: data.steward@company.com
+                    timestamp: 1765929858468
+                    created: 1765929858468
+                    detail:
+                      typeName: Table
+                      attributes:
+                        certificateStatus: VERIFIED
+                        certificateStatusMessage: Reviewed and approved
+                      guid: b4113341-251b-4adc-81fb-2420501c30e6
+                    eventKey: b4113341-251b-4adc-81fb-2420501c30e6:1765929858468
+                  - entityId: b4113341-251b-4adc-81fb-2420501c30e6
+                    typeName: Table
+                    action: CLASSIFICATION_ADD
+                    user: admin@company.com
+                    timestamp: 1765929758000
+                    created: 1765929758000
+                    detail:
+                      typeName: Table
+                      classifications:
+                        - typeName: PII
+                          entityGuid: b4113341-251b-4adc-81fb-2420501c30e6
+                          propagate: true
+                      guid: b4113341-251b-4adc-81fb-2420501c30e6
+                    eventKey: b4113341-251b-4adc-81fb-2420501c30e6:1765929758000
+                  - entityId: b4113341-251b-4adc-81fb-2420501c30e6
+                    typeName: Table
+                    action: ENTITY_CREATE
+                    user: service-account-crawler
+                    timestamp: 1747185436766
+                    created: 1747185436766
+                    detail:
+                      typeName: Table
+                      attributes:
+                        qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/CUSTOMERS
+                        name: CUSTOMERS
+                      guid: b4113341-251b-4adc-81fb-2420501c30e6
+                    eventKey: b4113341-251b-4adc-81fb-2420501c30e6:1747185436766
+            audit_by_action:
+              summary: Filter by action type
+              description: Only ENTITY_UPDATE events
+              value:
+                count: 8
+                entityAudits:
+                  - entityId: b4113341-251b-4adc-81fb-2420501c30e6
+                    typeName: Table
+                    action: ENTITY_UPDATE
+                    user: data.steward@company.com
+                    timestamp: 1765929858468
+                    detail:
+                      attributes:
+                        description: Updated customer table description
+    '400':
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '401':
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '500':
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'

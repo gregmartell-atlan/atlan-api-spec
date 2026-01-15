@@ -1,0 +1,36 @@
+get:
+  operationId: getHealthStatus
+  summary: Check API health
+  description: |
+    Check the health status of the Atlan API service.
+
+    This endpoint can be used for monitoring and health checks.
+  tags:
+    - Reference
+  security: []  # Health check is typically unauthenticated
+  responses:
+    '200':
+      description: Service is healthy
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: "UP"
+              timestamp:
+                type: string
+                format: date-time
+    '503':
+      description: Service is unhealthy
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: "DOWN"
+              details:
+                type: object

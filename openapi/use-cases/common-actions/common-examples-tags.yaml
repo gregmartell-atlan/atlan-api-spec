@@ -1,0 +1,341 @@
+id: common-examples-tags
+title: Tag (classify) assets
+category: common-actions
+icon: zap
+relatedTypes:
+  - Asset
+  - BigqueryTag
+  - BusinessMetadataDef
+  - ClassificationDef
+  - DatabricksUnityCatalogTag
+  - DbtTag
+  - SnowflakeTag
+  - SourceTagAttachment
+  - Tag
+description: |-
+  Apply Atlan tags (classifications) to assets to categorize and govern your data catalog. Tags appear in the `classifications` array on asset objects.
+
+  **Prerequisites:**
+  - Atlan tags must exist before you can apply them to assets. See "Manage Atlan tags" to create tags.
+  - You need the tag's hashed-string name (e.g., `VfsfmLbnuxc2vdNJ0Ysh`) to apply it via the API.
+    Use `GET /api/meta/types/typedefs?type=classification` to look up hashed names.
+
+
+  **Limitations:**
+  - Cannot add tags when creating assets (except via dbt integration).
+  - Tags are applied via update operations on existing assets.
+
+  **Source-Synced Tags:**
+  For tags synced from external systems (Snowflake, Databricks, dbt, BigQuery), the tag appears in the classification's `attributes` with source tag details including `sourceTagName`, `sourceTagQualifiedName`, and `sourceTagValue`. These source tags are represented as entity types: SnowflakeTag, DbtTag, BigqueryTag, DatabricksUnityCatalogTag.
+externalDocs:
+  url: https://developer.atlan.com/snippets/common-examples/tags/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Add to an existing asset
+    description: |-
+      6.2.0 4.0.0
+      To add tags to an existing asset:
+    notes:
+      - type: warning
+        title: Replaces all tags
+        content: Unlike the examples for the SDKs and raw APIs, dbt will always replace all tags on the asset. Any tags that already exist on the asset that are not specified here will be removed.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    queryString: replaceTags=false&appendTags=true&replaceBusinessAttributes=false&overwriteBusinessAttributes=false
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1746022526/WIDE_WORLD_IMPORTERS/BRONZE_WAREHOUSE/FIVETRAN_AUDIT
+                name: FIVETRAN_AUDIT
+              addOrUpdateClassifications:
+                - typeName: VfsfmLbnuxc2vdNJ0Ysh
+                  propagate: false
+                  removePropagationsOnEntityDelete: true
+                  restrictPropagationThroughLineage: false
+                  restrictPropagationThroughHierarchy: true
+                - typeName: RsCmLbnuxc2vdNJ234Ysh
+                  propagate: false
+                  removePropagationsOnEntityDelete: true
+                  restrictPropagationThroughLineage: false
+                  restrictPropagationThroughHierarchy: true
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1746022526/WIDE_WORLD_IMPORTERS/BRONZE_WAREHOUSE/FIVETRAN_AUDIT
+                  name: FIVETRAN_AUDIT
+                guid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                status: ACTIVE
+                classifications:
+                  - typeName: VfsfmLbnuxc2vdNJ0Ysh
+                    entityGuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                    propagate: false
+                  - typeName: RsCmLbnuxc2vdNJ234Ysh
+                    entityGuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                    propagate: false
+  - step: 2
+    title: Update on an existing asset
+    description: |-
+      6.2.0 4.0.0
+      To update tags on an existing asset:
+    notes:
+      - type: warning
+        title: Not possible through dbt
+        content: In dbt, the tags will be replaced in their entirety. It is not possible to just update a single tag through dbt.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    queryString: replaceTags=false&appendTags=true&replaceBusinessAttributes=false&overwriteBusinessAttributes=false
+    examples:
+      - key: example-2-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1746022526/WIDE_WORLD_IMPORTERS/BRONZE_WAREHOUSE/FIVETRAN_AUDIT
+                name: FIVETRAN_AUDIT
+              addOrUpdateClassifications:
+                - typeName: VfsfmLbnuxc2vdNJ0Ysh
+                  propagate: false
+                  removePropagationsOnEntityDelete: false
+                  restrictPropagationThroughLineage: false
+                  restrictPropagationThroughHierarchy: false
+                - typeName: RsCmLbnuxc2vdNJ234Ysh
+                  propagate: true
+                  removePropagationsOnEntityDelete: true
+                  restrictPropagationThroughLineage: false
+                  restrictPropagationThroughHierarchy: false
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1746022526/WIDE_WORLD_IMPORTERS/BRONZE_WAREHOUSE/FIVETRAN_AUDIT
+                  name: FIVETRAN_AUDIT
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+  - step: 3
+    title: Remove from existing assets
+    description: |-
+      6.2.0 4.0.0
+      To remove a single tag from an existing asset:
+    notes:
+      - type: recommendation
+        title: The tag being removed is no longer present
+        content: You are removing the tag by not specifying it anymore here in dbt.
+      - type: recommendation
+        title: The tag being removed is no longer present
+        content: You are removing the tag by not specifying it anymore here in dbt.
+      - type: warning
+        title: Could create a new asset
+        content: Remember that Atlan matches the provided qualifiedName to determine whether to update or create the asset.
+    method: DELETE
+    endpoint: /api/meta/entity/uniqueAttribute/type/Table/classification/WCVjmgKnW40G151dESXZ03
+    queryString: attr:qualifiedName=default%2Fsnowflake%2F1657037873%2FSAMPLE_DB%2FFOOD_BEV%2FTOP_BEVERAGE_USERS
+    examples:
+      - key: example-3-1
+        summary: DELETE /api/meta/entity/uniqueAttribute/type/Table/classification/WCVjmgKnW40G151dESXZ03
+      - key: example-3-2
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1746022526/WIDE_WORLD_IMPORTERS/BRONZE_WAREHOUSE/FIVETRAN_AUDIT
+                name: FIVETRAN_AUDIT
+              removeClassifications:
+                - typeName: VfsfmLbnuxc2vdNJ0Ysh
+                - typeName: RsCmLbnuxc2vdNJ234Ysh
+      - key: example-3-3
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1665450065/DBT_FOOD_BEVERAGE/PUBLIC/INSTACART_ORDER_PRODUCTS_USERS_TIME_MASTER
+                name: INSTACART_ORDER_PRODUCTS_USERS_TIME_MASTER
+  - step: 4
+    title: Remove a single tag
+    description: |-
+      6.2.0 4.0.0
+      To remove a single tag from an existing asset:
+    method: DELETE
+    endpoint: /api/meta/entity/uniqueAttribute/type/Table/classification/WCVjmgKnW40G151dESXZ03
+    queryString: attr:qualifiedName=default%2Fsnowflake%2F1657037873%2FSAMPLE_DB%2FFOOD_BEV%2FTOP_BEVERAGE_USERS
+    examples:
+      - key: example-4-1
+        summary: DELETE /api/meta/entity/uniqueAttribute/type/Table/classification/WCVjmgKnW40G151dESXZ03
+  - step: 5
+    title: Remove multiple tags
+    description: "To remove one or more tags from an existing asset:"
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    queryString: replaceTags=false&appendTags=true&replaceBusinessAttributes=false&overwriteBusinessAttributes=false
+    examples:
+      - key: example-5-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1746022526/WIDE_WORLD_IMPORTERS/BRONZE_WAREHOUSE/FIVETRAN_AUDIT
+                name: FIVETRAN_AUDIT
+              removeClassifications:
+                - typeName: VfsfmLbnuxc2vdNJ0Ysh
+                - typeName: RsCmLbnuxc2vdNJ234Ysh
+        response:
+          mutatedEntities:
+            DELETE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1746022526/WIDE_WORLD_IMPORTERS/BRONZE_WAREHOUSE/FIVETRAN_AUDIT
+                  name: FIVETRAN_AUDIT
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: DELETED
+  - step: 6
+    title: Remove all tags
+    description: |-
+      Could create a new asset
+      Remember that Atlan matches the provided qualifiedName to determine whether to update or create the asset.
+      2.0.0 4.0.0
+      To remove all tags from an existing asset, you need to specify no tags in your object:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    queryString: replaceTags=true&replaceBusinessAttributes=false&overwriteBusinessAttributes=false
+    examples:
+      - key: example-6-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1665450065/DBT_FOOD_BEVERAGE/PUBLIC/INSTACART_ORDER_PRODUCTS_USERS_TIME_MASTER
+                name: INSTACART_ORDER_PRODUCTS_USERS_TIME_MASTER
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1665450065/DBT_FOOD_BEVERAGE/PUBLIC/INSTACART_ORDER_PRODUCTS_USERS_TIME_MASTER
+                  name: INSTACART_ORDER_PRODUCTS_USERS_TIME_MASTER
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+  - step: 7
+    title: In bulk
+    description: |-
+      7.0.0 4.0.0
+      You can modify many tags, for many assets, at the same time.
+      Operates as a replace
+      Applying tags in bulk can currently only be done as a replacement. All tags on the asset(s) you upate will be replaced with the tags you specify. This means any tags that already exist on the asset in Atlan that are not in your update will be removed from that asset.
+    notes:
+      - type: warning
+        title: Operates as a replace
+        content: Applying tags in bulk can currently only be done as a replacement. All tags on the asset(s) you upate will be replaced with the tags you specify. This means any tags that already exist on the asset in Atlan that are not in your update will be removed from that asset.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-7-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Table
+              attributes:
+                name: TOP_BEVERAGE_USERS
+                qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+              classifications:
+                - typeName: yQBDoKHdTLJhqAsdR3RMq6
+                  propagate: true
+                  removePropagationsOnEntityDelete: true
+                  restrictPropagationThroughLineage: false
+                  restrictPropagationThroughHierarchy: false
+                - typeName: WCVjmgKnW40G151dESXZ03
+                  propagate: true
+                  removePropagationsOnEntityDelete: true
+                  restrictPropagationThroughLineage: false
+                  restrictPropagationThroughHierarchy: false
+                - typeName: Z96sGJrF0S68PxYTUdKG6b
+                  propagate: true
+                  removePropagationsOnEntityDelete: true
+                  restrictPropagationThroughLineage: false
+                  restrictPropagationThroughHierarchy: false
+                  attributes:
+                    rt5N3mHZTcxXafuu6ZPpyL:
+                      - sourceTagName: CONFIDENTIAL
+                        sourceTagQualifiedName: default/snowflake/1726834662/ANALYTICS/WIDE_WORLD_IMPORTERS/CONFIDENTIAL
+                        sourceTagGuid: c28c08a8-320b-4a1a-b52e-75d120b4a8cc
+                        sourceTagConnectorName: snowflake
+                        isSourceTagSynced: false
+                        sourceTagSyncTimestamp: 0
+                        sourceTagValue:
+                          - tagAttachmentValue: Highly Restricted
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                  name: TOP_BEVERAGE_USERS
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+                classifications:
+                  - typeName: yQBDoKHdTLJhqAsdR3RMq6
+                    propagate: true
+                    removePropagationsOnEntityDelete: true
+                    restrictPropagationThroughLineage: false
+                    restrictPropagationThroughHierarchy: false
+                  - typeName: WCVjmgKnW40G151dESXZ03
+                    propagate: true
+                    removePropagationsOnEntityDelete: true
+                    restrictPropagationThroughLineage: false
+                    restrictPropagationThroughHierarchy: false
+                  - typeName: Z96sGJrF0S68PxYTUdKG6b
+                    propagate: true
+                    removePropagationsOnEntityDelete: true
+                    restrictPropagationThroughLineage: false
+                    restrictPropagationThroughHierarchy: false
+                    attributes:
+                      rt5N3mHZTcxXafuu6ZPpyL:
+                        - sourceTagName: CONFIDENTIAL
+                          sourceTagQualifiedName: default/snowflake/1726834662/ANALYTICS/WIDE_WORLD_IMPORTERS/CONFIDENTIAL
+                          sourceTagGuid: c28c08a8-320b-4a1a-b52e-75d120b4a8cc
+                          sourceTagConnectorName: snowflake
+                          isSourceTagSynced: false
+                          sourceTagSyncTimestamp: 0
+                          sourceTagValue:
+                            - tagAttachmentValue: Highly Restricted
+  - step: 8
+    title: Find hashed-string names
+    description: |-
+      When using either the raw APIs or dbt, you must provide the custom metadata names using Atlan's hashed-string representation.
+      Not necessary for SDKs
+      Note that this is not needed when using the SDKs, which translate these for you!
+      To look up the hashed-string representations:
+    notes:
+      - type: recommendation
+        title: Not necessary for SDKs
+        content: Note that this is not needed when using the SDKs, which translate these for you!
+    method: GET
+    endpoint: /api/meta/types/typedefs
+    queryString: type=classification
+    examples:
+      - key: example-8-1
+        summary: GET /api/meta/types/typedefs
+        response:
+          classificationDefs:
+            - category: CLASSIFICATION
+              guid: 884091b2-4fbc-4c8e-85d1-173ad90547cf
+              name: S7qnUqZ5mBMBpzQ3Wzt6yD
+              displayName: PII
+              description: Personally Identifiable Information
+              options:
+                color: Red
+                iconType: icon
+                icon: PhPassword

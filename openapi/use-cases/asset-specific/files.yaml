@@ -1,0 +1,66 @@
+# Use Case: Manage files in tenant object store
+# Auto-generated from: https://developer.atlan.com/snippets/files/
+# Generated at: 2026-01-13T02:58:00.307Z
+
+id: files
+title: "Manage files in tenant object store"
+category: asset-specific
+icon: zap
+relatedTypes:
+  - File
+
+description: >-
+  You can use the SDK's FileClient to manage your files
+  within Atlan's tenant object store by leveraging presigned URLs.
+
+externalDocs:
+  url: https://developer.atlan.com/snippets/files/
+  description: Official Atlan documentation
+
+steps:
+  - step: 1
+    title: "Upload a file to the object store"
+    description: >-
+      0.0.4
+      2.1.7
+      0.1.3
+      
+      To upload a file to the tenant object store:
+    notes:
+      - type: info
+        title: "CLI must be configured"
+        content: >-
+          Make sure you have the CLI configured before running the above command.
+    method: POST
+    endpoint: /api/service/files/presignedUrl
+    examples:
+      - key: example-1-1
+        summary: "POST /api/service/files/presignedUrl"
+        request: {
+                    "method": "PUT",
+                    "key": "my-folder/my-file.txt",
+                    "expiry": "30s"
+          }
+  - step: 2
+    title: "Download a file from the object store"
+    description: >-
+      0.0.4
+      2.1.7
+      0.1.3
+      
+      To download a file from the tenant object store:
+    notes:
+      - type: info
+        title: "CLI must be configured"
+        content: >-
+          Make sure you have the CLI configured before running the above command.
+    method: POST
+    endpoint: /api/service/files/presignedUrl
+    examples:
+      - key: example-2-1
+        summary: "POST /api/service/files/presignedUrl"
+        request: {
+                    "method": "GET",
+                    "key": "my-folder/my-file.txt",
+                    "expiry": "30s"
+          }

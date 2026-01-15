@@ -1,0 +1,19 @@
+# Use Case: Delete custom metadata
+# Auto-generated from: https://developer.atlan.com/snippets/custom-metadata/delete/
+# Generated at: 2026-01-13T02:58:00.304Z
+
+id: custom-metadata-delete
+title: "Delete custom metadata"
+category: governance
+icon: zap
+relatedTypes:
+  - BusinessMetadataDef
+  - CustomMetadataDef
+
+description: >-
+  Governance operations for managing metadata and classifications in Atlan.
+
+externalDocs:
+  url: https://developer.atlan.com/snippets/custom-metadata/delete/
+  description: Official Atlan documentation
+

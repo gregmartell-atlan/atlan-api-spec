@@ -1,0 +1,93 @@
+id: common-examples-glossary-create-hierarchy
+title: Creating a hierarchy
+category: common-actions
+icon: zap
+relatedTypes:
+  - Asset
+  - AtlasGlossary
+  - AtlasGlossaryCategory
+  - AtlasGlossaryTerm
+description: |-
+  Categories in a glossary can be organized within another category, to create a hierarchy of categories.
+  To do this, you need to create the upper levels of the hierarchy before the lower levels. Each level you create should refer to its parent, and therefore its parent must first exist.
+externalDocs:
+  url: https://developer.atlan.com/snippets/common-examples/glossary/create-hierarchy/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Create a root-level category
+    description: |-
+      2.0.0 4.0.0
+      To create a root- or top-level category (no parent):
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AtlasGlossaryCategory
+              attributes:
+                name: Top
+                displayName: Top
+                anchor:
+                  typeName: AtlasGlossary
+                  guid: b4113341-251b-4adc-81fb-2420501c30e6
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: AtlasGlossaryCategory
+                attributes:
+                  qualifiedName: example/asset/0
+                  name: Top
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+                relationshipAttributes:
+                  anchor:
+                    guid: b4113341-251b-4adc-81fb-2420501c30e6
+                    typeName: AtlasGlossary
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+  - step: 2
+    title: Create a child category
+    description: |-
+      Parent must exist before creating the child
+      Remember: the parent category must exist before you create the child category.
+      2.0.0 4.0.0
+      To create a child category, the steps are very similar but you add in the reference to the parent category:
+    notes:
+      - type: warning
+        title: Parent must exist before creating the child
+        content: "Remember: the parent category must exist before you create the child category."
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-2-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AtlasGlossaryCategory
+              attributes:
+                name: Middle
+                displayName: Middle
+                anchor:
+                  typeName: AtlasGlossary
+                  guid: b4113341-251b-4adc-81fb-2420501c30e6
+                parentCategory:
+                  typeName: AtlasGlossaryCategory
+                  guid: dc4c0a08-a902-402b-bf24-cf935aecc343
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: AtlasGlossaryCategory
+                attributes:
+                  qualifiedName: example/asset/0
+                  name: Middle
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+                relationshipAttributes:
+                  anchor:
+                    guid: b4113341-251b-4adc-81fb-2420501c30e6
+                    typeName: AtlasGlossary
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000

@@ -1,0 +1,180 @@
+id: advanced-examples-search
+title: Searching for assets
+category: crud
+icon: zap
+relatedTypes:
+  - Asset
+description: |-
+  Searching is a very flexible operation in Atlan. This also makes it a bit more complex to understand than the other operations. To encapsulate the full flexibility of Atlan's search, the SDK provides a dedicated IndexSearchRequest object and a FluentSearch class for configuring such a request using a fluent builder pattern.
+  More details on the power and flexibility of searching
+  See the dedicated Searching section of this site for more details on Atlan's search. This covers the various kinds of
+externalDocs:
+  url: https://developer.atlan.com/snippets/advanced-examples/search/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Build the query
+    description: |-
+      0.1.0 1.0.0 2.0.0
+      To run a search in Atlan, you need to define the query using Elastic's structures. While you can always use Elastic's own structures to make use of its full power, for the vast majority of cases you may find it easier to use the helpers built-in to the SDK:
+    notes:
+      - type: warning
+        title: Note these names do not exactly match attribute names
+        content: Note that these names are field names in the search index, and may vary from the attribute names of the assets in Atlan. To find the appropriate field name and how it relates to an attribute name, use the full model reference.
+  - step: 2
+    title: Build the request
+    description: |-
+      0.0.17 8.4.1 1.1.0
+      Once the query is defined, we can then build up the search request. The request includes not only the query, but also parameters like paging and which attributes to include in the response:
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-2-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            from: 0
+            size: 100
+            query: {}
+            track_total_hits: true
+          attributes:
+            - anchor
+          relationAttributes:
+            - certificateStatus
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"from\":0,\"size\":100,\"query\":{},\"track_total_hits\":true}"
+            attributes:
+              - anchor
+            relationAttributes:
+              - certificateStatus
+          approximateCount: 156
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/CUSTOMERS
+                name: CUSTOMERS
+                anchor: null
+                certificateStatus: VERIFIED
+              guid: b9d5dbbc-ee8a-4c5e-a946-a47033892172
+              status: ACTIVE
+              displayText: CUSTOMERS
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/ORDERS
+                name: ORDERS
+                anchor: null
+                certificateStatus: null
+              guid: c8e6dccd-ff9b-5d6e-b057-c58255993283
+              status: ACTIVE
+              displayText: ORDERS
+  - step: 3
+    title: (Optional) Build request directly from JSON
+    description: While we recommend using FluentSearch to build search requests, there might be scenarios where quick prototyping or testing of search queries is needed. For such use cases, we also support directly constructing search requests from raw JSON.
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-3-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            from: 0
+            size: 100
+            query: {}
+            track_total_hits: true
+          attributes:
+            - anchor
+          relationAttributes:
+            - certificateStatus
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{}"
+            attributes:
+              - anchor
+          approximateCount: 25
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/TABLE_1
+                name: Table_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: Table_1
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/TABLE_2
+                name: Table_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: Table_2
+  - step: 4
+    title: Run the search
+    description: |-
+      0.1.0 1.4.0 4.0.0
+      To now run the search, we call the search() method against our request object:
+    notes:
+      - type: recommendation
+        title: Implicit in the previous step
+        content: Actually running the search is implicit in the example above for the previous raw API step.
+  - step: 5
+    title: Iterate through results
+    description: |-
+      0.1.0 1.0.0 1.1.0
+      To iterate through one page of results, loop through the list of assets:
+    notes:
+      - type: recommendation
+        title: Each object in entities is a matching asset
+        content: Each item in the entities array of the response will give details about a matching asset.
+      - type: recommendation
+        title: Can be chained without creating a request in-between
+        content: You can actually chain the stream() method directly onto the end of your query and request construction, without creating a request or response object in-between.
+      - type: recommendation
+        title: Independent of page size
+        content: Note that this is independent of page size. You could page through results 50 at a time, but only process a maximum of 100 total results this way. Since the results are lazily-loaded when streaming, only the first two pages of results would be retrieved in such a scenario.
+      - type: recommendation
+        title: Push-down as much as you can to the query
+        content: You should of course push-down as many of the filters as you can to the query itself, but if you have a particular complex check to apply that cannot be encoded in the query this can be a useful secondary filter over the results.
+      - type: recommendation
+        title: Can be chained without creating a request in-between
+        content: You can actually chain the stream() method directly onto the end of your query and request construction, without creating a request or response object in-between.
+      - type: recommendation
+        title: Independent of page size
+        content: Note that this is independent of page size. You could page through results 50 at a time, but only process a maximum of 100 total results this way. Since the results are lazily-loaded when streaming, only the first two pages of results would be retrieved in such a scenario.
+      - type: recommendation
+        title: Push-down as much as you can to the query
+        content: You should of course push-down as many of the filters as you can to the query itself, but if you have a particular complex check to apply that cannot be encoded in the query this can be a useful secondary filter over the results.
+      - type: recommendation
+        title: Use the searchParameters.query of the response
+        content: |-
+          Each search response includes a searchParameters with a nested query string. This query string gives the details of the query that was run to produce the response   so to get a next page you can:
+          Use this query string from the response to start building a new query using the same logic. Add the page size to the from parameter embedded in that query string, to give the starting point for the next page of results. Re-include any attributes or relationAttributes from the query string into the new query. Send this new query to retrieve the next page of results.
+  - step: 6
+    title: One page of results
+    description: |-
+      0.1.0 1.0.0 1.1.0
+      To iterate through one page of results, loop through the list of assets:
+  - step: 7
+    title: Multiple pages of results
+    description: |-
+      0.0.17 1.0.0 1.1.0
+      To iterate through multiple pages of results:

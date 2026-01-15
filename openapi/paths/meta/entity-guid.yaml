@@ -1,0 +1,161 @@
+get:
+  operationId: getAssetByGuid
+  summary: Retrieve an asset by GUID
+  description: |
+    Get full details of an asset by its unique identifier (GUID), including
+    attributes, relationship attributes, classifications, and custom metadata.
+
+    ## Use cases
+    - [Retrieve assets](https://developer.atlan.com/snippets/advanced-examples/read/)
+  externalDocs:
+    url: https://developer.atlan.com/snippets/advanced-examples/read/
+    description: Retrieving an asset – Raw REST API examples
+  tags:
+    - Retrieve assets
+  security:
+    - AtlanToken: []
+  parameters:
+    - $ref: '../../components/parameters/_index.yaml#/guid'
+    - $ref: '../../components/parameters/_index.yaml#/minExtInfo'
+    - $ref: '../../components/parameters/_index.yaml#/ignoreRelationships'
+  responses:
+    '200':
+      description: Asset details
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              entity:
+                $ref: '../../components/schemas/Asset.yaml'
+              referredEntities:
+                type: object
+                additionalProperties:
+                  $ref: '../../components/schemas/Asset.yaml'
+                description: Related entities referenced by this asset.
+          examples:
+            table_asset:
+              summary: Table asset with full details
+              description: A Snowflake table with classifications, owners, and metadata
+              value:
+                referredEntities: {}
+                entity:
+                  typeName: Table
+                  attributes:
+                    qualifiedName: default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP
+                    name: DIM_CUSTOMER_SP
+                    displayName: Customer Dimension
+                    description: Dimension table for customer data
+                    userDescription: Customer dimension for analytics
+                    certificateStatus: VERIFIED
+                    certificateStatusMessage: Production-ready
+                    ownerUsers:
+                      - data.steward@company.com
+                    ownerGroups:
+                      - Analytics Team
+                    connectionQualifiedName: default/snowflake/1698696666
+                    connectorName: snowflake
+                    databaseName: WIDE_WORLD_IMPORTERS
+                    databaseQualifiedName: default/snowflake/1698696666/WIDE_WORLD_IMPORTERS
+                    schemaName: PROCESSED_GOLD
+                    schemaQualifiedName: default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD
+                    columnCount: 15
+                    rowCount: 50000
+                    sizeBytes: 2048000
+                    queryCount: 1250
+                    queryUserCount: 12
+                    isProfiled: true
+                    lastProfiledAt: 1765929858468
+                    __hasLineage: true
+                    __state: ACTIVE
+                  guid: b9d5dbbc-ee8a-4c5e-a946-a47033892172
+                  status: ACTIVE
+                  createdBy: ryan.quigley
+                  updatedBy: service-account-atlan-argo
+                  createTime: 1747185436766
+                  updateTime: 1765929858468
+                  version: 42
+                  classifications:
+                    - typeName: PII
+                      entityGuid: b9d5dbbc-ee8a-4c5e-a946-a47033892172
+                      propagate: true
+                  relationshipAttributes:
+                    atlanSchema:
+                      guid: a8c5caab-de7a-4b4d-8835-a36022781061
+                      typeName: Schema
+                      displayText: PROCESSED_GOLD
+                    columns:
+                      - guid: c9d6dcbc-ff9b-5d6e-a057-b47144882061
+                        typeName: Column
+                        displayText: CUSTOMER_ID
+                      - guid: d0e7edcd-0aca-6e7f-b168-c58255993172
+                        typeName: Column
+                        displayText: CUSTOMER_NAME
+                    meanings:
+                      - guid: be81ac35-d93f-4b4b-a49a-b1c7046e575d
+                        typeName: AtlasGlossaryTerm
+                        displayText: Customer
+            column_asset:
+              summary: Column asset
+              description: A table column with data type and profiling info
+              value:
+                referredEntities: {}
+                entity:
+                  typeName: Column
+                  attributes:
+                    qualifiedName: default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP/CUSTOMER_ID
+                    name: CUSTOMER_ID
+                    dataType: NUMBER
+                    order: 1
+                    isPrimary: true
+                    isNullable: false
+                    precision: 38
+                    scale: 0
+                    maxLength: 0
+                    isPartition: false
+                    isClustered: false
+                    __hasLineage: true
+                  guid: c9d6dcbc-ff9b-5d6e-a057-b47144882061
+                  status: ACTIVE
+                  classifications: []
+    '400':
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+          example:
+            errorCode: ATLAS-400-00-001
+            errorMessage: Invalid GUID format
+    '401':
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+          example:
+            servlet: jersey-servlet
+            message: Unauthorized
+            url: /api/meta/entity/guid/b9d5dbbc-ee8a-4c5e-a946-a47033892172
+            status: "401"
+    '403':
+      description: Caller lacks permissions
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '404':
+      description: Asset not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+          example:
+            errorCode: ATLAS-404-00-005
+            errorMessage: "Given instance guid b9d5dbbc-ee8a-4c5e-a946-a47033892172 is invalid/not found"
+    '500':
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'

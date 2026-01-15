@@ -1,0 +1,103 @@
+# Use Case: Monitor tag propagation
+# Auto-generated from: https://developer.atlan.com/snippets/tags/monitor-propagation/
+# Generated at: 2026-01-13T02:58:00.308Z
+
+id: tags-monitor-propagation
+title: "Monitor tag propagation"
+category: governance
+icon: zap
+relatedTypes:
+  - BigqueryTag
+  - ClassificationDef
+  - DatabricksUnityCatalogTag
+  - DbtTag
+  - SnowflakeTag
+  - SourceTagAttachment
+  - Tag
+  - Task
+
+description: >-
+  Monitor the propagation of Atlan tags through lineage and hierarchy using Atlan's background
+  tasks queue. When you apply a tag with propagation enabled, Atlan creates background tasks
+  to propagate the tag to downstream assets.
+
+
+  **Task Types for Tag Propagation:**
+
+  - `CLASSIFICATION_PROPAGATION_ADD`: Tag is being propagated to downstream assets
+
+  - `CLASSIFICATION_PROPAGATION_DELETE`: Tag propagation is being removed
+
+
+  **Task Statuses:**
+
+  - `PENDING`: Task is queued but not yet started
+
+  - `IN_PROGRESS`: Task is currently running
+
+  - `COMPLETE`: Task finished successfully
+
+  - `DELETED`: Task was cancelled or removed
+
+
+  Use the `/api/meta/task/search` endpoint to query propagation status for specific assets.
+
+externalDocs:
+  url: https://developer.atlan.com/snippets/tags/monitor-propagation/
+  description: Official Atlan documentation
+
+steps:
+  - step: 1
+    title: "Run the search"
+    description: >-
+      2.0.2
+      4.0.0
+      
+      For example, to initiate a search for pending tag propagation tasks related to a specific asset after a tag has been added:
+    method: POST
+    endpoint: /api/meta/task/search
+    examples:
+      - key: example-1-1
+        summary: "POST /api/meta/task/search"
+        request: {
+                    "dsl": {
+                              "from": 0,
+                              "size": 20,
+                              "query": {
+                                        "bool": {
+                                                  "filter": [
+                                                            {
+                                                                      "term": {
+                                                                                "__task_entityGuid": {
+                                                                                          "value": "f65e3da2-6ec2-4ff5-8f0b-b6eba640df24",
+                                                                                          "case_insensitive": false
+                                                                                }
+                                                                      }
+                                                            },
+                                                            {
+                                                                      "term": {
+                                                                                "__task_type": {
+                                                                                          "value": "CLASSIFICATION_PROPAGATION_ADD"
+                                                                                }
+                                                                      }
+                                                            },
+                                                            {
+                                                                      "match": {
+                                                                                "__task_status": {
+                                                                                          "query": "PENDING"
+                                                                                }
+                                                                      }
+                                                            }
+                                                  ]
+                                        }
+                              },
+                              "sort": [
+                                        {
+                                                  "__task_startTime": {
+                                                            "order": "asc"
+                                                  }
+                                        }
+                              ],
+                              "track_total_hits": true
+                    }
+          }

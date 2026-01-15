@@ -1,0 +1,114 @@
+{
+  "useCase": "lineage-operations",
+  "description": "API calls for lineage-operations",
+  "steps": [
+    {
+      "step": 1,
+      "endpoint": "POST /api/meta/lineage/list",
+      "request": {
+        "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+        "depth": 1,
+        "direction": "INPUT",
+        "size": 10
+      },
+      "response": {
+        "status": 400,
+        "body": {
+          "errorCode": "ATLAS-400-00-029",
+          "errorMessage": "The 'from' parameter is missing or invalid"
+        }
+      },
+      "duration": 145
+    },
+    {
+      "step": 2,
+      "endpoint": "POST /api/meta/lineage/list",
+      "request": {
+        "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+        "depth": 1,
+        "direction": "OUTPUT",
+        "size": 10
+      },
+      "response": {
+        "status": 400,
+        "body": {
+          "errorCode": "ATLAS-400-00-029",
+          "errorMessage": "The 'from' parameter is missing or invalid"
+        }
+      },
+      "duration": 120
+    },
+    {
+      "step": 3,
+      "endpoint": "POST /api/meta/lineage/list",
+      "request": {
+        "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+        "depth": 1,
+        "direction": "INPUT",
+        "size": 10
+      },
+      "response": {
+        "status": 400,
+        "body": {
+          "errorCode": "ATLAS-400-00-029",
+          "errorMessage": "The 'from' parameter is missing or invalid"
+        }
+      },
+      "duration": 123
+    },
+    {
+      "step": 4,
+      "endpoint": "POST /api/meta/lineage/list",
+      "request": {
+        "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+        "depth": 1,
+        "direction": "OUTPUT",
+        "size": 10
+      },
+      "response": {
+        "status": 400,
+        "body": {
+          "errorCode": "ATLAS-400-00-029",
+          "errorMessage": "The 'from' parameter is missing or invalid"
+        }
+      },
+      "duration": 125
+    },
+    {
+      "step": 5,
+      "endpoint": "POST /api/meta/lineage/list",
+      "request": {
+        "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+        "depth": 1,
+        "direction": "INPUT",
+        "size": 10
+      },
+      "response": {
+        "status": 400,
+        "body": {
+          "errorCode": "ATLAS-400-00-029",
+          "errorMessage": "The 'from' parameter is missing or invalid"
+        }
+      },
+      "duration": 129
+    },
+    {
+      "step": 6,
+      "endpoint": "POST /api/meta/lineage/list",
+      "request": {
+        "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+        "depth": 1,
+        "direction": "OUTPUT",
+        "size": 10
+      },
+      "response": {
+        "status": 400,
+        "body": {
+          "errorCode": "ATLAS-400-00-029",
+          "errorMessage": "The 'from' parameter is missing or invalid"
+        }
+      },
+      "duration": 142
+    }
+  ]
+}

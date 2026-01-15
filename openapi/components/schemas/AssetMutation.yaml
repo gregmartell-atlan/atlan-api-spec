@@ -1,0 +1,107 @@
+AssetMutationEntity:
+  type: object
+  description: |
+    Entity payload for bulk create/update operations.
+
+    **Important:** If `qualifiedName` does not exactly match an existing asset,
+    a new asset will be created even if you intended to update.
+  properties:
+    typeName:
+      type: string
+      description: Asset type to create/update.
+      example: "Table"
+    attributes:
+      type: object
+      additionalProperties: true
+      description: |
+        Type-specific attributes. At minimum, include:
+        - `name` – display name
+        - `qualifiedName` – unique identifier
+        - For relational assets: `connectionQualifiedName`, `connectorName`
+        - For glossary terms: `anchor` (reference to parent glossary)
+      example:
+        name: "orders"
+        qualifiedName: "default/snowflake/123/db/schema/orders"
+        connectionQualifiedName: "default/snowflake/123"
+        connectorName: "snowflake"
+    relationshipAttributes:
+      type: object
+      additionalProperties: true
+      description: Relationship attributes to set (e.g., link to database, schema).
+    status:
+      type: string
+      enum: [ACTIVE, DELETED]
+      description: |
+        When provided as `ACTIVE` on a previously `DELETED` entity, this can be
+        used for restore operations.
+    businessAttributes:
+      type: object
+      additionalProperties: true
+      description: Custom metadata to set on the asset.
+    classifications:
+      type: array
+      items:
+        type: object
+        properties:
+          typeName:
+            type: string
+          attributes:
+            type: object
+            additionalProperties: true
+      description: Tags (classifications) to attach.
+  required:
+    - typeName
+    - attributes
+
+AssetMutationRequest:
+  type: object
+  description: Request body for bulk asset create/update.
+  properties:
+    entities:
+      type: array
+      items:
+        $ref: '#/AssetMutationEntity'
+      description: List of entities to create or update.
+      minItems: 1
+  required:
+    - entities
+  example:
+    entities:
+      - typeName: "AtlasGlossaryTerm"
+        attributes:
+          name: "Example Term"
+          qualifiedName: "Example Term"
+          anchor:
+            typeName: "AtlasGlossary"
+            guid: "b4113341-251b-4adc-81fb-2420501c30e6"
+
+AssetMutationResponse:
+  type: object
+  description: Response from bulk asset mutation.
+  properties:
+    mutatedEntities:
+      type: object
+      description: Entities created, updated, or deleted by this call.
+      properties:
+        CREATE:
+          type: array
+          items:
+            $ref: './Asset.yaml'
+        UPDATE:
+          type: array
+          items:
+            $ref: './Asset.yaml'
+        DELETE:
+          type: array
+          items:
+            $ref: './Asset.yaml'
+    guidAssignments:
+      type: object
+      additionalProperties:
+        type: string
+      description: |
+        Map of placeholder GUIDs (negative numbers) to assigned GUIDs.
+        Used when creating assets with temporary IDs.
+    requestId:
+      type: string
+      description: Internal request tracking identifier.

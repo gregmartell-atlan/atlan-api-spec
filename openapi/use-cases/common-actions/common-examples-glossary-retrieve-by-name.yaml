@@ -1,0 +1,204 @@
+id: common-examples-glossary-retrieve-by-name
+title: Retrieving glossary objects by name
+category: common-actions
+icon: zap
+relatedTypes:
+  - Asset
+  - AtlasGlossary
+  - AtlasGlossaryCategory
+  - AtlasGlossaryTerm
+description: |-
+  Glossary objects (terms, categories and even glossaries themselves) in Atlan have complicated qualifiedNames. This makes retrieving them using the get() operation less than ideal.
+  To address this, the SDKs provide helper methods to retrieve glossary objects based on their human-readable names.
+externalDocs:
+  url: https://developer.atlan.com/snippets/common-examples/glossary/retrieve-by-name/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Retrieve a glossary by name
+    description: |-
+      1.4.0 4.0.0
+      To retrieve a glossary by its human-readable name:
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            from: 0
+            size: 2
+            query:
+              bool:
+                filter:
+                  - term:
+                      __state:
+                        value: ACTIVE
+                  - term:
+                      __typeName.keyword:
+                        value: AtlasGlossary
+                  - term:
+                      name.keyword:
+                        value: Concepts
+            track_total_hits: true
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"filter\":[{\"term\":{\"__state\":{\"value\":\"ACTIVE\"}}},{\"term\":{\"__typeName.keyword\":{\"value\":\"AtlasGlossary\"}}},{\"term\":{\"name.keyword\":{\"value\":\"Concepts\"}}}]}}"
+          approximateCount: 25
+          entities:
+            - typeName: AtlasGlossary
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/ATLASGLOSSARY_1
+                name: AtlasGlossary_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: AtlasGlossary_1
+            - typeName: AtlasGlossary
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/ATLASGLOSSARY_2
+                name: AtlasGlossary_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: AtlasGlossary_2
+  - step: 2
+    title: Retrieve a category by name
+    description: |-
+      1.4.0 4.0.0
+      To retrieve a category by its human-readable name:
+    notes:
+      - type: warning
+        title: Requires multiple API operations
+        content: To find a category by its name, using the name of the glossary it exists within (rather than the qualifiedName of the glossary), you must first find the glossary by name. (See above example.) Then use the returned qualifiedName of the glossary to run the search below for the category within that glossary.
+      - type: warning
+        title: Requires qualifiedName of the glossary
+        content: Note that this requires the `qualifiedName of the glossary, which therefore must first be known or found by an earlier search on glossaries.
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-2-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            from: 0
+            size: 2
+            query:
+              bool:
+                filter:
+                  - term:
+                      __state:
+                        value: ACTIVE
+                  - term:
+                      __typeName.keyword:
+                        value: AtlasGlossaryCategory
+                  - term:
+                      name.keyword:
+                        value: Finance
+                  - term:
+                      __glossary:
+                        value: LD5Tb30qbuYCZKsmFRpmS
+            track_total_hits: true
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"filter\":[{\"term\":{\"__state\":{\"value\":\"ACTIVE\"}}},{\"term\":{\"__typeName.keyword\":{\"value\":\"AtlasGlossaryCategory\"}}},{\"term\":{\"name.keyword\":{\"value\":\"Finance\"}}},{\"term\":{\"__glossary\":{\"value\":\"LD5Tb30qbuYCZKsmFRpmS\"}}}]}}"
+          approximateCount: 25
+          entities:
+            - typeName: AtlasGlossaryCategory
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/ATLASGLOSSARYCATEGORY_1
+                name: AtlasGlossaryCategory_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: AtlasGlossaryCategory_1
+            - typeName: AtlasGlossaryCategory
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/ATLASGLOSSARYCATEGORY_2
+                name: AtlasGlossaryCategory_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: AtlasGlossaryCategory_2
+  - step: 3
+    title: Retrieve a term by name
+    description: |-
+      1.4.0 4.0.0
+      To retrieve a term by its human-readable name:
+    notes:
+      - type: warning
+        title: Requires multiple API operations
+        content: To find a term by its name, using the name of the glossary it exists within (rather than the qualifiedName of the glossary), you must first find the glossary by name. (See above example.) Then use the returned qualifiedName of the glossary to run the search below for the term within that glossary.
+      - type: warning
+        title: Requires qualifiedName of the glossary
+        content: Note that this requires the `qualifiedName of the glossary, which therefore must first be known or found by an earlier search on glossaries.
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-3-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            from: 0
+            size: 2
+            query:
+              bool:
+                filter:
+                  - term:
+                      __state:
+                        value: ACTIVE
+                  - term:
+                      __typeName.keyword:
+                        value: AtlasGlossaryTerm
+                  - term:
+                      name.keyword:
+                        value: Revenue
+                  - term:
+                      __glossary:
+                        value: LD5Tb30qbuYCZKsmFRpmS
+            track_total_hits: true
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"filter\":[{\"term\":{\"__state\":{\"value\":\"ACTIVE\"}}},{\"term\":{\"__typeName.keyword\":{\"value\":\"AtlasGlossaryTerm\"}}},{\"term\":{\"name.keyword\":{\"value\":\"Revenue\"}}},{\"term\":{\"__glossary\":{\"value\":\"LD5Tb30qbuYCZKsmFRpmS\"}}}]}}"
+          approximateCount: 25
+          entities:
+            - typeName: AtlasGlossaryTerm
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/ATLASGLOSSARYTERM_1
+                name: AtlasGlossaryTerm_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: AtlasGlossaryTerm_1
+            - typeName: AtlasGlossaryTerm
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/ATLASGLOSSARYTERM_2
+                name: AtlasGlossaryTerm_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: AtlasGlossaryTerm_2

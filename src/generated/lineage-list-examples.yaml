@@ -1,0 +1,195 @@
+          commonexamples_lineage_traverse__0:
+            summary: "Traverse lineage - Traverse lineage"
+            x-useCaseTag: "Traverse lineage"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/lineage/traverse/
+            x-atlanSnippet: |-
+              {
+                "guid": "495b1516-aaaf-4390-8cfd-b11ade7a7799", // (1)
+                "depth": 1000000, // (2)
+                "direction": "OUTPUT", // (3)
+                "from": 0, // (4)
+                "size": 10, // (5)
+                "attributes": [ // (6)
+                  "name"
+                ],
+                "excludeMeanings": true,
+                "excludeClassifications": true
+              }
+            value:
+              guid: "495b1516-aaaf-4390-8cfd-b11ade7a7799"
+              depth: 1000000
+              direction: OUTPUT
+              from: 0
+              size: 10
+              attributes:
+                - name
+              excludeMeanings: true
+              excludeClassifications: true
+
+          commonexamples_lineage_traverse__1:
+            summary: "Traverse lineage - Traverse lineage"
+            x-useCaseTag: "Traverse lineage"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/lineage/traverse/
+            x-atlanSnippet: |-
+              {
+                "guid": "495b1516-aaaf-4390-8cfd-b11ade7a7799", // (1)
+                "depth": 1000000,
+                "direction": "OUTPUT", // (2)
+                "from": 0,
+                "size": 10,
+                "excludeMeanings": true,
+                "excludeClassifications": true
+              }
+            value:
+              guid: "495b1516-aaaf-4390-8cfd-b11ade7a7799"
+              depth: 1000000
+              direction: OUTPUT
+              from: 0
+              size: 10
+              excludeMeanings: true
+              excludeClassifications: true
+
+          commonexamples_lineage_traverse__2:
+            summary: "Traverse lineage - Traverse lineage"
+            x-useCaseTag: "Traverse lineage"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/lineage/traverse/
+            x-atlanSnippet: |-
+              {
+                "guid": "495b1516-aaaf-4390-8cfd-b11ade7a7799", // (1)
+                "depth": 1000000,
+                "direction": "INPUT", // (2)
+                "from": 0,
+                "size": 10,
+                "excludeMeanings": true,
+                "excludeClassifications": true
+              }
+            value:
+              guid: "495b1516-aaaf-4390-8cfd-b11ade7a7799"
+              depth: 1000000
+              direction: INPUT
+              from: 0
+              size: 10
+              excludeMeanings: true
+              excludeClassifications: true
+
+          commonexamples_lineage_traverse__3:
+            summary: "Traverse lineage - Traverse lineage"
+            x-useCaseTag: "Traverse lineage"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/lineage/traverse/
+            x-atlanSnippet: |-
+              {
+                "guid": "495b1516-aaaf-4390-8cfd-b11ade7a7799",
+                "depth": 1000000,
+                "direction": "INPUT",
+                "entityFilters": { // (1)
+                  "condition": "AND",
+                  "criterion": [ // (2)
+                    {
+                      "attributeName": "certificateStatus",
+                      "operator": "contains",
+                      "attributeValue": "VERIFIED"
+                    }
+                  ]
+                },
+                "from": 0,
+                "size": 10,
+                "excludeMeanings": true,
+                "excludeClassifications": true
+              }
+            value:
+              guid: "495b1516-aaaf-4390-8cfd-b11ade7a7799"
+              depth: 1000000
+              direction: INPUT
+              entityFilters:
+                condition: AND
+                criterion:
+                  - attributeName: certificateStatus
+                    operator: contains
+                    attributeValue: VERIFIED
+              from: 0
+              size: 10
+              excludeMeanings: true
+              excludeClassifications: true
+
+          commonexamples_lineage_traverse__4:
+            summary: "Traverse lineage - Traverse lineage"
+            x-useCaseTag: "Traverse lineage"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/lineage/traverse/
+            x-atlanSnippet: |-
+              {
+                "guid": "495b1516-aaaf-4390-8cfd-b11ade7a7799",
+                "depth": 1000000,
+                "direction": "OUTPUT",
+                "entityFilters": {
+                  "condition": "AND",
+                  "criterion": [
+                    {
+                      "attributeName": "__state",
+                      "operator": "=",
+                      "attributeValue": "ACTIVE"
+                    }
+                  ]
+                },
+                "entityTraversalFilters": { // (1)
+                  "condition": "AND",
+                  "criterion": [
+                    {
+                      "attributeName": "__state",
+                      "operator": "=",
+                      "attributeValue": "ACTIVE"
+                    }
+                  ]
+                },
+                "from": 0,
+                "size": 10,
+                "excludeMeanings": true,
+                "excludeClassifications": true
+              }
+            value:
+              guid: "495b1516-aaaf-4390-8cfd-b11ade7a7799"
+              depth: 1000000
+              direction: OUTPUT
+              entityFilters:
+                condition: AND
+                criterion:
+                  - attributeName: __state
+                    operator: "="
+                    attributeValue: ACTIVE
+              entityTraversalFilters:
+                condition: AND
+                criterion:
+                  - attributeName: __state
+                    operator: "="
+                    attributeValue: ACTIVE
+              from: 0
+              size: 10
+              excludeMeanings: true
+              excludeClassifications: true
+
+          commonexamples_lineage_traverse__5:
+            summary: "Traverse lineage - Traverse lineage"
+            x-useCaseTag: "Traverse lineage"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/lineage/traverse/
+            x-atlanSnippet: |-
+              {
+                "guid": "495b1516-aaaf-4390-8cfd-b11ade7a7799",
+                "depth": 1000000,
+                "direction": "OUTPUT",
+                "attributes": [ // (1)
+                  "description"
+                ],
+                "from": 0,
+                "size": 10,
+                "excludeClassifications": false, // (2)
+                "excludeMeanings": false // (3)
+              }
+            value:
+              guid: "495b1516-aaaf-4390-8cfd-b11ade7a7799"
+              depth: 1000000
+              direction: OUTPUT
+              attributes:
+                - description
+              from: 0
+              size: 10
+              excludeClassifications: false
+              excludeMeanings: false

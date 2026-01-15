@@ -1,0 +1,549 @@
+id: common-examples-custom-metadata
+title: Change custom metadata on assets
+category: common-actions
+icon: zap
+relatedTypes:
+  - Asset
+  - BusinessMetadataDef
+  - ClassificationDef
+description: Attach and manage custom metadata on assets. Custom metadata allows you to extend Atlan's data model with organization-specific attributes.
+externalDocs:
+  url: https://developer.atlan.com/snippets/common-examples/custom-metadata/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Value representation
+    description: |-
+      To update custom metadata values on an asset, you need to use the correct representation:
+      Multi-value attributes
+      Custom attributes in Atlan can be configured to allow multiple values. For these, you must wrap all values in a multi-valued collection, even if there is only a single value you are setting. Each value in that collection needs to follow the appropriate representation as indicated in the table above.
+      For example, if you want to set just a single group in a field that allows multiple values:
+    notes:
+      - type: warning
+        title: Multi-value attributes
+        content: |-
+          Custom attributes in Atlan can be configured to allow multiple values. For these, you must wrap all values in a multi-valued collection, even if there is only a single value you are setting. Each value in that collection needs to follow the appropriate representation as indicated in the table above. For example, if you want to set just a single group in a field that allows multiple values:
+
+           dbt
+
+           Java
+
+           Python
+
+           Kotlin Raw REST API
+      - type: recommendation
+        title: Name will be validated
+        content: The name will be validated at runtime to ensure that a custom metadata set with the given name exists.
+      - type: recommendation
+        title: Name will be validated
+        content: The metadata property name will be validated at runtime to ensure that a property with the given name exists in the custom metadata set.
+    method: POST
+    endpoint: /api/meta/entity/guid/a89ff15b-f5e6-48bc-870b-acfa11e212ae/businessmetadata/MNJ8mpLsIOaP4OQnLNhRta
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/entity/guid/a89ff15b-f5e6-48bc-870b-acfa11e212ae/businessmetadata/MNJ8mpLsIOaP4OQnLNhRta
+        request:
+          MNJ8mpLsIOaP4OQnLNhRta:
+            F8XI9GzcBpdBdfi4cLiPEz:
+              - finance
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                  name: TOP_BEVERAGE_USERS
+                businessAttributes:
+                  MNJ8mpLsIOaP4OQnLNhRta:
+                    F8XI9GzcBpdBdfi4cLiPEz:
+                      - finance
+                guid: a89ff15b-f5e6-48bc-870b-acfa11e212ae
+                status: ACTIVE
+  - step: 2
+    title: Add to existing assets
+    description: |-
+      7.0.0 4.0.0
+      To update only some custom metadata attributes (leaving all others unchanged):
+    notes:
+      - type: recommendation
+        title: Name will be validated
+        content: The name will be validated at runtime to ensure that a custom metadata set with the given name exists.
+      - type: recommendation
+        title: Name will be validated
+        content: The metadata property name will be validated at runtime to ensure that a property with the given name exists in the custom metadata set.
+      - type: recommendation
+        title: Name will be validated
+        content: The name will be validated at runtime to ensure that a custom metadata set with the given name exists.
+      - type: recommendation
+        title: Name will be validated
+        content: The metadata property name will be validated at runtime to ensure that a property with the given name exists in the custom metadata set.
+      - type: recommendation
+        title: Name will be validated
+        content: The name will be validated at runtime to ensure that a custom metadata set with the given name exists.
+      - type: recommendation
+        title: Name will be validated
+        content: The metadata property name will be validated at runtime to ensure that a property with the given name exists in the custom metadata set.
+      - type: recommendation
+        title: Defining custom metadata by names in dbt
+        content: You can iteratively migrate from using businessAttributes to businessAttributeNames with dbt. But remember to not define the same attribute under both.
+      - type: warning
+        title: Could create a new asset
+        content: Remember that Atlan matches the provided qualifiedName to determine whether to update or create the asset.
+      - type: warning
+        title: Replaces any existing custom metadata
+        content: This approach will replace all existing custom metadata (across all attributes) on the asset. If you have only a few custom metadata attributes defined in the update, this will remove any other custom metadata attributes that are already set on the asset within Atlan.
+      - type: recommendation
+        title: Name will be validated
+        content: The name will be validated at runtime to ensure that a custom metadata set with the given name exists.
+      - type: recommendation
+        title: Name will be validated
+        content: The metadata property name will be validated at runtime to ensure that a property with the given name exists in the custom metadata set.
+    method: POST
+    endpoint: /api/meta/entity/guid/a89ff15b-f5e6-48bc-870b-acfa11e212ae/businessmetadata
+    queryString: isOverwrite=false
+    examples:
+      - key: example-2-1
+        summary: POST /api/meta/entity/guid/a89ff15b-f5e6-48bc-870b-acfa11e212ae/businessmetadata
+        request:
+          MNJ8mpLsIOaP4OQnLNhRta:
+            fWMB77RSjRGNYoFeD4FcGi: jsmith
+            F8XI9GzcBpdBdfi4cLiPEz:
+              - finance
+              - risk
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                  name: TOP_BEVERAGE_USERS
+                businessAttributes:
+                  MNJ8mpLsIOaP4OQnLNhRta:
+                    fWMB77RSjRGNYoFeD4FcGi: jsmith
+                    F8XI9GzcBpdBdfi4cLiPEz:
+                      - finance
+                      - risk
+                guid: a89ff15b-f5e6-48bc-870b-acfa11e212ae
+                status: ACTIVE
+      - key: example-2-2
+        summary: POST /api/meta/entity/guid/a89ff15b-f5e6-48bc-870b-acfa11e212ae/businessmetadata/MNJ8mpLsIOaP4OQnLNhRta
+        request:
+          MNJ8mpLsIOaP4OQnLNhRta:
+            fWMB77RSjRGNYoFeD4FcGi: jsmith
+            F8XI9GzcBpdBdfi4cLiPEz:
+              - finance
+              - risk
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                  name: TOP_BEVERAGE_USERS
+                businessAttributes:
+                  MNJ8mpLsIOaP4OQnLNhRta:
+                    fWMB77RSjRGNYoFeD4FcGi: jsmith
+                    F8XI9GzcBpdBdfi4cLiPEz:
+                      - finance
+                      - risk
+                guid: a89ff15b-f5e6-48bc-870b-acfa11e212ae
+                status: ACTIVE
+      - key: example-2-3
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                name: TOP_BEVERAGE_USERS
+              businessAttributes:
+                MNJ8mpLsIOaP4OQnLNhRta:
+                  fWMB77RSjRGNYoFeD4FcGi: jsmith
+                  F8XI9GzcBpdBdfi4cLiPEz:
+                    - finance
+                    - risk
+                foMg7yOwUajucuya0JEF4J:
+                  uTmK5o0J8jHTH3KWFXXeZi: example
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                  name: TOP_BEVERAGE_USERS
+                businessAttributes:
+                  entities:
+                    - typeName: Table
+                      attributes:
+                        qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                        name: TOP_BEVERAGE_USERS
+                      businessAttributes:
+                        MNJ8mpLsIOaP4OQnLNhRta:
+                          fWMB77RSjRGNYoFeD4FcGi: jsmith
+                          F8XI9GzcBpdBdfi4cLiPEz:
+                            - finance
+                            - risk
+                        foMg7yOwUajucuya0JEF4J:
+                          uTmK5o0J8jHTH3KWFXXeZi: example
+                guid: a89ff15b-f5e6-48bc-870b-acfa11e212ae
+                status: ACTIVE
+  - step: 3
+    title: Update only some custom metadata attributes
+    description: |-
+      7.0.0 4.0.0
+      To update only some custom metadata attributes (leaving all others unchanged):
+    method: POST
+    endpoint: /api/meta/entity/guid/a89ff15b-f5e6-48bc-870b-acfa11e212ae/businessmetadata
+    queryString: isOverwrite=false
+    examples:
+      - key: example-3-1
+        summary: POST /api/meta/entity/guid/a89ff15b-f5e6-48bc-870b-acfa11e212ae/businessmetadata
+        request:
+          MNJ8mpLsIOaP4OQnLNhRta:
+            fWMB77RSjRGNYoFeD4FcGi: jsmith
+            F8XI9GzcBpdBdfi4cLiPEz:
+              - finance
+              - risk
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                  name: TOP_BEVERAGE_USERS
+                businessAttributes:
+                  MNJ8mpLsIOaP4OQnLNhRta:
+                    fWMB77RSjRGNYoFeD4FcGi: jsmith
+                    F8XI9GzcBpdBdfi4cLiPEz:
+                      - finance
+                      - risk
+                guid: a89ff15b-f5e6-48bc-870b-acfa11e212ae
+                status: ACTIVE
+  - step: 4
+    title: Replace some custom metadata on an asset
+    description: |-
+      7.0.0 4.0.0
+      You can also add/replace an entire set of custom metadata to existing assets. If you do this individually, you can selectively update individual sets of custom metadata (leaving any others unchanged):
+    method: POST
+    endpoint: /api/meta/entity/guid/a89ff15b-f5e6-48bc-870b-acfa11e212ae/businessmetadata/MNJ8mpLsIOaP4OQnLNhRta
+    examples:
+      - key: example-4-1
+        summary: POST /api/meta/entity/guid/a89ff15b-f5e6-48bc-870b-acfa11e212ae/businessmetadata/MNJ8mpLsIOaP4OQnLNhRta
+        request:
+          MNJ8mpLsIOaP4OQnLNhRta:
+            fWMB77RSjRGNYoFeD4FcGi: jsmith
+            F8XI9GzcBpdBdfi4cLiPEz:
+              - finance
+              - risk
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                  name: TOP_BEVERAGE_USERS
+                businessAttributes:
+                  MNJ8mpLsIOaP4OQnLNhRta:
+                    fWMB77RSjRGNYoFeD4FcGi: jsmith
+                    F8XI9GzcBpdBdfi4cLiPEz:
+                      - finance
+                      - risk
+                guid: a89ff15b-f5e6-48bc-870b-acfa11e212ae
+                status: ACTIVE
+  - step: 5
+    title: Replace all custom metadata on an asset
+    description: |-
+      Could create a new asset
+      Remember that Atlan matches the provided qualifiedName to determine whether to update or create the asset.
+      7.0.0 4.0.0
+      You can also replace all the custom metadata on one or many existing assets at the same time.
+      Replaces any existing custom metadata
+      This approach will replace all existing custom metadata (across all attributes) on the asset. If you have only a few custom metadata attributes defined in the update, this will remove any other custom metadata attributes that are already set on the asset within Atlan.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    queryString: replaceClassifications=false&replaceBusinessAttributes=true&overwriteBusinessAttributes=true
+    examples:
+      - key: example-5-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                name: TOP_BEVERAGE_USERS
+              businessAttributes:
+                MNJ8mpLsIOaP4OQnLNhRta:
+                  fWMB77RSjRGNYoFeD4FcGi: jsmith
+                  F8XI9GzcBpdBdfi4cLiPEz:
+                    - finance
+                    - risk
+                foMg7yOwUajucuya0JEF4J:
+                  uTmK5o0J8jHTH3KWFXXeZi: example
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                  name: TOP_BEVERAGE_USERS
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+                businessAttributes:
+                  MNJ8mpLsIOaP4OQnLNhRta:
+                    fWMB77RSjRGNYoFeD4FcGi: jsmith
+                    F8XI9GzcBpdBdfi4cLiPEz:
+                      - finance
+                      - risk
+                  foMg7yOwUajucuya0JEF4J:
+                    uTmK5o0J8jHTH3KWFXXeZi: example
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+  - step: 6
+    title: Remove from an existing asset
+    description: |-
+      7.0.0 4.0.0
+      To remove only some custom metadata attributes (leaving all others unchanged):
+    notes:
+      - type: recommendation
+        title: Name will be validated
+        content: The name will be validated at runtime to ensure that a custom metadata set with the given name exists.
+      - type: recommendation
+        title: Name will be validated
+        content: The metadata property name will be validated at runtime to ensure that a property with the given name exists in the custom metadata set.
+      - type: recommendation
+        title: Name will be validated
+        content: The name will be validated at runtime to ensure that a custom metadata set with the given name exists.
+      - type: warning
+        title: Could create a new asset
+        content: Remember that Atlan matches the provided qualifiedName to determine whether to update or create the asset.
+    method: POST
+    endpoint: /api/meta/entity/guid/a89ff15b-f5e6-48bc-870b-acfa11e212ae/businessmetadata
+    queryString: isOverwrite=false
+    examples:
+      - key: example-6-1
+        summary: POST /api/meta/entity/guid/a89ff15b-f5e6-48bc-870b-acfa11e212ae/businessmetadata
+        request:
+          MNJ8mpLsIOaP4OQnLNhRta:
+            xDUCZllc4JyTKhwqSDkWK4: null
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                  name: TOP_BEVERAGE_USERS
+                businessAttributes:
+                  MNJ8mpLsIOaP4OQnLNhRta:
+                    xDUCZllc4JyTKhwqSDkWK4: null
+                guid: a89ff15b-f5e6-48bc-870b-acfa11e212ae
+                status: ACTIVE
+      - key: example-6-2
+        summary: POST /api/meta/entity/guid/a89ff15b-f5e6-48bc-870b-acfa11e212ae/businessmetadata
+        request:
+          MNJ8mpLsIOaP4OQnLNhRta:
+            F8XI9GzcBpdBdfi4cLiPEz: null
+            xDUCZllc4JyTKhwqSDkWK4: null
+            fWMB77RSjRGNYoFeD4FcGi: null
+            rN6H6xMQpyHvo639SXER83: null
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                  name: TOP_BEVERAGE_USERS
+                businessAttributes:
+                  MNJ8mpLsIOaP4OQnLNhRta:
+                    F8XI9GzcBpdBdfi4cLiPEz: null
+                    xDUCZllc4JyTKhwqSDkWK4: null
+                    fWMB77RSjRGNYoFeD4FcGi: null
+                    rN6H6xMQpyHvo639SXER83: null
+                guid: a89ff15b-f5e6-48bc-870b-acfa11e212ae
+                status: ACTIVE
+      - key: example-6-3
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                name: TOP_BEVERAGE_USERS
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                  name: TOP_BEVERAGE_USERS
+                businessAttributes:
+                  entities:
+                    - typeName: Table
+                      attributes:
+                        qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                        name: TOP_BEVERAGE_USERS
+                guid: a89ff15b-f5e6-48bc-870b-acfa11e212ae
+                status: ACTIVE
+  - step: 7
+    title: Remove only some custom metadata attributes
+    description: |-
+      7.0.0 4.0.0
+      To remove only some custom metadata attributes (leaving all others unchanged):
+    method: POST
+    endpoint: /api/meta/entity/guid/a89ff15b-f5e6-48bc-870b-acfa11e212ae/businessmetadata
+    queryString: isOverwrite=false
+    examples:
+      - key: example-7-1
+        summary: POST /api/meta/entity/guid/a89ff15b-f5e6-48bc-870b-acfa11e212ae/businessmetadata
+        request:
+          MNJ8mpLsIOaP4OQnLNhRta:
+            xDUCZllc4JyTKhwqSDkWK4: null
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                  name: TOP_BEVERAGE_USERS
+                businessAttributes:
+                  MNJ8mpLsIOaP4OQnLNhRta:
+                    xDUCZllc4JyTKhwqSDkWK4: null
+                guid: a89ff15b-f5e6-48bc-870b-acfa11e212ae
+                status: ACTIVE
+  - step: 8
+    title: Remove some custom metadata from an asset
+    description: |-
+      7.0.0 4.0.0
+      You can also remove an entire set of custom metadata from existing assets. If you do this individually, you can selectively remove individual sets of custom metadata:
+    method: POST
+    endpoint: /api/meta/entity/guid/a89ff15b-f5e6-48bc-870b-acfa11e212ae/businessmetadata
+    queryString: isOverwrite=false
+    examples:
+      - key: example-8-1
+        summary: POST /api/meta/entity/guid/a89ff15b-f5e6-48bc-870b-acfa11e212ae/businessmetadata
+        request:
+          MNJ8mpLsIOaP4OQnLNhRta:
+            F8XI9GzcBpdBdfi4cLiPEz: null
+            xDUCZllc4JyTKhwqSDkWK4: null
+            fWMB77RSjRGNYoFeD4FcGi: null
+            rN6H6xMQpyHvo639SXER83: null
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                  name: TOP_BEVERAGE_USERS
+                businessAttributes:
+                  MNJ8mpLsIOaP4OQnLNhRta:
+                    F8XI9GzcBpdBdfi4cLiPEz: null
+                    xDUCZllc4JyTKhwqSDkWK4: null
+                    fWMB77RSjRGNYoFeD4FcGi: null
+                    rN6H6xMQpyHvo639SXER83: null
+                guid: a89ff15b-f5e6-48bc-870b-acfa11e212ae
+                status: ACTIVE
+  - step: 9
+    title: Remove all custom metadata from an asset
+    description: |-
+      Could create a new asset
+      Remember that Atlan matches the provided qualifiedName to determine whether to update or create the asset.
+      7.0.0 4.0.0
+      To remove all custom metadata from an existing asset:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    queryString: replaceClassifications=false&replaceBusinessAttributes=true&overwriteBusinessAttributes=true
+    examples:
+      - key: example-9-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                name: TOP_BEVERAGE_USERS
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                  name: TOP_BEVERAGE_USERS
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+  - step: 10
+    title: When creating an asset
+    description: |-
+      7.0.0 4.0.0
+      To add custom metadata when creating one or many assets:
+    notes:
+      - type: recommendation
+        title: Name will be validated
+        content: The name will be validated at runtime to ensure that a custom metadata set with the given name exists.
+      - type: recommendation
+        title: Name will be validated
+        content: The metadata property name will be validated at runtime to ensure that a property with the given name exists in the custom metadata set.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-10-1
+        summary: POST /api/meta/entity/bulk
+        requestRaw: |
+          {
+            "entities": [
+              {
+                "typeName": "Table",
+                "name": "TOP_BEVERAGE_USERS",
+                  "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS",
+                  "atlanSchema": {
+                    "typeName": "Schema",
+                    "uniqueAttributes": {
+                      "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV"
+                    }
+                  }
+                },
+                "businessAttributes": {
+                  "MNJ8mpLsIOaP4OQnLNhRta": {
+                    "fWMB77RSjRGNYoFeD4FcGi": "jsmith",
+                    "xDUCZllc4JyTKhwqSDkWK4": "jdoe",
+                    "F8XI9GzcBpdBdfi4cLiPEz": [
+                      "finance",
+                      "risk"
+                    ],
+                    "rN6H6xMQpyHvo639SXER83": [
+                      "operations"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        response:
+          mutatedEntities:
+            CREATE: []
+          guidAssignments: {}
+  - step: 11
+    title: Find hashed-string names
+    description: |-
+      When using either the raw APIs or specifying businessAttributes with dbt, you must provide the classification names using Atlan's hashed-string representation.
+      Not necessary for SDKs
+      Note that this is not needed when using the SDKs, which translate these for you!
+      To look up the hashed-string representations:
+    notes:
+      - type: recommendation
+        title: Not necessary for SDKs
+        content: Note that this is not needed when using the SDKs, which translate these for you!
+    method: GET
+    endpoint: /api/meta/types/typedefs
+    queryString: type=business_metadata
+    examples:
+      - key: example-11-1
+        summary: GET /api/meta/types/typedefs
+        response:
+          businessMetadataDefs:
+            - name: MNJ8mpLsIOaP4OQnLNhRta
+              displayName: Data Quality
+              attributeDefs:
+                - name: fWMB77RSjRGNYoFeD4FcGi
+                  displayName: Data Steward
+                  typeName: string

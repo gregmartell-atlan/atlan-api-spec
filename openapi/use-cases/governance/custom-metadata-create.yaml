@@ -1,0 +1,212 @@
+# Use Case: Create custom metadata
+# Auto-generated from: https://developer.atlan.com/snippets/custom-metadata/create/
+# Generated at: 2026-01-13T02:58:00.304Z
+
+id: custom-metadata-create
+title: "Create custom metadata"
+category: governance
+icon: zap
+relatedTypes:
+  - BusinessMetadataDef
+  - ClassificationDef
+  - CustomMetadataDef
+
+description: >-
+  Like other objects in the SDK that you can create, custom metadata implements the builder pattern. This allows you to progressively build-up the structure you want to create.
+  
+  There are limits to the number of custom metadata properties you can create
+  
+  Atlan currently preserves details of custom metadata in its audit log. This allows Atlan to retain an audit trail of actions users took on custom metadata on each asset, even if the custom metadata definition itself is deleted.
+  
+  However, this also
+
+externalDocs:
+  url: https://developer.atlan.com/snippets/custom-metadata/create/
+  description: Official Atlan documentation
+
+steps:
+  - step: 1
+    title: "Build minimal object needed"
+    description: >-
+      7.0.0
+      4.0.0
+      
+      For example, to create a custom metadata structure to capture RACI assignments:
+    method: POST
+    endpoint: /api/meta/types/typedefs
+    examples:
+      - key: example-1-1
+        summary: "POST /api/meta/types/typedefs"
+        request: {
+                    "businessMetadataDefs": [
+                              {
+                                        "category": "BUSINESS_METADATA",
+                                        "name": "RACI",
+                                        "attributeDefs": [
+                                                  {
+                                                            "name": "",
+                                                            "displayName": "Responsible",
+                                                            "description": "",
+                                                            "typeName": "string",
+                                                            "isOptional": true,
+                                                            "cardinality": "SINGLE",
+                                                            "valuesMinCount": 0,
+                                                            "valuesMaxCount": 1,
+                                                            "isUnique": false,
+                                                            "isIndexable": true,
+                                                            "includeInNotification": false,
+                                                            "options": {
+                                                                      "applicableEntityTypes": "[\"Asset\"]",
+                                                                      "customApplicableEntityTypes": "[\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\",\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\"]",
+                                                                      "allowSearch": false,
+                                                                      "maxStrLength": "100000000",
+                                                                      "allowFiltering": true,
+                                                                      "multiValueSelect": true,
+                                                                      "showInOverview": false,
+                                                                      "primitiveType": "users",
+                                                                      "isEnum": false,
+                                                                      "customType": "users"
+                                                            },
+                                                            "isNew": true
+                                                  },
+                                                  {
+                                                            "name": "",
+                                                            "displayName": "Accountable",
+                                                            "description": "",
+                                                            "typeName": "string",
+                                                            "isOptional": true,
+                                                            "cardinality": "SINGLE",
+                                                            "valuesMinCount": 0,
+                                                            "valuesMaxCount": 1,
+                                                            "isUnique": false,
+                                                            "isIndexable": true,
+                                                            "includeInNotification": false,
+                                                            "options": {
+                                                                      "applicableEntityTypes": "[\"Asset\"]",
+                                                                      "customApplicableEntityTypes": "[\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\",\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\"]",
+                                                                      "allowSearch": false,
+                                                                      "maxStrLength": "100000000",
+                                                                      "allowFiltering": true,
+                                                                      "multiValueSelect": false,
+                                                                      "showInOverview": false,
+                                                                      "primitiveType": "users",
+                                                                      "isEnum": false,
+                                                                      "customType": "users"
+                                                            },
+                                                            "isNew": true
+                                                  },
+                                                  {
+                                                            "name": "",
+                                                            "displayName": "Consulted",
+                                                            "description": "",
+                                                            "typeName": "array<string>",
+                                                            "isOptional": true,
+                                                            "cardinality": "SINGLE",
+                                                            "valuesMinCount": 0,
+                                                            "valuesMaxCount": 1,
+                                                            "isUnique": false,
+                                                            "isIndexable": true,
+                                                            "includeInNotification": false,
+                                                            "options": {
+                                                                      "applicableEntityTypes": "[\"Asset\"]",
+                                                                      "customApplicableEntityTypes": "[\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\",\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\"]",
+                                                                      "allowSearch": false,
+                                                                      "maxStrLength": "100000000",
+                                                                      "allowFiltering": true,
+                                                                      "multiValueSelect": true,
+                                                                      "showInOverview": false,
+                                                                      "primitiveType": "groups",
+                                                                      "isEnum": false,
+                                                                      "customType": "groups"
+                                                            },
+                                                            "isNew": true
+                                                  },
+                                                  {
+                                                            "name": "",
+                                                            "displayName": "Informed",
+                                                            "description": "",
+                                                            "typeName": "array<string>",
+                                                            "isOptional": true,
+                                                            "cardinality": "SINGLE",
+                                                            "valuesMinCount": 0,
+                                                            "valuesMaxCount": 1,
+                                                            "isUnique": false,
+                                                            "isIndexable": true,
+                                                            "includeInNotification": false,
+                                                            "options": {
+                                                                      "applicableEntityTypes": "[\"Asset\"]",
+                                                                      "customApplicableEntityTypes": "[\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\",\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\"]",
+                                                                      "allowSearch": false,
+                                                                      "maxStrLength": "100000000",
+                                                                      "allowFiltering": true,
+                                                                      "multiValueSelect": true,
+                                                                      "showInOverview": false,
+                                                                      "primitiveType": "groups",
+                                                                      "isEnum": false,
+                                                                      "customType": "groups"
+                                                            },
+                                                            "isNew": true
+                                                  }
+                                        ],
+                                        "displayName": "RACI",
+                                        "options": {
+                                                  "logoType": "emoji",
+                                                  "emoji": "👪"
+                                        }
+                              }
+                    ]
+          }
+  - step: 2
+    title: "Create the custom metadata from the object"
+    description: >-
+      1.3.3
+      4.0.0
+      
+      Now that the object is built, this customMetadataDef object will have the required information for Atlan to create it.
+      You can then actually create the custom metadata definition in Atlan by calling the create() method on the object itself:
+    notes:
+      - type: recommendation
+        title: "Creation implicit in step above"
+        content: >-
+          The actual creation of the custom metadata structure is implicit in the example above.
+  - step: 3
+    title: "Limit applicability of an attribute"
+    description: >-
+      You can also limit the assets the custom metadata applies to in Atlan. Anywhere you create an attribute definition, you can:
+    notes:
+      - type: recommendation
+        title: "To use all connections"
+        content: >-
+          To select all connections, instead chain .applicableConnections(Connection.getAllQualifiedNames()).
+      - type: recommendation
+        title: "To use all asset types"
+        content: >-
+          To select all asset types, instead chain .applicableAssetTypes(AttributeDefOptions.ALL_ASSET_TYPES).
+      - type: recommendation
+        title: "To use all glossaries"
+        content: >-
+          To select all glossaries, instead chain .applicableGlossaries(Glossary.getAllQualifiedNames()).
+      - type: recommendation
+        title: "To use all glossary asset types"
+        content: >-
+          To select all glossary asset types, instead use .applicableGlossaryTypes(AttributeDefOptions.ALL_GLOSSARY_TYPES).
+      - type: recommendation
+        title: "To use all connections"
+        content: >-
+          To select all connections, instead chain .applicableConnections(Connection.getAllQualifiedNames()).
+      - type: recommendation
+        title: "To use all asset types"
+        content: >-
+          To select all asset types, instead chain .applicableAssetTypes(AttributeDefOptions.ALL_ASSET_TYPES).
+      - type: recommendation
+        title: "To use all glossaries"
+        content: >-
+          To select all glossaries, instead chain .applicableGlossaries(Glossary.getAllQualifiedNames()).
+      - type: recommendation
+        title: "To use all glossary asset types"
+        content: >-
+          To select all glossary asset types, instead use .applicableGlossaryTypes(AttributeDefOptions.ALL_GLOSSARY_TYPES).
+      - type: recommendation
+        title: "Applicability is combined across connections and glossaries"
+        content: >-
+          If you specify both connections (and asset types) and glossaries (and glossary types), then the custom metadata attribute will be available across both data assets in those connections and glossary objects in those glossaries. In other words, these options are not mutually exclusive, but are combined.

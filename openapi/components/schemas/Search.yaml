@@ -1,0 +1,133 @@
+MetaIndexSearchRequest:
+  type: object
+  description: |
+    Request body for metadata search using Elasticsearch-style DSL.
+
+    See [Searching reference](https://developer.atlan.com/search/) for query patterns.
+  properties:
+    dsl:
+      type: object
+      description: |
+        Elasticsearch-like query object. Contains:
+        - `from` – pagination offset (default 0)
+        - `size` – page size (default 20, max 10000)
+        - `track_total_hits` – whether to return accurate total count
+        - `query` – Elasticsearch query (bool, term, match, etc.)
+        - `sort` – sort order
+        - `aggregations` – facets/aggregations
+      properties:
+        from:
+          type: integer
+          minimum: 0
+          default: 0
+        size:
+          type: integer
+          minimum: 1
+          maximum: 10000
+          default: 20
+        track_total_hits:
+          type: boolean
+          default: true
+        query:
+          type: object
+          description: Elasticsearch query object.
+        sort:
+          type: array
+          items:
+            type: object
+        aggregations:
+          type: object
+          additionalProperties: true
+      required:
+        - query
+    attributes:
+      type: array
+      items:
+        type: string
+      description: |
+        List of attribute names to include in each entity in the response.
+        If omitted, only minimal attributes are returned.
+      example:
+        - name
+        - qualifiedName
+        - description
+        - ownerUsers
+        - certificateStatus
+    relationAttributes:
+      type: array
+      items:
+        type: string
+      description: Relationship attributes to include.
+  required:
+    - dsl
+  example:
+    dsl:
+      from: 0
+      size: 50
+      track_total_hits: true
+      query:
+        bool:
+          filter:
+            - term:
+                __state: ACTIVE
+            - term:
+                __typeName.keyword: Table
+    attributes:
+      - name
+      - qualifiedName
+      - connectorName
+
+MetaIndexSearchResponse:
+  type: object
+  description: Response from metadata search.
+  properties:
+    approximateCount:
+      type: integer
+      description: Total matching assets (approximate if track_total_hits is false).
+    entities:
+      type: array
+      items:
+        $ref: './Asset.yaml'
+      description: Matching assets for the current page.
+    aggregations:
+      type: object
+      additionalProperties: true
+      description: Aggregation results (if requested).
+    scrollIdentifier:
+      type: string
+      nullable: true
+      description: Scroll ID for paginating large result sets.
+    searchParameters:
+      type: object
+      description: Echo of the search parameters used.
+
+ServiceIndexSearchRequest:
+  type: object
+  description: |
+    Request body for service-level searches (workflows, runs, etc.).
+  properties:
+    from:
+      type: integer
+      minimum: 0
+      default: 0
+    size:
+      type: integer
+      minimum: 1
+      maximum: 10000
+      default: 100
+    track_total_hits:
+      type: boolean
+      default: true
+    query:
+      type: object
+      description: Elasticsearch query object.
+    sort:
+      type: array
+      items:
+        type: object
+  example:
+    from: 0
+    size: 100
+    track_total_hits: true
+    query:
+      match_all: {}

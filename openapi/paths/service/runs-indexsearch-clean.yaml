@@ -1,0 +1,78 @@
+# Minimal runs/indexsearch endpoint
+# Use-case-specific examples are in /openapi/use-cases/workflows/
+
+post:
+  operationId: searchRuns
+  summary: Search workflow runs
+  description: |
+    Search for workflow execution runs using Elasticsearch DSL.
+    
+    Runs are individual executions of a workflow.
+    See Use Cases for step-by-step guides.
+  externalDocs:
+    url: https://developer.atlan.com/snippets/workflows/manage/workflows/
+    description: Workflow runs documentation
+  tags:
+    - Runs
+  security:
+    - AtlanToken: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/Search.yaml#/WorkflowSearchRequest'
+        examples:
+          find_runs_by_workflow:
+            summary: Find runs for a workflow
+            value:
+              from: 0
+              size: 10
+              query:
+                bool:
+                  filter:
+                    - nested:
+                        path: metadata
+                        query:
+                          prefix:
+                            metadata.name.keyword:
+                              value: atlan-snowflake-1684500411
+              sort:
+                - metadata.creationTimestamp:
+                    order: desc
+                    nested:
+                      path: metadata
+
+          find_failed_runs:
+            summary: Find failed runs
+            value:
+              from: 0
+              size: 20
+              query:
+                bool:
+                  filter:
+                    - nested:
+                        path: status
+                        query:
+                          term:
+                            status.phase.keyword: Failed
+
+  responses:
+    '200':
+      description: Search results
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Search.yaml#/WorkflowSearchResponse'
+    '400':
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '401':
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'

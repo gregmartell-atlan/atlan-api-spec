@@ -1,0 +1,44 @@
+{
+  "name": "atlan-api-spec-generator",
+  "version": "1.0.0",
+  "description": "OpenAPI/Swagger specification and interactive UI for Atlan REST APIs",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run bundle:all && tsc && vite build",
+    "preview": "vite preview",
+    "generate:atlan-openapi": "node ./scripts/generate-openapi-from-atlan-developer-docs.mjs",
+    "bundle:openapi": "node ./scripts/bundle-openapi.mjs",
+    "bundle:use-cases": "node ./scripts/bundle-use-cases.mjs",
+    "bundle:all": "npm run bundle:openapi && npm run bundle:use-cases",
+    "scrape:snippets": "node ./scripts/scrape-all-snippets.mjs",
+    "scrape:models": "node ./scripts/scrape-models.mjs",
+    "generate:crawlers": "node ./scripts/generate-crawler-use-cases.mjs",
+    "lint:openapi": "npx --yes @redocly/cli lint ./openapi/openapi.yaml",
+    "qa": "node ./scripts/qa/index.mjs",
+    "qa:full": "node ./scripts/qa/index.mjs --mode=full",
+    "qa:discover": "node ./scripts/qa/index.mjs --mode=discovery",
+    "qa:validate": "node ./scripts/qa/index.mjs --mode=validation",
+    "qa:integrate": "node ./scripts/qa/integrate-responses.mjs",
+    "qa:help": "node ./scripts/qa/index.mjs --help"
+  },
+  "dependencies": {
+    "lucide-react": "^0.561.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^7.12.0",
+    "swagger-ui-react": "^5.20.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/swagger-ui-react": "^5.18.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "js-yaml": "^4.1.0",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  }
+}

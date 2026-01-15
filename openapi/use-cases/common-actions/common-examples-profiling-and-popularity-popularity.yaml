@@ -1,0 +1,382 @@
+id: common-examples-profiling-and-popularity-popularity
+title: Manage popularity
+category: common-actions
+icon: zap
+relatedTypes:
+  - Asset
+  - Column
+  - Table
+description: |-
+  Popularity gives additional context to the usage of assets. From popularity, you can see various information such as:
+  Popularity is only populated on certain assets by Atlan
+  Out-of-the-box, only specific crawlers currently populate popularity information on assets. However, the attributes involved are actually available behind-the-scenes on all assets.
+externalDocs:
+  url: https://developer.atlan.com/snippets/common-examples/profiling-and-popularity/popularity/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Make details visible in the UI
+    description: |-
+      Usage details not visible by default
+      By default, only the crawlers that support usage details out-of-the-box will show the usage details in the Atlan UI. To make usage details visible for other assets you must enable this at a connection level.
+      7.0.0 4.0.0
+      To create a popularity-enabled connection:
+    notes:
+      - type: warning
+        title: Usage details not visible by default
+        content: By default, only the crawlers that support usage details out-of-the-box will show the usage details in the Atlan UI. To make usage details visible for other assets you must enable this at a connection level.
+      - type: recommendation
+        title: Determines the icon
+        content: This determines the icon that Atlan will use for all the assets in the connection.
+      - type: recommendation
+        title: Determines the icon
+        content: This determines the icon that Atlan will use for all the assets in the connection.
+      - type: recommendation
+        title: Determines the icon
+        content: This determines the icon that Atlan will use for all the assets in the connection.
+      - type: recommendation
+        title: Determines the icon
+        content: This determines the icon that Atlan will use for all the assets in the connection. If you use a value that is not a known value, you will have a default gear icon instead.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Connection
+              attributes:
+                name: development
+                connectorName: hive
+                qualifiedName: default/hive/123456789
+                category: warehouse
+                adminRoles:
+                  - e7ae0295-c60a-469a-bd2c-fb903943aa02
+                adminGroups:
+                  - group2
+                adminUsers:
+                  - jsmith
+                hasPopularityInsights: true
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: Connection
+                attributes:
+                  qualifiedName: default/hive/123456789
+                  name: development
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+      - key: example-1-2
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Connection
+              attributes:
+                qualifiedName: default/hive/1657025257
+                name: development
+                hasPopularityInsights: true
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: Connection
+                attributes:
+                  qualifiedName: default/hive/1657025257
+                  name: development
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+  - step: 2
+    title: During connection creation
+    description: |-
+      7.0.0 4.0.0
+      To create a popularity-enabled connection:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-2-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Connection
+              attributes:
+                name: development
+                connectorName: hive
+                qualifiedName: default/hive/123456789
+                category: warehouse
+                adminRoles:
+                  - e7ae0295-c60a-469a-bd2c-fb903943aa02
+                adminGroups:
+                  - group2
+                adminUsers:
+                  - jsmith
+                hasPopularityInsights: true
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: Connection
+                attributes:
+                  qualifiedName: default/hive/123456789
+                  name: development
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+  - step: 3
+    title: Update an existing connection
+    description: |-
+      2.0.0 4.0.0
+      To update an existing connection:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-3-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Connection
+              attributes:
+                qualifiedName: default/hive/1657025257
+                name: development
+                hasPopularityInsights: true
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: Connection
+                attributes:
+                  qualifiedName: default/hive/1657025257
+                  name: development
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+  - step: 4
+    title: Retrieve usage details
+    description: |-
+      1.4.0 4.0.0
+      Since popularity details are only available on certain assets, you will need to retrieve one of those assets to see the usage details:
+    method: GET
+    endpoint: /api/meta/entity/uniqueAttribute/type/Table
+    queryString: attr:qualifiedName=default%2Fhive%2F1657025257%2FOPS%2FDEFAULT%2FRUN_STATS
+    examples:
+      - key: example-4-1
+        summary: GET /api/meta/entity/uniqueAttribute/type/Table
+        request:
+          entity:
+            typeName: Table
+            attributes:
+              name: RUN_STATS
+              qualifiedName: default/hive/1657025257/OPS/DEFAULT/RUN_STATS
+              popularityScore: 4.8121843
+              sourceReadCount: 122
+              sourceReadQueryCost: 0.001278
+              sourceReadUserCount: 1
+              sourceTotalCost: 0.001278
+              sourceLastReadAt: 1689508975245
+              sourceCostUnit: Credits
+              sourceQueryComputeCostList:
+                - TRANSFORMING
+              sourceReadTopUserList:
+                - ATLANADMIN
+              sourceQueryComputeCostRecordList:
+                - typeName: PopularityInsights
+                  attributes:
+                    recordTotalUserCount: 0
+                    recordUser: null
+                    recordQueryCount: 0
+                    recordWarehouse: TRANSFORMING
+                    recordComputeCost: 0.001278
+                    recordLastTimestamp: 0
+                    recordQuery: null
+                    recordQueryDuration: 0
+                    recordMaxComputeCost: 0
+                    recordComputeCostUnit: Credits
+              sourceReadRecentUserRecordList:
+                - typeName: PopularityInsights
+                  attributes:
+                    recordTotalUserCount: 0
+                    recordUser: ATLANADMIN
+                    recordQueryCount: 122
+                    recordWarehouse: null
+                    recordComputeCost: 0
+                    recordLastTimestamp: 1689508975245
+                    recordQuery: null
+                    recordQueryDuration: 0
+                    recordMaxComputeCost: 0
+                    recordComputeCostUnit: null
+              sourceReadTopUserRecordList:
+                - typeName: PopularityInsights
+                  attributes:
+                    recordTotalUserCount: 0
+                    recordUser: ATLANADMIN
+                    recordQueryCount: 122
+                    recordWarehouse: null
+                    recordComputeCost: 0
+                    recordLastTimestamp: 1689508975245
+                    recordQuery: null
+                    recordQueryDuration: 0
+                    recordMaxComputeCost: 0
+                    recordComputeCostUnit: null
+              sourceReadExpensiveQueryRecordList:
+                - typeName: PopularityInsights
+                  attributes:
+                    recordTotalUserCount: 1
+                    recordUser: null
+                    recordQueryCount: 36
+                    recordWarehouse: null
+                    recordComputeCost: 0.000407
+                    recordLastTimestamp: 0
+                    recordQuery: SELECT * from RUN_STATS
+                    recordQueryDuration: 0
+                    recordMaxComputeCost: 0.000048
+                    recordComputeCostUnit: Credits
+              sourceReadPopularQueryRecordList:
+                - typeName: PopularityInsights
+                  attributes:
+                    recordTotalUserCount: 1
+                    recordUser: null
+                    recordQueryCount: 36
+                    recordWarehouse: null
+                    recordComputeCost: 0.000309
+                    recordLastTimestamp: 0
+                    recordQuery: SELECT * from RUN_STATS
+                    recordQueryDuration: 0
+                    recordMaxComputeCost: 0
+                    recordComputeCostUnit: Credits
+              sourceReadSlowQueryRecordList:
+                - typeName: PopularityInsights
+                  attributes:
+                    recordTotalUserCount: 0
+                    recordUser: ATLANADMIN
+                    recordQueryCount: 0
+                    recordWarehouse: null
+                    recordComputeCost: 0
+                    recordLastTimestamp: 1688584846605
+                    recordQuery: SELECT * from RUN_STATS
+                    recordQueryDuration: 336
+                    recordMaxComputeCost: 0
+                    recordComputeCostUnit: null
+        response:
+          referredEntities: {}
+          entity:
+            typeName: Table
+            attributes:
+              qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/CUSTOMERS
+              name: CUSTOMERS
+              description: Customer master data table
+            guid: b4113341-251b-4adc-81fb-2420501c30e6
+            status: ACTIVE
+  - step: 5
+    title: Add your own usage details
+    description: |-
+      2.0.0 4.0.0
+      In cases where Atlan does not popularity details from the source, you may want to add your own. You can do this by either adding the usage details when creating the asset (programmatically) or by updating the attributes on an existing asset:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-5-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Table
+              attributes:
+                name: RUN_STATS
+                qualifiedName: default/hive/1657025257/OPS/DEFAULT/RUN_STATS
+                popularityScore: 1.2345
+                sourceReadCount: 123
+                sourceReadQueryCost: 5.4321
+                sourceReadUserCount: 5
+                sourceTotalCost: 5.4321
+                sourceLastReadAt: 1689508975245
+                sourceCostUnit: Credits
+                sourceQueryComputeCostList:
+                  - A
+                  - B
+                sourceReadTopUserList:
+                  - c
+                  - d
+                  - e
+                  - f
+                  - g
+                sourceReadRecentUserList:
+                  - g
+                  - f
+                  - e
+                  - d
+                  - c
+                sourceQueryComputeCostRecordList:
+                  - typeName: PopularityInsights
+                    attributes:
+                      recordWarehouse: A
+                      recordComputeCost: 4.4321
+                      recordComputeCostUnit: Credits
+                  - typeName: PopularityInsights
+                    attributes:
+                      recordWarehouse: B
+                      recordComputeCost: 1
+                      recordComputeCostUnit: Credits
+                sourceReadRecentUserRecordList:
+                  - typeName: PopularityInsights
+                    attributes:
+                      recordUser: c
+                      recordLastTimestamp: 1234567899000
+                  - typeName: PopularityInsights
+                    attributes:
+                      recordUser: d
+                      recordLastTimestamp: 1234567898000
+                  - typeName: PopularityInsights
+                    attributes:
+                      recordUser: e
+                      recordLastTimestamp: 1234567897000
+                      recordQueryCount: 3
+                sourceReadTopUserRecordList:
+                  - typeName: PopularityInsights
+                    attributes:
+                      recordUser: g
+                      recordQueryCount: 100
+                      recordLastTimestamp: 1234567895000
+                  - typeName: PopularityInsights
+                    attributes:
+                      recordUser: f
+                      recordQueryCount: 20
+                      recordLastTimestamp: 1234567896000
+                  - typeName: PopularityInsights
+                    attributes:
+                      recordUser: e
+                      recordQueryCount: 3
+                      recordLastTimestamp: 1234567897000
+                sourceReadExpensiveQueryRecordList:
+                  - typeName: PopularityInsights
+                    attributes:
+                      recordTotalUserCount: 5
+                      recordQueryCount: 123
+                      recordComputeCost: 5.4321
+                      recordQuery: SELECT * from RUN_STATS
+                      recordMaxComputeCost: 5.4321
+                      recordComputeCostUnit: Credits
+                sourceReadPopularQueryRecordList:
+                  - typeName: PopularityInsights
+                    attributes:
+                      recordTotalUserCount: 5
+                      recordQueryCount: 123
+                      recordComputeCost: 5.4321
+                      recordQuery: SELECT * from RUN_STATS
+                      recordComputeCostUnit: Credits
+                sourceReadSlowQueryRecordList:
+                  - typeName: PopularityInsights
+                    attributes:
+                      recordUser: g
+                      recordLastTimestamp: 124567895000
+                      recordQuery: SELECT * from RUN_STATS
+                      recordQueryDuration: 321
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/hive/1657025257/OPS/DEFAULT/RUN_STATS
+                  name: RUN_STATS
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000

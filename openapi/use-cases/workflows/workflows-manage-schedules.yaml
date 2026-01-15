@@ -1,0 +1,59 @@
+# Use Case: Manage workflow schedules
+# Auto-generated from: https://developer.atlan.com/snippets/workflows/manage/schedules/
+# Generated at: 2026-01-13T02:58:00.310Z
+
+id: workflows-manage-schedules
+title: "Manage workflow schedules"
+category: workflows
+icon: zap
+relatedTypes:
+  - Workflow
+  - WorkflowRun
+
+description: >-
+  Manage workflow schedules in Atlan. Configure when and how often workflows run to keep your catalog up to date.
+
+externalDocs:
+  url: https://developer.atlan.com/snippets/workflows/manage/schedules/
+  description: Official Atlan documentation
+
+steps:
+  - step: 1
+    title: "Schedule a workflow run"
+    description: >-
+      0.0.16
+      2.1.8
+      
+      You can directly add a schedule to a workflow run.
+      For example, with Snowflake Miner:
+  - step: 2
+    title: "Directly on run:"
+    description: >-
+      You can directly add a schedule to a workflow run.
+      For example, with Snowflake Miner:
+  - step: 3
+    title: "Existing workflow:"
+    description: >-
+      You can also add a schedule to an existing workflow run:
+  - step: 4
+    title: "Retrieve a scheduled workflow run"
+    description: >-
+      0.0.16
+      2.1.8
+      
+      To retrieve an existing scheduled workflow run by its name:
+  - step: 5
+    title: "Retrieve by name:"
+    description: >-
+      To retrieve an existing scheduled workflow run by its name:
+  - step: 6
+    title: "Retrieve all scheduled runs:"
+    description: >-
+      To retrieve all existing scheduled workflow runs:
+  - step: 7
+    title: "Remove a schedule from workflow run"
+    description: >-
+      0.0.16
+      2.1.8
+      
+      To remove a schedule from an existing workflow run:

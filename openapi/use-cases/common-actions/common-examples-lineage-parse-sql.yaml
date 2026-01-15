@@ -1,0 +1,200 @@
+# Use Case: Parse SQL queries
+# Auto-generated from: https://developer.atlan.com/snippets/common-examples/lineage/parse-sql/
+# Generated at: 2026-01-13T02:58:00.302Z
+
+id: common-examples-lineage-parse-sql
+title: "Parse SQL queries"
+category: common-actions
+icon: zap
+relatedTypes:
+  - ColumnProcess
+  - Process
+
+description: >-
+  You can parse your own SQL queries to assist with managing lineage.
+  
+  Unsupported
+  
+  Unless you have a specific agreement that states otherwise, this feature is provided as-is without any support. Also note that this does not create lineage directly   the results of the SQL parser could be used to programmatically build your own lineage.
+  
+  To parse a SQL query:
+
+externalDocs:
+  url: https://developer.atlan.com/snippets/common-examples/lineage/parse-sql/
+  description: Official Atlan documentation
+
+steps:
+  - step: 1
+    title: "How to interpret the response"
+    description: >-
+      The parser interprets the query and provides back details about column-level processing.
+      
+      Database objects include tables, views, result sets of queries, and processes.
+      
+      Relationships returned by the parser indicate the flow of data between the database objects.
+      
+      Each relationship is composed of:
+    method: POST
+    endpoint: /api/sql/query/parse
+    examples:
+      - key: example-1-1
+        summary: "POST /api/sql/query/parse"
+        request: {
+                    "dbobjs": [
+                              {
+                                        "columns": [
+                                                  {
+                                                            "name": "id",
+                                                            "id": "13"
+                                                  }
+                                        ],
+                                        "displayName": "ORDERS.PRODUCTION.customers",
+                                        "id": "12",
+                                        "name": "customers",
+                                        "type": "table",
+                                        "database": "ORDERS",
+                                        "schema": "PRODUCTION"
+                              },
+                              {
+                                        "columns": [
+                                                  {
+                                                            "name": "order_name",
+                                                            "id": "5"
+                                                  },
+                                                  {
+                                                            "name": "customer_id",
+                                                            "id": "6"
+                                                  },
+                                                  {
+                                                            "name": "product_id",
+                                                            "id": "7"
+                                                  }
+                                        ],
+                                        "displayName": "ORDERS.PRODUCTION.orders",
+                                        "id": "4",
+                                        "name": "orders",
+                                        "type": "table",
+                                        "database": "ORDERS",
+                                        "schema": "PRODUCTION"
+                              },
+                              {
+                                        "id": "8",
+                                        "name": "Query Insert-1",
+                                        "procedureName": "batchQueries",
+                                        "queryHashId": "0acc71f4f1b91a589c4e3fc652135c64",
+                                        "type": "process",
+                                        "database": "ORDERS",
+                                        "schema": "PRODUCTION"
+                              }
+                    ],
+                    "relationships": [
+                              {
+                                        "id": "5",
+                                        "type": "fdd",
+                                        "effectType": "insert",
+                                        "target": {
+                                                  "id": "5",
+                                                  "column": "order_name",
+                                                  "parentId": "4",
+                                                  "parentName": "orders"
+                                        },
+                                        "sources": [
+                                                  {
+                                                            "id": "13",
+                                                            "column": "id",
+                                                            "parentId": "12",
+                                                            "parentName": "customers"
+                                                  }
+                                        ],
+                                        "processId": "8",
+                                        "processType": "sstinsert"
+                              }
+                    ]
+          }
+  - step: 2
+    title: "Database objects"
+    description: >-
+      Database objects include tables, views, result sets of queries, and processes.
+  - step: 3
+    title: "Relationships"
+    description: >-
+      Relationships returned by the parser indicate the flow of data between the database objects.
+      
+      Each relationship is composed of:
+    method: POST
+    endpoint: /api/sql/query/parse
+    examples:
+      - key: example-3-1
+        summary: "POST /api/sql/query/parse"
+        request: {
+                    "dbobjs": [
+                              {
+                                        "columns": [
+                                                  {
+                                                            "name": "id",
+                                                            "id": "13"
+                                                  }
+                                        ],
+                                        "displayName": "ORDERS.PRODUCTION.customers",
+                                        "id": "12",
+                                        "name": "customers",
+                                        "type": "table",
+                                        "database": "ORDERS",
+                                        "schema": "PRODUCTION"
+                              },
+                              {
+                                        "columns": [
+                                                  {
+                                                            "name": "order_name",
+                                                            "id": "5"
+                                                  },
+                                                  {
+                                                            "name": "customer_id",
+                                                            "id": "6"
+                                                  },
+                                                  {
+                                                            "name": "product_id",
+                                                            "id": "7"
+                                                  }
+                                        ],
+                                        "displayName": "ORDERS.PRODUCTION.orders",
+                                        "id": "4",
+                                        "name": "orders",
+                                        "type": "table",
+                                        "database": "ORDERS",
+                                        "schema": "PRODUCTION"
+                              },
+                              {
+                                        "id": "8",
+                                        "name": "Query Insert-1",
+                                        "procedureName": "batchQueries",
+                                        "queryHashId": "0acc71f4f1b91a589c4e3fc652135c64",
+                                        "type": "process",
+                                        "database": "ORDERS",
+                                        "schema": "PRODUCTION"
+                              }
+                    ],
+                    "relationships": [
+                              {
+                                        "id": "5",
+                                        "type": "fdd",
+                                        "effectType": "insert",
+                                        "target": {
+                                                  "id": "5",
+                                                  "column": "order_name",
+                                                  "parentId": "4",
+                                                  "parentName": "orders"
+                                        },
+                                        "sources": [
+                                                  {
+                                                            "id": "13",
+                                                            "column": "id",
+                                                            "parentId": "12",
+                                                            "parentName": "customers"
+                                                  }
+                                        ],
+                                        "processId": "8",
+                                        "processType": "sstinsert"
+                              }
+                    ]
+          }

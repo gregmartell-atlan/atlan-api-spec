@@ -1,0 +1,80 @@
+# Minimal workflows/indexsearch endpoint
+# Use-case-specific examples are in /openapi/use-cases/workflows/
+
+post:
+  operationId: searchWorkflows
+  summary: Search workflows
+  description: |
+    Search for workflow definitions using Elasticsearch DSL.
+    
+    Workflows are templates for crawlers, miners, and other packages.
+    See Use Cases for step-by-step guides on specific workflows.
+  externalDocs:
+    url: https://developer.atlan.com/snippets/workflows/manage/workflows/
+    description: Workflow management documentation
+  tags:
+    - Workflows
+  security:
+    - AtlanToken: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/Search.yaml#/WorkflowSearchRequest'
+        examples:
+          find_by_prefix:
+            summary: Find workflows by name prefix
+            value:
+              from: 0
+              size: 10
+              track_total_hits: true
+              query:
+                bool:
+                  filter:
+                    - nested:
+                        path: metadata
+                        query:
+                          prefix:
+                            metadata.name.keyword:
+                              value: atlan-snowflake
+              sort:
+                - metadata.creationTimestamp:
+                    order: desc
+                    nested:
+                      path: metadata
+
+          find_by_exact_name:
+            summary: Find workflow by exact name
+            value:
+              from: 0
+              size: 1
+              query:
+                bool:
+                  filter:
+                    - nested:
+                        path: metadata
+                        query:
+                          term:
+                            metadata.name.keyword:
+                              value: atlan-snowflake-1684500411
+
+  responses:
+    '200':
+      description: Search results
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Search.yaml#/WorkflowSearchResponse'
+    '400':
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '401':
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'

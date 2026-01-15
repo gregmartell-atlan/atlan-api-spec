@@ -1,0 +1,692 @@
+id: access-personas
+title: Personas
+category: access-control
+icon: zap
+relatedTypes:
+  - Asset
+  - AuthPolicy
+  - Persona
+description: Personas  are a way of curating assets for a group of users.
+externalDocs:
+  url: https://developer.atlan.com/snippets/access/personas/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: List personas
+    description: |-
+      0.0.12 1.4.0 4.0.0
+      To retrieve a listing of personas, run a search and page the results:
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            query:
+              bool:
+                filter:
+                  - term:
+                      __state:
+                        value: ACTIVE
+                  - term:
+                      __typeName.keyword:
+                        value: Persona
+            track_total_hits: true
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"filter\":[{\"term\":{\"__state\":{\"value\":\"ACTIVE\"}}},{\"term\":{\"__typeName.keyword\":{\"value\":\"Persona\"}}}]}}"
+          approximateCount: 25
+          entities:
+            - typeName: Persona
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/PERSONA_1
+                name: Persona_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: Persona_1
+            - typeName: Persona
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/PERSONA_2
+                name: Persona_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: Persona_2
+  - step: 2
+    title: Create a persona
+    description: |-
+      0.0.12 2.0.0 4.0.0
+      To create a new persona:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-2-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Persona
+              attributes:
+                displayName: Data Assets
+                isAccessControlEnabled: true
+                qualifiedName: Data Assets
+                name: Data Assets
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: Persona
+                attributes:
+                  qualifiedName: Data Assets
+                  name: Data Assets
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+  - step: 3
+    title: Retrieve a persona
+    description: |-
+      0.0.12 1.4.0 4.0.0
+      To retrieve a persona by its name:
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-3-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            query:
+              bool:
+                filter:
+                  - term:
+                      __state:
+                        value: ACTIVE
+                  - term:
+                      __typeName.keyword:
+                        value: Persona
+                  - term:
+                      name.keyword:
+                        value: Data Assets
+            track_total_hits: true
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"filter\":[{\"term\":{\"__state\":{\"value\":\"ACTIVE\"}}},{\"term\":{\"__typeName.keyword\":{\"value\":\"Persona\"}}},{\"term\":{\"name.keyword\":{\"value\":\"Data Assets\"}}}]}}"
+          approximateCount: 25
+          entities:
+            - typeName: Persona
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/PERSONA_1
+                name: Persona_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: Persona_1
+            - typeName: Persona
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/PERSONA_2
+                name: Persona_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: Persona_2
+  - step: 4
+    title: Update a persona
+    description: |-
+      0.0.12 2.0.0 4.0.0
+      To update a persona:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-4-1
+        summary: POST /api/meta/entity/bulk
+        requestRaw: |
+          {
+            "entities": [
+              {
+                "typeName": "Persona",
+                "attributes": {
+                  "qualifiedName": "default/M5HnBQ8QWhrAVGuvBx8iSW",
+                  "name": "Data Assets"
+                  "isAccessControlEnabled": true,
+                  "description": "Now with a description!"}
+              }
+            ]
+          }
+        response:
+          mutatedEntities:
+            UPDATE: []
+  - step: 5
+    title: Delete a persona
+    description: |-
+      0.0.12 1.4.0 4.0.0
+      To permanently delete a persona:
+    method: DELETE
+    endpoint: /api/meta/entity/bulk
+    queryString: guid=67e08ab7-9688-40bc-ae4a-da2bc06b1588&deleteType=PURGE
+    examples:
+      - key: example-5-1
+        summary: DELETE /api/meta/entity/bulk
+        response:
+          mutatedEntities:
+            PURGE:
+              - typeName: Asset
+                attributes:
+                  qualifiedName: example/deleted/asset
+                  name: Deleted Asset
+                guid: b4113341-251b-4adc-81fb-2420501c30e6
+                status: PURGED
+  - step: 6
+    title: Activate or deactivate a persona
+    description: |-
+      0.0.12 1.4.0 4.0.0
+      Alternatively, if you only want to temporarily deactivate a persona:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-6-1
+        summary: POST /api/meta/entity/bulk
+        requestRaw: |
+          {
+            "entities": [
+              {
+                "typeName": "Persona",
+                "attributes": {
+                  "qualifiedName": "default/M5HnBQ8QWhrAVGuvBx8iSW",
+                  "name": "Data Assets"
+                  "isAccessControlEnabled": false
+                }
+              }
+            ]
+          }
+        response:
+          mutatedEntities:
+            UPDATE: []
+  - step: 7
+    title: Add subjects to a persona
+    description: |-
+      0.0.12 1.4.0 4.0.0
+      Similarly, adding subjects to a persona is a matter of updating the persona:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-7-1
+        summary: POST /api/meta/entity/bulk
+        requestRaw: |
+          {
+            "entities": [
+              {
+                "typeName": "Persona",
+                "attributes": {
+                  "qualifiedName": "default/M5HnBQ8QWhrAVGuvBx8iSW",
+                  "name": "Data Assets"
+                  "isAccessControlEnabled": false,
+                  "personaGroups": ["group1", "group2"],
+                  "personaUsers": ["jsmith", "jdoe"]
+                }
+              }
+            ]
+          }
+        response:
+          mutatedEntities:
+            UPDATE: []
+  - step: 8
+    title: Add policies to a persona
+    description: |-
+      Do not add policies in bulk
+      Be careful to only add policies one-by-one to a persona. While the SDKs will allow you to add them in bulk, currently this results in a persona where only the final policy in the batch is active at the end of the operation.
+      API token must be a connection admin
+      To manage policies for a connection, the API token must be a connection admin on that connection. When you create a connection using an API token, the API token is automatically made a connection admin; however, for any other connection you must carry out extra steps to make the API token a connection admin.
+      0.0.12 7.0.0 4.0.0
+      To add a metadata policy to a persona:
+    notes:
+      - type: warning
+        title: Do not add policies in bulk
+        content: Be careful to only add policies one-by-one to a persona. While the SDKs will allow you to add them in bulk, currently this results in a persona where only the final policy in the batch is active at the end of the operation.
+      - type: warning
+        title: API token must be a connection admin
+        content: To manage policies for a connection, the API token must be a connection admin on that connection. When you create a connection using an API token, the API token is automatically made a connection admin; however, for any other connection you must carry out extra steps to make the API token a connection admin.
+      - type: recommendation
+        title: To include all permissions
+        content: If you want to include all permissions, you can simply use Arrays.asList(PersonaMetadataAction.values()).
+      - type: recommendation
+        title: To include all permissions
+        content: If you want to include all permissions, you can simply use PersonaMetadataAction.values().toList().
+      - type: recommendation
+        title: To review available permissions
+        content: To review the available permissions, see the SDKs   for example, the PersonaMetadataAction enum in the Java SDK.
+      - type: recommendation
+        title: To include all permissions
+        content: If you want to include all permissions, you can simply use Arrays.asList(PersonaGlossaryAction.values()).
+      - type: recommendation
+        title: To include all permissions
+        content: If you want to include all permissions, you can simply use PersonaGlossaryAction.values().toList().
+      - type: recommendation
+        title: To review available permissions
+        content: To review the available permissions, see the SDKs   for example, the PersonaGlossaryAction enum in the Java SDK.
+      - type: recommendation
+        title: To include all permissions
+        content: If you want to include all permissions, you can simply use Arrays.asList(PersonaDomainAction.values()).
+      - type: recommendation
+        title: To include all permissions
+        content: If you want to include all permissions, you can simply use PersonaDomainAction.values().toList().
+      - type: recommendation
+        title: To review available permissions
+        content: To review the available permissions, see the SDKs   for example, the PersonaDomainAction enum in the Java SDK.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-8-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AuthPolicy
+              attributes:
+                policySubCategory: metadata
+                policyCategory: persona
+                policyType: allow
+                policyServiceName: atlas
+                connectionQualifiedName: default/snowflake/1234567890
+                policyResources:
+                  - entity:default/snowflake/1234567890
+                name: Simple read access
+                qualifiedName: Simple read access
+                policyActions:
+                  - persona-asset-read
+                accessControl:
+                  typeName: Persona
+                  guid: 67e08ab7-9688-40bc-ae4a-da2bc06b1588
+                policyResourceCategory: CUSTOM
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: AuthPolicy
+                attributes:
+                  qualifiedName: Simple read access
+                  name: Simple read access
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+      - key: example-8-2
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AuthPolicy
+              attributes:
+                policySubCategory: data
+                policyCategory: persona
+                policyType: allow
+                policyServiceName: heka
+                connectionQualifiedName: default/snowflake/1234567890
+                policyResources:
+                  - entity-type:*
+                  - entity:default/snowflake/1234567890
+                name: Allow access to data
+                qualifiedName: Allow access to data
+                policyActions:
+                  - select
+                accessControl:
+                  typeName: Persona
+                  guid: 67e08ab7-9688-40bc-ae4a-da2bc06b1588
+                policyResourceCategory: ENTITY
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: AuthPolicy
+                attributes:
+                  qualifiedName: Allow access to data
+                  name: Allow access to data
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+      - key: example-8-3
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AuthPolicy
+              attributes:
+                policySubCategory: glossary
+                policyCategory: persona
+                policyType: allow
+                policyServiceName: atlas
+                policyResources:
+                  - entity:OpU9a9kG825gAqpamXugf
+                name: All glossaries
+                qualifiedName: All glossaries
+                policyActions:
+                  - persona-glossary-create
+                  - persona-glossary-update
+                accessControl:
+                  typeName: Persona
+                  guid: 67e08ab7-9688-40bc-ae4a-da2bc06b1588
+                policyResourceCategory: CUSTOM
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: AuthPolicy
+                attributes:
+                  qualifiedName: All glossaries
+                  name: All glossaries
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+      - key: example-8-4
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AuthPolicy
+              attributes:
+                policySubCategory: domain
+                policyCategory: persona
+                policyType: allow
+                policyServiceName: atlas
+                policyResources:
+                  - entity:default/domain/marketing
+                  - entity:default/domain/finance
+                name: Read access to some domains
+                qualifiedName: Read access to some domains
+                policyActions:
+                  - persona-domain-read
+                  - persona-domain-sub-domain-read
+                  - persona-domain-product-read
+                accessControl:
+                  typeName: Persona
+                  guid: 67e08ab7-9688-40bc-ae4a-da2bc06b1588
+                policyResourceCategory: CUSTOM
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: AuthPolicy
+                attributes:
+                  qualifiedName: Read access to some domains
+                  name: Read access to some domains
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+  - step: 9
+    title: Add a metadata policy
+    description: |-
+      0.0.12 7.0.0 4.0.0
+      To add a metadata policy to a persona:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-9-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AuthPolicy
+              attributes:
+                policySubCategory: metadata
+                policyCategory: persona
+                policyType: allow
+                policyServiceName: atlas
+                connectionQualifiedName: default/snowflake/1234567890
+                policyResources:
+                  - entity:default/snowflake/1234567890
+                name: Simple read access
+                qualifiedName: Simple read access
+                policyActions:
+                  - persona-asset-read
+                accessControl:
+                  typeName: Persona
+                  guid: 67e08ab7-9688-40bc-ae4a-da2bc06b1588
+                policyResourceCategory: CUSTOM
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: AuthPolicy
+                attributes:
+                  qualifiedName: Simple read access
+                  name: Simple read access
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+  - step: 10
+    title: Add a data policy
+    description: |-
+      0.0.12 7.0.0 4.0.0
+      To add a data policy to a persona:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-10-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AuthPolicy
+              attributes:
+                policySubCategory: data
+                policyCategory: persona
+                policyType: allow
+                policyServiceName: heka
+                connectionQualifiedName: default/snowflake/1234567890
+                policyResources:
+                  - entity-type:*
+                  - entity:default/snowflake/1234567890
+                name: Allow access to data
+                qualifiedName: Allow access to data
+                policyActions:
+                  - select
+                accessControl:
+                  typeName: Persona
+                  guid: 67e08ab7-9688-40bc-ae4a-da2bc06b1588
+                policyResourceCategory: ENTITY
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: AuthPolicy
+                attributes:
+                  qualifiedName: Allow access to data
+                  name: Allow access to data
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+  - step: 11
+    title: Add a glossary policy
+    description: |-
+      0.0.12 1.4.0 4.0.0
+      To add a glossary policy to a persona:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-11-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AuthPolicy
+              attributes:
+                policySubCategory: glossary
+                policyCategory: persona
+                policyType: allow
+                policyServiceName: atlas
+                policyResources:
+                  - entity:OpU9a9kG825gAqpamXugf
+                name: All glossaries
+                qualifiedName: All glossaries
+                policyActions:
+                  - persona-glossary-create
+                  - persona-glossary-update
+                accessControl:
+                  typeName: Persona
+                  guid: 67e08ab7-9688-40bc-ae4a-da2bc06b1588
+                policyResourceCategory: CUSTOM
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: AuthPolicy
+                attributes:
+                  qualifiedName: All glossaries
+                  name: All glossaries
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+  - step: 12
+    title: Add a domain policy
+    description: |-
+      0.0.12 1.7.0 4.0.0
+      To add a domain policy to a persona:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-12-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AuthPolicy
+              attributes:
+                policySubCategory: domain
+                policyCategory: persona
+                policyType: allow
+                policyServiceName: atlas
+                policyResources:
+                  - entity:default/domain/marketing
+                  - entity:default/domain/finance
+                name: Read access to some domains
+                qualifiedName: Read access to some domains
+                policyActions:
+                  - persona-domain-read
+                  - persona-domain-sub-domain-read
+                  - persona-domain-product-read
+                accessControl:
+                  typeName: Persona
+                  guid: 67e08ab7-9688-40bc-ae4a-da2bc06b1588
+                policyResourceCategory: CUSTOM
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: AuthPolicy
+                attributes:
+                  qualifiedName: Read access to some domains
+                  name: Read access to some domains
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+  - step: 13
+    title: List policies in a persona
+    description: |-
+      0.0.12 1.4.0 4.0.0
+      To list all the policies in a persona:
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-13-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            query:
+              bool:
+                filter:
+                  - term:
+                      __typeName.keyword:
+                        value: Persona
+                  - term:
+                      __state:
+                        value: ACTIVE
+                  - term:
+                      name.keyword:
+                        value: Data Assets
+            sort:
+              - __guid:
+                  order: asc
+            track_total_hits: true
+          attributes:
+            - policies
+          relationAttributes:
+            - name
+            - policyType
+            - policyResources
+            - policyActions
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"filter\":[{\"term\":{\"__typeName.keyword\":{\"value\":\"Persona\"}}},{\"term\":{\"__state\":{\"value\":\"ACTIVE\"}}},{\"term\":{\"name.keyword\":{\"value\":\"Data Assets\"}}}]}}"
+            attributes:
+              - policies
+          approximateCount: 25
+          entities:
+            - typeName: Persona
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/PERSONA_1
+                name: Persona_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: Persona_1
+            - typeName: Persona
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/PERSONA_2
+                name: Persona_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: Persona_2
+  - step: 14
+    title: Personalize the persona
+    description: |-
+      0.0.12 2.1.4 4.0.0
+      To personalize which details to show for assets within a persona:
+    notes:
+      - type: recommendation
+        title: To review available tabs/filters
+        content: To review the values of tabs and filters, refer to the SDKs. For example, check the AssetSidebarTab and AssetFilterGroup enums in the SDKs.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-14-1
+        summary: POST /api/meta/entity/bulk
+        requestRaw: |
+          {
+            "entities": [
+              {
+                "typeName": "Persona",
+                "attributes": {
+                  "qualifiedName": "default/M5HnBQ8QWhrAVGuvBx8iSW",
+                  "name": "Data Assets"
+                  "isAccessControlEnabled": true,
+                  "denyAssetTabs": [
+                    "Lineage",
+                    "Relations",
+                    "Queries"
+                  ],
+                  "denyAssetTypes": [
+                    "Table",
+                    "Column"
+                  ],
+                  "denyAssetFilters": [
+                    "__traitNames",
+                    "owners",
+                    "certificateStatus"
+                  ],
+                  "denyCustomMetadataGuids": [
+                    "59220d25-5d39-4f3a-8de5-072098bee793",
+                    "bb0c9836-94fd-4a54-9007-0f25fb802c2c"
+                  ]}
+              }
+            ]
+          }
+        response:
+          mutatedEntities:
+            UPDATE: []

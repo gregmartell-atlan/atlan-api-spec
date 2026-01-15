@@ -1,0 +1,85 @@
+# Use Case: Find and apply suggestions to an asset
+# Auto-generated from: https://developer.atlan.com/snippets/advanced-examples/suggestions/
+# Generated at: 2026-01-13T02:58:00.293Z
+
+id: advanced-examples-suggestions
+title: "Find and apply suggestions to an asset"
+category: crud
+icon: zap
+relatedTypes:
+  - Asset
+
+description: >-
+  As a data team ourselves, we understand that metadata curation can be time-consuming.
+  To streamline this process, each time you fill in a metadata gap, Atlan looks
+  for opportunities to reuse that information.
+  
+  This is where trident suggestions    come into play.
+  It provides metadata suggestions for similar assets.
+  
+  For example: CUSTOMER (table)
+  
+  You add the description "Information about customers" to a table called CUSTOMER.
+  
+  Atlan searches for other tables named CUSTOMER that lack a descriptio
+
+externalDocs:
+  url: https://developer.atlan.com/snippets/advanced-examples/suggestions/
+  description: Official Atlan documentation
+
+steps:
+  - step: 1
+    title: "Find suggestions"
+    description: >-
+      2.3.3
+      1.12.7
+      
+      Find suggestions for a given asset:
+    notes:
+      - type: recommendation
+        title: "Want to find suggestions for ALL types?"
+        content: >-
+          To include all suggestion types
+          (description, owner, tags, and terms):
+          Suggestions.includes(Arrays.asList(Suggestions.TYPE.values()))
+      - type: info
+        title: "withOtherType"
+        content: >-
+          By default, we will only look for suggestions on
+          assets of the same type. You may want to expand this,
+          for example, by including View(s) when looking
+          for suggested metadata for Table(s).
+      - type: recommendation
+        title: "Want to find suggestions for ALL types?"
+        content: >-
+          To include all suggestion types
+          (description, owner, tags, and terms),
+          you can directly pass Suggestions.TYPE.all() to the Suggestions:
+          Suggestions(includes=Suggestions.TYPE.all())
+      - type: info
+        title: "with_other_type"
+        content: >-
+          By default, we will only look for suggestions on
+          assets of the same type. You may want to expand this,
+          for example, by including View(s) when looking
+          for suggested metadata for Table(s).
+      - type: recommendation
+        title: "Want to find suggestions for ALL types?"
+        content: >-
+          To include all suggestion types
+          (description, owner, tags, and terms):
+          Suggestions.includes(Suggestions.TYPE.values().toList())
+      - type: info
+        title: "withOtherType"
+        content: >-
+          By default, we will only look for suggestions on
+          assets of the same type. You may want to expand this,
+          for example, by including View(s) when looking
+          for suggested metadata for Table(s).
+  - step: 2
+    title: "Apply suggestions"
+    description: >-
+      7.0.0
+      1.12.7
+      
+      Apply suggestions to a given asset:

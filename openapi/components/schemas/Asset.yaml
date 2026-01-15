@@ -1,0 +1,86 @@
+type: object
+description: |
+  Generic Atlan asset (Atlas-style entity).
+
+  This is the base representation for all asset types (Table, Column, AtlasGlossaryTerm,
+  DataDomain, Workflow, Persona, etc.). Type-specific attributes are in `attributes`.
+properties:
+  guid:
+    type: string
+    format: uuid
+    description: System-generated unique identifier.
+    example: "b4113341-251b-4adc-81fb-2420501c30e6"
+  typeName:
+    type: string
+    description: |
+      Concrete asset type (e.g., Table, Column, AtlasGlossaryTerm, DataDomain, APISpec).
+    example: "Table"
+  status:
+    type: string
+    enum: [ACTIVE, DELETED]
+    description: Asset lifecycle status.
+    example: "ACTIVE"
+  displayText:
+    type: string
+    description: Human-readable display name.
+    example: "orders"
+  attributes:
+    type: object
+    additionalProperties: true
+    description: |
+      Type-specific attribute map. Common attributes include:
+      - `name` – display name
+      - `qualifiedName` – unique hierarchical identifier
+      - `description` – user-provided description
+      - `ownerUsers`, `ownerGroups` – ownership
+      - `certificateStatus` – VERIFIED, DRAFT, DEPRECATED
+      - `announcementType`, `announcementTitle`, `announcementMessage`
+    example:
+      name: "orders"
+      qualifiedName: "default/snowflake/123/db/schema/orders"
+      description: "Order transactions table"
+      ownerUsers:
+        - "jsmith"
+      certificateStatus: "VERIFIED"
+  relationshipAttributes:
+    type: object
+    additionalProperties: true
+    description: |
+      Relationship attribute map. Contains references to related assets
+      (e.g., `columns`, `database`, `schema`, `meanings` for linked terms).
+    example:
+      database:
+        guid: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+        typeName: "Database"
+  classifications:
+    type: array
+    items:
+      type: object
+      properties:
+        typeName:
+          type: string
+          description: Tag (classification) type name.
+        attributes:
+          type: object
+          additionalProperties: true
+    description: Atlan tags (classifications) attached to this asset.
+  meanings:
+    type: array
+    items:
+      type: object
+      properties:
+        termGuid:
+          type: string
+          format: uuid
+        displayText:
+          type: string
+    description: Glossary terms linked to this asset.
+  businessAttributes:
+    type: object
+    additionalProperties: true
+    description: |
+      Custom metadata (business metadata) attached to this asset.
+      Keys are the internal names of custom metadata structures (often hashed IDs).
+required:
+  - guid
+  - typeName

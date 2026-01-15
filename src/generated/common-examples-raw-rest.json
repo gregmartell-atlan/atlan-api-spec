@@ -1,0 +1,352 @@
+[
+  {
+    "pageUrl": "https://developer.atlan.com/snippets/common-examples/certificates/",
+    "blocks": [
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Table\", // (2)\n      \"attributes\": {\n        \"name\": \"TOP_BEVERAGE_USERS\", // (3)\n        \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS\", // (4)\n        \"certificateStatus\": \"VERIFIED\", // (5)\n        \"certificateStatusMessage\": \"Verified through automation.\" // (6)\n      }\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Table\", // (2)\n      \"attributes\": {\n        \"name\": \"USER_ID\", // (3)\n        \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS/USER_ID\", // (4)\n        \"certificateStatus\": null, // (5)\n        \"certificateStatusMessage\": null\n      }\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Table\", // (2)\n      \"attributes\": {\n        \"name\": \"TOP_BEVERAGE_USERS\", // (3)\n        \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS\", // (4)\n        \"atlanSchema\": { // (5)\n          \"typeName\": \"Schema\",\n          \"uniqueAttributes\": {\n            \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV\"\n          }\n        },\n        \"certificateStatus\": \"VERIFIED\", // (6)\n        \"certificateStatusMessage\": \"Verified at creation.\" // (7)\n      }\n    }\n  ]\n}"
+      }
+    ]
+  },
+  {
+    "pageUrl": "https://developer.atlan.com/snippets/common-examples/announcements/",
+    "blocks": [
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Table\", // (2)\n      \"attributes\": {\n        \"name\": \"TOP_BEVERAGE_USERS\", // (3)\n        \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS\", // (4)\n        \"announcementType\": \"warning\", // (5)\n        \"announcementTitle\": \"Caution!\", // (6)\n        \"announcementMessage\": \"This table was changed.\"\n      }\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Table\", // (2)\n      \"attributes\": {\n        \"name\": \"TOP_BEVERAGE_USERS\", // (3)\n        \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS\", // (4)\n        \"announcementType\": null, // (5)\n        \"announcementTitle\": null,\n        \"announcementMessage\": null\n      }\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Table\", // (2)\n      \"attributes\": {\n        \"name\": \"TOP_BEVERAGE_USERS\", // (3)\n        \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS\", // (4)\n        \"atlanSchema\": { // (5)\n          \"typeName\": \"Schema\",\n          \"uniqueAttributes\": {\n            \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV\"\n          }\n        },\n        \"announcementType\": \"information\", // (6)\n        \"announcementTitle\": \"New!\", // (7)\n        \"announcementMessage\": \"This table is newly created.\"\n      }\n    }\n  ]\n}"
+      }
+    ]
+  },
+  {
+    "pageUrl": "https://developer.atlan.com/snippets/common-examples/descriptions/",
+    "blocks": [
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Table\", // (2)\n      \"attributes\": {\n        \"name\": \"TOP_BEVERAGE_USERS\", // (3)\n        \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS\", // (4)\n        \"description\": \"My new description\" // (5)\n      }\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Table\", // (2)\n      \"attributes\": {\n        \"name\": \"TOP_BEVERAGE_USERS\", // (3)\n        \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS\", // (4)\n        \"description\": null // (5)\n      }\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Table\", // (2)\n      \"attributes\": {\n        \"name\": \"TOP_BEVERAGE_USERS\", // (3)\n        \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS\", // (4)\n        \"atlanSchema\": { // (5)\n          \"typeName\": \"Schema\",\n          \"uniqueAttributes\": {\n            \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV\"\n          }\n        },\n        \"description\": \"My description of the asset\" // (6)\n      }\n    }\n  ]\n}"
+      }
+    ]
+  },
+  {
+    "pageUrl": "https://developer.atlan.com/snippets/common-examples/owners/",
+    "blocks": [
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Table\", // (2)\n      \"attributes\": {\n        \"name\": \"TOP_BEVERAGE_USERS\", // (3)\n        \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS\", // (4)\n        \"ownerUsers\": [ \"jsmith\", \"jdoe\" ] // (5)\n      }\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Table\", // (2)\n      \"attributes\": {\n        \"name\": \"TOP_BEVERAGE_USERS\", // (3)\n        \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS\", // (4)\n        \"ownerUsers\": [], // (5)\n        \"ownerGroups\": []\n      }\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Table\", // (2)\n      \"attributes\": {\n        \"name\": \"TOP_BEVERAGE_USERS\", // (3)\n        \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS\", // (4)\n        \"atlanSchema\": { // (5)\n          \"typeName\": \"Schema\",\n          \"uniqueAttributes\": {\n            \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV\"\n          }\n        },\n        \"ownerUsers\": [ \"jsmith\", \"jdoe\" ] // (6)\n      }\n    }\n  ]\n}"
+      }
+    ]
+  },
+  {
+    "pageUrl": "https://developer.atlan.com/snippets/common-examples/tags/",
+    "blocks": [
+      {
+        "label": "POST /api/meta/entity/bulk?replaceTags=false&appendTags=true&replaceBusinessAttributes=false&overwriteBusinessAttributes=false",
+        "code": "{\n  \"entities\": [  // (1)\n    {\n      \"typeName\": \"Table\", // (2)\n      \"attributes\": {\n        \"qualifiedName\": \"default/snowflake/1746022526/WIDE_WORLD_IMPORTERS/BRONZE_WAREHOUSE/FIVETRAN_AUDIT\", // (3)\n        \"name\": \"FIVETRAN_AUDIT\"  // (4)\n      },\n      \"addOrUpdateClassifications\": [\n          {\n          \"typeName\": \"VfsfmLbnuxc2vdNJ0Ysh\", // (5)\n          \"propagate\": false, // (6)\n          \"removePropagationsOnEntityDelete\": true, // (7)\n          \"restrictPropagationThroughLineage\": false, // (8)\n          \"restrictPropagationThroughHierarchy\": true // (9)\n        },\n        {\n          \"typeName\": \"RsCmLbnuxc2vdNJ234Ysh\",\n          \"propagate\": false,\n          \"removePropagationsOnEntityDelete\": true,\n          \"restrictPropagationThroughLineage\": false,\n          \"restrictPropagationThroughHierarchy\": true\n        }\n        ]\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk?replaceTags=false&appendTags=true&replaceBusinessAttributes=false&overwriteBusinessAttributes=false",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Table\", // (2)\n      \"attributes\": {\n        \"qualifiedName\": \"default/snowflake/1746022526/WIDE_WORLD_IMPORTERS/BRONZE_WAREHOUSE/FIVETRAN_AUDIT\", // (3)\n        \"name\": \"FIVETRAN_AUDIT\"  // (4)\n      },\n      \"addOrUpdateClassifications\": [\n          {\n          \"typeName\": \"VfsfmLbnuxc2vdNJ0Ysh\", // (5)\n          \"propagate\": false, // (6)\n          \"removePropagationsOnEntityDelete\": false, // (7)\n          \"restrictPropagationThroughLineage\": false, // (8)\n          \"restrictPropagationThroughHierarchy\": false // (9)\n        },\n        {\n          \"typeName\": \"RsCmLbnuxc2vdNJ234Ysh\",\n          \"propagate\": true,\n          \"removePropagationsOnEntityDelete\": true,\n          \"restrictPropagationThroughLineage\": false,\n          \"restrictPropagationThroughHierarchy\": false\n        }\n        ]\n    }\n  ]\n}"
+      },
+      {
+        "label": "DELETE /api/meta/entity/uniqueAttribute/type/Table/classification/WCVjmgKnW40G151dESXZ03?attr:qualifiedName=default%2Fsnowflake%2F1657037873%2FSAMPLE_DB%2FFOOD_BEV%2FTOP_BEVERAGE_USERS",
+        "code": "// (1)"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk?replaceTags=false&appendTags=true&replaceBusinessAttributes=false&overwriteBusinessAttributes=false",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Table\", // (2)\n      \"attributes\": {\n        \"qualifiedName\": \"default/snowflake/1746022526/WIDE_WORLD_IMPORTERS/BRONZE_WAREHOUSE/FIVETRAN_AUDIT\", // (3)\n        \"name\": \"FIVETRAN_AUDIT\"  // (4)\n      },\n      \"removeClassifications\": [\n          {\n          \"typeName\": \"VfsfmLbnuxc2vdNJ0Ysh\" // (5)\n          },\n        {\n          \"typeName\": \"RsCmLbnuxc2vdNJ234Ysh\"\n        }\n        ]\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk?replaceTags=true&replaceBusinessAttributes=false&overwriteBusinessAttributes=false",
+        "code": "{ // (1)\n  \"entities\": [ // (2)\n    {\n      \"typeName\": \"Table\", // (3)\n      \"attributes\": {\n        \"qualifiedName\": \"default/snowflake/1665450065/DBT_FOOD_BEVERAGE/PUBLIC/INSTACART_ORDER_PRODUCTS_USERS_TIME_MASTER\", // (4)\n        \"name\": \"INSTACART_ORDER_PRODUCTS_USERS_TIME_MASTER\" // (5)\n      }\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Table\", // (2)\n      \"attributes\": {\n        \"name\": \"TOP_BEVERAGE_USERS\", // (3)\n        \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS\" // (4)\n      },\n      \"classifications\": [ // (5)\n        {\n          \"typeName\": \"yQBDoKHdTLJhqAsdR3RMq6\", // (6)\n          \"propagate\": true, // (7)\n          \"removePropagationsOnEntityDelete\": true, // (8)\n          \"restrictPropagationThroughLineage\": false, // (9)\n          \"restrictPropagationThroughHierarchy\": false // (10)\n        },\n        {\n          \"typeName\": \"WCVjmgKnW40G151dESXZ03\",\n          \"propagate\": true,\n          \"removePropagationsOnEntityDelete\": true,\n          \"restrictPropagationThroughLineage\": false,\n          \"restrictPropagationThroughHierarchy\": false\n        },\n        {\n          \"typeName\": \"Z96sGJrF0S68PxYTUdKG6b\",\n          \"propagate\": true,\n          \"removePropagationsOnEntityDelete\": true,\n          \"restrictPropagationThroughLineage\": false,\n          \"restrictPropagationThroughHierarchy\": false,\n          \"attributes\": { // (11)\n            \"rt5N3mHZTcxXafuu6ZPpyL\": [ // (12)\n              {\n                \"sourceTagName\": \"CONFIDENTIAL\", // (13)\n                \"sourceTagQualifiedName\": \"default/snowflake/1726834662/ANALYTICS/WIDE_WORLD_IMPORTERS/CONFIDENTIAL\", // (14)\n                \"sourceTagGuid\": \"c28c08a8-320b-4a1a-b52e-75d120b4a8cc\", // (15)\n                \"sourceTagConnectorName\": \"snowflake\", // (16)\n                \"isSourceTagSynced\": false,\n                \"sourceTagSyncTimestamp\": 0,\n                \"sourceTagValue\": [ // (17)\n                  {\n                    \"tagAttachmentValue\": \"Highly Restricted\" // (18)\n                  }\n                ]\n              }\n            ]\n          }\n        }\n      ]\n    }\n  ]\n}"
+      }
+    ]
+  },
+  {
+    "pageUrl": "https://developer.atlan.com/snippets/common-examples/custom-metadata/",
+    "blocks": [
+      {
+        "label": "POST /api/meta/entity/guid/a89ff15b-f5e6-48bc-870b-acfa11e212ae/businessmetadata/MNJ8mpLsIOaP4OQnLNhRta",
+        "code": "{\n  \"MNJ8mpLsIOaP4OQnLNhRta\": {\n    \"F8XI9GzcBpdBdfi4cLiPEz\": [ // (1)\n      \"finance\"\n    ]\n  }\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/guid/a89ff15b-f5e6-48bc-870b-acfa11e212ae/businessmetadata?isOverwrite=false",
+        "code": "{ // (1)\n  \"MNJ8mpLsIOaP4OQnLNhRta\": { // (2)\n    \"fWMB77RSjRGNYoFeD4FcGi\": \"jsmith\", // (3)\n    \"F8XI9GzcBpdBdfi4cLiPEz\": [ // (4)\n      \"finance\",\n      \"risk\"\n    ]\n  }\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/guid/a89ff15b-f5e6-48bc-870b-acfa11e212ae/businessmetadata/MNJ8mpLsIOaP4OQnLNhRta",
+        "code": "{ // (1)\n  \"MNJ8mpLsIOaP4OQnLNhRta\": { // (2)\n    \"fWMB77RSjRGNYoFeD4FcGi\": \"jsmith\", // (3)\n    \"F8XI9GzcBpdBdfi4cLiPEz\": [ // (4)\n      \"finance\",\n      \"risk\"\n    ]\n  }\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk?replaceClassifications=false&replaceBusinessAttributes=true&overwriteBusinessAttributes=true",
+        "code": "{ // (1)\n  \"entities\": [ // (2)\n    {\n      \"typeName\": \"Table\", // (3)\n      \"attributes\": {\n        \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS\", // (4)\n        \"name\": \"TOP_BEVERAGE_USERS\" // (5)\n      },\n      \"businessAttributes\": { // (6)\n        \"MNJ8mpLsIOaP4OQnLNhRta\": { // (7)\n          \"fWMB77RSjRGNYoFeD4FcGi\": \"jsmith\", // (8)\n          \"F8XI9GzcBpdBdfi4cLiPEz\": [\n            \"finance\",\n            \"risk\"\n          ]\n        },\n        \"foMg7yOwUajucuya0JEF4J\": { // (9)\n          \"uTmK5o0J8jHTH3KWFXXeZi\": \"example\" // (10)\n        }\n      }\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/guid/a89ff15b-f5e6-48bc-870b-acfa11e212ae/businessmetadata?isOverwrite=false",
+        "code": "{ // (1)\n  \"MNJ8mpLsIOaP4OQnLNhRta\": { // (2)\n    \"xDUCZllc4JyTKhwqSDkWK4\": null // (3)\n  }\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/guid/a89ff15b-f5e6-48bc-870b-acfa11e212ae/businessmetadata?isOverwrite=false",
+        "code": "{ // (1)\n  \"MNJ8mpLsIOaP4OQnLNhRta\": { // (2)\n    \"F8XI9GzcBpdBdfi4cLiPEz\": null, // (3)\n    \"xDUCZllc4JyTKhwqSDkWK4\": null,\n    \"fWMB77RSjRGNYoFeD4FcGi\": null,\n    \"rN6H6xMQpyHvo639SXER83\": null\n  }\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk?replaceClassifications=false&replaceBusinessAttributes=true&overwriteBusinessAttributes=true",
+        "code": "{ // (1)\n  \"entities\": [ // (2)\n    {\n      \"typeName\": \"Table\", // (3)\n      \"attributes\": {\n        \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS\", // (4)\n        \"name\": \"TOP_BEVERAGE_USERS\" // (5)\n      } // (6)\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Table\", // (2)\n      \"name\": \"TOP_BEVERAGE_USERS\", // (3)\n        \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS\", // (4)\n        \"atlanSchema\": { // (5)\n          \"typeName\": \"Schema\",\n          \"uniqueAttributes\": {\n            \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV\"\n          }\n        }\n      },\n      \"businessAttributes\": { // (6)\n        \"MNJ8mpLsIOaP4OQnLNhRta\": { // (7)\n          \"fWMB77RSjRGNYoFeD4FcGi\": \"jsmith\", // (8)\n          \"xDUCZllc4JyTKhwqSDkWK4\": \"jdoe\",\n          \"F8XI9GzcBpdBdfi4cLiPEz\": [ // (9)\n            \"finance\",\n            \"risk\"\n          ],\n          \"rN6H6xMQpyHvo639SXER83\": [\n            \"operations\"\n          ]\n        }\n      }\n    }\n  ]\n}"
+      }
+    ]
+  },
+  {
+    "pageUrl": "https://developer.atlan.com/snippets/common-examples/term-assignment/",
+    "blocks": [
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Column\", // (2)\n      \"attributes\": {\n        \"name\": \"CUSTOMER_NAME\", // (3)\n        \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DATA/FOOD_BEVERAGE/ORDER_ANALYSIS/CUSTOMER_NAME\", // (4)\n        \"meanings\": [ // (5)\n          { ... }, // (6)\n          {\n            \"typeName\": \"AtlasGlossaryTerm\",\n            \"guid\": \"b4113341-251b-4adc-81fb-2420501c30e6\"\n          },\n          {\n            \"typeName\": \"AtlasGlossaryTerm\",\n            \"guid\": \"b267858d-8316-4c41-a56a-6e9b840cef4a\"\n          }\n        ]\n      }\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Column\", // (2)\n      \"attributes\": {\n        \"name\": \"CUSTOMER_NAME\", // (3)\n        \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DATA/FOOD_BEVERAGE/ORDER_ANALYSIS/CUSTOMER_NAME\", // (4)\n        \"meanings\": [ // (5)\n          {\n            \"typeName\": \"AtlasGlossaryTerm\",\n            \"guid\": \"b4113341-251b-4adc-81fb-2420501c30e6\"\n          },\n          {\n            \"typeName\": \"AtlasGlossaryTerm\",\n            \"guid\": \"b267858d-8316-4c41-a56a-6e9b840cef4a\"\n          }\n        ]\n      }\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Column\", // (2)\n      \"attributes\": {\n        \"name\": \"CUSTOMER_NAME\", // (3)\n        \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DATA/FOOD_BEVERAGE/ORDER_ANALYSIS/CUSTOMER_NAME\", // (4)\n        \"meanings\": [ // (5)\n          { ... }, // (6)\n          {\n            \"typeName\": \"AtlasGlossaryTerm\",\n            \"guid\": \"b267858d-8316-4c41-a56a-6e9b840cef4a\"\n          }\n        ]\n      }\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Column\", // (2)\n      \"attributes\": {\n        \"name\": \"CUSTOMER_NAME\", // (3)\n        \"qualifiedName\": \"default/snowflake/1657037873/SAMPLE_DATA/FOOD_BEVERAGE/ORDER_ANALYSIS/CUSTOMER_NAME\", // (4)\n        \"meanings\": [] // (5)\n      }\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"S3Object\", // (2)\n      \"attributes\": {\n        \"name\": \"sample-file.csv\", // (3)\n        \"qualifiedName\": \"default/s3/1661068484/aws::test:samples-bucket:a/prefix/sample-file.csv\", // (4)\n        \"awsArn\": \"aws::test:samples-bucket:a/prefix/sample-file.csv\",\n        \"meanings\": [ // (5)\n          {\n            \"typeName\": \"AtlasGlossaryTerm\",\n            \"guid\": \"b4113341-251b-4adc-81fb-2420501c30e6\"\n          },\n          {\n            \"typeName\": \"AtlasGlossaryTerm\",\n            \"guid\": \"b267858d-8316-4c41-a56a-6e9b840cef4a\"\n          }\n        ]\n      }\n    }\n  ]\n}"
+      }
+    ]
+  },
+  {
+    "pageUrl": "https://developer.atlan.com/snippets/common-examples/domain-assignment/",
+    "blocks": [
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [\n     {\n       \"typeName\": \"Table\",  // (1)\n       \"attributes\": {\n         \"qualifiedName\": \"default/snowflake/1726834662/RAW/WIDEWORLDIMPORTERS/MARKETING_SALES\", // (2)\n         \"name\": \"MARKETING_SALES\", // (3)\n         \"domainGUIDs\": [\n           \"db711647-99a9-4c50-93c5-fab0b992a0cc\" // (4)\n         ]\n       }\n     }\n   ]\n }"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [\n     {\n       \"typeName\": \"Table\",  // (1)\n       \"attributes\": {\n         \"qualifiedName\": \"default/snowflake/1726834662/RAW/WIDEWORLDIMPORTERS/MARKETING_SALES\", // (2)\n         \"name\": \"MARKETING_SALES\", // (3)\n         \"domainGUIDs\": [] // (4)\n       }\n     }\n   ]\n }"
+      }
+    ]
+  },
+  {
+    "pageUrl": "https://developer.atlan.com/snippets/common-examples/readme/",
+    "blocks": [
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Readme\", // (2)\n      \"attributes\": {\n        \"name\": \"Example Term Readme\", // (3)\n        \"qualifiedName\": \"b4113341-251b-4adc-81fb-2420501c30e6/readme\", // (4)\n        \"description\": \"%3Ch1%3EOverview%3C%2Fh1%3E%3Cp%3EDetails%20about%20this%20term...%3C%2Fp%3E\", // (5)\n        \"asset\":{    // (6)\n            \"typeName\": \"AtlasGlossaryTerm\",\n            \"guid\": \"b4113341-251b-4adc-81fb-2420501c30e6\"\n        }\n      }\n    }\n  ]\n}"
+      },
+      {
+        "label": "GET /api/meta/entity/bulk?guid=b4113341-251b-4adc-81fb-2420501c30e6",
+        "code": "// (1)"
+      },
+      {
+        "label": "DELETE /api/meta/entity/bulk?guid=b4113341-251b-4adc-81fb-2420501c30e6&deleteType=PURGE",
+        "code": "// (1)"
+      }
+    ]
+  },
+  {
+    "pageUrl": "https://developer.atlan.com/snippets/common-examples/resources/",
+    "blocks": [
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Link\", // (2)\n      \"attributes\": {\n        \"name\": \"Definition\", // (3)\n        \"qualifiedName\": \"540182b5-f47b-4ba1-a247-6ca9ffd9f37a\", // (4)\n        \"link\": \"https://en.wikipedia.org/wiki/Customer\", // (5)\n        \"asset\": [ // (6)\n          {\n            \"typeName\": \"Table\",\n            \"uniqueAttributes\": {\n              \"qualifiedName\": \"default/snowflake/1234567890/reln_db/reln_schema/customers\"\n            }\n          }\n        ]\n      }\n    }\n  ]\n}"
+      }
+    ]
+  },
+  {
+    "pageUrl": "https://developer.atlan.com/snippets/common-examples/relationship-attributes/",
+    "blocks": [
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [\n    {\n      \"typeName\": \"AtlasGlossaryTerm\",\n      \"attributes\": {\n        \"name\": \"Policy\", // (1)\n        \"qualifiedName\": \"FpWBfqOfP0qZQ6tCpK10n@nrrnNyRABZTc6CEKwHh73\",\n        \"anchor\": {\n          \"typeName\": \"AtlasGlossary\",\n          \"guid\": \"55aaaa56-d8cd-4f19-8026-10d511a9b071\"\n        },\n        \"userDefRelationshipTo\": [\n          {\n            \"typeName\": \"AtlasGlossaryTerm\", // (2)\n            \"guid\": \"f558a01a-2e16-440c-ba2d-fed2099e540a\",\n            \"relationshipAttributes\": {\n              \"typeName\": \"UserDefRelationship\", // (3)\n              \"attributes\": {\n                \"toTypeLabel\": \"Sells\",\n                \"fromTypeLabel\": \"Sold by\"\n              }\n            },\n            \"relationshipType\": \"UserDefRelationship\"\n          }\n        ]\n      }\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n   \"entities\": [\n     {\n       \"typeName\": \"AtlasGlossaryTerm\",\n       \"attributes\": {\n         \"anchor\": { // (1)\n           \"typeName\": \"AtlasGlossary\",\n           \"guid\": \"55aaaa56-d8cd-4f19-8026-10d511a9b071\"\n         },\n         \"name\": \"Policy\",\n         \"qualifiedName\": \"FpWBfqOfP0qZQ6tCpK10n@nrrnNyRABZTc6CEKwHh73\",\n         \"userDefRelationshipTo\": [] // (2)\n       }\n     }\n   ]\n}"
+      }
+    ]
+  },
+  {
+    "pageUrl": "https://developer.atlan.com/snippets/advanced-examples/create/",
+    "blocks": [
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"AtlasGlossaryTerm\", // (2)\n      \"attributes\": {\n        \"name\": \"Example Term\", // (3)\n        \"qualifiedName\": \"Example Term\", // (4)\n        \"anchor\": { // (5)\n          \"typeName\": \"AtlasGlossary\",\n          \"guid\": \"b4113341-251b-4adc-81fb-2420501c30e6\"\n        }\n      }\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"AtlasGlossaryTerm\",\n      \"attributes\": {\n        \"name\": \"Example Term\",\n        \"qualifiedName\": \"Example Term\",\n        \"anchor\": {\n          \"typeName\": \"AtlasGlossary\",\n          \"guid\": \"b4113341-251b-4adc-81fb-2420501c30e6\"\n        },\n        \"certificateStatus\": \"VERIFIED\", // (2)\n        \"announcementType\": \"information\",\n        \"announcementTitle\": \"Imported\",\n        \"announcementMessage\": \"This term was imported from...\"\n      }\n    }\n  ]\n}"
+      }
+    ]
+  },
+  {
+    "pageUrl": "https://developer.atlan.com/snippets/advanced-examples/read/",
+    "blocks": [
+      {
+        "label": "GET /api/meta/entity/guid/b4113341-251b-4adc-81fb-2420501c30e6?ignoreRelationships=false&minExtInfo=false",
+        "code": "// (1)"
+      },
+      {
+        "label": "GET /api/meta/entity/uniqueAttribute/type/Glossary?attr:qualifiedName=FzCMyPR2LxkPFgr8eNGrq&ignoreRelationships=false&minExtInfo=false",
+        "code": "// (1)"
+      },
+      {
+        "label": "GET /api/meta/entity/guid/b4113341-251b-4adc-81fb-2420501c30e6?ignoreRelationships=true&minExtInfo=true",
+        "code": "// (1)"
+      }
+    ]
+  },
+  {
+    "pageUrl": "https://developer.atlan.com/snippets/advanced-examples/update/",
+    "blocks": [
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"AtlasGlossaryTerm\", // (2)\n      \"attributes\": {\n        \"name\": \"Example Term\", // (3)\n        \"qualifiedName\": \"gsNccqJraDZqM6WyGP3ea@FzCMyPR2LxkPFgr8eNGrq\", // (4)\n        \"anchor\": { // (5)\n          \"typeName\": \"AtlasGlossary\",\n          \"guid\": \"b4113341-251b-4adc-81fb-2420501c30e6\"\n        },\n        \"certificateStatus\": \"VERIFIED\", // (6)\n        \"announcementType\": \"information\", // (7)\n        \"announcementTitle\": \"Imported\",\n        \"announcementMessage\": \"This term was imported from ...\"\n      }\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"AtlasGlossaryTerm\", // (2)\n      \"attributes\": {\n        \"name\": \"Example Term\", // (3)\n        \"qualifiedName\": \"gsNccqJraDZqM6WyGP3ea@FzCMyPR2LxkPFgr8eNGrq\", // (4)\n        \"anchor\": { // (5)\n          \"typeName\": \"AtlasGlossary\",\n          \"guid\": \"b4113341-251b-4adc-81fb-2420501c30e6\"\n        },\n        \"certificateStatus\": null, // (6)\n        \"certificateStatusMessage\": null,\n        \"announcementType\": null, // (7)\n        \"announcementTitle\": null,\n        \"announcementMessage\": null\n      }\n    }\n  ]\n}"
+      }
+    ]
+  },
+  {
+    "pageUrl": "https://developer.atlan.com/snippets/advanced-examples/delete/",
+    "blocks": [
+      {
+        "label": "DELETE /api/meta/entity/bulk?guid=b4113341-251b-4adc-81fb-2420501c30e6&deleteType=SOFT",
+        "code": "// (1)"
+      },
+      {
+        "label": "DELETE /api/meta/entity/bulk?guid=b4113341-251b-4adc-81fb-2420501c30e6&deleteType=PURGE",
+        "code": "// (1)"
+      },
+      {
+        "label": "DELETE /api/meta/entity/bulk?guid=b4113341-251b-4adc-81fb-2420501c30e6&guid=21e5be62-7a0b-4547-ab7a-6ddf273d0640&guid=a0fb35e5-690d-4a5b-8918-9ee267c8fa55&deleteType=SOFT",
+        "code": "// (1)"
+      }
+    ]
+  },
+  {
+    "pageUrl": "https://developer.atlan.com/snippets/advanced-examples/restore/",
+    "blocks": [
+      {
+        "label": "POST /api/meta/entity/bulk?replaceClassifications=false&replaceBusinessAttributes=false&overwriteBusinessAttributes=false",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"AtlasGlossaryTerm\", // (2)\n      \"attributes\": {\n        \"name\": \"Example\", // (3)\n        \"qualifiedName\": \"gsNccqJraDZqM6WyGP3ea@FzCMyPR2LxkPFgr8eNGrq\", // (4)\n        \"anchor\": { // (5)\n          \"typeName\": \"AtlasGlossary\", // (6)\n          \"guid\": \"51a28d46-b700-4c9d-807d-397f25f2b6d6\" // (7)\n        }\n      },\n      \"status\": \"ACTIVE\" // (8)\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk?replaceClassifications=false&replaceBusinessAttributes=false&overwriteBusinessAttributes=false",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"AtlasGlossaryTerm\", // (2)\n      \"attributes\": {\n        \"name\": \"Example\", // (3)\n        \"qualifiedName\": \"gsNccqJraDZqM6WyGP3ea@FzCMyPR2LxkPFgr8eNGrq\", // (4)\n        \"anchor\": { // (5)\n          \"typeName\": \"AtlasGlossary\", // (6)\n          \"guid\": \"51a28d46-b700-4c9d-807d-397f25f2b6d6\" // (7)\n        }\n      },\n      \"status\": \"ACTIVE\" // (8)\n    },\n    {\n      \"typeName\": \"AtlasGlossaryTerm\",\n      \"attributes\": {\n        \"name\": \"Another Example\",\n        \"qualifiedName\": \"...\",\n        \"anchor\": {\n          \"typeName\": \"AtlasGlossary\",\n          \"guid\": \"51a28d46-b700-4c9d-807d-397f25f2b6d6\"\n        }\n      },\n      \"status\": \"ACTIVE\"\n    }\n    { ... },\n    { ... },\n    { ... }\n  ]\n}"
+      }
+    ]
+  },
+  {
+    "pageUrl": "https://developer.atlan.com/snippets/common-examples/lineage/",
+    "blocks": []
+  },
+  {
+    "pageUrl": "https://developer.atlan.com/snippets/common-examples/lineage/manage/",
+    "blocks": [
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"Process\", // (2)\n      \"attributes\": {\n        \"name\": \"Source 1, Source 2, Source 3 -> Target 1, Target 2\", // (3)\n        \"qualifiedName\": \"default/snowflake/1657025257/dag_123\", // (4)\n        \"inputs\": [ // (5)\n          {\n            \"typeName\": \"Table\",\n            \"guid\": \"495b1516-aaaf-4390-8cfd-b11ade7a7799\"\n          },\n          {\n            \"typeName\": \"Table\",\n            \"guid\": \"d002dead-1655-4d75-abd6-ad889fa04bd4\"\n          },\n          {\n            \"typeName\": \"Table\",\n            \"uniqueAttributes\": {\n              \"qualifiedName\": \"default/snowflake/1657025257/OPS/DEFAULT/RUN_STATS\"\n            }\n          }\n        ],\n        \"outputs\": [ // (6)\n          {\n            \"typeName\": \"Table\",\n            \"guid\": \"86d9a061-7753-4884-b988-a02d3954bc24\"\n          },\n          {\n            \"typeName\": \"Table\",\n            \"uniqueAttributes\": {\n              \"qualifiedName\": \"default/snowflake/1657025257/OPS/DEFAULT/FULL_STATS\"\n            }\n          }\n        ]\n      }\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [\n    {\n      \"typeName\": \"Connection\", // (1)\n      \"attributes\": {\n        \"name\": \"open_lineage_connection\", // (2)\n        \"connectorName\": \"spark\", // (3)\n        \"qualifiedName\": \"default/spark/123456789\", // (4)\n        \"category\": \"connector\", // (5)\n        \"defaultCredentialGuid\": \"8b579147-6054-4a4c-8137-463cd349b393\", // (6)\n        \"adminRoles\": [ // (7)\n          \"e7ae0295-c60a-469a-bd2c-fb903943aa02\"\n        ],\n        \"adminGroups\": [ // (8)\n          \"group2\"\n        ],\n        \"adminUsers\": [ // (9)\n          \"jsmith\"\n        ]\n      }\n    }\n  ]\n}"
+      },
+      {
+        "label": "POST /api/meta/entity/bulk",
+        "code": "{\n  \"entities\": [ // (1)\n    {\n      \"typeName\": \"ColumnProcess\", // (2)\n      \"attributes\": {\n        \"name\": \"Source 1, Source 2, Source 3 -> Target 1, Target 2\", // (3)\n        \"qualifiedName\": \"default/snowflake/1657025257/dag_123\", // (4)\n        \"inputs\": [ // (5)\n          {\n            \"typeName\": \"Column\",\n            \"guid\": \"495b1516-aaaf-4390-8cfd-b11ade7a7799\"\n          },\n          {\n            \"typeName\": \"Column\",\n            \"guid\": \"d002dead-1655-4d75-abd6-ad889fa04bd4\"\n          },\n          {\n            \"typeName\": \"Column\",\n            \"uniqueAttributes\": {\n              \"qualifiedName\": \"default/snowflake/1657025257/OPS/DEFAULT/RUN_STATS\"\n            }\n          }\n        ],\n        \"outputs\": [ // (6)\n          {\n            \"typeName\": \"Column\",\n            \"guid\": \"86d9a061-7753-4884-b988-a02d3954bc24\"\n          },\n          {\n            \"typeName\": \"Column\",\n            \"uniqueAttributes\": {\n              \"qualifiedName\": \"default/snowflake/1657025257/OPS/DEFAULT/FULL_STATS\"\n            }\n          }\n        ],\n        \"process\": { // (7)\n            \"guid\": \"76d9a061-7753-9884-b988-a02d3954bc25\",\n            \"typeName\": \"Process\",\n            \"uniqueAttributes\": {\n                \"qualifiedName\": \"default/snowflake/1657025257/parent_123\"\n            }\n        }\n      }\n    }\n  ]\n}"
+      },
+      {
+        "label": "DELETE /api/meta/entity/bulk?guid=6fa1f0d0-5720-4041-8243-c2a5628b68bf&deleteType=PURGE",
+        "code": "// (1)"
+      }
+    ]
+  },
+  {
+    "pageUrl": "https://developer.atlan.com/snippets/common-examples/lineage/traverse/",
+    "blocks": [
+      {
+        "label": "POST /api/meta/lineage/list",
+        "code": "{\n  \"guid\": \"495b1516-aaaf-4390-8cfd-b11ade7a7799\", // (1)\n  \"depth\": 1000000, // (2)\n  \"direction\": \"OUTPUT\", // (3)\n  \"from\": 0, // (4)\n  \"size\": 10, // (5)\n  \"attributes\": [ // (6)\n    \"name\"\n  ],\n  \"excludeMeanings\": true,\n  \"excludeClassifications\": true\n}"
+      },
+      {
+        "label": "POST /api/meta/lineage/list",
+        "code": "{\n  \"guid\": \"495b1516-aaaf-4390-8cfd-b11ade7a7799\", // (1)\n  \"depth\": 1000000,\n  \"direction\": \"OUTPUT\", // (2)\n  \"from\": 0,\n  \"size\": 10,\n  \"excludeMeanings\": true,\n  \"excludeClassifications\": true\n}"
+      },
+      {
+        "label": "POST /api/meta/lineage/list",
+        "code": "{\n  \"guid\": \"495b1516-aaaf-4390-8cfd-b11ade7a7799\", // (1)\n  \"depth\": 1000000,\n  \"direction\": \"INPUT\", // (2)\n  \"from\": 0,\n  \"size\": 10,\n  \"excludeMeanings\": true,\n  \"excludeClassifications\": true\n}"
+      },
+      {
+        "label": "POST /api/meta/lineage/list",
+        "code": "{\n  \"guid\": \"495b1516-aaaf-4390-8cfd-b11ade7a7799\",\n  \"depth\": 1000000,\n  \"direction\": \"INPUT\",\n  \"entityFilters\": { // (1)\n    \"condition\": \"AND\",\n    \"criterion\": [ // (2)\n      {\n        \"attributeName\": \"certificateStatus\",\n        \"operator\": \"contains\",\n        \"attributeValue\": \"VERIFIED\"\n      }\n    ]\n  },\n  \"from\": 0,\n  \"size\": 10,\n  \"excludeMeanings\": true,\n  \"excludeClassifications\": true\n}"
+      },
+      {
+        "label": "POST /api/meta/lineage/list",
+        "code": "{\n  \"guid\": \"495b1516-aaaf-4390-8cfd-b11ade7a7799\",\n  \"depth\": 1000000,\n  \"direction\": \"OUTPUT\",\n  \"entityFilters\": {\n    \"condition\": \"AND\",\n    \"criterion\": [\n      {\n        \"attributeName\": \"__state\",\n        \"operator\": \"=\",\n        \"attributeValue\": \"ACTIVE\"\n      }\n    ]\n  },\n  \"entityTraversalFilters\": { // (1)\n    \"condition\": \"AND\",\n    \"criterion\": [\n      {\n        \"attributeName\": \"__state\",\n        \"operator\": \"=\",\n        \"attributeValue\": \"ACTIVE\"\n      }\n    ]\n  },\n  \"from\": 0,\n  \"size\": 10,\n  \"excludeMeanings\": true,\n  \"excludeClassifications\": true\n}"
+      },
+      {
+        "label": "POST /api/meta/lineage/list",
+        "code": "{\n  \"guid\": \"495b1516-aaaf-4390-8cfd-b11ade7a7799\",\n  \"depth\": 1000000,\n  \"direction\": \"OUTPUT\",\n  \"attributes\": [ // (1)\n    \"description\"\n  ],\n  \"from\": 0,\n  \"size\": 10,\n  \"excludeClassifications\": false, // (2)\n  \"excludeMeanings\": false // (3)\n}"
+      },
+      {
+        "label": "POST /api/meta/lineage/getlineage",
+        "code": "{\n  \"guid\": \"495b1516-aaaf-4390-8cfd-b11ade7a7799\", // (1)\n  \"depth\": 0, // (2)\n  \"direction\": \"BOTH\", // (3)\n  \"hideProcess\": true, // (4)\n  \"allowDeletedProcess\": false // (5)\n}"
+      },
+      {
+        "label": "POST /api/meta/lineage/getlineage",
+        "code": "{\n  \"guid\": \"495b1516-aaaf-4390-8cfd-b11ade7a7799\", // (1)\n  \"depth\": 1, // (2)\n  \"direction\": \"OUTPUT\" // (3)\n}"
+      },
+      {
+        "label": "POST /api/meta/lineage/getlineage",
+        "code": "{\n  \"guid\": \"495b1516-aaaf-4390-8cfd-b11ade7a7799\", // (1)\n  \"depth\": 1, // (2)\n  \"direction\": \"INPUT\" // (3)\n}"
+      }
+    ]
+  }
+]

@@ -1,0 +1,124 @@
+get:
+  operationId: getAssetByQualifiedName
+  summary: Retrieve an asset by qualifiedName
+  description: |
+    Get full details of an asset by its type and qualifiedName.
+
+    This is an alternative to retrieving by GUID when you know the asset's
+    hierarchical qualified name.
+
+    ## Use cases
+    - [Retrieve assets](https://developer.atlan.com/snippets/advanced-examples/read/)
+  externalDocs:
+    url: https://developer.atlan.com/snippets/advanced-examples/read/
+    description: Retrieving an asset – Raw REST API examples
+  tags:
+    - Retrieve assets
+  security:
+    - AtlanToken: []
+  parameters:
+    - $ref: '../../components/parameters/_index.yaml#/typeName'
+    - name: "attr:qualifiedName"
+      in: query
+      required: true
+      schema:
+        type: string
+      description: The qualifiedName of the asset.
+      example: "default/snowflake/123/analytics/public/orders"
+    - $ref: '../../components/parameters/_index.yaml#/minExtInfo'
+    - $ref: '../../components/parameters/_index.yaml#/ignoreRelationships'
+  responses:
+    '200':
+      description: Asset details
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              entity:
+                $ref: '../../components/schemas/Asset.yaml'
+              referredEntities:
+                type: object
+                additionalProperties:
+                  $ref: '../../components/schemas/Asset.yaml'
+          examples:
+            table_by_qualified_name:
+              summary: Table retrieved by qualifiedName
+              description: Full table details including relationships
+              value:
+                referredEntities: {}
+                entity:
+                  typeName: Table
+                  attributes:
+                    qualifiedName: default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP
+                    name: DIM_CUSTOMER_SP
+                    displayName: Customer Dimension
+                    description: Main customer dimension table
+                    certificateStatus: VERIFIED
+                    ownerUsers:
+                      - data.steward@company.com
+                    connectionQualifiedName: default/snowflake/1698696666
+                    connectorName: snowflake
+                    databaseName: WIDE_WORLD_IMPORTERS
+                    schemaName: PROCESSED_GOLD
+                    columnCount: 15
+                    rowCount: 50000
+                    __hasLineage: true
+                  guid: b9d5dbbc-ee8a-4c5e-a946-a47033892172
+                  status: ACTIVE
+                  createdBy: ryan.quigley
+                  createTime: 1747185436766
+                  updateTime: 1765929858468
+                  classifications:
+                    - typeName: PII
+                      propagate: true
+            column_by_qualified_name:
+              summary: Column retrieved by qualifiedName
+              description: Column with data type and profiling info
+              value:
+                referredEntities: {}
+                entity:
+                  typeName: Column
+                  attributes:
+                    qualifiedName: default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP/EMAIL
+                    name: EMAIL
+                    dataType: VARCHAR
+                    order: 5
+                    isPrimary: false
+                    isNullable: true
+                    maxLength: 256
+                  guid: c9d6dcbc-ff9b-5d6e-a057-b47144882061
+                  status: ACTIVE
+    '400':
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '401':
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '403':
+      description: Caller lacks permissions
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '404':
+      description: Asset not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+          example:
+            errorCode: ATLAS-404-00-001
+            errorMessage: "No entity found with type Table and qualifiedName default/snowflake/123/missing/table"
+    '500':
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'

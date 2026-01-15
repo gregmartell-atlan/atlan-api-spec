@@ -1,0 +1,106 @@
+id: advanced-examples-restore
+title: Restoring assets
+category: crud
+icon: zap
+relatedTypes:
+  - Asset
+description: Restoring an asset from an archived (soft-deleted) state back to active uses a similar pattern to the deletion operations.
+externalDocs:
+  url: https://developer.atlan.com/snippets/advanced-examples/restore/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: By qualifiedName
+    description: |-
+      1.4.0 4.0.0
+      To restore an asset by its qualifiedName:
+    notes:
+      - type: warning
+        title: Must exactly match the qualifiedName of an existing asset
+        content: If this does not exactly match the qualifiedName of an existing asset, the API call will instead create a new asset rather than restoring an existing one.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    queryString: replaceClassifications=false&replaceBusinessAttributes=false&overwriteBusinessAttributes=false
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AtlasGlossaryTerm
+              attributes:
+                name: Example
+                qualifiedName: gsNccqJraDZqM6WyGP3ea@FzCMyPR2LxkPFgr8eNGrq
+                anchor:
+                  typeName: AtlasGlossary
+                  guid: 51a28d46-b700-4c9d-807d-397f25f2b6d6
+              status: ACTIVE
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: AtlasGlossaryTerm
+                attributes:
+                  qualifiedName: gsNccqJraDZqM6WyGP3ea@FzCMyPR2LxkPFgr8eNGrq
+                  name: Example
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+                relationshipAttributes:
+                  anchor:
+                    guid: 51a28d46-b700-4c9d-807d-397f25f2b6d6
+                    typeName: AtlasGlossary
+  - step: 2
+    title: In bulk
+    description: "To restore a number of assets at the same time, for example after retrieving them via a search:"
+    notes:
+      - type: warning
+        title: The restore will only be run on that limited set of results
+        content: In this example, the restore is only running on the first set of 50 results. To restore all assets that match the search criteria, don't forget to loop over this logic or create your own batching mechanism to process all pages!
+      - type: warning
+        title: The restore will only be run on that limited set of results
+        content: In this example, the restore is only running on the first set of 50 results. To restore all assets that match the search criteria, don't forget to loop over this logic or create your own batching mechanism to process all pages!
+      - type: warning
+        title: Multiple API calls required
+        content: You will need to first run a search for all assets with a status of DELETED. You can then bulk-restore them by placing all of the returned assets into a single API call.
+      - type: warning
+        title: Must exactly match the qualifiedName of an existing asset
+        content: If this does not exactly match the qualifiedName of an existing asset, the API call will instead create a new asset rather than restoring an existing one.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    queryString: replaceClassifications=false&replaceBusinessAttributes=false&overwriteBusinessAttributes=false
+    examples:
+      - key: example-2-1
+        summary: POST /api/meta/entity/bulk
+        requestRaw: |
+          {
+            "entities": [
+              {
+                "typeName": "AtlasGlossaryTerm",
+                "attributes": {
+                  "name": "Example",
+                  "qualifiedName": "gsNccqJraDZqM6WyGP3ea@FzCMyPR2LxkPFgr8eNGrq",
+                  "anchor": {
+                    "typeName": "AtlasGlossary",
+                    "guid": "51a28d46-b700-4c9d-807d-397f25f2b6d6"
+                  }
+                },
+                "status": "ACTIVE"
+              },
+              {
+                "typeName": "AtlasGlossaryTerm",
+                "attributes": {
+                  "name": "Another Example",
+                  "qualifiedName": "...",
+                  "anchor": {
+                    "typeName": "AtlasGlossary",
+                    "guid": "51a28d46-b700-4c9d-807d-397f25f2b6d6"
+                  }
+                },
+                "status": "ACTIVE"
+              }
+              { ... },
+              { ... },
+              { ... }
+            ]
+          }
+        response:
+          mutatedEntities:
+            UPDATE: []

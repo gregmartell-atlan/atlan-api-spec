@@ -1,0 +1,113 @@
+id: workflows-packages-lineage-generator-nt
+title: Lineage generator package
+category: workflows
+icon: zap
+relatedTypes:
+  - ColumnProcess
+  - Process
+  - Workflow
+  - WorkflowRun
+description: Configure and run Lineage generator package workflows. This package crawls metadata from Lineage and syncs it to your Atlan catalog.
+externalDocs:
+  url: https://developer.atlan.com/snippets/workflows/packages/lineage-generator-nt/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Configuration
+    description: |-
+      Recommendation
+      To avoid to blindly let the package to create the lineage, an option to preview the ouput is provided. The typical path to use this package would be:
+      Ask the package to generate the lineage preview:
+      To generate lineage by automatically detecting assets with similar names between two connections:
+    notes:
+      - type: tip
+        title: Recommendation
+        content: |-
+          To avoid to blindly let the package to create the lineage, an option to preview the ouput is provided. The typical path to use this package would be: Ask the package to generate the lineage preview:
+          If happy with the output, ask the package to generate the lineage on Atlan. The package also provides a method to delete lineage created by the package itself.
+      - type: warning
+        title: Workflows run asynchronously
+        content: Remember that workflows run asynchronously. See the packages and workflows introduction for details on how to check the status and wait until the workflow has been completed.
+      - type: recommendation
+        title: Create the workflow via UI only
+        content: We recommend creating the workflow only via the UI. To rerun an existing workflow, see the steps below.
+  - step: 2
+    title: Re-run existing workflow
+    description: "To re-run an existing lineage generator workflow:"
+    notes:
+      - type: warning
+        title: Workflows run asynchronously
+        content: Remember that workflows run asynchronously. See the packages and workflows introduction for details on how you can check the status and wait until the workflow has been completed.
+      - type: warning
+        title: Requires multiple steps through the raw REST API
+        content: Find the existing workflow. Send through the resulting re-run request.
+      - type: recommendation
+        title: Name of the workflow
+        content: The name of the workflow will be nested within the _source.metadata.name property of the response object. (Remember since this is a search, there could be multiple results, so you may want to use the other details in each result to determine which workflow you really want.)
+    method: POST
+    endpoint: /api/service/workflows/indexsearch
+    examples:
+      - key: example-2-1
+        summary: POST /api/service/workflows/indexsearch
+        request:
+          from: 0
+          size: 5
+          query:
+            bool:
+              filter:
+                - nested:
+                    path: metadata
+                    query:
+                      prefix:
+                        metadata.name.keyword:
+                          value: csa-lineage-generator
+          sort:
+            - metadata.creationTimestamp:
+                nested:
+                  path: metadata
+                order: desc
+          track_total_hits: true
+        response:
+          approximateCount: 5
+          records:
+            - _index: atlan-workflow
+              _source:
+                metadata:
+                  name: atlan-snowflake-miner-1714638976
+                  namespace: default
+                  creationTimestamp: "2026-01-15T17:49:40.121Z"
+                  labels:
+                    workflows.argoproj.io/creator: admin
+                  annotations:
+                    package.argoproj.io/name: "@atlan/snowflake-miner"
+                spec:
+                  entrypoint: main
+                status:
+                  phase: Succeeded
+                  startedAt: "2026-01-15T16:49:40.121Z"
+                  finishedAt: "2026-01-15T17:49:40.121Z"
+      - key: example-2-2
+        summary: POST /api/service/workflows/submit
+        request:
+          namespace: default
+          resourceKind: WorkflowTemplate
+          resourceName: csa-lineage-generator-1684500411
+        response:
+          approximateCount: 5
+          records:
+            - _index: atlan-workflow
+              _source:
+                metadata:
+                  name: atlan-snowflake-miner-1714638976
+                  namespace: default
+                  creationTimestamp: "2026-01-15T17:49:40.121Z"
+                  labels:
+                    workflows.argoproj.io/creator: admin
+                  annotations:
+                    package.argoproj.io/name: "@atlan/snowflake-miner"
+                spec:
+                  entrypoint: main
+                status:
+                  phase: Succeeded
+                  startedAt: "2026-01-15T16:49:40.121Z"
+                  finishedAt: "2026-01-15T17:49:40.121Z"

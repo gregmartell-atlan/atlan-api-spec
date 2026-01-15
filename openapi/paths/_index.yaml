@@ -1,0 +1,58 @@
+# Paths index – references to individual path files
+# Using clean, minimal endpoint definitions
+# Use-case-specific documentation is in /openapi/use-cases/
+
+# ─── Meta API ─────────────────────────────────────────────────────────────────
+
+/api/meta/entity/bulk:
+  $ref: './meta/entity-bulk-clean.yaml'
+
+/api/meta/entity/guid/{guid}:
+  $ref: './meta/entity-guid.yaml'
+
+/api/meta/entity/guid/{guid}/businessmetadata:
+  $ref: './meta/entity-businessmetadata.yaml'
+
+/api/meta/entity/guid/{guid}/businessmetadata/{name}:
+  $ref: './meta/entity-businessmetadata-name.yaml'
+
+/api/meta/entity/uniqueAttribute/type/{typeName}:
+  $ref: './meta/entity-unique-attribute.yaml'
+
+/api/meta/entity/auditSearch:
+  $ref: './meta/entity-audit-search.yaml'
+
+/api/meta/search/indexsearch:
+  $ref: './meta/search-indexsearch.yaml'
+
+/api/meta/search/searchlog:
+  $ref: './meta/search-searchlog.yaml'
+
+/api/meta/lineage/list:
+  $ref: './meta/lineage-list.yaml'
+
+/api/meta/lineage/getlineage:
+  $ref: './meta/lineage-getlineage.yaml'
+
+/api/meta/types/typedefs:
+  $ref: './meta/types-typedefs.yaml'
+
+/api/meta/types/typedef/name/{name}:
+  $ref: './meta/types-typedef-name.yaml'
+
+/api/meta/task/search:
+  $ref: './meta/task-search.yaml'
+
+# ─── Service API ──────────────────────────────────────────────────────────────
+
+/api/service/workflows/indexsearch:
+  $ref: './service/workflows-indexsearch-clean.yaml'
+
+/api/service/workflows/submit:
+  $ref: './service/workflows-submit-clean.yaml'
+
+/api/service/runs/indexsearch:
+  $ref: './service/runs-indexsearch-clean.yaml'
+
+/api/service/health:
+  $ref: './service/health.yaml'

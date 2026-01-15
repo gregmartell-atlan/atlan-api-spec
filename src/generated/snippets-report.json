@@ -1,0 +1,2526 @@
+{
+  "generatedAt": "2026-01-13T02:58:00.321Z",
+  "totalPages": 100,
+  "pagesWithExamples": 77,
+  "totalSections": 272,
+  "totalExamples": 306,
+  "categories": 10,
+  "pages": [
+    {
+      "url": "https://developer.atlan.com/snippets/",
+      "title": "Common tasks",
+      "sectionCount": 0,
+      "exampleCount": 0,
+      "category": "general",
+      "sections": []
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/access/",
+      "title": "Access control and personalization",
+      "sectionCount": 0,
+      "exampleCount": 0,
+      "category": "access-control",
+      "sections": []
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/access/events/",
+      "title": "Retrieve access events",
+      "sectionCount": 2,
+      "exampleCount": 2,
+      "category": "access-control",
+      "sections": [
+        {
+          "title": "All events",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Admin events",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/access/personas/",
+      "title": "Personas",
+      "sectionCount": 10,
+      "exampleCount": 17,
+      "category": "access-control",
+      "sections": [
+        {
+          "title": "List personas",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Create a persona",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve a persona",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Update a persona",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Delete a persona",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Activate or deactivate a persona",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Add subjects to a persona",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Add policies to a persona",
+          "hasDescription": true,
+          "exampleCount": 20,
+          "subsectionCount": 4
+        },
+        {
+          "title": "List policies in a persona",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Personalize the persona",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/access/policies/",
+      "title": "Policies",
+      "sectionCount": 3,
+      "exampleCount": 4,
+      "category": "access-control",
+      "sections": [
+        {
+          "title": "Retrieve policies",
+          "hasDescription": true,
+          "exampleCount": 10,
+          "subsectionCount": 2
+        },
+        {
+          "title": "Update policies",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Remove policies",
+          "hasDescription": true,
+          "exampleCount": 8,
+          "subsectionCount": 2
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/access/purposes/",
+      "title": "Purposes",
+      "sectionCount": 9,
+      "exampleCount": 12,
+      "category": "access-control",
+      "sections": [
+        {
+          "title": "List purposes",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Create a purpose",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve a purpose",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Update a purpose",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Delete a purpose",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Activate or deactivate a purpose",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Add policies to a purpose",
+          "hasDescription": true,
+          "exampleCount": 10,
+          "subsectionCount": 2
+        },
+        {
+          "title": "List policies in a purpose",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Personalize the purpose",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/access/queries/",
+      "title": "Run queries on an asset",
+      "sectionCount": 1,
+      "exampleCount": 1,
+      "category": "access-control",
+      "sections": [
+        {
+          "title": "Use API token to run queries",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/access/tokens/",
+      "title": "API tokens",
+      "sectionCount": 6,
+      "exampleCount": 7,
+      "category": "access-control",
+      "sections": [
+        {
+          "title": "Create an API token",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve an API token",
+          "hasDescription": true,
+          "exampleCount": 10,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Update an API token",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Delete an API token",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Give permissions to API token",
+          "hasDescription": true,
+          "exampleCount": 14,
+          "subsectionCount": 4
+        },
+        {
+          "title": "Obtain a user's bearer token",
+          "hasDescription": true,
+          "exampleCount": 1,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/advanced-examples/",
+      "title": "Asset CRUD operations",
+      "sectionCount": 0,
+      "exampleCount": 0,
+      "category": "crud",
+      "sections": []
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/advanced-examples/combine/",
+      "title": "Combining multiple operations",
+      "sectionCount": 0,
+      "exampleCount": 0,
+      "category": "crud",
+      "sections": []
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/advanced-examples/create/",
+      "title": "Creating an asset",
+      "sectionCount": 3,
+      "exampleCount": 2,
+      "category": "crud",
+      "sections": [
+        {
+          "title": "Build minimal object needed",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Create the asset from the object",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "(Optional) Enrich before creating",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/advanced-examples/delete/",
+      "title": "Deleting assets",
+      "sectionCount": 3,
+      "exampleCount": 3,
+      "category": "crud",
+      "sections": [
+        {
+          "title": "Soft-delete an asset",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Hard-delete an asset",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Bulk-delete assets",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/advanced-examples/history/",
+      "title": "Viewing the history of an asset",
+      "sectionCount": 3,
+      "exampleCount": 1,
+      "category": "crud",
+      "sections": [
+        {
+          "title": "Build the request",
+          "hasDescription": true,
+          "exampleCount": 8,
+          "subsectionCount": 2
+        },
+        {
+          "title": "Run the search",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Review details of each activity",
+          "hasDescription": true,
+          "exampleCount": 6,
+          "subsectionCount": 2
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/advanced-examples/read/",
+      "title": "Retrieving assets",
+      "sectionCount": 4,
+      "exampleCount": 3,
+      "category": "crud",
+      "sections": [
+        {
+          "title": "By GUID",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "By GUID (runtime typing)",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        },
+        {
+          "title": "By qualifiedName",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Full vs minimal assets",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/advanced-examples/restore/",
+      "title": "Restoring assets",
+      "sectionCount": 2,
+      "exampleCount": 2,
+      "category": "crud",
+      "sections": [
+        {
+          "title": "By qualifiedName",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "In bulk",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/advanced-examples/search/",
+      "title": "Searching for assets",
+      "sectionCount": 5,
+      "exampleCount": 2,
+      "category": "crud",
+      "sections": [
+        {
+          "title": "Build the query",
+          "hasDescription": true,
+          "exampleCount": 9,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Build the request",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "(Optional) Build request directly from JSON",
+          "hasDescription": true,
+          "exampleCount": 2,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Run the search",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Iterate through results",
+          "hasDescription": true,
+          "exampleCount": 11,
+          "subsectionCount": 2
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/advanced-examples/suggestions/",
+      "title": "Find and apply suggestions to an asset",
+      "sectionCount": 2,
+      "exampleCount": 0,
+      "category": "crud",
+      "sections": [
+        {
+          "title": "Find suggestions",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Apply suggestions",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/advanced-examples/update/",
+      "title": "Updating an asset",
+      "sectionCount": 4,
+      "exampleCount": 2,
+      "category": "crud",
+      "sections": [
+        {
+          "title": "Build minimal object needed",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Enrich before updating",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Update the asset from the object",
+          "hasDescription": true,
+          "exampleCount": 7,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Remove information from an asset",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/",
+      "title": "Examples of common actions with assets",
+      "sectionCount": 0,
+      "exampleCount": 0,
+      "category": "common-actions",
+      "sections": []
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/announcements/",
+      "title": "Manage announcements",
+      "sectionCount": 3,
+      "exampleCount": 3,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "Add to an existing asset",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Remove from an existing asset",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "When creating an asset",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/certificates/",
+      "title": "Certify assets",
+      "sectionCount": 3,
+      "exampleCount": 3,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "Add to an existing asset",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Remove from an existing asset",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "When creating an asset",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/custom-metadata/",
+      "title": "Change custom metadata on assets",
+      "sectionCount": 5,
+      "exampleCount": 15,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "Value representation",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Add to existing assets",
+          "hasDescription": true,
+          "exampleCount": 17,
+          "subsectionCount": 3
+        },
+        {
+          "title": "Remove from an existing asset",
+          "hasDescription": true,
+          "exampleCount": 14,
+          "subsectionCount": 3
+        },
+        {
+          "title": "When creating an asset",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Find hashed-string names",
+          "hasDescription": true,
+          "exampleCount": 2,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/descriptions/",
+      "title": "Change description",
+      "sectionCount": 3,
+      "exampleCount": 3,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "Change an existing asset",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Remove from an existing asset",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "When creating an asset",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/domain-assignment/",
+      "title": "Link domain and assets",
+      "sectionCount": 3,
+      "exampleCount": 2,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "Add an asset to a domain",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve Assets by Domain",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Remove an asset from a domain",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/owners/",
+      "title": "Change owners",
+      "sectionCount": 3,
+      "exampleCount": 3,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "Change an existing asset",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Remove from an existing asset",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "When creating an asset",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/readme/",
+      "title": "Manage asset READMEs",
+      "sectionCount": 4,
+      "exampleCount": 3,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "Add to an existing asset",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve a README from an existing asset",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Update a README attached to an existing asset",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Remove a README from an Existing Asset",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/relationship-attributes/",
+      "title": "Manage asset relationships with attributes",
+      "sectionCount": 4,
+      "exampleCount": 3,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "Relationships with attribute support",
+          "hasDescription": true,
+          "exampleCount": 0,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Add user-defined relationship",
+          "hasDescription": true,
+          "exampleCount": 2,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Remove user-defined relationship",
+          "hasDescription": true,
+          "exampleCount": 2,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve user-defined relationship",
+          "hasDescription": true,
+          "exampleCount": 2,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/resources/",
+      "title": "Add asset resources / links",
+      "sectionCount": 2,
+      "exampleCount": 1,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "Add to an existing asset",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Remove from an existing asset",
+          "hasDescription": true,
+          "exampleCount": 0,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/tags/",
+      "title": "Tag (classify) assets",
+      "sectionCount": 5,
+      "exampleCount": 10,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "Add to an existing asset",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Update on an existing asset",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Remove from existing assets",
+          "hasDescription": true,
+          "exampleCount": 12,
+          "subsectionCount": 3
+        },
+        {
+          "title": "In bulk",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Find hashed-string names",
+          "hasDescription": true,
+          "exampleCount": 2,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/term-assignment/",
+      "title": "Link terms and assets",
+      "sectionCount": 5,
+      "exampleCount": 5,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "Append terms to an asset",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Replace terms on an asset",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Remove terms from an asset",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Remove all terms from an asset",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "When creating an asset",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/finding/",
+      "title": "Get all assets that...",
+      "sectionCount": 2,
+      "exampleCount": 0,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "As a traversal",
+          "hasDescription": true,
+          "exampleCount": 0,
+          "subsectionCount": 0
+        },
+        {
+          "title": "As a search",
+          "hasDescription": true,
+          "exampleCount": 0,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/finding/examples/",
+      "title": "Search examples",
+      "sectionCount": 10,
+      "exampleCount": 10,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "Connection by name and type",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "All connections",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Columns in a schema",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Assets with custom metadata",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Assets with specific custom metadata value",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Assets linked to a term",
+          "hasDescription": true,
+          "exampleCount": 7,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Assets with an Atlan tag",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Assets with a source tag",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Deprecated assets",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Certified but incomplete assets",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/glossary/",
+      "title": "Glossary introduction",
+      "sectionCount": 0,
+      "exampleCount": 0,
+      "category": "common-actions",
+      "sections": []
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/glossary/categorize-terms/",
+      "title": "Categorize terms",
+      "sectionCount": 2,
+      "exampleCount": 2,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "During term creation",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Updating an existing term",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/glossary/create-hierarchy/",
+      "title": "Creating a hierarchy",
+      "sectionCount": 2,
+      "exampleCount": 2,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "Create a root-level category",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Create a child category",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/glossary/create/",
+      "title": "Creating glossary objects",
+      "sectionCount": 3,
+      "exampleCount": 3,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "Create a glossary",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Create a category",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Create a term",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/glossary/hierarchy/",
+      "title": "Traverse categories",
+      "sectionCount": 2,
+      "exampleCount": 1,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "Retrieve the hierarchy",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Traverse the hierarchy",
+          "hasDescription": true,
+          "exampleCount": 9,
+          "subsectionCount": 3
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/glossary/retrieve-by-name/",
+      "title": "Retrieving glossary objects by name",
+      "sectionCount": 3,
+      "exampleCount": 3,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "Retrieve a glossary by name",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve a category by name",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve a term by name",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/lineage/",
+      "title": "Lineage overview",
+      "sectionCount": 0,
+      "exampleCount": 0,
+      "category": "common-actions",
+      "sections": []
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/lineage/manage/",
+      "title": "Manage lineage",
+      "sectionCount": 3,
+      "exampleCount": 9,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "Create lineage between assets",
+          "hasDescription": true,
+          "exampleCount": 15,
+          "subsectionCount": 2
+        },
+        {
+          "title": "Create lineage between columns",
+          "hasDescription": true,
+          "exampleCount": 13,
+          "subsectionCount": 3
+        },
+        {
+          "title": "Remove lineage between assets",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/lineage/parse-sql/",
+      "title": "Parse SQL queries",
+      "sectionCount": 1,
+      "exampleCount": 2,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "How to interpret the response",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 2
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/lineage/traverse/",
+      "title": "Traverse lineage",
+      "sectionCount": 4,
+      "exampleCount": 14,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "Retrieve lineage",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Traverse lineage",
+          "hasDescription": true,
+          "exampleCount": 8,
+          "subsectionCount": 2
+        },
+        {
+          "title": "Filter lineage",
+          "hasDescription": true,
+          "exampleCount": 12,
+          "subsectionCount": 3
+        },
+        {
+          "title": "Original API",
+          "hasDescription": true,
+          "exampleCount": 13,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/profiling-and-popularity/",
+      "title": "Profiling and popularity",
+      "sectionCount": 2,
+      "exampleCount": 0,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "Profiling",
+          "hasDescription": true,
+          "exampleCount": 0,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Popularity",
+          "hasDescription": true,
+          "exampleCount": 0,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/profiling-and-popularity/popularity/",
+      "title": "Manage popularity",
+      "sectionCount": 3,
+      "exampleCount": 6,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "Make details visible in the UI",
+          "hasDescription": true,
+          "exampleCount": 8,
+          "subsectionCount": 2
+        },
+        {
+          "title": "Retrieve usage details",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Add your own usage details",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/common-examples/profiling-and-popularity/profiling/",
+      "title": "Manage column profiling information",
+      "sectionCount": 2,
+      "exampleCount": 2,
+      "category": "common-actions",
+      "sections": [
+        {
+          "title": "Retrieve profiles",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Add your own profiles",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/custom-metadata/",
+      "title": "Custom metadata structures overview",
+      "sectionCount": 0,
+      "exampleCount": 0,
+      "category": "governance",
+      "sections": []
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/custom-metadata/badge/",
+      "title": "Manage custom metadata badges",
+      "sectionCount": 2,
+      "exampleCount": 2,
+      "category": "governance",
+      "sections": [
+        {
+          "title": "Create a badge",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Delete a badge",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/custom-metadata/create/",
+      "title": "Create custom metadata",
+      "sectionCount": 3,
+      "exampleCount": 1,
+      "category": "governance",
+      "sections": [
+        {
+          "title": "Build minimal object needed",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Create the custom metadata from the object",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Limit applicability of an attribute",
+          "hasDescription": true,
+          "exampleCount": 2,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/custom-metadata/delete/",
+      "title": "Delete custom metadata",
+      "sectionCount": 0,
+      "exampleCount": 0,
+      "category": "governance",
+      "sections": []
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/custom-metadata/enums/",
+      "title": "Manage options (enumerations)",
+      "sectionCount": 7,
+      "exampleCount": 6,
+      "category": "governance",
+      "sections": [
+        {
+          "title": "Build minimal object needed",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Create the enumeration from the object",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Use an enumeration in a custom metadata definition",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Update options (enumerations)",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve options (enumerations)",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve all options (enumerations)",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Delete options (enumerations)",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/custom-metadata/read/",
+      "title": "Retrieve custom metadata",
+      "sectionCount": 0,
+      "exampleCount": 0,
+      "category": "governance",
+      "sections": []
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/custom-metadata/update/",
+      "title": "Update custom metadata",
+      "sectionCount": 2,
+      "exampleCount": 6,
+      "category": "governance",
+      "sections": [
+        {
+          "title": "Retrieve existing structure",
+          "hasDescription": true,
+          "exampleCount": 0,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Update the custom metadata structure",
+          "hasDescription": true,
+          "exampleCount": 12,
+          "subsectionCount": 3
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/datacontract/",
+      "title": "Data contracts overview",
+      "sectionCount": 0,
+      "exampleCount": 0,
+      "category": "data-contracts",
+      "sections": []
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/datacontract/manage-via-sdks/",
+      "title": "Manage data contracts via SDKs",
+      "sectionCount": 4,
+      "exampleCount": 6,
+      "category": "data-contracts",
+      "sections": [
+        {
+          "title": "Create a new contract",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve a contract",
+          "hasDescription": true,
+          "exampleCount": 8,
+          "subsectionCount": 2
+        },
+        {
+          "title": "Update a contract",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Delete a contract",
+          "hasDescription": true,
+          "exampleCount": 0,
+          "subsectionCount": 2
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/datacontract/manage/",
+      "title": "Manage data contracts",
+      "sectionCount": 5,
+      "exampleCount": 0,
+      "category": "data-contracts",
+      "sections": [
+        {
+          "title": "Initialize a contract",
+          "hasDescription": true,
+          "exampleCount": 0,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Validate contract",
+          "hasDescription": true,
+          "exampleCount": 0,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Push contract",
+          "hasDescription": true,
+          "exampleCount": 0,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Sync metadata",
+          "hasDescription": true,
+          "exampleCount": 0,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Managing via CI/CD",
+          "hasDescription": true,
+          "exampleCount": 2,
+          "subsectionCount": 2
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/datamesh/",
+      "title": "Data mesh overview",
+      "sectionCount": 0,
+      "exampleCount": 0,
+      "category": "data-mesh",
+      "sections": []
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/datamesh/datadomains/",
+      "title": "Manage data domains",
+      "sectionCount": 5,
+      "exampleCount": 8,
+      "category": "data-mesh",
+      "sections": [
+        {
+          "title": "Create a new data domain",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Create a new subdomain",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve a data domain",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Update a data domain",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Delete a data domain",
+          "hasDescription": true,
+          "exampleCount": 8,
+          "subsectionCount": 2
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/datamesh/dataproducts/",
+      "title": "Manage data products",
+      "sectionCount": 5,
+      "exampleCount": 8,
+      "category": "data-mesh",
+      "sections": [
+        {
+          "title": "Create a new data product",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve a data product",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve all assets linked to a data product",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Update a data product",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Delete a data product",
+          "hasDescription": true,
+          "exampleCount": 8,
+          "subsectionCount": 2
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/files/",
+      "title": "Manage files in tenant object store",
+      "sectionCount": 2,
+      "exampleCount": 2,
+      "category": "asset-specific",
+      "sections": [
+        {
+          "title": "Upload a file to the object store",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Download a file from the object store",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/search-logs/",
+      "title": "Accessing the search logs of an asset",
+      "sectionCount": 3,
+      "exampleCount": 3,
+      "category": "search",
+      "sections": [
+        {
+          "title": "Most recent viewers of an asset",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Most viewed assets",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Detailed search log entries",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/tags/",
+      "title": "Atlan tag definitions overview",
+      "sectionCount": 0,
+      "exampleCount": 0,
+      "category": "governance",
+      "sections": []
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/tags/manage/",
+      "title": "Manage Atlan tags",
+      "sectionCount": 6,
+      "exampleCount": 5,
+      "category": "governance",
+      "sections": [
+        {
+          "title": "Build minimal object needed",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Create the Atlan tag from the object",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Update Atlan tags",
+          "hasDescription": true,
+          "exampleCount": 2,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve Atlan tags",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve all Atlan tags",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Delete Atlan tags",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/tags/monitor-propagation/",
+      "title": "Monitor tag propagation",
+      "sectionCount": 1,
+      "exampleCount": 1,
+      "category": "governance",
+      "sections": [
+        {
+          "title": "Run the search",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/users-groups/",
+      "title": "Users and groups introduction",
+      "sectionCount": 0,
+      "exampleCount": 0,
+      "category": "access-control",
+      "sections": []
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/users-groups/create/",
+      "title": "Creating users and groups",
+      "sectionCount": 2,
+      "exampleCount": 2,
+      "category": "access-control",
+      "sections": [
+        {
+          "title": "Create a group",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Create a user",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/users-groups/delete/",
+      "title": "Deleting users and groups",
+      "sectionCount": 2,
+      "exampleCount": 1,
+      "category": "access-control",
+      "sections": [
+        {
+          "title": "Delete a group",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Delete a user",
+          "hasDescription": true,
+          "exampleCount": 1,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/users-groups/read/",
+      "title": "Retrieving users and groups",
+      "sectionCount": 7,
+      "exampleCount": 13,
+      "category": "access-control",
+      "sections": [
+        {
+          "title": "Retrieve all groups",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve group by name",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve all users",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve user by username",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve user by email",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve multiple users",
+          "hasDescription": true,
+          "exampleCount": 10,
+          "subsectionCount": 2
+        },
+        {
+          "title": "Retrieve user group membership",
+          "hasDescription": true,
+          "exampleCount": 10,
+          "subsectionCount": 2
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/users-groups/sso-group-mapping/",
+      "title": "Manage SSO group mapping",
+      "sectionCount": 3,
+      "exampleCount": 8,
+      "category": "access-control",
+      "sections": [
+        {
+          "title": "Create a new group mapping",
+          "hasDescription": true,
+          "exampleCount": 2,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve group mapping",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 2
+        },
+        {
+          "title": "Update an existing group mapping",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 1
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/users-groups/update/",
+      "title": "Updating users and groups",
+      "sectionCount": 2,
+      "exampleCount": 7,
+      "category": "access-control",
+      "sections": [
+        {
+          "title": "Update a group",
+          "hasDescription": true,
+          "exampleCount": 10,
+          "subsectionCount": 1
+        },
+        {
+          "title": "Update a user",
+          "hasDescription": true,
+          "exampleCount": 12,
+          "subsectionCount": 4
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/",
+      "title": "Packages and workflows introduction",
+      "sectionCount": 1,
+      "exampleCount": 0,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Block until workflow completion",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/manage/schedules/",
+      "title": "Manage workflow schedules",
+      "sectionCount": 3,
+      "exampleCount": 0,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Schedule a workflow run",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 2
+        },
+        {
+          "title": "Retrieve a scheduled workflow run",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 2
+        },
+        {
+          "title": "Remove a schedule from workflow run",
+          "hasDescription": true,
+          "exampleCount": 2,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/manage/workflows/",
+      "title": "Manage workflows",
+      "sectionCount": 10,
+      "exampleCount": 14,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Retrieve workflow",
+          "hasDescription": true,
+          "exampleCount": 10,
+          "subsectionCount": 2
+        },
+        {
+          "title": "Create workflow credentials",
+          "hasDescription": true,
+          "exampleCount": 2,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve all workflow credentials",
+          "hasDescription": true,
+          "exampleCount": 1,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Update workflow source credentials",
+          "hasDescription": true,
+          "exampleCount": 6,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Hard-delete an workflow credentials",
+          "hasDescription": true,
+          "exampleCount": 1,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Update workflow configuration",
+          "hasDescription": true,
+          "exampleCount": 2,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Retrieve workflow run",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 2
+        },
+        {
+          "title": "Retrieve all workflow runs",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 1
+        },
+        {
+          "title": "Stop a running workflow",
+          "hasDescription": true,
+          "exampleCount": 2,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Delete a workflow",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/",
+      "title": "Supported packages",
+      "sectionCount": 2,
+      "exampleCount": 0,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Connectors",
+          "hasDescription": false,
+          "exampleCount": 0,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Utilities",
+          "hasDescription": false,
+          "exampleCount": 0,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/api-token-connection-admin/",
+      "title": "API token connection admin package",
+      "sectionCount": 2,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Configuration",
+          "hasDescription": true,
+          "exampleCount": 1,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/asset-export-basic/",
+      "title": "Asset export (basic) package",
+      "sectionCount": 2,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "All assets",
+          "hasDescription": true,
+          "exampleCount": 1,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/asset-import/",
+      "title": "Asset import package",
+      "sectionCount": 2,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Import assets from object store",
+          "hasDescription": true,
+          "exampleCount": 1,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/athena-assets/",
+      "title": "Athena assets package",
+      "sectionCount": 2,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Direct extraction",
+          "hasDescription": true,
+          "exampleCount": 2,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/bigquery-assets/",
+      "title": "BigQuery assets package",
+      "sectionCount": 2,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Service account",
+          "hasDescription": true,
+          "exampleCount": 1,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/confluent-kafka-assets/",
+      "title": "Confluent Kafka assets package",
+      "sectionCount": 2,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Direct extraction",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/connection-delete/",
+      "title": "Connection delete package",
+      "sectionCount": 3,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Soft-delete (archive) assets",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Hard-delete (purge) assets",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/databricks-assets/",
+      "title": "Databricks assets package",
+      "sectionCount": 3,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Direct extraction",
+          "hasDescription": true,
+          "exampleCount": 2,
+          "subsectionCount": 1
+        },
+        {
+          "title": "Offline extraction",
+          "hasDescription": true,
+          "exampleCount": 1,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/databricks-miner/",
+      "title": "Databricks miner package",
+      "sectionCount": 1,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/dbt-assets/",
+      "title": "dbt assets package",
+      "sectionCount": 3,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Cloud",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Core",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/dynamodb-assets/",
+      "title": "DynamoDB assets package",
+      "sectionCount": 3,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "IAM user authentication",
+          "hasDescription": true,
+          "exampleCount": 1,
+          "subsectionCount": 0
+        },
+        {
+          "title": "IAM role authentication",
+          "hasDescription": true,
+          "exampleCount": 1,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/fivetran-enrichment/",
+      "title": "Fivetran enrichment package",
+      "sectionCount": 2,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Direct API",
+          "hasDescription": true,
+          "exampleCount": 2,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/glue-assets/",
+      "title": "Glue assets package",
+      "sectionCount": 1,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/lineage-builder/",
+      "title": "Lineage builder package",
+      "sectionCount": 2,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Retrieve the lineage file from object store",
+          "hasDescription": true,
+          "exampleCount": 1,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/lineage-generator-nt/",
+      "title": "Lineage generator package",
+      "sectionCount": 2,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Configuration",
+          "hasDescription": true,
+          "exampleCount": 1,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/looker-assets/",
+      "title": "Looker assets package",
+      "sectionCount": 2,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Direct extraction",
+          "hasDescription": true,
+          "exampleCount": 2,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/mongodb-assets/",
+      "title": "MongoDB assets package",
+      "sectionCount": 2,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Direct extraction",
+          "hasDescription": true,
+          "exampleCount": 1,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/oracle-assets/",
+      "title": "Oracle assets package",
+      "sectionCount": 4,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Direct extraction",
+          "hasDescription": true,
+          "exampleCount": 1,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Offline extraction",
+          "hasDescription": true,
+          "exampleCount": 1,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Secure agent extraction",
+          "hasDescription": true,
+          "exampleCount": 1,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/postgres-assets/",
+      "title": "Postgres assets package",
+      "sectionCount": 5,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Direct extraction",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        },
+        {
+          "title": "IAM user authentication",
+          "hasDescription": true,
+          "exampleCount": 1,
+          "subsectionCount": 0
+        },
+        {
+          "title": "IAM role authentication",
+          "hasDescription": true,
+          "exampleCount": 1,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Offline extraction",
+          "hasDescription": true,
+          "exampleCount": 1,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/powerbi-assets/",
+      "title": "Power BI assets package",
+      "sectionCount": 1,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/redshift-assets/",
+      "title": "Redshift assets package",
+      "sectionCount": 2,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Basic authentication",
+          "hasDescription": true,
+          "exampleCount": 2,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/relational-assets-builder/",
+      "title": "Relational assets builder package",
+      "sectionCount": 2,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Import relational assets from object store",
+          "hasDescription": true,
+          "exampleCount": 1,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/sigma-assets/",
+      "title": "Sigma assets package",
+      "sectionCount": 0,
+      "exampleCount": 0,
+      "category": "workflows",
+      "sections": []
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/snowflake-assets/",
+      "title": "Snowflake assets package",
+      "sectionCount": 3,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Information schema",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Account usage",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/snowflake-miner/",
+      "title": "Snowflake miner package",
+      "sectionCount": 3,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Source extraction",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Offline extraction",
+          "hasDescription": true,
+          "exampleCount": 4,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 6,
+          "subsectionCount": 0
+        }
+      ]
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/sql-server-assets/",
+      "title": "SQL Server assets package",
+      "sectionCount": 0,
+      "exampleCount": 0,
+      "category": "workflows",
+      "sections": []
+    },
+    {
+      "url": "https://developer.atlan.com/snippets/workflows/packages/tableau-assets/",
+      "title": "Tableau assets package",
+      "sectionCount": 3,
+      "exampleCount": 2,
+      "category": "workflows",
+      "sections": [
+        {
+          "title": "Direct extraction",
+          "hasDescription": true,
+          "exampleCount": 3,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Offline extraction",
+          "hasDescription": true,
+          "exampleCount": 1,
+          "subsectionCount": 0
+        },
+        {
+          "title": "Re-run existing workflow",
+          "hasDescription": true,
+          "exampleCount": 5,
+          "subsectionCount": 0
+        }
+      ]
+    }
+  ]
+}

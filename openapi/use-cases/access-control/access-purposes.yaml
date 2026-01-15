@@ -1,0 +1,482 @@
+id: access-purposes
+title: Purposes
+category: access-control
+icon: zap
+relatedTypes:
+  - Asset
+  - AuthPolicy
+  - Purpose
+description: Purposes  are a way of curating assets by a business area, or to further protect particularly sensitive data.
+externalDocs:
+  url: https://developer.atlan.com/snippets/access/purposes/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: List purposes
+    description: |-
+      0.0.14 1.4.0 4.0.0
+      To retrieve a listing of purposes, run a search and page the results:
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            query:
+              bool:
+                filter:
+                  - term:
+                      __state:
+                        value: ACTIVE
+                  - term:
+                      __typeName.keyword:
+                        value: Purpose
+            track_total_hits: true
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"filter\":[{\"term\":{\"__state\":{\"value\":\"ACTIVE\"}}},{\"term\":{\"__typeName.keyword\":{\"value\":\"Purpose\"}}}]}}"
+          approximateCount: 25
+          entities:
+            - typeName: Purpose
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/PURPOSE_1
+                name: Purpose_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: Purpose_1
+            - typeName: Purpose
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/PURPOSE_2
+                name: Purpose_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: Purpose_2
+  - step: 2
+    title: Create a purpose
+    description: |-
+      0.0.14 2.0.0 4.0.0
+      To create a new purpose:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-2-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Purpose
+              attributes:
+                displayName: Known Issues
+                purposeClassifications:
+                  - jRr7KmCSPliWQQSVK6dqTc
+                isAccessControlEnabled: true
+                qualifiedName: Known Issues
+                name: Known Issues
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: Purpose
+                attributes:
+                  qualifiedName: Known Issues
+                  name: Known Issues
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+  - step: 3
+    title: Retrieve a purpose
+    description: |-
+      0.0.14 2.0.0 4.0.0
+      To retrieve a purpose by its name:
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-3-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            query:
+              bool:
+                filter:
+                  - term:
+                      __state:
+                        value: ACTIVE
+                  - term:
+                      __typeName.keyword:
+                        value: Purpose
+                  - term:
+                      name.keyword:
+                        value: Known Issues
+            track_total_hits: true
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"filter\":[{\"term\":{\"__state\":{\"value\":\"ACTIVE\"}}},{\"term\":{\"__typeName.keyword\":{\"value\":\"Purpose\"}}},{\"term\":{\"name.keyword\":{\"value\":\"Known Issues\"}}}]}}"
+          approximateCount: 25
+          entities:
+            - typeName: Purpose
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/PURPOSE_1
+                name: Purpose_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: Purpose_1
+            - typeName: Purpose
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/PURPOSE_2
+                name: Purpose_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: Purpose_2
+  - step: 4
+    title: Update a purpose
+    description: |-
+      0.0.14 2.0.0 4.0.0
+      To update a purpose:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-4-1
+        summary: POST /api/meta/entity/bulk
+        requestRaw: |
+          {
+            "entities": [
+              {
+                "typeName": "Purpose",
+                "attributes": {
+                  "qualifiedName": "default/29LZO9Z6ipZbGT6caWTxRB",
+                  "name": "Known Issues"
+                  "isAccessControlEnabled": true,
+                  "description": "Now with a description!"}
+              }
+            ]
+          }
+        response:
+          mutatedEntities:
+            UPDATE: []
+  - step: 5
+    title: Delete a purpose
+    description: |-
+      0.0.14 1.4.0 4.0.0
+      To permanently delete a purpose:
+    method: DELETE
+    endpoint: /api/meta/entity/bulk
+    queryString: guid=3886a92c-2510-40ea-a14d-803d7ac1616b&deleteType=PURGE
+    examples:
+      - key: example-5-1
+        summary: DELETE /api/meta/entity/bulk
+        response:
+          mutatedEntities:
+            PURGE:
+              - typeName: Asset
+                attributes:
+                  qualifiedName: example/deleted/asset
+                  name: Deleted Asset
+                guid: b4113341-251b-4adc-81fb-2420501c30e6
+                status: PURGED
+  - step: 6
+    title: Activate or deactivate a purpose
+    description: |-
+      0.0.14 2.0.0 4.0.0
+      Alternatively, if you only want to temporarily deactivate a purpose:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-6-1
+        summary: POST /api/meta/entity/bulk
+        requestRaw: |
+          {
+            "entities": [
+              {
+                "typeName": "Purpose",
+                "attributes": {
+                  "qualifiedName": "default/29LZO9Z6ipZbGT6caWTxRB",
+                  "name": "Known Issues"
+                  "isAccessControlEnabled": false
+                }
+              }
+            ]
+          }
+        response:
+          mutatedEntities:
+            UPDATE: []
+  - step: 7
+    title: Add policies to a purpose
+    description: |-
+      Do not add policies in bulk
+      Be careful to only add policies one-by-one to a purpose. While the SDKs will allow you to add them in bulk, currently this results in a purpose where only the final policy in the batch is active at the end of the operation.
+      0.0.14 7.0.0 4.0.0
+      To add a metadata policy to a purpose:
+    notes:
+      - type: warning
+        title: Do not add policies in bulk
+        content: Be careful to only add policies one-by-one to a purpose. While the SDKs will allow you to add them in bulk, currently this results in a purpose where only the final policy in the batch is active at the end of the operation.
+      - type: recommendation
+        title: To include all permissions
+        content: If you want to include all permissions, you can simply use Arrays.asList(PurposeMetadataAction.values()).
+      - type: recommendation
+        title: To include all permissions
+        content: If you want to include all permissions, you can simply use PurposeMetadataAction.values().toList().
+      - type: recommendation
+        title: To review available permissions
+        content: To review the available permissions, see the SDKs   for example, the PurposeMetadataAction enum in the Java SDK.
+      - type: recommendation
+        title: To review available masking options
+        content: To review the available masking options, see the SDKs   for example, the DataMaskingType enum in the Java SDK.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-7-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AuthPolicy
+              attributes:
+                policySubCategory: metadata
+                policyCategory: purpose
+                policyType: allow
+                policyServiceName: atlas_tag
+                name: Simple read access
+                qualifiedName: Simple read access
+                policyActions:
+                  - entity-read
+                accessControl:
+                  typeName: Purpose
+                  guid: 3886a92c-2510-40ea-a14d-803d7ac1616b
+                policyResourceCategory: TAG
+                policyGroups:
+                  - public
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: AuthPolicy
+                attributes:
+                  qualifiedName: Simple read access
+                  name: Simple read access
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+      - key: example-7-2
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AuthPolicy
+              attributes:
+                policySubCategory: data
+                policyCategory: purpose
+                policyType: dataMask
+                policyMaskType: MASK_HASH
+                policyServiceName: atlas_tag
+                name: Mask the data
+                qualifiedName: Mask the data
+                policyActions:
+                  - select
+                accessControl:
+                  typeName: Purpose
+                  guid: 3886a92c-2510-40ea-a14d-803d7ac1616b
+                policyResourceCategory: TAG
+                policyGroups:
+                  - public
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: AuthPolicy
+                attributes:
+                  qualifiedName: Mask the data
+                  name: Mask the data
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+  - step: 8
+    title: Add a metadata policy
+    description: |-
+      0.0.14 7.0.0 4.0.0
+      To add a metadata policy to a purpose:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-8-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AuthPolicy
+              attributes:
+                policySubCategory: metadata
+                policyCategory: purpose
+                policyType: allow
+                policyServiceName: atlas_tag
+                name: Simple read access
+                qualifiedName: Simple read access
+                policyActions:
+                  - entity-read
+                accessControl:
+                  typeName: Purpose
+                  guid: 3886a92c-2510-40ea-a14d-803d7ac1616b
+                policyResourceCategory: TAG
+                policyGroups:
+                  - public
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: AuthPolicy
+                attributes:
+                  qualifiedName: Simple read access
+                  name: Simple read access
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+  - step: 9
+    title: Add a data policy
+    description: |-
+      0.0.14 7.0.0 4.0.0
+      To add a data policy to a purpose:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-9-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AuthPolicy
+              attributes:
+                policySubCategory: data
+                policyCategory: purpose
+                policyType: dataMask
+                policyMaskType: MASK_HASH
+                policyServiceName: atlas_tag
+                name: Mask the data
+                qualifiedName: Mask the data
+                policyActions:
+                  - select
+                accessControl:
+                  typeName: Purpose
+                  guid: 3886a92c-2510-40ea-a14d-803d7ac1616b
+                policyResourceCategory: TAG
+                policyGroups:
+                  - public
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: AuthPolicy
+                attributes:
+                  qualifiedName: Mask the data
+                  name: Mask the data
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+  - step: 10
+    title: List policies in a purpose
+    description: |-
+      0.0.14 1.4.0 4.0.0
+      To list all the policies in a purpose:
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-10-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            query:
+              bool:
+                filter:
+                  - term:
+                      __typeName.keyword:
+                        value: Purpose
+                  - term:
+                      __state:
+                        value: ACTIVE
+                  - term:
+                      name.keyword:
+                        value: Known Issues
+            sort:
+              - __guid:
+                  order: asc
+            track_total_hits: true
+          attributes:
+            - policies
+          relationAttributes:
+            - name
+            - policyType
+            - policyResources
+            - policyActions
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"filter\":[{\"term\":{\"__typeName.keyword\":{\"value\":\"Purpose\"}}},{\"term\":{\"__state\":{\"value\":\"ACTIVE\"}}},{\"term\":{\"name.keyword\":{\"value\":\"Known Issues\"}}}]}}"
+            attributes:
+              - policies
+          approximateCount: 25
+          entities:
+            - typeName: Purpose
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/PURPOSE_1
+                name: Purpose_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: Purpose_1
+            - typeName: Purpose
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/PURPOSE_2
+                name: Purpose_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: Purpose_2
+  - step: 11
+    title: Personalize the purpose
+    description: |-
+      0.0.14 2.0.0 4.0.0
+      To personalize which details to show for assets within a purpose:
+    notes:
+      - type: recommendation
+        title: To review available tabs
+        content: To review the available, see the SDKs   for example, the AssetSidebarTab enum in the Java SDK.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-11-1
+        summary: POST /api/meta/entity/bulk
+        requestRaw: |
+          {
+            "entities": [
+              {
+                "typeName": "Purpose",
+                "attributes": {
+                  "qualifiedName": "default/29LZO9Z6ipZbGT6caWTxRB",
+                  "name": "Known Issues"
+                  "isAccessControlEnabled": true,
+                  "denyAssetTabs": [
+                    "Lineage",
+                    "Relations",
+                    "Queries"
+                  ]
+                }
+              }
+            ]
+          }
+        response:
+          mutatedEntities:
+            UPDATE: []

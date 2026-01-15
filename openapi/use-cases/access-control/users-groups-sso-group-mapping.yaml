@@ -1,0 +1,119 @@
+# Use Case: Manage SSO group mapping
+# Auto-generated from: https://developer.atlan.com/snippets/users-groups/sso-group-mapping/
+# Generated at: 2026-01-13T02:58:00.309Z
+
+id: users-groups-sso-group-mapping
+title: "Manage SSO group mapping"
+category: access-control
+icon: zap
+
+description: >-
+  You can use the SDK's SSO client to manage your SSO group mapping in Atlan.
+
+externalDocs:
+  url: https://developer.atlan.com/snippets/users-groups/sso-group-mapping/
+  description: Official Atlan documentation
+
+steps:
+  - step: 1
+    title: "Create a new group mapping"
+    description: >-
+      To create a new SSO group mapping:
+    method: POST
+    endpoint: /api/service/idp/azure/mappers
+    examples:
+      - key: example-1-1
+        summary: "POST /api/service/idp/azure/mappers"
+        request: {
+                    "identityProviderAlias": "azure",
+                    "identityProviderMapper": "saml-group-idp-mapper",
+                    "name": "0d9b0028-513c-4536-af90-d594ef2d549c--1713772147406",
+                    "config": {
+                              "syncMode": "FORCE",
+                              "attributes": "[]",
+                              "are.attribute.values.regex": "",
+                              "attribute.name": "memberOf",
+                              "group": "atlan_group_name",
+                              "attribute.value": "sso_group_name"
+                    }
+          }
+  - step: 2
+    title: "Retrieve group mapping"
+    description: >-
+      To retrieve an existing SSO group mapping:
+    notes:
+      - type: recommendation
+        title: "All details are present the URL itself"
+        content: >-
+          Note that you need to specify the SSO alias and map identifier
+          directly in the URL. For this example, we're retrieving a group mapping for Azure AD SSO.
+      - type: recommendation
+        title: "All details are present the URL itself"
+        content: >-
+          Note that you need to specify the SSO alias directly in the URL. 
+          For this example, we're retrieving all group mappings for Azure AD SSO.
+    method: GET
+    endpoint: /api/service/idp/azure/mappers/0637576a-5419-40d7-b6cb-fe5841b1da4b
+    examples:
+      - key: example-2-1
+        summary: "GET /api/service/idp/azure/mappers/0637576a-5419-40d7-b6cb-fe5841b1da4b"
+      - key: example-2-2
+        summary: "GET /api/service/idp/azure/mappers"
+  - step: 3
+    title: "Retrieve group mapping by ID"
+    description: >-
+      To retrieve an existing SSO group mapping:
+    method: GET
+    endpoint: /api/service/idp/azure/mappers/0637576a-5419-40d7-b6cb-fe5841b1da4b
+    examples:
+      - key: example-3-1
+        summary: "GET /api/service/idp/azure/mappers/0637576a-5419-40d7-b6cb-fe5841b1da4b"
+  - step: 4
+    title: "Retrieve all group mappings"
+    description: >-
+      To retrieve all existing SSO group mappings:
+    method: GET
+    endpoint: /api/service/idp/azure/mappers
+    examples:
+      - key: example-4-1
+        summary: "GET /api/service/idp/azure/mappers"
+  - step: 5
+    title: "Update an existing group mapping"
+    description: >-
+      To update an existing SSO group mapping:
+    notes:
+      - type: recommendation
+        title: "All details are present the URL itself"
+        content: >-
+          Note that you need to specify the SSO alias and map identifier
+          directly in the URL. For this example, we're deleting a group mapping for Azure AD SSO.
+    method: POST
+    endpoint: /api/service/idp/azure/mappers/0637576a-5419-40d7-b6cb-fe5841b1da4b
+    examples:
+      - key: example-5-1
+        summary: "POST /api/service/idp/azure/mappers/0637576a-5419-40d7-b6cb-fe5841b1da4b"
+        request: {
+                    "identityProviderAlias": "azure",
+                    "identityProviderMapper": "saml-group-idp-mapper",
+                    "id": "0637576a-5419-40d7-b6cb-fe5841b1da4b",
+                    "name": "0d9b0028-513c-4536-af90-d594ef2d549c--1713772147406",
+                    "config": {
+                              "syncMode": "FORCE",
+                              "attributes": "[]",
+                              "are.attribute.values.regex": "",
+                              "attribute.name": "memberOf",
+                              "group": "atlan_group_name",
+                              "attribute.value": "sso_group_name_updated"
+                    }
+          }
+      - key: example-5-2
+        summary: "POST /api/service/idp/azure/mappers/0637576a-5419-40d7-b6cb-fe5841b1da4b/delete"
+  - step: 6
+    title: "Delete a group mapping"
+    description: >-
+      To delete an existing SSO group mapping:
+    method: POST
+    endpoint: /api/service/idp/azure/mappers/0637576a-5419-40d7-b6cb-fe5841b1da4b/delete
+    examples:
+      - key: example-6-1
+        summary: "POST /api/service/idp/azure/mappers/0637576a-5419-40d7-b6cb-fe5841b1da4b/delete"

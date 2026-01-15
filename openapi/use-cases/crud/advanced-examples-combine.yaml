@@ -1,0 +1,18 @@
+# Use Case: Combining multiple operations
+# Auto-generated from: https://developer.atlan.com/snippets/advanced-examples/combine/
+# Generated at: 2026-01-13T02:58:00.288Z
+
+id: advanced-examples-combine
+title: "Combining multiple operations"
+category: crud
+icon: zap
+relatedTypes:
+  - Asset
+
+description: >-
+  Combine multiple asset operations in a single request. Batch create, update, and delete operations for efficient bulk processing.
+
+externalDocs:
+  url: https://developer.atlan.com/snippets/advanced-examples/combine/
+  description: Official Atlan documentation
+

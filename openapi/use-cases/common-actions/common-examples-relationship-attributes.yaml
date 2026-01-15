@@ -1,0 +1,180 @@
+id: common-examples-relationship-attributes
+title: Manage asset relationships with attributes
+category: common-actions
+icon: zap
+relatedTypes:
+  - Asset
+description: |-
+  Atlan supports relationships between assets that can include attributes, similar to how assets themselves have attributes. These relationship-level attributes provide additional context and metadata about the connection between assets.
+  The SDK enables you to create, retrieve, and delete these attributed relationships programmatically.
+externalDocs:
+  url: https://developer.atlan.com/snippets/common-examples/relationship-attributes/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Relationships with attribute support
+    description: "The following relationship types support attributes that you can set via the SDK:"
+  - step: 2
+    title: Add user-defined relationship
+    description: This example demonstrates how to add UserDefRelationship between glossary terms. While this relationship type is currently visible in the Atlan UI for glossary terms, you can create any other supported relationship types that have attributes (as listed above) between any asset types using similar steps shown in the snippet below. All these relationships will be persisted in the backend (metastore) even if they're not currently visible in the Atlan UI.
+    notes:
+      - type: tip
+        title: Relationship visibility
+        content: User-defined relationships between glossary terms are visible in the Atlan UI. For other asset types, relationships are stored in the backend but may not be visible in the UI until support is added.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-2-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AtlasGlossaryTerm
+              attributes:
+                name: Policy
+                qualifiedName: FpWBfqOfP0qZQ6tCpK10n@nrrnNyRABZTc6CEKwHh73
+                anchor:
+                  typeName: AtlasGlossary
+                  guid: 55aaaa56-d8cd-4f19-8026-10d511a9b071
+                userDefRelationshipTo:
+                  - typeName: AtlasGlossaryTerm
+                    guid: f558a01a-2e16-440c-ba2d-fed2099e540a
+                    relationshipAttributes:
+                      typeName: UserDefRelationship
+                      attributes:
+                        toTypeLabel: Sells
+                        fromTypeLabel: Sold by
+                    relationshipType: UserDefRelationship
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: AtlasGlossaryTerm
+                attributes:
+                  qualifiedName: FpWBfqOfP0qZQ6tCpK10n@nrrnNyRABZTc6CEKwHh73
+                  name: Policy
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+                relationshipAttributes:
+                  anchor:
+                    guid: 55aaaa56-d8cd-4f19-8026-10d511a9b071
+                    typeName: AtlasGlossary
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+  - step: 3
+    title: Remove user-defined relationship
+    description: This example demonstrates how to remove UserDefRelationship between glossary terms. You can use the same approach to remove any attributed relationship type (as listed above) between any asset types using the steps shown in the snippet below.
+    notes:
+      - type: warning
+        title: Complete removal
+        content: Setting user_def_relationship_to = [] removes all outgoing user-defined relationships from the asset. To remove only specific relationships while keeping others, you would need to retrieve the existing relationships first and reconstruct the list without the unwanted ones.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-3-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AtlasGlossaryTerm
+              attributes:
+                anchor:
+                  typeName: AtlasGlossary
+                  guid: 55aaaa56-d8cd-4f19-8026-10d511a9b071
+                name: Policy
+                qualifiedName: FpWBfqOfP0qZQ6tCpK10n@nrrnNyRABZTc6CEKwHh73
+                userDefRelationshipTo: []
+        response:
+          mutatedEntities:
+            DELETE:
+              - typeName: AtlasGlossaryTerm
+                attributes:
+                  qualifiedName: FpWBfqOfP0qZQ6tCpK10n@nrrnNyRABZTc6CEKwHh73
+                  name: Policy
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: DELETED
+                relationshipAttributes:
+                  anchor:
+                    guid: 55aaaa56-d8cd-4f19-8026-10d511a9b071
+                    typeName: AtlasGlossary
+  - step: 4
+    title: Retrieve user-defined relationship
+    description: This example demonstrates how to retrieve UserDefRelationship between glossary terms. You can use the same approach to retrieve any attributed relationship type (as listed above) between any asset types. While UserDefRelationship is visible in the UI for glossary terms, all relationships are persisted in the backend regardless of UI visibility.
+    notes:
+      - type: tip
+        title: Relationship direction
+        content: "USER_DEF_RELATIONSHIP_TO: Outgoing relationships from this asset USER_DEF_RELATIONSHIP_FROM: Incoming relationships to this asset"
+      - type: note
+        title: Accessing attributes
+        content: Relationship attributes are nested under relationship.attributes.relationship_attributes.attributes. Make sure to include include_relationship_attributes(True) in your search to retrieve these values.
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-4-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          attributes:
+            - userDefRelationshipTo
+            - userDefRelationshipFrom
+          dsl:
+            from: 0
+            size: 100
+            aggregations: {}
+            track_total_hits: true
+            query:
+              bool:
+                must:
+                  - term:
+                      __superTypeNames.keyword:
+                        value: Referenceable
+                should:
+                  - term:
+                      __guid:
+                        value: f558a01a-2e16-440c-ba2d-fed2099e540a
+                        case_insensitive: false
+                  - term:
+                      __guid:
+                        value: 540ee0f6-bb26-4b1a-88b7-31cfc26746b4
+                        case_insensitive: false
+                filter:
+                  - term:
+                      __superTypeNames.keyword:
+                        value: Asset
+                  - term:
+                      __state:
+                        value: ACTIVE
+                  - term:
+                      __superTypeNames.keyword:
+                        value: Referenceable
+                minimum_should_match: 1
+            sort:
+              - __guid:
+                  order: asc
+          relationAttributes:
+            - name
+          includeRelationshipAttributes: true
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"must\":[{\"term\":{\"__superTypeNames.keyword\":{\"value\":\"Referenceable\"}}}],\"should\":[{\"term\":{\"__guid\":{\"value\":\"f558a01a-2e16-440c-ba2d-fed2099e540a\",\"case_insensitive\":false}}},{\"term\":{\"__guid\":{\"value\":\"540ee0f6-bb26-4b1a-88b7-31cfc26746b4\",\"case_insensitive\":false}}}],\"filter\":[{\"term\":{\"__superTypeNames.keyword\":{\"value\":\"Asset\"}}},{\"term\":{\"__state\":{\"value\":\"ACTIVE\"}}},{\"term\":{\"__superTypeNames.keyword\":{\"value\":\"Referenceable\"}}}],\"minimum_should_match\":1}}"
+            attributes:
+              - userDefRelationshipTo
+              - userDefRelationshipFrom
+          approximateCount: 25
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/TABLE_1
+                name: Table_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: Table_1
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/TABLE_2
+                name: Table_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: Table_2

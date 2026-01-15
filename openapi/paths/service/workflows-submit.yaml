@@ -1,0 +1,487 @@
+post:
+  operationId: submitWorkflow
+  summary: Submit a workflow for execution
+  description: |
+    Submit a workflow package for execution with the specified parameters.
+
+    ## Use cases
+    - [Workflow packages](https://developer.atlan.com/snippets/workflows/packages/)
+    - Crawler configurations
+    - Asset import/export
+    - Lineage builders
+  externalDocs:
+    url: https://developer.atlan.com/snippets/workflows/packages/
+    description: Workflow package examples
+  tags:
+    - "Snowflake crawler"
+    - "Snowflake miner"
+    - "BigQuery crawler"
+    - "Redshift crawler"
+    - "Databricks crawler"
+    - "Databricks miner"
+    - "PostgreSQL crawler"
+    - "Oracle crawler"
+    - "SQL Server crawler"
+    - "Athena crawler"
+    - "AWS Glue crawler"
+    - "DynamoDB crawler"
+    - "MongoDB crawler"
+    - "Kafka crawler"
+    - "dbt crawler"
+    - "Looker crawler"
+    - "Tableau crawler"
+    - "Power BI crawler"
+    - "Sigma crawler"
+    - "Fivetran enrichment"
+    - "Asset import"
+    - "Asset export"
+    - "Relational assets builder"
+    - "Lineage builder"
+    - "Lineage generator (no transformation)"
+    - "Connection delete"
+    - "API token connection admin"
+  security:
+    - AtlanToken: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/Workflow.yaml#/WorkflowSubmitRequest'
+        examples:
+          snowflake_crawler_0:
+            summary: "Snowflake crawler - full configuration"
+            x-useCaseTag: "Snowflake crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/snowflake-assets/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "atlan-snowflake-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: atlan-snowflake-1684500411
+
+          snowflake_miner_1:
+            summary: "Snowflake miner - full configuration"
+            x-useCaseTag: "Snowflake miner"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/snowflake-miner/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "atlan-snowflake-miner-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: atlan-snowflake-miner-1684500411
+
+          bigquery_crawler_2:
+            summary: "BigQuery crawler - full configuration"
+            x-useCaseTag: "BigQuery crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/bigquery-assets/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "atlan-bigquery-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: atlan-bigquery-1684500411
+
+          redshift_crawler_3:
+            summary: "Redshift crawler - full configuration"
+            x-useCaseTag: "Redshift crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/redshift-assets/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "atlan-redshift-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: atlan-redshift-1684500411
+
+          databricks_crawler_4:
+            summary: "Databricks crawler - full configuration"
+            x-useCaseTag: "Databricks crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/databricks-assets/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "atlan-databricks-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: atlan-databricks-1684500411
+
+          databricks_miner_5:
+            summary: "Databricks miner - full configuration"
+            x-useCaseTag: "Databricks miner"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/databricks-miner/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "atlan-databricks-lineage-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: atlan-databricks-lineage-1684500411
+
+          postgresql_crawler_6:
+            summary: "PostgreSQL crawler - full configuration"
+            x-useCaseTag: "PostgreSQL crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/postgres-assets/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "atlan-postgres-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: atlan-postgres-1684500411
+
+          oracle_crawler_7:
+            summary: "Oracle crawler - full configuration"
+            x-useCaseTag: "Oracle crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/oracle-assets/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "atlan-oracle-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: atlan-oracle-1684500411
+
+          sql_server_crawler_8:
+            summary: "SQL Server crawler - full configuration"
+            x-useCaseTag: "SQL Server crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/sql-server-assets/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "atlan-mssql-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: atlan-mssql-1684500411
+
+          athena_crawler_9:
+            summary: "Athena crawler - full configuration"
+            x-useCaseTag: "Athena crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/athena-assets/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "atlan-athena-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: atlan-athena-1684500411
+
+          aws_glue_crawler_10:
+            summary: "AWS Glue crawler - full configuration"
+            x-useCaseTag: "AWS Glue crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/glue-assets/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "atlan-glue-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: atlan-glue-1684500411
+
+          dynamodb_crawler_11:
+            summary: "DynamoDB crawler - full configuration"
+            x-useCaseTag: "DynamoDB crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/dynamodb-assets/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "atlan-dynamodb-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: atlan-dynamodb-1684500411
+
+          mongodb_crawler_12:
+            summary: "MongoDB crawler - full configuration"
+            x-useCaseTag: "MongoDB crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/mongodb-assets/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "atlan-mongodb-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: atlan-mongodb-1684500411
+
+          kafka_crawler_13:
+            summary: "Kafka crawler - full configuration"
+            x-useCaseTag: "Kafka crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/confluent-kafka-assets/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "atlan-kafka-confluent-cloud-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: atlan-kafka-confluent-cloud-1684500411
+
+          dbt_crawler_14:
+            summary: "dbt crawler - full configuration"
+            x-useCaseTag: "dbt crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/dbt-assets/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "atlan-dbt-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: atlan-dbt-1684500411
+
+          looker_crawler_15:
+            summary: "Looker crawler - full configuration"
+            x-useCaseTag: "Looker crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/looker-assets/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "atlan-looker-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: atlan-looker-1684500411
+
+          tableau_crawler_16:
+            summary: "Tableau crawler - full configuration"
+            x-useCaseTag: "Tableau crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/tableau-assets/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "atlan-tableau-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: atlan-tableau-1684500411
+
+          power_bi_crawler_17:
+            summary: "Power BI crawler - full configuration"
+            x-useCaseTag: "Power BI crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/powerbi-assets/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "atlan-powerbi-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: atlan-powerbi-1684500411
+
+          sigma_crawler_18:
+            summary: "Sigma crawler - full configuration"
+            x-useCaseTag: "Sigma crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/sigma-assets/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "atlan-sigma-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: atlan-sigma-1684500411
+
+          fivetran_enrichment_19:
+            summary: "Fivetran enrichment - example 5"
+            x-useCaseTag: "Fivetran enrichment"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/fivetran-enrichment/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "atlan-fivetran-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: atlan-fivetran-1684500411
+
+          asset_import_20:
+            summary: "Asset import - example 1"
+            x-useCaseTag: "Asset import"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/asset-import/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "csa-asset-import-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: csa-asset-import-1684500411
+
+          asset_export_21:
+            summary: "Asset export - example 2"
+            x-useCaseTag: "Asset export"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/asset-export-basic/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "csa-asset-export-basic-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: csa-asset-export-basic-1684500411
+
+          relational_assets_builder_22:
+            summary: "Relational assets builder - example 3"
+            x-useCaseTag: "Relational assets builder"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/relational-assets-builder/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "csa-relational-assets-builder-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: csa-relational-assets-builder-1684500411
+
+          lineage_builder_23:
+            summary: "Lineage builder - example 4"
+            x-useCaseTag: "Lineage builder"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/lineage-builder/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "csa-lineage-builder-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: csa-lineage-builder-1684500411
+
+          lineage_generator_no_transformation_24:
+            summary: "Lineage generator (no transformation) - example 5"
+            x-useCaseTag: "Lineage generator (no transformation)"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/lineage-generator-nt/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "csa-lineage-generator-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: csa-lineage-generator-1684500411
+
+          connection_delete_25:
+            summary: "Connection delete - example 1"
+            x-useCaseTag: "Connection delete"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/connection-delete/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "atlan-connection-delete-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: atlan-connection-delete-1684500411
+
+          api_token_connection_admin_26:
+            summary: "API token connection admin - example 2"
+            x-useCaseTag: "API token connection admin"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/api-token-connection-admin/
+            x-atlanSnippet: |-
+              {
+                "namespace": "default",
+                "resourceKind": "WorkflowTemplate",
+                "resourceName": "csa-api-token-connection-admin-1684500411" // (1)
+              }
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: csa-api-token-connection-admin-1684500411
+
+  responses:
+    '200':
+      description: Workflow submitted successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Workflow.yaml#/WorkflowSubmitResponse'
+    '400':
+      description: Invalid workflow configuration
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '401':
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '404':
+      description: Workflow package not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '500':
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'

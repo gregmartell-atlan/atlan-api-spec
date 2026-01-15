@@ -1,0 +1,214 @@
+id: datamesh-datadomains
+title: Manage data domains
+category: data-mesh
+icon: zap
+relatedTypes:
+  - Asset
+  - DataDomain
+description: Manage data domains in Atlan. Data domains are organizational units in a data mesh architecture that group related data products and define ownership boundaries.
+externalDocs:
+  url: https://developer.atlan.com/snippets/datamesh/datadomains/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Create a new data domain
+    description: |-
+      4.0.0 2.0.4
+      To create a new data domain:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: DataDomain
+              attributes:
+                name: Marketing
+                assetIcon: PhRocket
+                assetThemeHex: "#F34D77"
+                qualifiedName: default/domain/marketing
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: DataDomain
+                attributes:
+                  qualifiedName: default/domain/gAbQGZNrFjG2F9lGB3hYp
+                  name: Marketing
+                  assetIcon: PhRocket
+                  assetThemeHex: "#F34D77"
+                guid: 218c8144-dc39-43a5-b0c0-9eeb4d11e74a
+                status: ACTIVE
+          guidAssignments:
+            "-1234567892": 218c8144-dc39-43a5-b0c0-9eeb4d11e74a
+  - step: 2
+    title: Create a new subdomain
+    description: |-
+      4.0.0 2.0.0
+      To create a new subdomain:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-2-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: DataDomain
+              attributes:
+                name: Social Marketing
+                qualifiedName: default/domain/gAbQGZNrFjG2F9lGB3hYp/super/domain/socialMarketing
+                parentDomainQualifiedName: default/domain/gAbQGZNrFjG2F9lGB3hYp/super
+                superDomainQualifiedName: default/domain/gAbQGZNrFjG2F9lGB3hYp/super
+              relationshipAttributes:
+                parentDomain:
+                  typeName: DataDomain
+                  uniqueAttributes:
+                    qualifiedName: default/domain/gAbQGZNrFjG2F9lGB3hYp
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: DataDomain
+                attributes:
+                  qualifiedName: default/domain/gAbQGZNrFjG2F9lGB3hYp/super/domain/socialMarketing
+                  name: Social Marketing
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+  - step: 3
+    title: Retrieve a data domain
+    description: |-
+      4.0.0 2.2.1
+      To retrieve a data domain by its human-readable name:
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-3-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            from: 0
+            size: 100
+            aggregations: {}
+            track_total_hits: true
+            query:
+              bool:
+                filter:
+                  - term:
+                      name.keyword:
+                        value: marketing
+                  - term:
+                      __typeName.keyword:
+                        value: DataDomain
+            sort:
+              - __guid:
+                  order: asc
+          attributes:
+            - certificateStatus
+        response:
+          queryType: INDEX
+          approximateCount: 1
+          entities:
+            - typeName: DataDomain
+              attributes:
+                qualifiedName: default/domain/gAbQGZNrFjG2F9lGB3hYp
+                name: Marketing
+                certificateStatus: null
+                assetIcon: PhRocket
+                assetThemeHex: "#F34D77"
+              guid: 218c8144-dc39-43a5-b0c0-9eeb4d11e74a
+              status: ACTIVE
+              displayText: Marketing
+  - step: 4
+    title: Update a data domain
+    description: |-
+      4.0.0 2.0.0
+      To update a data domain or subdomain:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-4-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: DataDomain
+              attributes:
+                name: Marketing
+                qualifiedName: default/domain/marketing
+                userDescription: Now with a description!
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: DataDomain
+                attributes:
+                  qualifiedName: default/domain/marketing
+                  name: Marketing
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+  - step: 5
+    title: Delete a data domain
+    description: |-
+      4.0.0 1.8.1
+      To soft-delete, or archive, a data domain:
+    method: DELETE
+    endpoint: /api/meta/entity/bulk
+    queryString: guid=218c8144-dc39-43a5-b0c0-9eeb4d11e74a&deleteType=SOFT
+    examples:
+      - key: example-5-1
+        summary: DELETE /api/meta/entity/bulk
+        response:
+          mutatedEntities:
+            DELETE:
+              - typeName: Asset
+                attributes:
+                  qualifiedName: example/deleted/asset
+                  name: Deleted Asset
+                guid: b4113341-251b-4adc-81fb-2420501c30e6
+                status: DELETED
+      - key: example-5-2
+        summary: DELETE /api/meta/entity/bulk
+        response:
+          mutatedEntities:
+            DELETE:
+              - typeName: Asset
+                attributes:
+                  qualifiedName: example/deleted/asset
+                  name: Deleted Asset
+                guid: b4113341-251b-4adc-81fb-2420501c30e6
+                status: DELETED
+  - step: 6
+    title: Soft-delete (archive)
+    description: "To soft-delete, or archive, a data domain:"
+    method: DELETE
+    endpoint: /api/meta/entity/bulk
+    queryString: guid=218c8144-dc39-43a5-b0c0-9eeb4d11e74a&deleteType=SOFT
+    examples:
+      - key: example-6-1
+        summary: DELETE /api/meta/entity/bulk
+        response:
+          mutatedEntities:
+            DELETE:
+              - typeName: Asset
+                attributes:
+                  qualifiedName: example/deleted/asset
+                  name: Deleted Asset
+                guid: b4113341-251b-4adc-81fb-2420501c30e6
+                status: DELETED
+  - step: 7
+    title: Hard-delete (purge)
+    description: "To permanently delete (purge) a data domain:"
+    method: DELETE
+    endpoint: /api/meta/entity/bulk
+    queryString: guid=218c8144-dc39-43a5-b0c0-9eeb4d11e74a&deleteType=PURGE
+    examples:
+      - key: example-7-1
+        summary: DELETE /api/meta/entity/bulk
+        response:
+          mutatedEntities:
+            PURGE:
+              - typeName: Asset
+                attributes:
+                  qualifiedName: example/deleted/asset
+                  name: Deleted Asset
+                guid: b4113341-251b-4adc-81fb-2420501c30e6
+                status: PURGED

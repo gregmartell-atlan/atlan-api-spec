@@ -1,0 +1,315 @@
+{
+  "useCase": "resolve-fqn-to-guid",
+  "description": "API calls for resolve-fqn-to-guid",
+  "steps": [
+    {
+      "step": 1,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "term": {
+              "qualifiedName": "{fqn}"
+            }
+          },
+          "size": 1
+        },
+        "attributes": [
+          "guid",
+          "qualifiedName",
+          "name",
+          "typeName",
+          "description",
+          "userDescription",
+          "displayName",
+          "certificateStatus",
+          "certificateStatusMessage",
+          "announcementType",
+          "announcementTitle",
+          "announcementMessage",
+          "ownerUsers",
+          "ownerGroups",
+          "adminUsers",
+          "adminGroups",
+          "classifications",
+          "classificationNames",
+          "businessAttributes",
+          "meanings",
+          "meaningNames",
+          "__hasLineage",
+          "createTime",
+          "updateTime",
+          "createdBy",
+          "updatedBy",
+          "connectorName",
+          "connectionName",
+          "connectionQualifiedName",
+          "databaseName",
+          "databaseQualifiedName",
+          "schemaName",
+          "schemaQualifiedName",
+          "tableName",
+          "tableQualifiedName",
+          "domainGUIDs"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "certificateStatus",
+              "connectionQualifiedName",
+              "databaseName",
+              "... (33 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "term": {
+                  "qualifiedName": "{fqn}"
+                }
+              },
+              "size": 1
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"term\":{\"qualifiedName\":\"{fqn}\"}},\"size\":1}",
+            "querySize": 1,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "approximateCount": 0
+        }
+      },
+      "duration": 174
+    },
+    {
+      "step": 2,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "term": {
+              "qualifiedName": "{fqn}"
+            }
+          },
+          "size": 1
+        },
+        "attributes": [
+          "guid",
+          "qualifiedName",
+          "name",
+          "typeName",
+          "description",
+          "userDescription",
+          "displayName",
+          "certificateStatus",
+          "certificateStatusMessage",
+          "announcementType",
+          "announcementTitle",
+          "announcementMessage",
+          "ownerUsers",
+          "ownerGroups",
+          "adminUsers",
+          "adminGroups",
+          "classifications",
+          "classificationNames",
+          "businessAttributes",
+          "meanings",
+          "meaningNames",
+          "__hasLineage",
+          "createTime",
+          "updateTime",
+          "createdBy",
+          "updatedBy",
+          "connectorName",
+          "connectionName",
+          "connectionQualifiedName",
+          "databaseName",
+          "databaseQualifiedName",
+          "schemaName",
+          "schemaQualifiedName",
+          "tableName",
+          "tableQualifiedName",
+          "domainGUIDs"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "certificateStatus",
+              "connectionQualifiedName",
+              "databaseName",
+              "... (33 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "term": {
+                  "qualifiedName": "{fqn}"
+                }
+              },
+              "size": 1
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"term\":{\"qualifiedName\":\"{fqn}\"}},\"size\":1}",
+            "querySize": 1,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "approximateCount": 0
+        }
+      },
+      "duration": 144
+    },
+    {
+      "step": 3,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "term": {
+              "qualifiedName": "{fqn}"
+            }
+          },
+          "size": 1
+        },
+        "attributes": [
+          "guid",
+          "qualifiedName",
+          "name",
+          "typeName",
+          "description",
+          "userDescription",
+          "displayName",
+          "certificateStatus",
+          "certificateStatusMessage",
+          "announcementType",
+          "announcementTitle",
+          "announcementMessage",
+          "ownerUsers",
+          "ownerGroups",
+          "adminUsers",
+          "adminGroups",
+          "classifications",
+          "classificationNames",
+          "businessAttributes",
+          "meanings",
+          "meaningNames",
+          "__hasLineage",
+          "createTime",
+          "updateTime",
+          "createdBy",
+          "updatedBy",
+          "connectorName",
+          "connectionName",
+          "connectionQualifiedName",
+          "databaseName",
+          "databaseQualifiedName",
+          "schemaName",
+          "schemaQualifiedName",
+          "tableName",
+          "tableQualifiedName",
+          "domainGUIDs"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "certificateStatus",
+              "connectionQualifiedName",
+              "databaseName",
+              "... (33 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "term": {
+                  "qualifiedName": "{fqn}"
+                }
+              },
+              "size": 1
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"term\":{\"qualifiedName\":\"{fqn}\"}},\"size\":1}",
+            "querySize": 1,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "approximateCount": 0
+        }
+      },
+      "duration": 134
+    }
+  ]
+}

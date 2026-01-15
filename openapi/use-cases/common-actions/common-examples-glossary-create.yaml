@@ -1,0 +1,111 @@
+id: common-examples-glossary-create
+title: Creating glossary objects
+category: common-actions
+icon: zap
+relatedTypes:
+  - Asset
+  - AtlasGlossary
+  - AtlasGlossaryCategory
+  - AtlasGlossaryTerm
+description: You can create objects in glossaries in the same way as all other objects in the SDK. Each object provides a method that takes the minimal set of required fields to create that asset.
+externalDocs:
+  url: https://developer.atlan.com/snippets/common-examples/glossary/create/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Create a glossary
+    description: |-
+      2.0.0 4.0.0
+      To create a glossary:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AtlasGlossary
+              attributes:
+                name: Example Glossary
+                qualifiedName: Example Glossary
+                assetIcon: PhBookOpenText
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: AtlasGlossary
+                attributes:
+                  qualifiedName: FzCMyPR2LxkPFgr8eNGrq
+                  name: Example Glossary
+                  assetIcon: PhBookOpenText
+                guid: c1d2e3f4-a5b6-7890-cdef-123456789012
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": c1d2e3f4-a5b6-7890-cdef-123456789012
+  - step: 2
+    title: Create a category
+    description: |-
+      2.0.0 4.0.0
+      To create a category:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-2-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AtlasGlossaryCategory
+              attributes:
+                name: Example Category
+                qualifiedName: Example Category
+                anchor:
+                  typeName: AtlasGlossary
+                  guid: b4113341-251b-4adc-81fb-2420501c30e6
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: AtlasGlossaryCategory
+                attributes:
+                  qualifiedName: Example Category
+                  name: Example Category
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+                relationshipAttributes:
+                  anchor:
+                    guid: b4113341-251b-4adc-81fb-2420501c30e6
+                    typeName: AtlasGlossary
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+  - step: 3
+    title: Create a term
+    description: |-
+      2.0.0 4.0.0
+      To create a term:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-3-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AtlasGlossaryTerm
+              attributes:
+                name: Example Term
+                qualifiedName: Example Term
+                anchor:
+                  typeName: AtlasGlossary
+                  guid: b4113341-251b-4adc-81fb-2420501c30e6
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: AtlasGlossaryTerm
+                attributes:
+                  qualifiedName: be81ac35-d93f-4b4b-a49a-b1c7046e575d
+                  name: Example Term
+                guid: be81ac35-d93f-4b4b-a49a-b1c7046e575d
+                status: ACTIVE
+                relationshipAttributes:
+                  anchor:
+                    guid: b4113341-251b-4adc-81fb-2420501c30e6
+                    typeName: AtlasGlossary
+          guidAssignments:
+            "-1234567891": be81ac35-d93f-4b4b-a49a-b1c7046e575d

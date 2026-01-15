@@ -1,0 +1,150 @@
+# Reusable parameters
+
+guid:
+  name: guid
+  in: path
+  required: true
+  schema:
+    type: string
+    format: uuid
+  description: Unique identifier (GUID) of the asset.
+  example: "b4113341-251b-4adc-81fb-2420501c30e6"
+
+typeName:
+  name: typeName
+  in: path
+  required: true
+  schema:
+    type: string
+  description: Asset type name (e.g., Table, Column, AtlasGlossaryTerm).
+  example: "Table"
+
+qualifiedName:
+  name: qualifiedName
+  in: query
+  required: true
+  schema:
+    type: string
+  description: |
+    Unique hierarchical identifier for the asset.
+    Format varies by asset type (e.g., `default/snowflake/123/db/schema/table`).
+  example: "default/snowflake/123/analytics/public/orders"
+
+name:
+  name: name
+  in: path
+  required: true
+  schema:
+    type: string
+  description: Name of the resource (e.g., type definition name, tag name).
+  example: "PII"
+
+# ─── Pagination ───────────────────────────────────────────────────────────────
+
+offset:
+  name: offset
+  in: query
+  required: false
+  schema:
+    type: integer
+    minimum: 0
+    default: 0
+  description: Pagination offset (number of items to skip).
+
+limit:
+  name: limit
+  in: query
+  required: false
+  schema:
+    type: integer
+    minimum: 1
+    maximum: 10000
+    default: 20
+  description: Maximum number of items to return.
+
+# ─── Mutation flags ───────────────────────────────────────────────────────────
+
+replaceTags:
+  name: replaceTags
+  in: query
+  required: false
+  schema:
+    type: boolean
+    default: false
+  description: |
+    If true, replace all existing tags on the asset(s) with the provided tags.
+    If false (default), tags are appended.
+
+appendTags:
+  name: appendTags
+  in: query
+  required: false
+  schema:
+    type: boolean
+    default: true
+  description: |
+    If true (default), append tags to existing tags.
+    Mutually exclusive with `replaceTags`.
+
+replaceBusinessAttributes:
+  name: replaceBusinessAttributes
+  in: query
+  required: false
+  schema:
+    type: boolean
+    default: false
+  description: |
+    If true, replace all custom metadata on the asset(s).
+
+overwriteBusinessAttributes:
+  name: overwriteBusinessAttributes
+  in: query
+  required: false
+  schema:
+    type: boolean
+    default: false
+  description: |
+    If true, overwrite individual custom metadata attributes (merge behavior).
+
+deleteType:
+  name: deleteType
+  in: query
+  required: false
+  schema:
+    type: string
+    enum: [SOFT, HARD]
+    default: SOFT
+  description: |
+    - `SOFT` – mark as deleted (can be restored)
+    - `HARD` – permanently purge (cannot be restored)
+
+# ─── Entity retrieval ─────────────────────────────────────────────────────────
+
+minExtInfo:
+  name: minExtInfo
+  in: query
+  required: false
+  schema:
+    type: boolean
+    default: false
+  description: Minimize extended information to reduce response size.
+
+ignoreRelationships:
+  name: ignoreRelationships
+  in: query
+  required: false
+  schema:
+    type: boolean
+    default: false
+  description: Exclude relationship attributes from response.
+
+# ─── Type definition queries ──────────────────────────────────────────────────
+
+typeCategory:
+  name: type
+  in: query
+  required: false
+  schema:
+    type: string
+    enum: [CLASSIFICATION, ENUM, ENTITY, RELATIONSHIP, BUSINESS_METADATA]
+  description: Filter type definitions by category.

@@ -1,0 +1,165 @@
+# Minimal entity/bulk endpoint definition
+# Use-case-specific examples are in /openapi/use-cases/
+
+post:
+  operationId: entityBulk
+  summary: Bulk create or update entities
+  description: |
+    Create or update one or more entities in a single request.
+    
+    This is the primary endpoint for most asset operations. For step-by-step
+    guides, see the Use Cases documentation.
+    
+    **Key points:**
+    - Entities are matched by `qualifiedName` - mismatches create new assets
+    - Include `typeName`, `name`, and `qualifiedName` for all updates
+    - Use query parameters to control tag/metadata behavior
+  externalDocs:
+    url: https://developer.atlan.com/snippets/advanced-examples/create/
+    description: Creating assets documentation
+  tags:
+    - Entity
+  security:
+    - AtlanToken: []
+  parameters:
+    - $ref: '../../components/parameters/_index.yaml#/replaceTags'
+    - $ref: '../../components/parameters/_index.yaml#/appendTags'
+    - $ref: '../../components/parameters/_index.yaml#/replaceBusinessAttributes'
+    - $ref: '../../components/parameters/_index.yaml#/overwriteBusinessAttributes'
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/AssetMutation.yaml#/AssetMutationRequest'
+        examples:
+          create_table:
+            summary: Create a table
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    qualifiedName: default/snowflake/123/DB/SCHEMA/NEW_TABLE
+                    name: NEW_TABLE
+                    atlanSchema:
+                      typeName: Schema
+                      uniqueAttributes:
+                        qualifiedName: default/snowflake/123/DB/SCHEMA
+
+          update_asset:
+            summary: Update an existing asset
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    qualifiedName: default/snowflake/123/DB/SCHEMA/TABLE
+                    name: TABLE
+                    userDescription: Updated description
+                    certificateStatus: VERIFIED
+                    certificateStatusMessage: Verified via API
+
+          add_tags:
+            summary: Add tags to an asset
+            description: Use appendTags=true query parameter
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    qualifiedName: default/snowflake/123/DB/SCHEMA/TABLE
+                    name: TABLE
+                  classifications:
+                    - typeName: PII_TAG_HASHED_ID
+
+  responses:
+    '200':
+      description: Entities created or updated successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/AssetMutation.yaml#/AssetMutationResponse'
+          example:
+            mutatedEntities:
+              CREATE:
+                - typeName: Table
+                  guid: abc-123-def
+                  attributes:
+                    qualifiedName: default/snowflake/123/DB/SCHEMA/NEW_TABLE
+              UPDATE:
+                - typeName: Table
+                  guid: xyz-456-ghi
+    '400':
+      description: Invalid request body
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '401':
+      description: Missing or invalid authentication token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '403':
+      description: Insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '500':
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+
+delete:
+  operationId: entityBulkDelete
+  summary: Bulk delete entities
+  description: |
+    Delete multiple entities by GUID in a single request.
+    
+    Use `deleteType` to control soft vs hard delete.
+  tags:
+    - Entity
+  security:
+    - AtlanToken: []
+  parameters:
+    - name: guid
+      in: query
+      required: true
+      description: Comma-separated list of entity GUIDs to delete
+      schema:
+        type: string
+      example: guid1,guid2,guid3
+    - name: deleteType
+      in: query
+      description: Type of delete operation
+      schema:
+        type: string
+        enum: [SOFT, HARD]
+        default: SOFT
+  responses:
+    '200':
+      description: Entities deleted successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/AssetMutation.yaml#/AssetMutationResponse'
+    '400':
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '401':
+      description: Missing or invalid authentication token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '404':
+      description: Entity not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'

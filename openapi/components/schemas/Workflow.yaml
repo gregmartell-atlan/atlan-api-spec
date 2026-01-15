@@ -1,0 +1,61 @@
+# Workflow schemas
+
+WorkflowSubmitRequest:
+  type: object
+  description: Request body for submitting a workflow
+  properties:
+    metadata:
+      type: object
+      description: Workflow metadata
+      properties:
+        name:
+          type: string
+          description: Workflow name
+        namespace:
+          type: string
+          description: Workflow namespace
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+    spec:
+      type: object
+      description: Workflow specification
+      properties:
+        templates:
+          type: array
+          items:
+            type: object
+        entrypoint:
+          type: string
+        arguments:
+          type: object
+  required:
+    - metadata
+    - spec
+
+WorkflowSubmitResponse:
+  type: object
+  description: Response from workflow submission
+  properties:
+    metadata:
+      type: object
+      properties:
+        name:
+          type: string
+        namespace:
+          type: string
+        uid:
+          type: string
+        creationTimestamp:
+          type: string
+          format: date-time
+    status:
+      type: object
+      properties:
+        phase:
+          type: string
+          enum: [Pending, Running, Succeeded, Failed, Error]
+        startedAt:
+          type: string
+          format: date-time

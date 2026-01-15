@@ -1,0 +1,1060 @@
+post:
+  operationId: createTypeDefs
+  summary: Create type definitions
+  description: |
+    Create new type definitions (custom metadata structures, tags/classifications).
+
+    ## Use cases
+    - [Create custom metadata](https://developer.atlan.com/snippets/custom-metadata/create/)
+    - [Manage tag definitions](https://developer.atlan.com/snippets/tags/manage/)
+  externalDocs:
+    url: https://developer.atlan.com/snippets/custom-metadata/create/
+    description: Custom metadata creation examples
+  tags:
+    - "Create custom metadata"
+    - "Custom metadata enums"
+    - "Manage tag definitions"
+    - "Update custom metadata"
+  security:
+    - AtlanToken: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/TypeDefs.yaml#/TypeDefRequest'
+        examples:
+          create_custom_metadata_0:
+            summary: "Create custom metadata - example 1"
+            x-useCaseTag: "Create custom metadata"
+            x-docUrl: https://developer.atlan.com/snippets/custom-metadata/create/
+            x-atlanSnippet: |-
+              {
+                "businessMetadataDefs": [ // (1)
+                  {
+                    "category": "BUSINESS_METADATA", // (2)
+                    "name": "RACI", // (3)
+                    "attributeDefs": [ // (4)
+                      {
+                        "name": "", // (5)
+                        "displayName": "Responsible", // (6)
+                        "description": "",
+                        "typeName": "string",
+                        "isOptional": true,
+                        "cardinality": "SINGLE",
+                        "valuesMinCount": 0,
+                        "valuesMaxCount": 1,
+                        "isUnique": false,
+                        "isIndexable": true,
+                        "includeInNotification": false,
+                        "options": {
+                          "applicableEntityTypes": "[\"Asset\"]",
+                          "customApplicableEntityTypes": "[\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\",\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\"]",
+                          "allowSearch": false,
+                          "maxStrLength": "100000000",
+                          "allowFiltering": true,
+                          "multiValueSelect": true, // (7)
+                          "showInOverview": false,
+                          "primitiveType": "users",
+                          "isEnum": false,
+                          "customType": "users" // (8)
+                        },
+                        "isNew": true // (9)
+                      },
+                      {
+                        "name": "",
+                        "displayName": "Accountable",
+                        "description": "",
+                        "typeName": "string",
+                        "isOptional": true,
+                        "cardinality": "SINGLE",
+                        "valuesMinCount": 0,
+                        "valuesMaxCount": 1,
+                        "isUnique": false,
+                        "isIndexable": true,
+                        "includeInNotification": false,
+                        "options": {
+                          "applicableEntityTypes": "[\"Asset\"]",
+                          "customApplicableEntityTypes": "[\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\",\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\"]",
+                          "allowSearch": false,
+                          "maxStrLength": "100000000",
+                          "allowFiltering": true,
+                          "multiValueSelect": false,
+                          "showInOverview": false,
+                          "primitiveType": "users",
+                          "isEnum": false,
+                          "customType": "users"
+                        },
+                        "isNew": true
+                      },
+                      {
+                        "name": "",
+                        "displayName": "Consulted",
+                        "description": "",
+                        "typeName": "array<string>",
+                        "isOptional": true,
+                        "cardinality": "SINGLE",
+                        "valuesMinCount": 0,
+                        "valuesMaxCount": 1,
+                        "isUnique": false,
+                        "isIndexable": true,
+                        "includeInNotification": false,
+                        "options": {
+                          "applicableEntityTypes": "[\"Asset\"]",
+                          "customApplicableEntityTypes": "[\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\",\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\"]",
+                          "allowSearch": false,
+                          "maxStrLength": "100000000",
+                          "allowFiltering": true,
+                          "multiValueSelect": true,
+                          "showInOverview": false,
+                          "primitiveType": "groups",
+                          "isEnum": false,
+                          "customType": "groups"
+                        },
+                        "isNew": true
+                      },
+                      {
+                        "name": "",
+                        "displayName": "Informed",
+                        "description": "",
+                        "typeName": "array<string>",
+                        "isOptional": true,
+                        "cardinality": "SINGLE",
+                        "valuesMinCount": 0,
+                        "valuesMaxCount": 1,
+                        "isUnique": false,
+                        "isIndexable": true,
+                        "includeInNotification": false,
+                        "options": {
+                          "applicableEntityTypes": "[\"Asset\"]",
+                          "customApplicableEntityTypes": "[\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\",\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\"]",
+                          "allowSearch": false,
+                          "maxStrLength": "100000000",
+                          "allowFiltering": true,
+                          "multiValueSelect": true,
+                          "showInOverview": false,
+                          "primitiveType": "groups",
+                          "isEnum": false,
+                          "customType": "groups"
+                        },
+                        "isNew": true
+                      }
+                    ],
+                    "displayName": "RACI", // (10)
+                    "options": { // (11)
+                      "logoType": "emoji",
+                      "emoji": "👪"
+                    }
+                  }
+                ]
+              }
+            value:
+              businessMetadataDefs:
+                  - category: BUSINESS_METADATA
+                    name: RACI
+                    attributeDefs:
+                        - name: ""
+                          displayName: Responsible
+                          description: ""
+                          typeName: string
+                          isOptional: true
+                          cardinality: SINGLE
+                          valuesMinCount: 0
+                          valuesMaxCount: 1
+                          isUnique: false
+                          isIndexable: true
+                          includeInNotification: false
+                          options:
+                            applicableEntityTypes: "[\"Asset\"]"
+                            customApplicableEntityTypes: "[\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\",\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\"]"
+                            allowSearch: false
+                            maxStrLength: "100000000"
+                            allowFiltering: true
+                            multiValueSelect: true
+                            showInOverview: false
+                            primitiveType: users
+                            isEnum: false
+                            customType: users
+                          isNew: true
+                        - name: ""
+                          displayName: Accountable
+                          description: ""
+                          typeName: string
+                          isOptional: true
+                          cardinality: SINGLE
+                          valuesMinCount: 0
+                          valuesMaxCount: 1
+                          isUnique: false
+                          isIndexable: true
+                          includeInNotification: false
+                          options:
+                            applicableEntityTypes: "[\"Asset\"]"
+                            customApplicableEntityTypes: "[\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\",\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\"]"
+                            allowSearch: false
+                            maxStrLength: "100000000"
+                            allowFiltering: true
+                            multiValueSelect: false
+                            showInOverview: false
+                            primitiveType: users
+                            isEnum: false
+                            customType: users
+                          isNew: true
+                        - name: ""
+                          displayName: Consulted
+                          description: ""
+                          typeName: array<string>
+                          isOptional: true
+                          cardinality: SINGLE
+                          valuesMinCount: 0
+                          valuesMaxCount: 1
+                          isUnique: false
+                          isIndexable: true
+                          includeInNotification: false
+                          options:
+                            applicableEntityTypes: "[\"Asset\"]"
+                            customApplicableEntityTypes: "[\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\",\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\"]"
+                            allowSearch: false
+                            maxStrLength: "100000000"
+                            allowFiltering: true
+                            multiValueSelect: true
+                            showInOverview: false
+                            primitiveType: groups
+                            isEnum: false
+                            customType: groups
+                          isNew: true
+                        - name: ""
+                          displayName: Informed
+                          description: ""
+                          typeName: array<string>
+                          isOptional: true
+                          cardinality: SINGLE
+                          valuesMinCount: 0
+                          valuesMaxCount: 1
+                          isUnique: false
+                          isIndexable: true
+                          includeInNotification: false
+                          options:
+                            applicableEntityTypes: "[\"Asset\"]"
+                            customApplicableEntityTypes: "[\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\",\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\"]"
+                            allowSearch: false
+                            maxStrLength: "100000000"
+                            allowFiltering: true
+                            multiValueSelect: true
+                            showInOverview: false
+                            primitiveType: groups
+                            isEnum: false
+                            customType: groups
+                          isNew: true
+                    displayName: RACI
+                    options:
+                      logoType: emoji
+                      emoji: 👪
+
+          custom_metadata_enums_1:
+            summary: "Custom metadata enums - example 2"
+            x-useCaseTag: "Custom metadata enums"
+            x-docUrl: https://developer.atlan.com/snippets/custom-metadata/enums/
+            x-atlanSnippet: |-
+              {
+                "enumDefs": [ // (1)
+                  {
+                    "category": "ENUM", // (2)
+                    "name": "DataQualityDimensions", // (3)
+                    "elementDefs": [ // (4)
+                      {
+                        "value": "Accuracy",
+                        "ordinal": 0
+                      },
+                      {
+                        "value": "Completeness",
+                        "ordinal": 1
+                      },
+                      {
+                        "value": "Consistency",
+                        "ordinal": 2
+                      },
+                      {
+                        "value": "Timeliness",
+                        "ordinal": 3
+                      },
+                      {
+                        "value": "Validity",
+                        "ordinal": 4
+                      },
+                      {
+                        "value": "Uniqueness",
+                        "ordinal": 5
+                      }
+                    ]
+                  }
+                ]
+              }
+            value:
+              enumDefs:
+                  - category: ENUM
+                    name: DataQualityDimensions
+                    elementDefs:
+                        - value: Accuracy
+                          ordinal: 0
+                        - value: Completeness
+                          ordinal: 1
+                        - value: Consistency
+                          ordinal: 2
+                        - value: Timeliness
+                          ordinal: 3
+                        - value: Validity
+                          ordinal: 4
+                        - value: Uniqueness
+                          ordinal: 5
+
+          custom_metadata_enums_2:
+            summary: "Custom metadata enums - example 3"
+            x-useCaseTag: "Custom metadata enums"
+            x-docUrl: https://developer.atlan.com/snippets/custom-metadata/enums/
+            x-atlanSnippet: |-
+              {
+                "businessMetadataDefs": [
+                  {
+                    "category": "BUSINESS_METADATA",
+                    "name": "DQ", // (1)
+                    "attributeDefs": [ // (2)
+                      {
+                        "name": "", // (3)
+                        "displayName": "Dimension",
+                        "description": "",
+                        "typeName": "DataQualityDimensions", // (4)
+                        "isOptional": true,
+                        "cardinality": "SINGLE",
+                        "valuesMinCount": 0,
+                        "valuesMaxCount": 1,
+                        "isUnique": false,
+                        "isIndexable": true,
+                        "includeInNotification": false,
+                        "options": {
+                          "applicableEntityTypes": "[\"Asset\"]",
+                          "customApplicableEntityTypes": "[\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\",\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\"]",
+                          "allowSearch": false,
+                          "maxStrLength": "100000000",
+                          "allowFiltering": true,
+                          "multiValueSelect": false,
+                          "showInOverview": false,
+                          "primitiveType": "enum", // (5)
+                          "isEnum": true,
+                          "enumType": "DataQualityDimensions"
+                        },
+                        "isNew": true,
+                        "enumValues": [
+                          "Accuracy",
+                          "Completeness",
+                          "Consistency",
+                          "Timeliness",
+                          "Validity",
+                          "Uniqueness"
+                        ]
+                      }
+                    ],
+                    "displayName": "DQ",
+                    "options": {
+                      "logoType": "emoji",
+                      "emoji": "🔖"
+                    }
+                  }
+                ]
+              }
+            value:
+              businessMetadataDefs:
+                  - category: BUSINESS_METADATA
+                    name: DQ
+                    attributeDefs:
+                        - name: ""
+                          displayName: Dimension
+                          description: ""
+                          typeName: DataQualityDimensions
+                          isOptional: true
+                          cardinality: SINGLE
+                          valuesMinCount: 0
+                          valuesMaxCount: 1
+                          isUnique: false
+                          isIndexable: true
+                          includeInNotification: false
+                          options:
+                            applicableEntityTypes: "[\"Asset\"]"
+                            customApplicableEntityTypes: "[\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\",\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\"]"
+                            allowSearch: false
+                            maxStrLength: "100000000"
+                            allowFiltering: true
+                            multiValueSelect: false
+                            showInOverview: false
+                            primitiveType: enum
+                            isEnum: true
+                            enumType: DataQualityDimensions
+                          isNew: true
+                          enumValues:
+                              - Accuracy
+                              - Completeness
+                              - Consistency
+                              - Timeliness
+                              - Validity
+                              - Uniqueness
+                    displayName: DQ
+                    options:
+                      logoType: emoji
+                      emoji: 🔖
+
+          manage_tag_definitions_3:
+            summary: "Manage tag definitions - example 4"
+            x-useCaseTag: "Manage tag definitions"
+            x-docUrl: https://developer.atlan.com/snippets/tags/manage/
+            x-atlanSnippet: |-
+              {
+                "classificationDefs": [ // (1)
+                  {
+                    "category": "CLASSIFICATION", // (2)
+                    "name": "PII", // (3)
+                    "description": "Personally-Identifiable Information",
+                    "displayName": "PII", // (4)
+                    "options": {
+                      "color": "Red", // (5)
+                      "icon": "PhPassword", // (6)
+                      "iconType": "icon"
+                    },
+                    "skipDisplayNameUniquenessCheck": false
+                  }
+                ]
+              }
+            value:
+              classificationDefs:
+                  - category: CLASSIFICATION
+                    name: PII
+                    description: Personally-Identifiable Information
+                    displayName: PII
+                    options:
+                      color: Red
+                      icon: PhPassword
+                      iconType: icon
+                    skipDisplayNameUniquenessCheck: false
+
+  responses:
+    '200':
+      description: Type definitions created
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/TypeDefs.yaml#/TypeDefResponse'
+    '400':
+      description: Invalid type definition
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '401':
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '409':
+      description: Type definition already exists
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '500':
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+
+put:
+  operationId: updateTypeDefs
+  summary: Update type definitions
+  description: |
+    Update existing type definitions (custom metadata structures, tags/classifications).
+
+    ## Use cases
+    - [Update custom metadata](https://developer.atlan.com/snippets/custom-metadata/update/)
+    - [Manage tag definitions](https://developer.atlan.com/snippets/tags/manage/)
+  externalDocs:
+    url: https://developer.atlan.com/snippets/custom-metadata/update/
+    description: Custom metadata update examples
+  tags:
+    - "Create custom metadata"
+    - "Custom metadata enums"
+    - "Manage tag definitions"
+    - "Update custom metadata"
+  security:
+    - AtlanToken: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/TypeDefs.yaml#/TypeDefRequest'
+        examples:
+          update_custom_metadata_0:
+            summary: "Update custom metadata - example 1"
+            x-useCaseTag: "Update custom metadata"
+            x-docUrl: https://developer.atlan.com/snippets/custom-metadata/update/
+            x-atlanSnippet: |-
+              {
+                "businessMetadataDefs": [ // (1)
+                  {
+                    "category": "BUSINESS_METADATA", // (2)
+                    "guid": "917ffec9-fa84-4c59-8e6c-c7b114d04be3",
+                    "name": "MNJ8mpLsIOaP4OQnLNhRta",
+                    "displayName": "RACI",
+                    "description": "",
+                    "typeVersion": "1.0",
+                    "serviceType": "atlan",
+                    "attributeDefs": [ // (3)
+                      {
+                        "name": "fWMB77RSjRGNYoFeD4FcGi",
+                        "displayName": "Responsible",
+                        "description": "",
+                        "typeName": "string",
+                        "includeInNotification": false,
+                        "isIndexable": true,
+                        "isOptional": true,
+                        "isUnique": false,
+                        "indexType": "DEFAULT",
+                        "searchWeight": -1,
+                        "cardinality": "SINGLE",
+                        "valuesMinCount": 0,
+                        "valuesMaxCount": 1,
+                        "options": {
+                          "applicableEntityTypes": "[\"Asset\"]",
+                          "customApplicableEntityTypes": "[\"Database\",\"Schema\",\"Table\"]\n",
+                          "maxStrLength": "100000000",
+                          "isEnum": false,
+                          "multiValueSelect": false,
+                          "allowFiltering": true,
+                          "allowSearch": true,
+                          "primitiveType": "string",
+                          "customType": "users"
+                        }
+                      },
+                      {...},
+                      {...},
+                      {...},
+                      {
+                        "name": "Extra", // (4)
+                        "displayName": "Extra", // (5)
+                        "description": "",
+                        "typeName": "string",
+                        "includeInNotification": false,
+                        "isIndexable": true,
+                        "isOptional": true,
+                        "isUnique": false,
+                        "indexType": "DEFAULT",
+                        "searchWeight": -1,
+                        "cardinality": "SINGLE",
+                        "valuesMinCount": 0,
+                        "valuesMaxCount": 1,
+                        "options": {
+                          "applicableEntityTypes": "[\"Asset\"]",
+                          "customApplicableEntityTypes": "[\"Database\",\"Schema\",\"Table\"]\n",
+                          "maxStrLength": "100000000",
+                          "isEnum": false,
+                          "multiValueSelect": false,
+                          "allowFiltering": true,
+                          "allowSearch": true,
+                          "primitiveType": "string",
+                          "customType": "users"
+                        }
+                      }
+                    ],
+                    "createdBy": "jsmith",
+                    "updatedBy": "jsmith",
+                    "createTime": 1648852296555,
+                    "updateTime": 1649172284333,
+                    "version": 2
+                  }
+                ]
+              }
+
+          update_custom_metadata_1:
+            summary: "Update custom metadata - example 2"
+            x-useCaseTag: "Update custom metadata"
+            x-docUrl: https://developer.atlan.com/snippets/custom-metadata/update/
+            x-atlanSnippet: |-
+              {
+                "businessMetadataDefs": [ // (1)
+                  {
+                    "category": "BUSINESS_METADATA", // (2)
+                    "guid": "917ffec9-fa84-4c59-8e6c-c7b114d04be3",
+                    "name": "MNJ8mpLsIOaP4OQnLNhRta",
+                    "displayName": "RACI",
+                    "description": "",
+                    "typeVersion": "1.0",
+                    "serviceType": "atlan",
+                    "attributeDefs": [ // (3)
+                      {
+                        "name": "fWMB77RSjRGNYoFeD4FcGi",
+                        "displayName": "Responsible",
+                        "description": "",
+                        "typeName": "string",
+                        "includeInNotification": false,
+                        "isIndexable": true,
+                        "isOptional": true,
+                        "isUnique": false,
+                        "indexType": "DEFAULT",
+                        "searchWeight": -1,
+                        "cardinality": "SINGLE",
+                        "valuesMinCount": 0,
+                        "valuesMaxCount": 1,
+                        "options": {
+                          "applicableEntityTypes": "[\"Asset\"]",
+                          "customApplicableEntityTypes": "[\"Database\",\"Schema\",\"Table\"]\n",
+                          "maxStrLength": "100000000",
+                          "isEnum": false,
+                          "multiValueSelect": false,
+                          "allowFiltering": true,
+                          "allowSearch": true,
+                          "primitiveType": "string",
+                          "customType": "users"
+                        }
+                      },
+                      {...},
+                      {...},
+                      {...},
+                      {
+                        "name": "okm7BDXjTQx4iYPT5u7ilu", // (4)
+                        "displayName": "Something else", // (5)
+                        "description": "",
+                        "typeName": "string",
+                        "includeInNotification": false,
+                        "isIndexable": true,
+                        "isOptional": true,
+                        "isUnique": false,
+                        "indexType": "DEFAULT",
+                        "searchWeight": -1,
+                        "cardinality": "SINGLE",
+                        "valuesMinCount": 0,
+                        "valuesMaxCount": 1,
+                        "options": {
+                          "applicableEntityTypes": "[\"Asset\"]",
+                          "customApplicableEntityTypes": "[\"Database\",\"Schema\",\"Table\"]\n",
+                          "maxStrLength": "100000000",
+                          "isEnum": false,
+                          "multiValueSelect": false,
+                          "allowFiltering": true,
+                          "allowSearch": true,
+                          "primitiveType": "string",
+                          "customType": "users"
+                        }
+                      }
+                    ],
+                    "createdBy": "jsmith",
+                    "updatedBy": "jsmith",
+                    "createTime": 1648852296555,
+                    "updateTime": 1649172284333,
+                    "version": 2
+                  }
+                ]
+              }
+
+          update_custom_metadata_2:
+            summary: "Update custom metadata - example 3"
+            x-useCaseTag: "Update custom metadata"
+            x-docUrl: https://developer.atlan.com/snippets/custom-metadata/update/
+            x-atlanSnippet: |-
+              {
+                "businessMetadataDefs": [ // (1)
+                  {
+                    "category": "BUSINESS_METADATA", // (2)
+                    "guid": "917ffec9-fa84-4c59-8e6c-c7b114d04be3",
+                    "name": "MNJ8mpLsIOaP4OQnLNhRta",
+                    "displayName": "RACI",
+                    "description": "",
+                    "typeVersion": "1.0",
+                    "serviceType": "atlan",
+                    "attributeDefs": [ // (3)
+                      {
+                        "name": "fWMB77RSjRGNYoFeD4FcGi",
+                        "displayName": "Responsible",
+                        "description": "",
+                        "typeName": "string",
+                        "includeInNotification": false,
+                        "isIndexable": true,
+                        "isOptional": true,
+                        "isUnique": false,
+                        "indexType": "DEFAULT",
+                        "searchWeight": -1,
+                        "cardinality": "SINGLE",
+                        "valuesMinCount": 0,
+                        "valuesMaxCount": 1,
+                        "options": {
+                          "applicableEntityTypes": "[\"Asset\"]",
+                          "customApplicableEntityTypes": "[\"Database\",\"Schema\",\"Table\"]\n",
+                          "maxStrLength": "100000000",
+                          "isEnum": false,
+                          "multiValueSelect": false,
+                          "allowFiltering": true,
+                          "allowSearch": true,
+                          "primitiveType": "string",
+                          "customType": "users"
+                        }
+                      },
+                      {...},
+                      {...},
+                      {...},
+                      {
+                        "name": "okm7BDXjTQx4iYPT5u7ilu", // (4)
+                        "displayName": "Extra-archived-1649172285912", // (5)
+                        "description": "",
+                        "typeName": "string",
+                        "includeInNotification": false,
+                        "isIndexable": true,
+                        "isOptional": true,
+                        "isUnique": false,
+                        "indexType": "DEFAULT",
+                        "searchWeight": -1,
+                        "cardinality": "SINGLE",
+                        "valuesMinCount": 0,
+                        "valuesMaxCount": 1,
+                        "options": {
+                          "applicableEntityTypes": "[\"Asset\"]",
+                          "customApplicableEntityTypes": "[\"Database\",\"Schema\",\"Table\"]\n",
+                          "maxStrLength": "100000000",
+                          "isEnum": false,
+                          "multiValueSelect": false,
+                          "allowFiltering": true,
+                          "allowSearch": true,
+                          "primitiveType": "string",
+                          "customType": "users",
+                          "isArchived": true, // (6)
+                          "archivedBy": "jsmith", // (7)
+                          "archivedAt": 1649172285912 // (8)
+                        }
+                      }
+                    ],
+                    "createdBy": "jsmith",
+                    "updatedBy": "jsmith",
+                    "createTime": 1648852296555,
+                    "updateTime": 1649172284333,
+                    "version": 2
+                  }
+                ]
+              }
+
+          custom_metadata_enums_3:
+            summary: "Custom metadata enums - example 4"
+            x-useCaseTag: "Custom metadata enums"
+            x-docUrl: https://developer.atlan.com/snippets/custom-metadata/enums/
+            x-atlanSnippet: |-
+              {
+                "enumDefs": [ // (1)
+                  {
+                    "category": "ENUM", // (2)
+                    "name": "DataQualityDimensions", // (3)
+                    "elementDefs": [ // (4)
+                      {
+                        "value": "Accuracy",
+                        "ordinal": 0
+                      },
+                      {
+                        "value": "Completeness",
+                        "ordinal": 1
+                      },
+                      {
+                        "value": "Consistency",
+                        "ordinal": 2
+                      },
+                      {
+                        "value": "Timeliness",
+                        "ordinal": 3
+                      },
+                      {
+                        "value": "Validity",
+                        "ordinal": 4
+                      },
+                      {
+                        "value": "Uniqueness",
+                        "ordinal": 5
+                      },
+                      {
+                        "value": "Unknown",
+                        "ordinal": 6
+                      },
+                      {
+                        "value": "Others",
+                        "ordinal": 7
+                      }
+                    ]
+                  }
+                ]
+              }
+            value:
+              enumDefs:
+                  - category: ENUM
+                    name: DataQualityDimensions
+                    elementDefs:
+                        - value: Accuracy
+                          ordinal: 0
+                        - value: Completeness
+                          ordinal: 1
+                        - value: Consistency
+                          ordinal: 2
+                        - value: Timeliness
+                          ordinal: 3
+                        - value: Validity
+                          ordinal: 4
+                        - value: Uniqueness
+                          ordinal: 5
+                        - value: Unknown
+                          ordinal: 6
+                        - value: Others
+                          ordinal: 7
+
+          manage_tag_definitions_4:
+            summary: "Manage tag definitions - example 5"
+            x-useCaseTag: "Manage tag definitions"
+            x-docUrl: https://developer.atlan.com/snippets/tags/manage/
+            x-atlanSnippet: |-
+              {
+                 "enumDefs": [],
+                 "structDefs": [],
+                 "classificationDefs": [ // (1)
+                   {
+                     "category": "CLASSIFICATION",
+                     "createTime": 1716829706708,
+                     "createdBy": "service-account-apikey-2e721c86-2814-4c98-8e1a-fc3fdf6b0489",
+                     "guid": "884091b2-4fbc-4c8e-85d1-173ad90547cf",
+                     "name": "S7qnUqZ5mBMBpzQ3Wzt6yD",
+                     "typeVersion": "1.0",
+                     "updateTime": 1716835149934,
+                     "updatedBy": "service-account-apikey-2e721c86-2814-4c98-8e1a-fc3fdf6b0489",
+                     "version": 16,
+                     "attributeDefs": [],
+                     "entityTypes": [],
+                     "displayName": "MyTagName", // (2)
+                     "options": {
+                       "color": "Green",
+                       "emoji": "💪",
+                       "imageID": "",
+                       "iconName": "PhRocketLaunch",
+                       "iconType": "emoji"
+                     },
+                     "subTypes": [],
+                     "superTypes": []
+                   }
+                 ],
+                 "entityDefs": [],
+                 "relationshipDefs": [],
+                 "businessMetadataDefs": []
+              }
+            value:
+              enumDefs: []
+              structDefs: []
+              classificationDefs:
+                  - category: CLASSIFICATION
+                    createTime: 1716829706708
+                    createdBy: service-account-apikey-2e721c86-2814-4c98-8e1a-fc3fdf6b0489
+                    guid: 884091b2-4fbc-4c8e-85d1-173ad90547cf
+                    name: S7qnUqZ5mBMBpzQ3Wzt6yD
+                    typeVersion: "1.0"
+                    updateTime: 1716835149934
+                    updatedBy: service-account-apikey-2e721c86-2814-4c98-8e1a-fc3fdf6b0489
+                    version: 16
+                    attributeDefs: []
+                    entityTypes: []
+                    displayName: MyTagName
+                    options:
+                      color: Green
+                      emoji: 💪
+                      imageID: ""
+                      iconName: PhRocketLaunch
+                      iconType: emoji
+                    subTypes: []
+                    superTypes: []
+              entityDefs: []
+              relationshipDefs: []
+              businessMetadataDefs: []
+
+  responses:
+    '200':
+      description: Type definitions updated
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/TypeDefs.yaml#/TypeDefResponse'
+    '400':
+      description: Invalid type definition
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '401':
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '404':
+      description: Type definition not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '500':
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+
+get:
+  operationId: getTypeDefs
+  summary: Get all type definitions
+  description: |
+    Retrieve all type definitions from the Atlan instance.
+    
+    Use the `type` query parameter to filter by type category:
+    - `classification` - Tag/classification definitions
+    - `businessMetadata` - Custom metadata definitions  
+    - `enum` - Enum type definitions
+    - `entity` - Entity type definitions
+  tags:
+    - "Custom metadata structures"
+    - "Tag (classification) structures"
+  security:
+    - AtlanToken: []
+  parameters:
+    - name: type
+      in: query
+      description: Filter by type category
+      required: false
+      schema:
+        type: string
+        enum:
+          - classification
+          - businessMetadata
+          - enum
+          - entity
+  responses:
+    '200':
+      description: All type definitions
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/TypeDefs.yaml#/TypeDefResponse'
+          examples:
+            classification_defs:
+              summary: Classification (tag) definitions
+              description: Returns all classification/tag type definitions
+              value:
+                enumDefs: []
+                structDefs: []
+                classificationDefs:
+                  - category: CLASSIFICATION
+                    guid: 682e6b91-9121-4748-bbae-af225ee8e98b
+                    createdBy: ryan.quigley
+                    updatedBy: service-account-atlan-argo
+                    createTime: 1740600943664
+                    updateTime: 1767832413445
+                    version: 203
+                    name: Vyc79KGveSy62DfOKQAZ9G
+                    description: Cleansed and conformed data
+                    typeVersion: "1.0"
+                    serviceType: atlan
+                    options:
+                      imageID: ""
+                      hasTag: "true"
+                      color: Gray
+                      emoji: ""
+                      iconName: PhMedal
+                      iconType: icon
+                      createdFromAtlan: "false"
+                    attributeDefs: []
+                    superTypes: []
+                    entityTypes:
+                      - Asset
+                    displayName: Silver
+                    subTypes: []
+                  - category: CLASSIFICATION
+                    guid: fa29e6d6-a37b-42a1-9c04-ab4cb9bf4f67
+                    createdBy: service-account-apikey-9471cf12-f45c-4275-b280-3e01d26f57e8
+                    createTime: 1646914738761
+                    version: 219
+                    name: VwN5VzRHlHVIWB4cbaxM5R
+                    description: Data that may be freely disclosed in public.
+                    displayName: Public
+                    options:
+                      color: Green
+                entityDefs: []
+                relationshipDefs: []
+                businessMetadataDefs: []
+            business_metadata_defs:
+              summary: Business metadata (custom metadata) definitions
+              description: Returns all custom metadata structure definitions
+              value:
+                enumDefs: []
+                structDefs: []
+                classificationDefs: []
+                entityDefs: []
+                relationshipDefs: []
+                businessMetadataDefs:
+                  - category: BUSINESS_METADATA
+                    guid: 917ffec9-fa84-4c59-8e6c-c7b114d04be3
+                    name: MNJ8mpLsIOaP4OQnLNhRta
+                    displayName: RACI
+                    description: Responsibility Assignment Matrix
+                    typeVersion: "1.0"
+                    serviceType: atlan
+                    attributeDefs:
+                      - name: fWMB77RSjRGNYoFeD4FcGi
+                        displayName: Responsible
+                        typeName: string
+                        isOptional: true
+                        cardinality: SINGLE
+                        isIndexable: true
+                        options:
+                          primitiveType: users
+                          customType: users
+                          allowFiltering: true
+                    options:
+                      logoType: emoji
+                      emoji: "👪"
+            enum_defs:
+              summary: Enum type definitions
+              description: Returns all enum definitions used in custom metadata
+              value:
+                enumDefs:
+                  - category: ENUM
+                    name: DataQualityDimensions
+                    elementDefs:
+                      - value: Accuracy
+                        ordinal: 0
+                      - value: Completeness
+                        ordinal: 1
+                      - value: Consistency
+                        ordinal: 2
+                      - value: Timeliness
+                        ordinal: 3
+                      - value: Validity
+                        ordinal: 4
+                      - value: Uniqueness
+                        ordinal: 5
+                structDefs: []
+                classificationDefs: []
+                entityDefs: []
+                relationshipDefs: []
+                businessMetadataDefs: []
+    '401':
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+          example:
+            servlet: jersey-servlet
+            message: Unauthorized
+            url: /api/meta/types/typedefs
+            status: "401"
+    '500':
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'

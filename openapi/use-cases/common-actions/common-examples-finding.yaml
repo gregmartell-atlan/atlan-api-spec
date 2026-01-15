@@ -1,0 +1,73 @@
+# Use Case: Get all assets that...
+# Auto-generated from: https://developer.atlan.com/snippets/common-examples/finding/
+# Generated at: 2026-01-13T02:58:00.299Z
+
+id: common-examples-finding
+title: "Get all assets that..."
+category: common-actions
+icon: zap
+relatedTypes:
+  - Asset
+
+description: >-
+  One of the most common starting points for an algorithm is to retrieve all assets that meet certain criteria.
+  
+  To contrast approaches, let's start with an example:
+
+externalDocs:
+  url: https://developer.atlan.com/snippets/common-examples/finding/
+  description: Official Atlan documentation
+
+steps:
+  - step: 1
+    title: "As a traversal"
+    description: >-
+      You might logically consider the problem as a traversal:
+      
+      1. Retrieve the schema.
+      
+      What you'll get from the table is actually just a reference   the GUID and qualifiedName of the column, but no details.
+      
+      Now do something with the column.
+      
+      What you'll get from the table is actually just a reference   the GUID and qualifiedName of the column, but no details.
+      
+      Now do something with the column.
+      
+      Such an algorithm is certainly logical. However, you need to consider what's really happening behind-the-scenes. As the layout of the pseudocode above hopefully illustrates, there are a number of nested loops:
+  - step: 2
+    title: "As a search"
+    description: >-
+      In almost all cases, you can more quickly accomplish your goal by using search. For the example above:
+      
+      1. Run a search.
+      
+      Using the following conditions:
+      
+      Now do something with the column.
+      
+      With this algorithm, you'll only make as many API calls as there are pages of results. (So if you have a page size of 100 and there are 10,000 columns, that's 100 API calls   compared to the other algorithm's 10,000+ API calls with one per column.)
+      
+      In general when you want to get many assets, think search first
+      
+      This was only one example to show the approach. The sections below illustrate a number of them, but you may have many, many others.
+      
+      Each of these can be accomplished through a search   you just need to define the appropriate criteria! To do that, you might want to read up a bit more on search in general. It's incredibly powerful, but we know it is not trivial to understand when you're first getting started.
+      
+      Top tip: you can combine these examples together to form an even more powerful query, using compound queries.
+    notes:
+      - type: example
+        title: "1. Run a search."
+        content: >-
+          Using the following conditions:
+          
+          Limit assets by type, to only columns.
+          Limit results by status, to only active (non-archived) assets.
+          Search by prefix using the qualifiedName of the schema.
+          Request only the attributes you need to be included in each column result.
+      - type: recommendation
+        title: "In general when you want to get many assets, think search first"
+        content: >-
+          This was only one example to show the approach. The sections below illustrate a number of them, but you may have many, many others.
+          Each of these can be accomplished through a search   you just need to define the appropriate criteria! To do that, you might want to read up a bit more on search in general. It's incredibly powerful, but we know it is not trivial to understand when you're first getting started.
+          Top tip: you can combine these examples together to form an even more powerful query, using compound queries.

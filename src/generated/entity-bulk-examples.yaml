@@ -1,0 +1,2812 @@
+          commonexamples_certificates__0:
+            summary: "Certify assets - Certify assets"
+            x-useCaseTag: "Certify assets"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/certificates/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Table", // (2)
+                    "attributes": {
+                      "name": "TOP_BEVERAGE_USERS", // (3)
+                      "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS", // (4)
+                      "certificateStatus": "VERIFIED", // (5)
+                      "certificateStatusMessage": "Verified through automation." // (6)
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    name: TOP_BEVERAGE_USERS
+                    qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                    certificateStatus: VERIFIED
+                    certificateStatusMessage: Verified through automation.
+
+          commonexamples_certificates__1:
+            summary: "Certify assets - Certify assets"
+            x-useCaseTag: "Certify assets"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/certificates/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Table", // (2)
+                    "attributes": {
+                      "name": "USER_ID", // (3)
+                      "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS/USER_ID", // (4)
+                      "certificateStatus": null, // (5)
+                      "certificateStatusMessage": null
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    name: USER_ID
+                    qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS/USER_ID
+                    certificateStatus: null
+                    certificateStatusMessage: null
+
+          commonexamples_certificates__2:
+            summary: "Certify assets - Certify assets"
+            x-useCaseTag: "Certify assets"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/certificates/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Table", // (2)
+                    "attributes": {
+                      "name": "TOP_BEVERAGE_USERS", // (3)
+                      "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS", // (4)
+                      "atlanSchema": { // (5)
+                        "typeName": "Schema",
+                        "uniqueAttributes": {
+                          "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV"
+                        }
+                      },
+                      "certificateStatus": "VERIFIED", // (6)
+                      "certificateStatusMessage": "Verified at creation." // (7)
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    name: TOP_BEVERAGE_USERS
+                    qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                    atlanSchema:
+                      typeName: Schema
+                      uniqueAttributes:
+                        qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV
+                    certificateStatus: VERIFIED
+                    certificateStatusMessage: Verified at creation.
+
+          commonexamples_announcements__3:
+            summary: "Manage announcements - Manage announcements"
+            x-useCaseTag: "Manage announcements"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/announcements/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Table", // (2)
+                    "attributes": {
+                      "name": "TOP_BEVERAGE_USERS", // (3)
+                      "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS", // (4)
+                      "announcementType": "warning", // (5)
+                      "announcementTitle": "Caution!", // (6)
+                      "announcementMessage": "This table was changed."
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    name: TOP_BEVERAGE_USERS
+                    qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                    announcementType: warning
+                    announcementTitle: "Caution!"
+                    announcementMessage: This table was changed.
+
+          commonexamples_announcements__4:
+            summary: "Manage announcements - Manage announcements"
+            x-useCaseTag: "Manage announcements"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/announcements/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Table", // (2)
+                    "attributes": {
+                      "name": "TOP_BEVERAGE_USERS", // (3)
+                      "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS", // (4)
+                      "announcementType": null, // (5)
+                      "announcementTitle": null,
+                      "announcementMessage": null
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    name: TOP_BEVERAGE_USERS
+                    qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                    announcementType: null
+                    announcementTitle: null
+                    announcementMessage: null
+
+          commonexamples_announcements__5:
+            summary: "Manage announcements - Manage announcements"
+            x-useCaseTag: "Manage announcements"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/announcements/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Table", // (2)
+                    "attributes": {
+                      "name": "TOP_BEVERAGE_USERS", // (3)
+                      "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS", // (4)
+                      "atlanSchema": { // (5)
+                        "typeName": "Schema",
+                        "uniqueAttributes": {
+                          "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV"
+                        }
+                      },
+                      "announcementType": "information", // (6)
+                      "announcementTitle": "New!", // (7)
+                      "announcementMessage": "This table is newly created."
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    name: TOP_BEVERAGE_USERS
+                    qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                    atlanSchema:
+                      typeName: Schema
+                      uniqueAttributes:
+                        qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV
+                    announcementType: information
+                    announcementTitle: "New!"
+                    announcementMessage: This table is newly created.
+
+          commonexamples_descriptions__6:
+            summary: "Change description - Manage asset descriptions"
+            x-useCaseTag: "Change description"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/descriptions/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Table", // (2)
+                    "attributes": {
+                      "name": "TOP_BEVERAGE_USERS", // (3)
+                      "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS", // (4)
+                      "description": "My new description" // (5)
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    name: TOP_BEVERAGE_USERS
+                    qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                    description: My new description
+
+          commonexamples_descriptions__7:
+            summary: "Change description - Manage asset descriptions"
+            x-useCaseTag: "Change description"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/descriptions/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Table", // (2)
+                    "attributes": {
+                      "name": "TOP_BEVERAGE_USERS", // (3)
+                      "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS", // (4)
+                      "description": null // (5)
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    name: TOP_BEVERAGE_USERS
+                    qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                    description: null
+
+          commonexamples_descriptions__8:
+            summary: "Change description - Manage asset descriptions"
+            x-useCaseTag: "Change description"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/descriptions/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Table", // (2)
+                    "attributes": {
+                      "name": "TOP_BEVERAGE_USERS", // (3)
+                      "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS", // (4)
+                      "atlanSchema": { // (5)
+                        "typeName": "Schema",
+                        "uniqueAttributes": {
+                          "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV"
+                        }
+                      },
+                      "description": "My description of the asset" // (6)
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    name: TOP_BEVERAGE_USERS
+                    qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                    atlanSchema:
+                      typeName: Schema
+                      uniqueAttributes:
+                        qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV
+                    description: My description of the asset
+
+          commonexamples_owners__9:
+            summary: "Change owners - Manage asset owners"
+            x-useCaseTag: "Change owners"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/owners/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Table", // (2)
+                    "attributes": {
+                      "name": "TOP_BEVERAGE_USERS", // (3)
+                      "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS", // (4)
+                      "ownerUsers": [ "jsmith", "jdoe" ] // (5)
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    name: TOP_BEVERAGE_USERS
+                    qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                    ownerUsers:
+                      - jsmith
+                      - jdoe
+
+          commonexamples_owners__10:
+            summary: "Change owners - Manage asset owners"
+            x-useCaseTag: "Change owners"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/owners/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Table", // (2)
+                    "attributes": {
+                      "name": "TOP_BEVERAGE_USERS", // (3)
+                      "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS", // (4)
+                      "ownerUsers": [], // (5)
+                      "ownerGroups": []
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    name: TOP_BEVERAGE_USERS
+                    qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                    ownerUsers: []
+                    ownerGroups: []
+
+          commonexamples_owners__11:
+            summary: "Change owners - Manage asset owners"
+            x-useCaseTag: "Change owners"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/owners/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Table", // (2)
+                    "attributes": {
+                      "name": "TOP_BEVERAGE_USERS", // (3)
+                      "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS", // (4)
+                      "atlanSchema": { // (5)
+                        "typeName": "Schema",
+                        "uniqueAttributes": {
+                          "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV"
+                        }
+                      },
+                      "ownerUsers": [ "jsmith", "jdoe" ] // (6)
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    name: TOP_BEVERAGE_USERS
+                    qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                    atlanSchema:
+                      typeName: Schema
+                      uniqueAttributes:
+                        qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV
+                    ownerUsers:
+                      - jsmith
+                      - jdoe
+
+          commonexamples_tags__12:
+            summary: "Tag (classify) assets - Manage asset tags"
+            x-useCaseTag: "Tag (classify) assets"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/tags/
+            x-atlanSnippet: |-
+              {
+                "entities": [  // (1)
+                  {
+                    "typeName": "Table", // (2)
+                    "attributes": {
+                      "qualifiedName": "default/snowflake/1746022526/WIDE_WORLD_IMPORTERS/BRONZE_WAREHOUSE/FIVETRAN_AUDIT", // (3)
+                      "name": "FIVETRAN_AUDIT"  // (4)
+                    },
+                    "addOrUpdateClassifications": [
+                        {
+                        "typeName": "VfsfmLbnuxc2vdNJ0Ysh", // (5)
+                        "propagate": false, // (6)
+                        "removePropagationsOnEntityDelete": true, // (7)
+                        "restrictPropagationThroughLineage": false, // (8)
+                        "restrictPropagationThroughHierarchy": true // (9)
+                      },
+                      {
+                        "typeName": "RsCmLbnuxc2vdNJ234Ysh",
+                        "propagate": false,
+                        "removePropagationsOnEntityDelete": true,
+                        "restrictPropagationThroughLineage": false,
+                        "restrictPropagationThroughHierarchy": true
+                      }
+                      ]
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    qualifiedName: default/snowflake/1746022526/WIDE_WORLD_IMPORTERS/BRONZE_WAREHOUSE/FIVETRAN_AUDIT
+                    name: FIVETRAN_AUDIT
+                  addOrUpdateClassifications:
+                    - typeName: VfsfmLbnuxc2vdNJ0Ysh
+                      propagate: false
+                      removePropagationsOnEntityDelete: true
+                      restrictPropagationThroughLineage: false
+                      restrictPropagationThroughHierarchy: true
+                    - typeName: RsCmLbnuxc2vdNJ234Ysh
+                      propagate: false
+                      removePropagationsOnEntityDelete: true
+                      restrictPropagationThroughLineage: false
+                      restrictPropagationThroughHierarchy: true
+
+          commonexamples_tags__13:
+            summary: "Tag (classify) assets - Manage asset tags"
+            x-useCaseTag: "Tag (classify) assets"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/tags/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Table", // (2)
+                    "attributes": {
+                      "qualifiedName": "default/snowflake/1746022526/WIDE_WORLD_IMPORTERS/BRONZE_WAREHOUSE/FIVETRAN_AUDIT", // (3)
+                      "name": "FIVETRAN_AUDIT"  // (4)
+                    },
+                    "addOrUpdateClassifications": [
+                        {
+                        "typeName": "VfsfmLbnuxc2vdNJ0Ysh", // (5)
+                        "propagate": false, // (6)
+                        "removePropagationsOnEntityDelete": false, // (7)
+                        "restrictPropagationThroughLineage": false, // (8)
+                        "restrictPropagationThroughHierarchy": false // (9)
+                      },
+                      {
+                        "typeName": "RsCmLbnuxc2vdNJ234Ysh",
+                        "propagate": true,
+                        "removePropagationsOnEntityDelete": true,
+                        "restrictPropagationThroughLineage": false,
+                        "restrictPropagationThroughHierarchy": false
+                      }
+                      ]
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    qualifiedName: default/snowflake/1746022526/WIDE_WORLD_IMPORTERS/BRONZE_WAREHOUSE/FIVETRAN_AUDIT
+                    name: FIVETRAN_AUDIT
+                  addOrUpdateClassifications:
+                    - typeName: VfsfmLbnuxc2vdNJ0Ysh
+                      propagate: false
+                      removePropagationsOnEntityDelete: false
+                      restrictPropagationThroughLineage: false
+                      restrictPropagationThroughHierarchy: false
+                    - typeName: RsCmLbnuxc2vdNJ234Ysh
+                      propagate: true
+                      removePropagationsOnEntityDelete: true
+                      restrictPropagationThroughLineage: false
+                      restrictPropagationThroughHierarchy: false
+
+          commonexamples_tags__14:
+            summary: "Tag (classify) assets - Manage asset tags"
+            x-useCaseTag: "Tag (classify) assets"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/tags/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Table", // (2)
+                    "attributes": {
+                      "qualifiedName": "default/snowflake/1746022526/WIDE_WORLD_IMPORTERS/BRONZE_WAREHOUSE/FIVETRAN_AUDIT", // (3)
+                      "name": "FIVETRAN_AUDIT"  // (4)
+                    },
+                    "removeClassifications": [
+                        {
+                        "typeName": "VfsfmLbnuxc2vdNJ0Ysh" // (5)
+                        },
+                      {
+                        "typeName": "RsCmLbnuxc2vdNJ234Ysh"
+                      }
+                      ]
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    qualifiedName: default/snowflake/1746022526/WIDE_WORLD_IMPORTERS/BRONZE_WAREHOUSE/FIVETRAN_AUDIT
+                    name: FIVETRAN_AUDIT
+                  removeClassifications:
+                    - typeName: VfsfmLbnuxc2vdNJ0Ysh
+                    - typeName: RsCmLbnuxc2vdNJ234Ysh
+
+          commonexamples_tags__15:
+            summary: "Tag (classify) assets - Manage asset tags"
+            x-useCaseTag: "Tag (classify) assets"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/tags/
+            x-atlanSnippet: |-
+              { // (1)
+                "entities": [ // (2)
+                  {
+                    "typeName": "Table", // (3)
+                    "attributes": {
+                      "qualifiedName": "default/snowflake/1665450065/DBT_FOOD_BEVERAGE/PUBLIC/INSTACART_ORDER_PRODUCTS_USERS_TIME_MASTER", // (4)
+                      "name": "INSTACART_ORDER_PRODUCTS_USERS_TIME_MASTER" // (5)
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    qualifiedName: default/snowflake/1665450065/DBT_FOOD_BEVERAGE/PUBLIC/INSTACART_ORDER_PRODUCTS_USERS_TIME_MASTER
+                    name: INSTACART_ORDER_PRODUCTS_USERS_TIME_MASTER
+
+          commonexamples_tags__16:
+            summary: "Tag (classify) assets - Manage asset tags"
+            x-useCaseTag: "Tag (classify) assets"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/tags/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Table", // (2)
+                    "attributes": {
+                      "name": "TOP_BEVERAGE_USERS", // (3)
+                      "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS" // (4)
+                    },
+                    "classifications": [ // (5)
+                      {
+                        "typeName": "yQBDoKHdTLJhqAsdR3RMq6", // (6)
+                        "propagate": true, // (7)
+                        "removePropagationsOnEntityDelete": true, // (8)
+                        "restrictPropagationThroughLineage": false, // (9)
+                        "restrictPropagationThroughHierarchy": false // (10)
+                      },
+                      {
+                        "typeName": "WCVjmgKnW40G151dESXZ03",
+                        "propagate": true,
+                        "removePropagationsOnEntityDelete": true,
+                        "restrictPropagationThroughLineage": false,
+                        "restrictPropagationThroughHierarchy": false
+                      },
+                      {
+                        "typeName": "Z96sGJrF0S68PxYTUdKG6b",
+                        "propagate": true,
+                        "removePropagationsOnEntityDelete": true,
+                        "restrictPropagationThroughLineage": false,
+                        "restrictPropagationThroughHierarchy": false,
+                        "attributes": { // (11)
+                          "rt5N3mHZTcxXafuu6ZPpyL": [ // (12)
+                            {
+                              "sourceTagName": "CONFIDENTIAL", // (13)
+                              "sourceTagQualifiedName": "default/snowflake/1726834662/ANALYTICS/WIDE_WORLD_IMPORTERS/CONFIDENTIAL", // (14)
+                              "sourceTagGuid": "c28c08a8-320b-4a1a-b52e-75d120b4a8cc", // (15)
+                              "sourceTagConnectorName": "snowflake", // (16)
+                              "isSourceTagSynced": false,
+                              "sourceTagSyncTimestamp": 0,
+                              "sourceTagValue": [ // (17)
+                                {
+                                  "tagAttachmentValue": "Highly Restricted" // (18)
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    name: TOP_BEVERAGE_USERS
+                    qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                  classifications:
+                    - typeName: yQBDoKHdTLJhqAsdR3RMq6
+                      propagate: true
+                      removePropagationsOnEntityDelete: true
+                      restrictPropagationThroughLineage: false
+                      restrictPropagationThroughHierarchy: false
+                    - typeName: WCVjmgKnW40G151dESXZ03
+                      propagate: true
+                      removePropagationsOnEntityDelete: true
+                      restrictPropagationThroughLineage: false
+                      restrictPropagationThroughHierarchy: false
+                    - typeName: Z96sGJrF0S68PxYTUdKG6b
+                      propagate: true
+                      removePropagationsOnEntityDelete: true
+                      restrictPropagationThroughLineage: false
+                      restrictPropagationThroughHierarchy: false
+                      attributes:
+                        rt5N3mHZTcxXafuu6ZPpyL:
+                          - sourceTagName: CONFIDENTIAL
+                            sourceTagQualifiedName: default/snowflake/1726834662/ANALYTICS/WIDE_WORLD_IMPORTERS/CONFIDENTIAL
+                            sourceTagGuid: "c28c08a8-320b-4a1a-b52e-75d120b4a8cc"
+                            sourceTagConnectorName: snowflake
+                            isSourceTagSynced: false
+                            sourceTagSyncTimestamp: 0
+                            sourceTagValue:
+                              - tagAttachmentValue: Highly Restricted
+
+          commonexamples_custommetadata__17:
+            summary: "Change custom metadata - Manage custom metadata on assets"
+            x-useCaseTag: "Change custom metadata"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/custom-metadata/
+            x-atlanSnippet: |-
+              { // (1)
+                "entities": [ // (2)
+                  {
+                    "typeName": "Table", // (3)
+                    "attributes": {
+                      "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS", // (4)
+                      "name": "TOP_BEVERAGE_USERS" // (5)
+                    },
+                    "businessAttributes": { // (6)
+                      "MNJ8mpLsIOaP4OQnLNhRta": { // (7)
+                        "fWMB77RSjRGNYoFeD4FcGi": "jsmith", // (8)
+                        "F8XI9GzcBpdBdfi4cLiPEz": [
+                          "finance",
+                          "risk"
+                        ]
+                      },
+                      "foMg7yOwUajucuya0JEF4J": { // (9)
+                        "uTmK5o0J8jHTH3KWFXXeZi": "example" // (10)
+                      }
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                    name: TOP_BEVERAGE_USERS
+                  businessAttributes:
+                    MNJ8mpLsIOaP4OQnLNhRta:
+                      fWMB77RSjRGNYoFeD4FcGi: jsmith
+                      F8XI9GzcBpdBdfi4cLiPEz:
+                        - finance
+                        - risk
+                    foMg7yOwUajucuya0JEF4J:
+                      uTmK5o0J8jHTH3KWFXXeZi: example
+
+          commonexamples_custommetadata__18:
+            summary: "Change custom metadata - Manage custom metadata on assets"
+            x-useCaseTag: "Change custom metadata"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/custom-metadata/
+            x-atlanSnippet: |-
+              { // (1)
+                "entities": [ // (2)
+                  {
+                    "typeName": "Table", // (3)
+                    "attributes": {
+                      "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS", // (4)
+                      "name": "TOP_BEVERAGE_USERS" // (5)
+                    } // (6)
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                    name: TOP_BEVERAGE_USERS
+
+          commonexamples_custommetadata__19:
+            summary: "Change custom metadata - Manage custom metadata on assets"
+            x-useCaseTag: "Change custom metadata"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/custom-metadata/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Table", // (2)
+                    "name": "TOP_BEVERAGE_USERS", // (3)
+                      "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS", // (4)
+                      "atlanSchema": { // (5)
+                        "typeName": "Schema",
+                        "uniqueAttributes": {
+                          "qualifiedName": "default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV"
+                        }
+                      }
+                    },
+                    "businessAttributes": { // (6)
+                      "MNJ8mpLsIOaP4OQnLNhRta": { // (7)
+                        "fWMB77RSjRGNYoFeD4FcGi": "jsmith", // (8)
+                        "xDUCZllc4JyTKhwqSDkWK4": "jdoe",
+                        "F8XI9GzcBpdBdfi4cLiPEz": [ // (9)
+                          "finance",
+                          "risk"
+                        ],
+                        "rN6H6xMQpyHvo639SXER83": [
+                          "operations"
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+
+          commonexamples_termassignment__20:
+            summary: "Link terms to assets - Link terms and assets"
+            x-useCaseTag: "Link terms to assets"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/term-assignment/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Column", // (2)
+                    "attributes": {
+                      "name": "CUSTOMER_NAME", // (3)
+                      "qualifiedName": "default/snowflake/1657037873/SAMPLE_DATA/FOOD_BEVERAGE/ORDER_ANALYSIS/CUSTOMER_NAME", // (4)
+                      "meanings": [ // (5)
+                        { ... }, // (6)
+                        {
+                          "typeName": "AtlasGlossaryTerm",
+                          "guid": "b4113341-251b-4adc-81fb-2420501c30e6"
+                        },
+                        {
+                          "typeName": "AtlasGlossaryTerm",
+                          "guid": "b267858d-8316-4c41-a56a-6e9b840cef4a"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+
+          commonexamples_termassignment__21:
+            summary: "Link terms to assets - Link terms and assets"
+            x-useCaseTag: "Link terms to assets"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/term-assignment/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Column", // (2)
+                    "attributes": {
+                      "name": "CUSTOMER_NAME", // (3)
+                      "qualifiedName": "default/snowflake/1657037873/SAMPLE_DATA/FOOD_BEVERAGE/ORDER_ANALYSIS/CUSTOMER_NAME", // (4)
+                      "meanings": [ // (5)
+                        {
+                          "typeName": "AtlasGlossaryTerm",
+                          "guid": "b4113341-251b-4adc-81fb-2420501c30e6"
+                        },
+                        {
+                          "typeName": "AtlasGlossaryTerm",
+                          "guid": "b267858d-8316-4c41-a56a-6e9b840cef4a"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Column
+                  attributes:
+                    name: CUSTOMER_NAME
+                    qualifiedName: default/snowflake/1657037873/SAMPLE_DATA/FOOD_BEVERAGE/ORDER_ANALYSIS/CUSTOMER_NAME
+                    meanings:
+                      - typeName: AtlasGlossaryTerm
+                        guid: "b4113341-251b-4adc-81fb-2420501c30e6"
+                      - typeName: AtlasGlossaryTerm
+                        guid: "b267858d-8316-4c41-a56a-6e9b840cef4a"
+
+          commonexamples_termassignment__22:
+            summary: "Link terms to assets - Link terms and assets"
+            x-useCaseTag: "Link terms to assets"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/term-assignment/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Column", // (2)
+                    "attributes": {
+                      "name": "CUSTOMER_NAME", // (3)
+                      "qualifiedName": "default/snowflake/1657037873/SAMPLE_DATA/FOOD_BEVERAGE/ORDER_ANALYSIS/CUSTOMER_NAME", // (4)
+                      "meanings": [ // (5)
+                        { ... }, // (6)
+                        {
+                          "typeName": "AtlasGlossaryTerm",
+                          "guid": "b267858d-8316-4c41-a56a-6e9b840cef4a"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+
+          commonexamples_termassignment__23:
+            summary: "Link terms to assets - Link terms and assets"
+            x-useCaseTag: "Link terms to assets"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/term-assignment/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Column", // (2)
+                    "attributes": {
+                      "name": "CUSTOMER_NAME", // (3)
+                      "qualifiedName": "default/snowflake/1657037873/SAMPLE_DATA/FOOD_BEVERAGE/ORDER_ANALYSIS/CUSTOMER_NAME", // (4)
+                      "meanings": [] // (5)
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Column
+                  attributes:
+                    name: CUSTOMER_NAME
+                    qualifiedName: default/snowflake/1657037873/SAMPLE_DATA/FOOD_BEVERAGE/ORDER_ANALYSIS/CUSTOMER_NAME
+                    meanings: []
+
+          commonexamples_termassignment__24:
+            summary: "Link terms to assets - Link terms and assets"
+            x-useCaseTag: "Link terms to assets"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/term-assignment/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "S3Object", // (2)
+                    "attributes": {
+                      "name": "sample-file.csv", // (3)
+                      "qualifiedName": "default/s3/1661068484/aws::test:samples-bucket:a/prefix/sample-file.csv", // (4)
+                      "awsArn": "aws::test:samples-bucket:a/prefix/sample-file.csv",
+                      "meanings": [ // (5)
+                        {
+                          "typeName": "AtlasGlossaryTerm",
+                          "guid": "b4113341-251b-4adc-81fb-2420501c30e6"
+                        },
+                        {
+                          "typeName": "AtlasGlossaryTerm",
+                          "guid": "b267858d-8316-4c41-a56a-6e9b840cef4a"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: S3Object
+                  attributes:
+                    name: "sample-file.csv"
+                    qualifiedName: "default/s3/1661068484/aws::test:samples-bucket:a/prefix/sample-file.csv"
+                    awsArn: "aws::test:samples-bucket:a/prefix/sample-file.csv"
+                    meanings:
+                      - typeName: AtlasGlossaryTerm
+                        guid: "b4113341-251b-4adc-81fb-2420501c30e6"
+                      - typeName: AtlasGlossaryTerm
+                        guid: "b267858d-8316-4c41-a56a-6e9b840cef4a"
+
+          commonexamples_domainassignment__25:
+            summary: "Link domains to assets - Link data domain and assets"
+            x-useCaseTag: "Link domains to assets"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/domain-assignment/
+            x-atlanSnippet: |-
+              {
+                "entities": [
+                   {
+                     "typeName": "Table",  // (1)
+                     "attributes": {
+                       "qualifiedName": "default/snowflake/1726834662/RAW/WIDEWORLDIMPORTERS/MARKETING_SALES", // (2)
+                       "name": "MARKETING_SALES", // (3)
+                       "domainGUIDs": [
+                         "db711647-99a9-4c50-93c5-fab0b992a0cc" // (4)
+                       ]
+                     }
+                   }
+                 ]
+               }
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    qualifiedName: default/snowflake/1726834662/RAW/WIDEWORLDIMPORTERS/MARKETING_SALES
+                    name: MARKETING_SALES
+                    domainGUIDs:
+                      - "db711647-99a9-4c50-93c5-fab0b992a0cc"
+
+          commonexamples_domainassignment__26:
+            summary: "Link domains to assets - Link data domain and assets"
+            x-useCaseTag: "Link domains to assets"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/domain-assignment/
+            x-atlanSnippet: |-
+              {
+                "entities": [
+                   {
+                     "typeName": "Table",  // (1)
+                     "attributes": {
+                       "qualifiedName": "default/snowflake/1726834662/RAW/WIDEWORLDIMPORTERS/MARKETING_SALES", // (2)
+                       "name": "MARKETING_SALES", // (3)
+                       "domainGUIDs": [] // (4)
+                     }
+                   }
+                 ]
+               }
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    qualifiedName: default/snowflake/1726834662/RAW/WIDEWORLDIMPORTERS/MARKETING_SALES
+                    name: MARKETING_SALES
+                    domainGUIDs: []
+
+          commonexamples_readme__27:
+            summary: "Manage asset READMEs - Asset READMEs"
+            x-useCaseTag: "Manage asset READMEs"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/readme/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Readme", // (2)
+                    "attributes": {
+                      "name": "Example Term Readme", // (3)
+                      "qualifiedName": "b4113341-251b-4adc-81fb-2420501c30e6/readme", // (4)
+                      "description": "%3Ch1%3EOverview%3C%2Fh1%3E%3Cp%3EDetails%20about%20this%20term...%3C%2Fp%3E", // (5)
+                      "asset":{    // (6)
+                          "typeName": "AtlasGlossaryTerm",
+                          "guid": "b4113341-251b-4adc-81fb-2420501c30e6"
+                      }
+                    }
+                  }
+                ]
+              }
+
+          commonexamples_resources__28:
+            summary: "Add asset resources - Asset resources/links"
+            x-useCaseTag: "Add asset resources"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/resources/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Link", // (2)
+                    "attributes": {
+                      "name": "Definition", // (3)
+                      "qualifiedName": "540182b5-f47b-4ba1-a247-6ca9ffd9f37a", // (4)
+                      "link": "https://en.wikipedia.org/wiki/Customer", // (5)
+                      "asset": [ // (6)
+                        {
+                          "typeName": "Table",
+                          "uniqueAttributes": {
+                            "qualifiedName": "default/snowflake/1234567890/reln_db/reln_schema/customers"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Link
+                  attributes:
+                    name: Definition
+                    qualifiedName: "540182b5-f47b-4ba1-a247-6ca9ffd9f37a"
+                    link: "https://en.wikipedia.org/wiki/Customer"
+                    asset:
+                      - typeName: Table
+                        uniqueAttributes:
+                          qualifiedName: default/snowflake/1234567890/reln_db/reln_schema/customers
+
+          commonexamples_relationshipattributes__29:
+            summary: "Manage relationships - Manage asset relationships with attributes"
+            x-useCaseTag: "Manage relationships"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/relationship-attributes/
+            x-atlanSnippet: |-
+              {
+                "entities": [
+                  {
+                    "typeName": "AtlasGlossaryTerm",
+                    "attributes": {
+                      "name": "Policy", // (1)
+                      "qualifiedName": "FpWBfqOfP0qZQ6tCpK10n@nrrnNyRABZTc6CEKwHh73",
+                      "anchor": {
+                        "typeName": "AtlasGlossary",
+                        "guid": "55aaaa56-d8cd-4f19-8026-10d511a9b071"
+                      },
+                      "userDefRelationshipTo": [
+                        {
+                          "typeName": "AtlasGlossaryTerm", // (2)
+                          "guid": "f558a01a-2e16-440c-ba2d-fed2099e540a",
+                          "relationshipAttributes": {
+                            "typeName": "UserDefRelationship", // (3)
+                            "attributes": {
+                              "toTypeLabel": "Sells",
+                              "fromTypeLabel": "Sold by"
+                            }
+                          },
+                          "relationshipType": "UserDefRelationship"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: AtlasGlossaryTerm
+                  attributes:
+                    name: Policy
+                    qualifiedName: "FpWBfqOfP0qZQ6tCpK10n@nrrnNyRABZTc6CEKwHh73"
+                    anchor:
+                      typeName: AtlasGlossary
+                      guid: "55aaaa56-d8cd-4f19-8026-10d511a9b071"
+                    userDefRelationshipTo:
+                      - typeName: AtlasGlossaryTerm
+                        guid: "f558a01a-2e16-440c-ba2d-fed2099e540a"
+                        relationshipAttributes:
+                          typeName: UserDefRelationship
+                          attributes:
+                            toTypeLabel: Sells
+                            fromTypeLabel: Sold by
+                        relationshipType: UserDefRelationship
+
+          commonexamples_relationshipattributes__30:
+            summary: "Manage relationships - Manage asset relationships with attributes"
+            x-useCaseTag: "Manage relationships"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/relationship-attributes/
+            x-atlanSnippet: |-
+              {
+                 "entities": [
+                   {
+                     "typeName": "AtlasGlossaryTerm",
+                     "attributes": {
+                       "anchor": { // (1)
+                         "typeName": "AtlasGlossary",
+                         "guid": "55aaaa56-d8cd-4f19-8026-10d511a9b071"
+                       },
+                       "name": "Policy",
+                       "qualifiedName": "FpWBfqOfP0qZQ6tCpK10n@nrrnNyRABZTc6CEKwHh73",
+                       "userDefRelationshipTo": [] // (2)
+                     }
+                   }
+                 ]
+              }
+            value:
+              entities:
+                - typeName: AtlasGlossaryTerm
+                  attributes:
+                    anchor:
+                      typeName: AtlasGlossary
+                      guid: "55aaaa56-d8cd-4f19-8026-10d511a9b071"
+                    name: Policy
+                    qualifiedName: "FpWBfqOfP0qZQ6tCpK10n@nrrnNyRABZTc6CEKwHh73"
+                    userDefRelationshipTo: []
+
+          advancedexamples_create__31:
+            summary: "Create assets - Creating an asset"
+            x-useCaseTag: "Create assets"
+            x-docUrl: https://developer.atlan.com/snippets/advanced-examples/create/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "AtlasGlossaryTerm", // (2)
+                    "attributes": {
+                      "name": "Example Term", // (3)
+                      "qualifiedName": "Example Term", // (4)
+                      "anchor": { // (5)
+                        "typeName": "AtlasGlossary",
+                        "guid": "b4113341-251b-4adc-81fb-2420501c30e6"
+                      }
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: AtlasGlossaryTerm
+                  attributes:
+                    name: Example Term
+                    qualifiedName: Example Term
+                    anchor:
+                      typeName: AtlasGlossary
+                      guid: "b4113341-251b-4adc-81fb-2420501c30e6"
+
+          advancedexamples_create__32:
+            summary: "Create assets - Creating an asset"
+            x-useCaseTag: "Create assets"
+            x-docUrl: https://developer.atlan.com/snippets/advanced-examples/create/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "AtlasGlossaryTerm",
+                    "attributes": {
+                      "name": "Example Term",
+                      "qualifiedName": "Example Term",
+                      "anchor": {
+                        "typeName": "AtlasGlossary",
+                        "guid": "b4113341-251b-4adc-81fb-2420501c30e6"
+                      },
+                      "certificateStatus": "VERIFIED", // (2)
+                      "announcementType": "information",
+                      "announcementTitle": "Imported",
+                      "announcementMessage": "This term was imported from..."
+                    }
+                  }
+                ]
+              }
+
+          advancedexamples_update__33:
+            summary: "Update assets - Updating an asset"
+            x-useCaseTag: "Update assets"
+            x-docUrl: https://developer.atlan.com/snippets/advanced-examples/update/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "AtlasGlossaryTerm", // (2)
+                    "attributes": {
+                      "name": "Example Term", // (3)
+                      "qualifiedName": "gsNccqJraDZqM6WyGP3ea@FzCMyPR2LxkPFgr8eNGrq", // (4)
+                      "anchor": { // (5)
+                        "typeName": "AtlasGlossary",
+                        "guid": "b4113341-251b-4adc-81fb-2420501c30e6"
+                      },
+                      "certificateStatus": "VERIFIED", // (6)
+                      "announcementType": "information", // (7)
+                      "announcementTitle": "Imported",
+                      "announcementMessage": "This term was imported from ..."
+                    }
+                  }
+                ]
+              }
+
+          advancedexamples_update__34:
+            summary: "Update assets - Updating an asset"
+            x-useCaseTag: "Update assets"
+            x-docUrl: https://developer.atlan.com/snippets/advanced-examples/update/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "AtlasGlossaryTerm", // (2)
+                    "attributes": {
+                      "name": "Example Term", // (3)
+                      "qualifiedName": "gsNccqJraDZqM6WyGP3ea@FzCMyPR2LxkPFgr8eNGrq", // (4)
+                      "anchor": { // (5)
+                        "typeName": "AtlasGlossary",
+                        "guid": "b4113341-251b-4adc-81fb-2420501c30e6"
+                      },
+                      "certificateStatus": null, // (6)
+                      "certificateStatusMessage": null,
+                      "announcementType": null, // (7)
+                      "announcementTitle": null,
+                      "announcementMessage": null
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: AtlasGlossaryTerm
+                  attributes:
+                    name: Example Term
+                    qualifiedName: "gsNccqJraDZqM6WyGP3ea@FzCMyPR2LxkPFgr8eNGrq"
+                    anchor:
+                      typeName: AtlasGlossary
+                      guid: "b4113341-251b-4adc-81fb-2420501c30e6"
+                    certificateStatus: null
+                    certificateStatusMessage: null
+                    announcementType: null
+                    announcementTitle: null
+                    announcementMessage: null
+
+          advancedexamples_restore__35:
+            summary: "Restore assets - Restoring assets"
+            x-useCaseTag: "Restore assets"
+            x-docUrl: https://developer.atlan.com/snippets/advanced-examples/restore/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "AtlasGlossaryTerm", // (2)
+                    "attributes": {
+                      "name": "Example", // (3)
+                      "qualifiedName": "gsNccqJraDZqM6WyGP3ea@FzCMyPR2LxkPFgr8eNGrq", // (4)
+                      "anchor": { // (5)
+                        "typeName": "AtlasGlossary", // (6)
+                        "guid": "51a28d46-b700-4c9d-807d-397f25f2b6d6" // (7)
+                      }
+                    },
+                    "status": "ACTIVE" // (8)
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: AtlasGlossaryTerm
+                  attributes:
+                    name: Example
+                    qualifiedName: "gsNccqJraDZqM6WyGP3ea@FzCMyPR2LxkPFgr8eNGrq"
+                    anchor:
+                      typeName: AtlasGlossary
+                      guid: "51a28d46-b700-4c9d-807d-397f25f2b6d6"
+                  status: ACTIVE
+
+          advancedexamples_restore__36:
+            summary: "Restore assets - Restoring assets"
+            x-useCaseTag: "Restore assets"
+            x-docUrl: https://developer.atlan.com/snippets/advanced-examples/restore/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "AtlasGlossaryTerm", // (2)
+                    "attributes": {
+                      "name": "Example", // (3)
+                      "qualifiedName": "gsNccqJraDZqM6WyGP3ea@FzCMyPR2LxkPFgr8eNGrq", // (4)
+                      "anchor": { // (5)
+                        "typeName": "AtlasGlossary", // (6)
+                        "guid": "51a28d46-b700-4c9d-807d-397f25f2b6d6" // (7)
+                      }
+                    },
+                    "status": "ACTIVE" // (8)
+                  },
+                  {
+                    "typeName": "AtlasGlossaryTerm",
+                    "attributes": {
+                      "name": "Another Example",
+                      "qualifiedName": "...",
+                      "anchor": {
+                        "typeName": "AtlasGlossary",
+                        "guid": "51a28d46-b700-4c9d-807d-397f25f2b6d6"
+                      }
+                    },
+                    "status": "ACTIVE"
+                  }
+                  { ... },
+                  { ... },
+                  { ... }
+                ]
+              }
+
+          advancedexamples_combine__37:
+            summary: "Combine operations - Combining multiple operations"
+            x-useCaseTag: "Combine operations"
+            x-docUrl: https://developer.atlan.com/snippets/advanced-examples/combine/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "AtlasGlossaryTerm", // (2)
+                    "attributes": {
+                      "name": "Example Term", // (3)
+                      "qualifiedName": "gsNccqJraDZqM6WyGP3ea@FzCMyPR2LxkPFgr8eNGrq",
+                      "anchor": {
+                        "typeName": "AtlasGlossary",
+                        "guid": "b4113341-251b-4adc-81fb-2420501c30e6"
+                      },
+                      "description": "This is only an example.", // (4)
+                      "announcementType": "information", // (5)
+                      "announcementTitle": "New!", // (6)
+                      "announcementMessage": "This term is newly created.", // (7)
+                      "certificateStatus": "VERIFIED", // (8)
+                      "certificateStatusMessage": "For good measure!", // (9)
+                      "ownerUsers": [ // (10)
+                        "jdoe",
+                        "jsmith"
+                      ]
+                    },
+                    "appendRelationshipAttributes": {
+                      "categories": [ // (11)
+                        {
+                          "typeName": "AtlasGlossaryCategory",
+                          "guid": "1b736a83-207b-4269-ab92-44d77e1aca28"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: AtlasGlossaryTerm
+                  attributes:
+                    name: Example Term
+                    qualifiedName: "gsNccqJraDZqM6WyGP3ea@FzCMyPR2LxkPFgr8eNGrq"
+                    anchor:
+                      typeName: AtlasGlossary
+                      guid: "b4113341-251b-4adc-81fb-2420501c30e6"
+                    description: This is only an example.
+                    announcementType: information
+                    announcementTitle: "New!"
+                    announcementMessage: This term is newly created.
+                    certificateStatus: VERIFIED
+                    certificateStatusMessage: "For good measure!"
+                    ownerUsers:
+                      - jdoe
+                      - jsmith
+                  appendRelationshipAttributes:
+                    categories:
+                      - typeName: AtlasGlossaryCategory
+                        guid: "1b736a83-207b-4269-ab92-44d77e1aca28"
+
+          commonexamples_lineage_manage__38:
+            summary: "Manage lineage - Manage lineage"
+            x-useCaseTag: "Manage lineage"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/lineage/manage/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Process", // (2)
+                    "attributes": {
+                      "name": "Source 1, Source 2, Source 3 -> Target 1, Target 2", // (3)
+                      "qualifiedName": "default/snowflake/1657025257/dag_123", // (4)
+                      "inputs": [ // (5)
+                        {
+                          "typeName": "Table",
+                          "guid": "495b1516-aaaf-4390-8cfd-b11ade7a7799"
+                        },
+                        {
+                          "typeName": "Table",
+                          "guid": "d002dead-1655-4d75-abd6-ad889fa04bd4"
+                        },
+                        {
+                          "typeName": "Table",
+                          "uniqueAttributes": {
+                            "qualifiedName": "default/snowflake/1657025257/OPS/DEFAULT/RUN_STATS"
+                          }
+                        }
+                      ],
+                      "outputs": [ // (6)
+                        {
+                          "typeName": "Table",
+                          "guid": "86d9a061-7753-4884-b988-a02d3954bc24"
+                        },
+                        {
+                          "typeName": "Table",
+                          "uniqueAttributes": {
+                            "qualifiedName": "default/snowflake/1657025257/OPS/DEFAULT/FULL_STATS"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Process
+                  attributes:
+                    name: "Source 1, Source 2, Source 3 -> Target 1, Target 2"
+                    qualifiedName: default/snowflake/1657025257/dag_123
+                    inputs:
+                      - typeName: Table
+                        guid: "495b1516-aaaf-4390-8cfd-b11ade7a7799"
+                      - typeName: Table
+                        guid: "d002dead-1655-4d75-abd6-ad889fa04bd4"
+                      - typeName: Table
+                        uniqueAttributes:
+                          qualifiedName: default/snowflake/1657025257/OPS/DEFAULT/RUN_STATS
+                    outputs:
+                      - typeName: Table
+                        guid: "86d9a061-7753-4884-b988-a02d3954bc24"
+                      - typeName: Table
+                        uniqueAttributes:
+                          qualifiedName: default/snowflake/1657025257/OPS/DEFAULT/FULL_STATS
+
+          commonexamples_lineage_manage__39:
+            summary: "Manage lineage - Manage lineage"
+            x-useCaseTag: "Manage lineage"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/lineage/manage/
+            x-atlanSnippet: |-
+              {
+                "entities": [
+                  {
+                    "typeName": "Connection", // (1)
+                    "attributes": {
+                      "name": "open_lineage_connection", // (2)
+                      "connectorName": "spark", // (3)
+                      "qualifiedName": "default/spark/123456789", // (4)
+                      "category": "connector", // (5)
+                      "defaultCredentialGuid": "8b579147-6054-4a4c-8137-463cd349b393", // (6)
+                      "adminRoles": [ // (7)
+                        "e7ae0295-c60a-469a-bd2c-fb903943aa02"
+                      ],
+                      "adminGroups": [ // (8)
+                        "group2"
+                      ],
+                      "adminUsers": [ // (9)
+                        "jsmith"
+                      ]
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Connection
+                  attributes:
+                    name: open_lineage_connection
+                    connectorName: spark
+                    qualifiedName: default/spark/123456789
+                    category: connector
+                    defaultCredentialGuid: "8b579147-6054-4a4c-8137-463cd349b393"
+                    adminRoles:
+                      - "e7ae0295-c60a-469a-bd2c-fb903943aa02"
+                    adminGroups:
+                      - group2
+                    adminUsers:
+                      - jsmith
+
+          commonexamples_lineage_manage__40:
+            summary: "Manage lineage - Manage lineage"
+            x-useCaseTag: "Manage lineage"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/lineage/manage/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "ColumnProcess", // (2)
+                    "attributes": {
+                      "name": "Source 1, Source 2, Source 3 -> Target 1, Target 2", // (3)
+                      "qualifiedName": "default/snowflake/1657025257/dag_123", // (4)
+                      "inputs": [ // (5)
+                        {
+                          "typeName": "Column",
+                          "guid": "495b1516-aaaf-4390-8cfd-b11ade7a7799"
+                        },
+                        {
+                          "typeName": "Column",
+                          "guid": "d002dead-1655-4d75-abd6-ad889fa04bd4"
+                        },
+                        {
+                          "typeName": "Column",
+                          "uniqueAttributes": {
+                            "qualifiedName": "default/snowflake/1657025257/OPS/DEFAULT/RUN_STATS"
+                          }
+                        }
+                      ],
+                      "outputs": [ // (6)
+                        {
+                          "typeName": "Column",
+                          "guid": "86d9a061-7753-4884-b988-a02d3954bc24"
+                        },
+                        {
+                          "typeName": "Column",
+                          "uniqueAttributes": {
+                            "qualifiedName": "default/snowflake/1657025257/OPS/DEFAULT/FULL_STATS"
+                          }
+                        }
+                      ],
+                      "process": { // (7)
+                          "guid": "76d9a061-7753-9884-b988-a02d3954bc25",
+                          "typeName": "Process",
+                          "uniqueAttributes": {
+                              "qualifiedName": "default/snowflake/1657025257/parent_123"
+                          }
+                      }
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: ColumnProcess
+                  attributes:
+                    name: "Source 1, Source 2, Source 3 -> Target 1, Target 2"
+                    qualifiedName: default/snowflake/1657025257/dag_123
+                    inputs:
+                      - typeName: Column
+                        guid: "495b1516-aaaf-4390-8cfd-b11ade7a7799"
+                      - typeName: Column
+                        guid: "d002dead-1655-4d75-abd6-ad889fa04bd4"
+                      - typeName: Column
+                        uniqueAttributes:
+                          qualifiedName: default/snowflake/1657025257/OPS/DEFAULT/RUN_STATS
+                    outputs:
+                      - typeName: Column
+                        guid: "86d9a061-7753-4884-b988-a02d3954bc24"
+                      - typeName: Column
+                        uniqueAttributes:
+                          qualifiedName: default/snowflake/1657025257/OPS/DEFAULT/FULL_STATS
+                    process:
+                      guid: "76d9a061-7753-9884-b988-a02d3954bc25"
+                      typeName: Process
+                      uniqueAttributes:
+                        qualifiedName: default/snowflake/1657025257/parent_123
+
+          commonexamples_glossary_create__41:
+            summary: "Create glossary objects - Creating glossary objects"
+            x-useCaseTag: "Create glossary objects"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/glossary/create/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "AtlasGlossary", // (2)
+                    "attributes": {
+                      "name": "Example Glossary", // (3)
+                      "qualifiedName": "Example Glossary", // (4)
+                      "assetIcon": "PhBookOpenText" // (5)
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: AtlasGlossary
+                  attributes:
+                    name: Example Glossary
+                    qualifiedName: Example Glossary
+                    assetIcon: PhBookOpenText
+
+          commonexamples_glossary_create__42:
+            summary: "Create glossary objects - Creating glossary objects"
+            x-useCaseTag: "Create glossary objects"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/glossary/create/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "AtlasGlossaryCategory", // (2)
+                    "attributes": {
+                      "name": "Example Category", // (3)
+                      "qualifiedName": "Example Category", // (4)
+                      "anchor": { // (5)
+                        "typeName": "AtlasGlossary",
+                        "guid": "b4113341-251b-4adc-81fb-2420501c30e6"
+                      }
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: AtlasGlossaryCategory
+                  attributes:
+                    name: Example Category
+                    qualifiedName: Example Category
+                    anchor:
+                      typeName: AtlasGlossary
+                      guid: "b4113341-251b-4adc-81fb-2420501c30e6"
+
+          commonexamples_glossary_create__43:
+            summary: "Create glossary objects - Creating glossary objects"
+            x-useCaseTag: "Create glossary objects"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/glossary/create/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "AtlasGlossaryTerm", // (2)
+                    "attributes": {
+                      "name": "Example Term", // (3)
+                      "qualifiedName": "Example Term", // (4)
+                      "anchor": { // (5)
+                        "typeName": "AtlasGlossary",
+                        "guid": "b4113341-251b-4adc-81fb-2420501c30e6"
+                      }
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: AtlasGlossaryTerm
+                  attributes:
+                    name: Example Term
+                    qualifiedName: Example Term
+                    anchor:
+                      typeName: AtlasGlossary
+                      guid: "b4113341-251b-4adc-81fb-2420501c30e6"
+
+          commonexamples_glossary_createhierarchy__44:
+            summary: "Create glossary hierarchy - Glossary category hierarchy"
+            x-useCaseTag: "Create glossary hierarchy"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/glossary/create-hierarchy/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "AtlasGlossaryCategory", // (2)
+                    "attributes": {
+                      "name": "Top", // (3)
+                      "displayName": "Top", // (4)
+                      "anchor": { // (5)
+                        "typeName": "AtlasGlossary", // (6)
+                        "guid": "b4113341-251b-4adc-81fb-2420501c30e6" // (7)
+                      }
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: AtlasGlossaryCategory
+                  attributes:
+                    name: Top
+                    displayName: Top
+                    anchor:
+                      typeName: AtlasGlossary
+                      guid: "b4113341-251b-4adc-81fb-2420501c30e6"
+
+          commonexamples_glossary_createhierarchy__45:
+            summary: "Create glossary hierarchy - Glossary category hierarchy"
+            x-useCaseTag: "Create glossary hierarchy"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/glossary/create-hierarchy/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "AtlasGlossaryCategory", // (2)
+                    "attributes": {
+                      "name": "Middle", // (3)
+                      "displayName": "Middle", // (4)
+                      "anchor": { // (5)
+                        "typeName": "AtlasGlossary", // (6)
+                        "guid": "b4113341-251b-4adc-81fb-2420501c30e6" // (7)
+                      },
+                      "parentCategory": { // (8)
+                        "typeName": "AtlasGlossaryCategory", // (9)
+                        "guid": "dc4c0a08-a902-402b-bf24-cf935aecc343" // (10)
+                      }
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: AtlasGlossaryCategory
+                  attributes:
+                    name: Middle
+                    displayName: Middle
+                    anchor:
+                      typeName: AtlasGlossary
+                      guid: "b4113341-251b-4adc-81fb-2420501c30e6"
+                    parentCategory:
+                      typeName: AtlasGlossaryCategory
+                      guid: "dc4c0a08-a902-402b-bf24-cf935aecc343"
+
+          commonexamples_glossary_categorizeterms__46:
+            summary: "Categorize glossary terms - Categorize terms"
+            x-useCaseTag: "Categorize glossary terms"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/glossary/categorize-terms/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "AtlasGlossaryTerm", // (2)
+                    "attributes": {
+                      "name": "Example Term", // (3)
+                      "displayName": "Example Term", // (4)
+                      "anchor": { // (5)
+                        "typeName": "AtlasGlossary", // (6)
+                        "guid": "b4113341-251b-4adc-81fb-2420501c30e6" // (7)
+                      },
+                      "categories": [ // (8)
+                        {
+                          "typeName": "AtlasGlossaryCategory", // (9)
+                          "guid": "dc4c0a08-a902-402b-bf24-cf935aecc343" // (10)
+                        },
+                        {
+                          "typeName": "AtlasGlossaryCategory",
+                          "uniqueAttributes": {
+                            "qualifiedName": "..." // (11)
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+
+          commonexamples_glossary_categorizeterms__47:
+            summary: "Categorize glossary terms - Categorize terms"
+            x-useCaseTag: "Categorize glossary terms"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/glossary/categorize-terms/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "AtlasGlossaryCategory", // (2)
+                    "attributes": {
+                      "name": "Example Term", // (3)
+                      "qualifiedName": "gsNccqJraDZqM6WyGP3ea@FzCMyPR2LxkPFgr8eNGrq", // (4)
+                      "anchor": { // (5)
+                        "typeName": "AtlasGlossary", // (6)
+                        "guid": "b4113341-251b-4adc-81fb-2420501c30e6" // (7)
+                      },
+                      "categories": [ // (8)
+                        {
+                          "typeName": "AtlasGlossaryCategory", // (9)
+                          "guid": "dc4c0a08-a902-402b-bf24-cf935aecc343" // (10)
+                        },
+                        {
+                          "typeName": "AtlasGlossaryCategory",
+                          "uniqueAttributes": {
+                            "qualifiedName": "..." // (11)
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+
+          datamesh_datadomains__48:
+            summary: "Manage Data Domains - Managing data domains"
+            x-useCaseTag: "Manage Data Domains"
+            x-docUrl: https://developer.atlan.com/snippets/datamesh/datadomains/
+            x-atlanSnippet: |-
+              {
+                "entities": [
+                  {
+                    "typeName": "DataDomain", // (1)
+                    "attributes": {
+                      "name": "Marketing", // (2)
+                      "assetIcon": "PhRocket", // (3)
+                      "assetThemeHex": "#F34D77",
+                      "qualifiedName": "default/domain/marketing" // (4)
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: DataDomain
+                  attributes:
+                    name: Marketing
+                    assetIcon: PhRocket
+                    assetThemeHex: "#F34D77"
+                    qualifiedName: default/domain/marketing
+
+          datamesh_datadomains__49:
+            summary: "Manage Data Domains - Managing data domains"
+            x-useCaseTag: "Manage Data Domains"
+            x-docUrl: https://developer.atlan.com/snippets/datamesh/datadomains/
+            x-atlanSnippet: |-
+              {
+                "entities": [
+                  {
+                    "typeName": "DataDomain", // (1)
+                    "attributes": {
+                      "name": "Social Marketing", // (2)
+                      "qualifiedName": "default/domain/gAbQGZNrFjG2F9lGB3hYp/super/domain/socialMarketing", // (3)
+                      "parentDomainQualifiedName": "default/domain/gAbQGZNrFjG2F9lGB3hYp/super", // (4)
+                      "superDomainQualifiedName": "default/domain/gAbQGZNrFjG2F9lGB3hYp/super" // (5)
+                    },
+                    "relationshipAttributes": {
+                      "parentDomain": { // (6)
+                        "typeName": "DataDomain",
+                        "uniqueAttributes": {
+                          "qualifiedName": "default/domain/gAbQGZNrFjG2F9lGB3hYp"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: DataDomain
+                  attributes:
+                    name: Social Marketing
+                    qualifiedName: default/domain/gAbQGZNrFjG2F9lGB3hYp/super/domain/socialMarketing
+                    parentDomainQualifiedName: default/domain/gAbQGZNrFjG2F9lGB3hYp/super
+                    superDomainQualifiedName: default/domain/gAbQGZNrFjG2F9lGB3hYp/super
+                  relationshipAttributes:
+                    parentDomain:
+                      typeName: DataDomain
+                      uniqueAttributes:
+                        qualifiedName: default/domain/gAbQGZNrFjG2F9lGB3hYp
+
+          datamesh_datadomains__50:
+            summary: "Manage Data Domains - Managing data domains"
+            x-useCaseTag: "Manage Data Domains"
+            x-docUrl: https://developer.atlan.com/snippets/datamesh/datadomains/
+            x-atlanSnippet: |-
+              {
+                "entities": [
+                  {
+                    "typeName": "DataDomain", // (1)
+                    "attributes": {
+                      "name": "Marketing", // (2)
+                      "qualifiedName": "default/domain/marketing", // (3)
+                      "userDescription": "Now with a description!" // (4)
+                    },
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: DataDomain
+                  attributes:
+                    name: Marketing
+                    qualifiedName: default/domain/marketing
+                    userDescription: "Now with a description!"
+
+          datamesh_dataproducts__51:
+            summary: "Manage Data Products - Managing data products"
+            x-useCaseTag: "Manage Data Products"
+            x-docUrl: https://developer.atlan.com/snippets/datamesh/dataproducts/
+            x-atlanSnippet: |-
+              {
+                 "entities": [
+                   {
+                     "typeName": "DataProduct", // (1)
+                     "attributes": {
+                       "name": "Marketing Influence", // (2)
+                       "qualifiedName": "default/domain/8S8vbC9hT6iPLMY2ydXqf/super/product/marketingInfluence", // (3)
+                       "parentDomainQualifiedName": "default/domain/8S8vbC9hT6iPLMY2ydXqf/super", // (4)
+                       "superDomainQualifiedName": "default/domain/8S8vbC9hT6iPLMY2ydXqf/super", // (5)
+                       "dataProductAssetsDSL": "{\"query\": {\"attributes\": [\"__traitNames\", \"connectorName\", \"__customAttributes\", \"certificateStatus\", \"tenantId\", \"anchor\", \"parentQualifiedName\", \"Query.parentQualifiedName\", \"AtlasGlossaryTerm.anchor\", \"databaseName\", \"schemaName\", \"parent\", \"connectionQualifiedName\", \"collectionQualifiedName\", \"announcementMessage\", \"announcementTitle\", \"announcementType\", \"announcementUpdatedAt\", \"announcementUpdatedBy\", \"allowQuery\", \"allowQueryPreview\", \"adminGroups\", \"adminRoles\", \"adminUsers\", \"category\", \"credentialStrategy\", \"connectionSSOCredentialGuid\", \"certificateStatus\", \"certificateUpdatedAt\", \"certificateUpdatedBy\", \"classifications\", \"connectionId\", \"connectionQualifiedName\", \"connectorName\", \"dataType\", \"defaultDatabaseQualifiedName\", \"defaultSchemaQualifiedName\", \"description\", \"displayName\", \"links\", \"link\", \"meanings\", \"name\", \"ownerGroups\", \"ownerUsers\", \"qualifiedName\", \"typeName\", \"userDescription\", \"displayDescription\", \"subDataType\", \"rowLimit\", \"queryTimeout\", \"previewCredentialStrategy\", \"policyStrategy\", \"policyStrategyForSamplePreview\", \"useObjectStorage\", \"objectStorageUploadThreshold\", \"outputPortDataProducts\"], \"dsl\": {\"from\": 0, \"query\": {\"bool\": {\"filter\": {\"bool\": {\"filter\": [{\"term\": {\"__state\": {\"value\": \"ACTIVE\", \"case_insensitive\": false}}}, {\"term\": {\"__typeName.keyword\": {\"value\": \"Table\", \"case_insensitive\": false}}}, {\"term\": {\"certificateStatus\": {\"value\": \"VERIFIED\", \"case_insensitive\": false}}}, {\"term\": {\"__traitNames\": {\"value\": \"Marketing\", \"case_insensitive\": false}}}]}}}}}, \"suppressLogs\": true}, \"filterScrubbed\": true}",
+                       // (6)
+                       "dataProductAssetsPlaybookFilter": "{\"condition\":\"AND\",\"isGroupLocked\":false,\"rules\":[]}"
+                       // (7)
+                     },
+                     "relationshipAttributes": {
+                       "dataDomain": {
+                         "typeName": "DataDomain",
+                         "uniqueAttributes": { // (8)
+                           "qualifiedName": "default/domain/8S8vbC9hT6iPLMY2ydXqf/super"
+                         }
+                       }
+                     }
+                   }
+                 ]
+              }
+            value:
+              entities:
+                - typeName: DataProduct
+                  attributes:
+                    name: Marketing Influence
+                    qualifiedName: default/domain/8S8vbC9hT6iPLMY2ydXqf/super/product/marketingInfluence
+                    parentDomainQualifiedName: default/domain/8S8vbC9hT6iPLMY2ydXqf/super
+                    superDomainQualifiedName: default/domain/8S8vbC9hT6iPLMY2ydXqf/super
+                    dataProductAssetsDSL: "{\"query\": {\"attributes\": [\"__traitNames\", \"connectorName\", \"__customAttributes\", \"certificateStatus\", \"tenantId\", \"anchor\", \"parentQualifiedName\", \"Query.parentQualifiedName\", \"AtlasGlossaryTerm.anchor\", \"databaseName\", \"schemaName\", \"parent\", \"connectionQualifiedName\", \"collectionQualifiedName\", \"announcementMessage\", \"announcementTitle\", \"announcementType\", \"announcementUpdatedAt\", \"announcementUpdatedBy\", \"allowQuery\", \"allowQueryPreview\", \"adminGroups\", \"adminRoles\", \"adminUsers\", \"category\", \"credentialStrategy\", \"connectionSSOCredentialGuid\", \"certificateStatus\", \"certificateUpdatedAt\", \"certificateUpdatedBy\", \"classifications\", \"connectionId\", \"connectionQualifiedName\", \"connectorName\", \"dataType\", \"defaultDatabaseQualifiedName\", \"defaultSchemaQualifiedName\", \"description\", \"displayName\", \"links\", \"link\", \"meanings\", \"name\", \"ownerGroups\", \"ownerUsers\", \"qualifiedName\", \"typeName\", \"userDescription\", \"displayDescription\", \"subDataType\", \"rowLimit\", \"queryTimeout\", \"previewCredentialStrategy\", \"policyStrategy\", \"policyStrategyForSamplePreview\", \"useObjectStorage\", \"objectStorageUploadThreshold\", \"outputPortDataProducts\"], \"dsl\": {\"from\": 0, \"query\": {\"bool\": {\"filter\": {\"bool\": {\"filter\": [{\"term\": {\"__state\": {\"value\": \"ACTIVE\", \"case_insensitive\": false}}}, {\"term\": {\"__typeName.keyword\": {\"value\": \"Table\", \"case_insensitive\": false}}}, {\"term\": {\"certificateStatus\": {\"value\": \"VERIFIED\", \"case_insensitive\": false}}}, {\"term\": {\"__traitNames\": {\"value\": \"Marketing\", \"case_insensitive\": false}}}]}}}}}, \"suppressLogs\": true}, \"filterScrubbed\": true}"
+                    dataProductAssetsPlaybookFilter: "{\"condition\":\"AND\",\"isGroupLocked\":false,\"rules\":[]}"
+                  relationshipAttributes:
+                    dataDomain:
+                      typeName: DataDomain
+                      uniqueAttributes:
+                        qualifiedName: default/domain/8S8vbC9hT6iPLMY2ydXqf/super
+
+          datamesh_dataproducts__52:
+            summary: "Manage Data Products - Managing data products"
+            x-useCaseTag: "Manage Data Products"
+            x-docUrl: https://developer.atlan.com/snippets/datamesh/dataproducts/
+            x-atlanSnippet: |-
+              {
+                "entities": [
+                  {
+                    "typeName": "DataProduct", // (1)
+                    "attributes": {
+                      "name": "Marketing Influence", // (2)
+                      "qualifiedName": "default/product/marketingInfluence", // (3)
+                      "userDescription": "Now with a description!", // (4)
+                      "dataProductAssetsDSL": "{\"query\": {\"attributes\": [\"__traitNames\", \"connectorName\", \"__customAttributes\", \"certificateStatus\", \"tenantId\", \"anchor\", \"parentQualifiedName\", \"Query.parentQualifiedName\", \"AtlasGlossaryTerm.anchor\", \"databaseName\", \"schemaName\", \"parent\", \"connectionQualifiedName\", \"collectionQualifiedName\", \"announcementMessage\", \"announcementTitle\", \"announcementType\", \"announcementUpdatedAt\", \"announcementUpdatedBy\", \"allowQuery\", \"allowQueryPreview\", \"adminGroups\", \"adminRoles\", \"adminUsers\", \"category\", \"credentialStrategy\", \"connectionSSOCredentialGuid\", \"certificateStatus\", \"certificateUpdatedAt\", \"certificateUpdatedBy\", \"classifications\", \"connectionId\", \"connectionQualifiedName\", \"connectorName\", \"dataType\", \"defaultDatabaseQualifiedName\", \"defaultSchemaQualifiedName\", \"description\", \"displayName\", \"links\", \"link\", \"meanings\", \"name\", \"ownerGroups\", \"ownerUsers\", \"qualifiedName\", \"typeName\", \"userDescription\", \"displayDescription\", \"subDataType\", \"rowLimit\", \"queryTimeout\", \"previewCredentialStrategy\", \"policyStrategy\", \"policyStrategyForSamplePreview\", \"useObjectStorage\", \"objectStorageUploadThreshold\", \"outputPortDataProducts\"], \"dsl\": {\"from\": 0, \"query\": {\"bool\": {\"filter\": {\"bool\": {\"filter\": [{\"term\": {\"__state\": {\"value\": \"ACTIVE\", \"case_insensitive\": false}}}, {\"term\": {\"__typeName.keyword\": {\"value\": \"Table\", \"case_insensitive\": false}}}, {\"term\": {\"certificateStatus\": {\"value\": \"VERIFIED\", \"case_insensitive\": false}}}, {\"term\": {\"__traitNames\": {\"value\": \"Digital Marketing\", \"case_insensitive\": false}}}]}}}}}, \"suppressLogs\": true}, \"filterScrubbed\": true}",
+                       // (5)
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: DataProduct
+                  attributes:
+                    name: Marketing Influence
+                    qualifiedName: default/product/marketingInfluence
+                    userDescription: "Now with a description!"
+                    dataProductAssetsDSL: "{\"query\": {\"attributes\": [\"__traitNames\", \"connectorName\", \"__customAttributes\", \"certificateStatus\", \"tenantId\", \"anchor\", \"parentQualifiedName\", \"Query.parentQualifiedName\", \"AtlasGlossaryTerm.anchor\", \"databaseName\", \"schemaName\", \"parent\", \"connectionQualifiedName\", \"collectionQualifiedName\", \"announcementMessage\", \"announcementTitle\", \"announcementType\", \"announcementUpdatedAt\", \"announcementUpdatedBy\", \"allowQuery\", \"allowQueryPreview\", \"adminGroups\", \"adminRoles\", \"adminUsers\", \"category\", \"credentialStrategy\", \"connectionSSOCredentialGuid\", \"certificateStatus\", \"certificateUpdatedAt\", \"certificateUpdatedBy\", \"classifications\", \"connectionId\", \"connectionQualifiedName\", \"connectorName\", \"dataType\", \"defaultDatabaseQualifiedName\", \"defaultSchemaQualifiedName\", \"description\", \"displayName\", \"links\", \"link\", \"meanings\", \"name\", \"ownerGroups\", \"ownerUsers\", \"qualifiedName\", \"typeName\", \"userDescription\", \"displayDescription\", \"subDataType\", \"rowLimit\", \"queryTimeout\", \"previewCredentialStrategy\", \"policyStrategy\", \"policyStrategyForSamplePreview\", \"useObjectStorage\", \"objectStorageUploadThreshold\", \"outputPortDataProducts\"], \"dsl\": {\"from\": 0, \"query\": {\"bool\": {\"filter\": {\"bool\": {\"filter\": [{\"term\": {\"__state\": {\"value\": \"ACTIVE\", \"case_insensitive\": false}}}, {\"term\": {\"__typeName.keyword\": {\"value\": \"Table\", \"case_insensitive\": false}}}, {\"term\": {\"certificateStatus\": {\"value\": \"VERIFIED\", \"case_insensitive\": false}}}, {\"term\": {\"__traitNames\": {\"value\": \"Digital Marketing\", \"case_insensitive\": false}}}]}}}}}, \"suppressLogs\": true}, \"filterScrubbed\": true}"
+
+          datacontract_manageviasdks__53:
+            summary: "Data contracts via SDKs - Manage data contracts via SDKs"
+            x-useCaseTag: "Data contracts via SDKs"
+            x-docUrl: https://developer.atlan.com/snippets/datacontract/manage-via-sdks/
+            x-atlanSnippet: |-
+              {
+              "entities": [
+                  {
+                     "typeName": "DataContract", // (1)
+                     "attributes": { // (2)
+                         "dataContractJson": "{\"type\": \"Table\", \"status\": \"DRAFT\", \"kind\": \"DataContract\", \"dataset\": \"SALE_TXN\", \"data_source\": \"snowflake\", \"description\": \"Created by Python SDK.\", \"columns\": [{\"name\": \"order_id\", \"data_type\": \"BIGNUMERIC\", \"description\": \"\"}]}",
+                         "name": "Data contract for SALE_TXN", // (3)
+                         "qualifiedName": "default/snowflake/1717514525/RAW/WIDEWORLD/SALE_TXN/contract" // (4)
+                     }
+                  }
+              ]
+              }
+            value:
+              entities:
+                - typeName: DataContract
+                  attributes:
+                    dataContractJson: "{\"type\": \"Table\", \"status\": \"DRAFT\", \"kind\": \"DataContract\", \"dataset\": \"SALE_TXN\", \"data_source\": \"snowflake\", \"description\": \"Created by Python SDK.\", \"columns\": [{\"name\": \"order_id\", \"data_type\": \"BIGNUMERIC\", \"description\": \"\"}]}"
+                    name: Data contract for SALE_TXN
+                    qualifiedName: default/snowflake/1717514525/RAW/WIDEWORLD/SALE_TXN/contract
+
+          datacontract_manageviasdks__54:
+            summary: "Data contracts via SDKs - Manage data contracts via SDKs"
+            x-useCaseTag: "Data contracts via SDKs"
+            x-docUrl: https://developer.atlan.com/snippets/datacontract/manage-via-sdks/
+            x-atlanSnippet: |-
+              {
+              "entities": [
+                  {
+                     "typeName": "DataContract", // (1)
+                     "attributes": { // (2)
+                         "dataContractJson": "{\"type\": \"Table\", \"status\": \"VERIFIED\", \"kind\": \"DataContract\", \"dataset\": \"SALE_TXN\", \"data_source\": \"snowflake\", \"description\": \"Created by Python SDK.\", \"columns\": [{\"name\": \"order_id\", \"data_type\": \"BIGNUMERIC\", \"description\": \"\"}]}",
+                         "name": "Data contract for SALE_TXN", // (3)
+                         "qualifiedName": "default/snowflake/1717514525/RAW/WIDEWORLD/SALE_TXN/contract" // (4)
+                     }
+                  }
+              ]
+              }
+            value:
+              entities:
+                - typeName: DataContract
+                  attributes:
+                    dataContractJson: "{\"type\": \"Table\", \"status\": \"VERIFIED\", \"kind\": \"DataContract\", \"dataset\": \"SALE_TXN\", \"data_source\": \"snowflake\", \"description\": \"Created by Python SDK.\", \"columns\": [{\"name\": \"order_id\", \"data_type\": \"BIGNUMERIC\", \"description\": \"\"}]}"
+                    name: Data contract for SALE_TXN
+                    qualifiedName: default/snowflake/1717514525/RAW/WIDEWORLD/SALE_TXN/contract
+
+          access_personas__55:
+            summary: "Manage personas - Managing personas"
+            x-useCaseTag: "Manage personas"
+            x-docUrl: https://developer.atlan.com/snippets/access/personas/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Persona", // (2)
+                    "attributes": {
+                      "displayName": "Data Assets", // (3)
+                      "isAccessControlEnabled": true, // (4)
+                      "qualifiedName": "Data Assets", // (5)
+                      "name": "Data Assets" // (6)
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Persona
+                  attributes:
+                    displayName: Data Assets
+                    isAccessControlEnabled: true
+                    qualifiedName: Data Assets
+                    name: Data Assets
+
+          access_personas__56:
+            summary: "Manage personas - Managing personas"
+            x-useCaseTag: "Manage personas"
+            x-docUrl: https://developer.atlan.com/snippets/access/personas/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Persona", // (2)
+                    "attributes": {
+                      "qualifiedName": "default/M5HnBQ8QWhrAVGuvBx8iSW", // (3)
+                      "name": "Data Assets" // (4)
+                      "isAccessControlEnabled": true, // (5)
+                      "description": "Now with a description!", // (6)
+                    }
+                  }
+                ]
+              }
+
+          access_personas__57:
+            summary: "Manage personas - Managing personas"
+            x-useCaseTag: "Manage personas"
+            x-docUrl: https://developer.atlan.com/snippets/access/personas/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Persona", // (2)
+                    "attributes": {
+                      "qualifiedName": "default/M5HnBQ8QWhrAVGuvBx8iSW", // (3)
+                      "name": "Data Assets" // (4)
+                      "isAccessControlEnabled": false // (5)
+                    }
+                  }
+                ]
+              }
+
+          access_personas__58:
+            summary: "Manage personas - Managing personas"
+            x-useCaseTag: "Manage personas"
+            x-docUrl: https://developer.atlan.com/snippets/access/personas/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Persona", // (2)
+                    "attributes": {
+                      "qualifiedName": "default/M5HnBQ8QWhrAVGuvBx8iSW", // (3)
+                      "name": "Data Assets" // (4)
+                      "isAccessControlEnabled": false, // (5)
+                      "personaGroups": ["group1", "group2"], // (6)
+                      "personaUsers": ["jsmith", "jdoe"] // (7)
+                    }
+                  }
+                ]
+              }
+
+          access_personas__59:
+            summary: "Manage personas - Managing personas"
+            x-useCaseTag: "Manage personas"
+            x-docUrl: https://developer.atlan.com/snippets/access/personas/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "AuthPolicy", // (2)
+                    "attributes": {
+                      "policySubCategory": "metadata", // (3)
+                      "policyCategory": "persona", // (4)
+                      "policyType": "allow", // (5)
+                      "policyServiceName": "atlas", // (6)
+                      "connectionQualifiedName": "default/snowflake/1234567890", // (7)
+                      "policyResources": [
+                        "entity:default/snowflake/1234567890" // (8)
+                      ],
+                      "name": "Simple read access", // (9)
+                      "qualifiedName": "Simple read access", // (10)
+                      "policyActions": [
+                        "persona-asset-read" // (11)
+                      ],
+                      "accessControl": { // (12)
+                        "typeName": "Persona", // (13)
+                        "guid": "67e08ab7-9688-40bc-ae4a-da2bc06b1588" // (14)
+                      },
+                      "policyResourceCategory": "CUSTOM" // (15)
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: AuthPolicy
+                  attributes:
+                    policySubCategory: metadata
+                    policyCategory: persona
+                    policyType: allow
+                    policyServiceName: atlas
+                    connectionQualifiedName: default/snowflake/1234567890
+                    policyResources:
+                      - "entity:default/snowflake/1234567890"
+                    name: Simple read access
+                    qualifiedName: Simple read access
+                    policyActions:
+                      - "persona-asset-read"
+                    accessControl:
+                      typeName: Persona
+                      guid: "67e08ab7-9688-40bc-ae4a-da2bc06b1588"
+                    policyResourceCategory: CUSTOM
+
+          access_personas__60:
+            summary: "Manage personas - Managing personas"
+            x-useCaseTag: "Manage personas"
+            x-docUrl: https://developer.atlan.com/snippets/access/personas/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "AuthPolicy", // (2)
+                    "attributes": {
+                      "policySubCategory": "data", // (3)
+                      "policyCategory": "persona", // (4)
+                      "policyType": "allow", // (5)
+                      "policyServiceName": "heka", // (6)
+                      "connectionQualifiedName": "default/snowflake/1234567890", // (7)
+                      "policyResources": [
+                        "entity-type:*", // (8)
+                        "entity:default/snowflake/1234567890" // (9)
+                      ],
+                      "name": "Allow access to data", // (10)
+                      "qualifiedName": "Allow access to data", // (11)
+                      "policyActions": [
+                        "select" // (12)
+                      ],
+                      "accessControl": { // (13)
+                        "typeName": "Persona", // (14)
+                        "guid": "67e08ab7-9688-40bc-ae4a-da2bc06b1588" // (15)
+                      },
+                      "policyResourceCategory": "ENTITY" // (16)
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: AuthPolicy
+                  attributes:
+                    policySubCategory: data
+                    policyCategory: persona
+                    policyType: allow
+                    policyServiceName: heka
+                    connectionQualifiedName: default/snowflake/1234567890
+                    policyResources:
+                      - "entity-type:*"
+                      - "entity:default/snowflake/1234567890"
+                    name: Allow access to data
+                    qualifiedName: Allow access to data
+                    policyActions:
+                      - select
+                    accessControl:
+                      typeName: Persona
+                      guid: "67e08ab7-9688-40bc-ae4a-da2bc06b1588"
+                    policyResourceCategory: ENTITY
+
+          access_personas__61:
+            summary: "Manage personas - Managing personas"
+            x-useCaseTag: "Manage personas"
+            x-docUrl: https://developer.atlan.com/snippets/access/personas/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "AuthPolicy", // (2)
+                    "attributes": {
+                      "policySubCategory": "glossary", // (3)
+                      "policyCategory": "persona", // (4)
+                      "policyType": "allow", // (5)
+                      "policyServiceName": "atlas", // (6)
+                      "policyResources": [
+                        "entity:OpU9a9kG825gAqpamXugf" // (7)
+                      ],
+                      "name": "All glossaries", // (8)
+                      "qualifiedName": "All glossaries", // (9)
+                      "policyActions": [
+                        "persona-glossary-create", // (10)
+                        "persona-glossary-update"
+                      ],
+                      "accessControl": { // (11)
+                        "typeName": "Persona", // (12)
+                        "guid": "67e08ab7-9688-40bc-ae4a-da2bc06b1588" // (13)
+                      },
+                      "policyResourceCategory": "CUSTOM" // (14)
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: AuthPolicy
+                  attributes:
+                    policySubCategory: glossary
+                    policyCategory: persona
+                    policyType: allow
+                    policyServiceName: atlas
+                    policyResources:
+                      - "entity:OpU9a9kG825gAqpamXugf"
+                    name: All glossaries
+                    qualifiedName: All glossaries
+                    policyActions:
+                      - "persona-glossary-create"
+                      - "persona-glossary-update"
+                    accessControl:
+                      typeName: Persona
+                      guid: "67e08ab7-9688-40bc-ae4a-da2bc06b1588"
+                    policyResourceCategory: CUSTOM
+
+          access_personas__62:
+            summary: "Manage personas - Managing personas"
+            x-useCaseTag: "Manage personas"
+            x-docUrl: https://developer.atlan.com/snippets/access/personas/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "AuthPolicy", // (2)
+                    "attributes": {
+                      "policySubCategory": "domain", // (3)
+                      "policyCategory": "persona", // (4)
+                      "policyType": "allow", // (5)
+                      "policyServiceName": "atlas", // (6)
+                      "policyResources": [
+                        "entity:default/domain/marketing", // (7)
+                        "entity:default/domain/finance"
+                      ],
+                      "name": "Read access to some domains", // (8)
+                      "qualifiedName": "Read access to some domains", // (9)
+                      "policyActions": [
+                        "persona-domain-read", // (10)
+                        "persona-domain-sub-domain-read",
+                        "persona-domain-product-read"
+                      ],
+                      "accessControl": { // (11)
+                        "typeName": "Persona", // (12)
+                        "guid": "67e08ab7-9688-40bc-ae4a-da2bc06b1588" // (13)
+                      },
+                      "policyResourceCategory": "CUSTOM" // (14)
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: AuthPolicy
+                  attributes:
+                    policySubCategory: domain
+                    policyCategory: persona
+                    policyType: allow
+                    policyServiceName: atlas
+                    policyResources:
+                      - "entity:default/domain/marketing"
+                      - "entity:default/domain/finance"
+                    name: Read access to some domains
+                    qualifiedName: Read access to some domains
+                    policyActions:
+                      - "persona-domain-read"
+                      - "persona-domain-sub-domain-read"
+                      - "persona-domain-product-read"
+                    accessControl:
+                      typeName: Persona
+                      guid: "67e08ab7-9688-40bc-ae4a-da2bc06b1588"
+                    policyResourceCategory: CUSTOM
+
+          access_personas__63:
+            summary: "Manage personas - Managing personas"
+            x-useCaseTag: "Manage personas"
+            x-docUrl: https://developer.atlan.com/snippets/access/personas/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Persona", // (2)
+                    "attributes": {
+                      "qualifiedName": "default/M5HnBQ8QWhrAVGuvBx8iSW", // (3)
+                      "name": "Data Assets" // (4)
+                      "isAccessControlEnabled": true, // (5)
+                      "denyAssetTabs": [ // (6)
+                        "Lineage",
+                        "Relations",
+                        "Queries"
+                      ],
+                      "denyAssetTypes": [ // (7)
+                        "Table",
+                        "Column"
+                      ],
+                      "denyAssetFilters": [ // (8)
+                        "__traitNames",
+                        "owners",
+                        "certificateStatus"
+                      ],
+                      "denyCustomMetadataGuids": [ // (9)
+                        "59220d25-5d39-4f3a-8de5-072098bee793",
+                        "bb0c9836-94fd-4a54-9007-0f25fb802c2c"
+                      ],
+                    }
+                  }
+                ]
+              }
+
+          access_purposes__64:
+            summary: "Manage purposes - Managing purposes"
+            x-useCaseTag: "Manage purposes"
+            x-docUrl: https://developer.atlan.com/snippets/access/purposes/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Purpose", // (2)
+                    "attributes": {
+                      "displayName": "Known Issues", // (3)
+                      "purposeClassifications": [
+                        "jRr7KmCSPliWQQSVK6dqTc" // (4)
+                      ],
+                      "isAccessControlEnabled": true, // (5)
+                      "qualifiedName": "Known Issues", // (6)
+                      "name": "Known Issues" // (7)
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Purpose
+                  attributes:
+                    displayName: Known Issues
+                    purposeClassifications:
+                      - jRr7KmCSPliWQQSVK6dqTc
+                    isAccessControlEnabled: true
+                    qualifiedName: Known Issues
+                    name: Known Issues
+
+          access_purposes__65:
+            summary: "Manage purposes - Managing purposes"
+            x-useCaseTag: "Manage purposes"
+            x-docUrl: https://developer.atlan.com/snippets/access/purposes/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Purpose", // (2)
+                    "attributes": {
+                      "qualifiedName": "default/29LZO9Z6ipZbGT6caWTxRB", // (3)
+                      "name": "Known Issues" // (4)
+                      "isAccessControlEnabled": true, // (5)
+                      "description": "Now with a description!", // (6)
+                    }
+                  }
+                ]
+              }
+
+          access_purposes__66:
+            summary: "Manage purposes - Managing purposes"
+            x-useCaseTag: "Manage purposes"
+            x-docUrl: https://developer.atlan.com/snippets/access/purposes/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Purpose", // (2)
+                    "attributes": {
+                      "qualifiedName": "default/29LZO9Z6ipZbGT6caWTxRB", // (3)
+                      "name": "Known Issues" // (4)
+                      "isAccessControlEnabled": false // (5)
+                    }
+                  }
+                ]
+              }
+
+          access_purposes__67:
+            summary: "Manage purposes - Managing purposes"
+            x-useCaseTag: "Manage purposes"
+            x-docUrl: https://developer.atlan.com/snippets/access/purposes/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "AuthPolicy", // (2)
+                    "attributes": {
+                      "policySubCategory": "metadata", // (3)
+                      "policyCategory": "purpose", // (4)
+                      "policyType": "allow", // (5)
+                      "policyServiceName": "atlas_tag", // (6)
+                      "name": "Simple read access", // (7)
+                      "qualifiedName": "Simple read access", // (8)
+                      "policyActions": [
+                        "entity-read" // (9)
+                      ],
+                      "accessControl": { // (10)
+                        "typeName": "Purpose", // (11)
+                        "guid": "3886a92c-2510-40ea-a14d-803d7ac1616b" // (12)
+                      },
+                      "policyResourceCategory": "TAG", // (13)
+                      "policyGroups": [
+                        "public" // (14)
+                      ]
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: AuthPolicy
+                  attributes:
+                    policySubCategory: metadata
+                    policyCategory: purpose
+                    policyType: allow
+                    policyServiceName: atlas_tag
+                    name: Simple read access
+                    qualifiedName: Simple read access
+                    policyActions:
+                      - "entity-read"
+                    accessControl:
+                      typeName: Purpose
+                      guid: "3886a92c-2510-40ea-a14d-803d7ac1616b"
+                    policyResourceCategory: TAG
+                    policyGroups:
+                      - public
+
+          access_purposes__68:
+            summary: "Manage purposes - Managing purposes"
+            x-useCaseTag: "Manage purposes"
+            x-docUrl: https://developer.atlan.com/snippets/access/purposes/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "AuthPolicy", // (2)
+                    "attributes": {
+                      "policySubCategory": "data", // (3)
+                      "policyCategory": "purpose", // (4)
+                      "policyType": "dataMask", // (5)
+                      "policyMaskType": "MASK_HASH", // (6)
+                      "policyServiceName": "atlas_tag", // (7)
+                      "name": "Mask the data", // (8)
+                      "qualifiedName": "Mask the data", // (9)
+                      "policyActions": [
+                        "select" // (10)
+                      ],
+                      "accessControl": { // (11)
+                        "typeName": "Purpose", // (12)
+                        "guid": "3886a92c-2510-40ea-a14d-803d7ac1616b" // (13)
+                      },
+                      "policyResourceCategory": "TAG", // (14)
+                      "policyGroups": [
+                        "public" // (15)
+                      ]
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: AuthPolicy
+                  attributes:
+                    policySubCategory: data
+                    policyCategory: purpose
+                    policyType: dataMask
+                    policyMaskType: MASK_HASH
+                    policyServiceName: atlas_tag
+                    name: Mask the data
+                    qualifiedName: Mask the data
+                    policyActions:
+                      - select
+                    accessControl:
+                      typeName: Purpose
+                      guid: "3886a92c-2510-40ea-a14d-803d7ac1616b"
+                    policyResourceCategory: TAG
+                    policyGroups:
+                      - public
+
+          access_purposes__69:
+            summary: "Manage purposes - Managing purposes"
+            x-useCaseTag: "Manage purposes"
+            x-docUrl: https://developer.atlan.com/snippets/access/purposes/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Purpose", // (2)
+                    "attributes": {
+                      "qualifiedName": "default/29LZO9Z6ipZbGT6caWTxRB", // (3)
+                      "name": "Known Issues" // (4)
+                      "isAccessControlEnabled": true, // (5)
+                      "denyAssetTabs": [ // (6)
+                        "Lineage",
+                        "Relations",
+                        "Queries"
+                      ]
+                    }
+                  }
+                ]
+              }
+
+          commonexamples_profilingandpopularity_profiling__70:
+            summary: "Profiling - Manage column profiling"
+            x-useCaseTag: "Profiling"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/profiling-and-popularity/profiling/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Column", // (2)
+                    "attributes": {
+                      "name": "STATUS", // (3)
+                      "qualifiedName": "default/hive/1657025257/OPS/DEFAULT/RUN_STATS/STATUS", // (4)
+                      "columnDistinctValuesCount": 123, // (5)
+                      "columnUniqueValuesCount": 123,
+                      "columnUniquenessPercentage": 50.0,
+                      "columnDuplicateValuesCount": 123,
+                      "columnMissingValuesCount": 123,
+                      "columnMissingValuesPercentage": 50.0,
+                      "columnMax": 321.0, // (6)
+                      "columnMin": 1.0,
+                      "columnMean": 123.0,
+                      "columnMedian": 123.0,
+                      "columnStandardDeviation": 3.0,
+                      "columnVariance": 1.0,
+                      "columnSum": 654321.0,
+                      "columnMinimumStringLength": 0, // (7)
+                      "columnMaximumStringLength": 123,
+                      "columnAverageLength": 123.0
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Column
+                  attributes:
+                    name: STATUS
+                    qualifiedName: default/hive/1657025257/OPS/DEFAULT/RUN_STATS/STATUS
+                    columnDistinctValuesCount: 123
+                    columnUniqueValuesCount: 123
+                    columnUniquenessPercentage: 50
+                    columnDuplicateValuesCount: 123
+                    columnMissingValuesCount: 123
+                    columnMissingValuesPercentage: 50
+                    columnMax: 321
+                    columnMin: 1
+                    columnMean: 123
+                    columnMedian: 123
+                    columnStandardDeviation: 3
+                    columnVariance: 1
+                    columnSum: 654321
+                    columnMinimumStringLength: 0
+                    columnMaximumStringLength: 123
+                    columnAverageLength: 123
+
+          commonexamples_profilingandpopularity_popularity__71:
+            summary: "Popularity - Manage popularity insights"
+            x-useCaseTag: "Popularity"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/profiling-and-popularity/popularity/
+            x-atlanSnippet: |-
+              {
+                "entities": [
+                  {
+                    "typeName": "Connection", // (1)
+                    "attributes": {
+                      "name": "development", // (2)
+                      "connectorName": "hive", // (3)
+                      "qualifiedName": "default/hive/123456789", // (4)
+                      "category": "warehouse", // (5)
+                      "adminRoles": [ // (6)
+                        "e7ae0295-c60a-469a-bd2c-fb903943aa02"
+                      ],
+                      "adminGroups": [ // (7)
+                        "group2"
+                      ],
+                      "adminUsers": [ // (8)
+                        "jsmith"
+                      ],
+                      "hasPopularityInsights": true // (9)
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Connection
+                  attributes:
+                    name: development
+                    connectorName: hive
+                    qualifiedName: default/hive/123456789
+                    category: warehouse
+                    adminRoles:
+                      - "e7ae0295-c60a-469a-bd2c-fb903943aa02"
+                    adminGroups:
+                      - group2
+                    adminUsers:
+                      - jsmith
+                    hasPopularityInsights: true
+
+          commonexamples_profilingandpopularity_popularity__72:
+            summary: "Popularity - Manage popularity insights"
+            x-useCaseTag: "Popularity"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/profiling-and-popularity/popularity/
+            x-atlanSnippet: |-
+              {
+                "entities": [ // (1)
+                  {
+                    "typeName": "Connection", // (2)
+                    "attributes": { // (3)
+                      "qualifiedName": "default/hive/1657025257", // (4)
+                      "name": "development", // (5)
+                      "hasPopularityInsights": true // (6)
+                    }
+                  }
+                ]
+              }
+            value:
+              entities:
+                - typeName: Connection
+                  attributes:
+                    qualifiedName: default/hive/1657025257
+                    name: development
+                    hasPopularityInsights: true
+
+          commonexamples_profilingandpopularity_popularity__73:
+            summary: "Popularity - Manage popularity insights"
+            x-useCaseTag: "Popularity"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/profiling-and-popularity/popularity/
+            x-atlanSnippet: |-
+              {
+                "entities": [{ // (1)
+                  "typeName": "Table", // (2)
+                  "attributes": {
+                    "name": "RUN_STATS", // (3)
+                    "qualifiedName": "default/hive/1657025257/OPS/DEFAULT/RUN_STATS", // (4)
+                    "popularityScore": 1.2345, // (5)
+                    "sourceReadCount": 123,
+                    "sourceReadQueryCost": 5.4321,
+                    "sourceReadUserCount": 5,
+                    "sourceTotalCost": 5.4321,
+                    "sourceLastReadAt": 1689508975245,
+                    "sourceCostUnit": "Credits",
+                    "sourceQueryComputeCostList": [ // (6)
+                      "A", "B"
+                    ],
+                    "sourceReadTopUserList": [
+                      "c", "d", "e", "f", "g"
+                    ],
+                    "sourceReadRecentUserList": [
+                      "g", "f", "e", "d", "c"
+                    ],
+                    "sourceQueryComputeCostRecordList": [ // (7)
+                      {
+                        "typeName": "PopularityInsights",
+                        "attributes": {
+                          "recordWarehouse": "A",
+                          "recordComputeCost": 4.4321,
+                          "recordComputeCostUnit": "Credits"
+                        }
+                      },
+                      {
+                        "typeName": "PopularityInsights",
+                        "attributes": {
+                          "recordWarehouse": "B",
+                          "recordComputeCost": 1.0,
+                          "recordComputeCostUnit": "Credits"
+                        }
+                      }
+                    ],
+                    "sourceReadRecentUserRecordList": [
+                      {
+                        "typeName": "PopularityInsights",
+                        "attributes": {
+                          "recordUser": "c",
+                          "recordLastTimestamp": 1234567899000
+                        }
+                      },
+                      {
+                        "typeName": "PopularityInsights",
+                        "attributes": {
+                          "recordUser": "d",
+                          "recordLastTimestamp": 1234567898000
+                        }
+                      },
+                      {
+                        "typeName": "PopularityInsights",
+                        "attributes": {
+                          "recordUser": "e",
+                          "recordLastTimestamp": 1234567897000,
+                          "recordQueryCount": 3
+                        }
+                      }
+                    ],
+                    "sourceReadTopUserRecordList": [
+                      {
+                        "typeName": "PopularityInsights",
+                        "attributes": {
+                          "recordUser": "g",
+                          "recordQueryCount": 100,
+                          "recordLastTimestamp": 1234567895000
+                        }
+                      },
+                      {
+                        "typeName": "PopularityInsights",
+                        "attributes": {
+                          "recordUser": "f",
+                          "recordQueryCount": 20,
+                          "recordLastTimestamp": 1234567896000
+                        }
+                      },
+                      {
+                        "typeName": "PopularityInsights",
+                        "attributes": {
+                          "recordUser": "e",
+                          "recordQueryCount": 3,
+                          "recordLastTimestamp": 1234567897000
+                        }
+                      }
+                    ],
+                    "sourceReadExpensiveQueryRecordList": [
+                      {
+                        "typeName": "PopularityInsights",
+                        "attributes": {
+                          "recordTotalUserCount": 5,
+                          "recordQueryCount": 123,
+                          "recordComputeCost": 5.4321,
+                          "recordQuery": "SELECT * from RUN_STATS",
+                          "recordMaxComputeCost": 5.4321,
+                          "recordComputeCostUnit": "Credits"
+                        }
+                      }
+                    ],
+                    "sourceReadPopularQueryRecordList": [
+                      {
+                        "typeName": "PopularityInsights",
+                        "attributes": {
+                          "recordTotalUserCount": 5,
+                          "recordQueryCount": 123,
+                          "recordComputeCost": 5.4321,
+                          "recordQuery": "SELECT * from RUN_STATS",
+                          "recordComputeCostUnit": "Credits"
+                        }
+                      }
+                    ],
+                    "sourceReadSlowQueryRecordList": [
+                      {
+                        "typeName": "PopularityInsights",
+                        "attributes": {
+                          "recordUser": "g",
+                          "recordLastTimestamp": 124567895000,
+                          "recordQuery": "SELECT * from RUN_STATS",
+                          "recordQueryDuration": 321
+                        }
+                      }
+                    ]
+                  }
+                }]
+              }
+            value:
+              entities:
+                - typeName: Table
+                  attributes:
+                    name: RUN_STATS
+                    qualifiedName: default/hive/1657025257/OPS/DEFAULT/RUN_STATS
+                    popularityScore: 1.2345
+                    sourceReadCount: 123
+                    sourceReadQueryCost: 5.4321
+                    sourceReadUserCount: 5
+                    sourceTotalCost: 5.4321
+                    sourceLastReadAt: 1689508975245
+                    sourceCostUnit: Credits
+                    sourceQueryComputeCostList:
+                      - A
+                      - B
+                    sourceReadTopUserList:
+                      - c
+                      - d
+                      - e
+                      - f
+                      - g
+                    sourceReadRecentUserList:
+                      - g
+                      - f
+                      - e
+                      - d
+                      - c
+                    sourceQueryComputeCostRecordList:
+                      - typeName: PopularityInsights
+                        attributes:
+                          recordWarehouse: A
+                          recordComputeCost: 4.4321
+                          recordComputeCostUnit: Credits
+                      - typeName: PopularityInsights
+                        attributes:
+                          recordWarehouse: B
+                          recordComputeCost: 1
+                          recordComputeCostUnit: Credits
+                    sourceReadRecentUserRecordList:
+                      - typeName: PopularityInsights
+                        attributes:
+                          recordUser: c
+                          recordLastTimestamp: 1234567899000
+                      - typeName: PopularityInsights
+                        attributes:
+                          recordUser: d
+                          recordLastTimestamp: 1234567898000
+                      - typeName: PopularityInsights
+                        attributes:
+                          recordUser: e
+                          recordLastTimestamp: 1234567897000
+                          recordQueryCount: 3
+                    sourceReadTopUserRecordList:
+                      - typeName: PopularityInsights
+                        attributes:
+                          recordUser: g
+                          recordQueryCount: 100
+                          recordLastTimestamp: 1234567895000
+                      - typeName: PopularityInsights
+                        attributes:
+                          recordUser: f
+                          recordQueryCount: 20
+                          recordLastTimestamp: 1234567896000
+                      - typeName: PopularityInsights
+                        attributes:
+                          recordUser: e
+                          recordQueryCount: 3
+                          recordLastTimestamp: 1234567897000
+                    sourceReadExpensiveQueryRecordList:
+                      - typeName: PopularityInsights
+                        attributes:
+                          recordTotalUserCount: 5
+                          recordQueryCount: 123
+                          recordComputeCost: 5.4321
+                          recordQuery: "SELECT * from RUN_STATS"
+                          recordMaxComputeCost: 5.4321
+                          recordComputeCostUnit: Credits
+                    sourceReadPopularQueryRecordList:
+                      - typeName: PopularityInsights
+                        attributes:
+                          recordTotalUserCount: 5
+                          recordQueryCount: 123
+                          recordComputeCost: 5.4321
+                          recordQuery: "SELECT * from RUN_STATS"
+                          recordComputeCostUnit: Credits
+                    sourceReadSlowQueryRecordList:
+                      - typeName: PopularityInsights
+                        attributes:
+                          recordUser: g
+                          recordLastTimestamp: 124567895000
+                          recordQuery: "SELECT * from RUN_STATS"
+                          recordQueryDuration: 321

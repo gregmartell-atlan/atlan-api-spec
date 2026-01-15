@@ -1,0 +1,54 @@
+# Use Case: Run queries on an asset
+# Auto-generated from: https://developer.atlan.com/snippets/access/queries/
+# Generated at: 2026-01-13T02:58:00.287Z
+
+id: access-queries
+title: "Run queries on an asset"
+category: access-control
+icon: zap
+relatedTypes:
+  - AuthPolicy
+  - Persona
+  - Purpose
+
+description: >-
+  Execute queries with proper access controls. This use case covers running queries on assets while respecting the access policies and purposes configured in Atlan.
+
+externalDocs:
+  url: https://developer.atlan.com/snippets/access/queries/
+  description: Official Atlan documentation
+
+steps:
+  - step: 1
+    title: "Use API token to run queries"
+    description: >-
+      7.0.0
+      4.0.0
+      
+      You can also grant permission to run SQL queries on an asset using an API token, if you want. (This must be explicitly granted, as it is not possible by default.) You can even mask certain information through data policies on purposes linked to the API token.
+      
+      API token permissions
+      
+      Before executing queries on an asset using an API token, ensure that the token is linked to a persona with a data policy that permits queries for that specific asset.
+    notes:
+      - type: warning
+        title: "API token permissions"
+        content: >-
+          Before executing queries on an asset using an API token, ensure that the token is linked to a persona with a data policy that permits queries for that specific asset.
+      - type: warning
+        title: "Policy implementation delay"
+        content: >-
+          Be aware that there is a delay of a few minutes after applying new policies
+          to the token before they become fully effective. If you run a query immediately
+          after creating the policy, you may still observe unredacted information until
+          the policy is fully implemented.
+    method: POST
+    endpoint: /api/sql/query/stream
+    examples:
+      - key: example-1-1
+        summary: "POST /api/sql/query/stream"
+        request: {
+                    "sql": "SELECT * FROM \"PACKAGETYPES\" LIMIT 50;",
+                    "dataSourceName": "default/snowflake/1705755637",
+                    "defaultSchema": "RAW.WIDEWORLDIMPORTERS_WAREHOUSE"
+          }

@@ -1,0 +1,3975 @@
+{
+  "useCase": "search-operations",
+  "description": "API calls for search-operations",
+  "steps": [
+    {
+      "step": 1,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "bool": {
+              "must": [
+                {
+                  "term": {
+                    "__typeName.keyword": "Table"
+                  }
+                }
+              ]
+            }
+          },
+          "size": 10
+        },
+        "attributes": [
+          "guid",
+          "qualifiedName",
+          "name",
+          "typeName",
+          "description",
+          "userDescription",
+          "displayName",
+          "columnCount",
+          "rowCount",
+          "sizeBytes",
+          "isPartitioned",
+          "partitionCount",
+          "queryCount",
+          "queryUserCount",
+          "isProfiled",
+          "lastProfiledAt",
+          "atlanSchema",
+          "columns"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "userDescription",
+              "qualifiedName",
+              "displayName",
+              "... (15 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "bool": {
+                  "must": [
+                    {
+                      "term": {
+                        "__typeName.keyword": "Table"
+                      }
+                    }
+                  ]
+                }
+              },
+              "size": 10
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"bool\":{\"must\":[{\"term\":{\"__typeName.keyword\":\"Table\"}}]}},\"size\":10}",
+            "querySize": 10,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "entities": [
+            {
+              "typeName": "Table",
+              "attributes": {
+                "partitionCount": 0,
+                "queryUserCount": 0,
+                "qualifiedName": "default/snowflake/1699281775/FIVETRAN/DBT_DEMO_DATA_PUBLIC/FIVETRAN_AUDIT",
+                "columns": [],
+                "name": "FIVETRAN_AUDIT",
+                "lastProfiledAt": 0,
+                "queryCount": 0,
+                "columnCount": 12,
+                "isPartitioned": false,
+                "rowCount": 1,
+                "sizeBytes": 4096,
+                "isProfiled": false
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "SQL"
+              ],
+              "docId": "26lijm8",
+              "guid": "ca0da9dc-72d4-45fd-9701-74f619f8392c",
+              "status": "DELETED",
+              "displayText": "FIVETRAN_AUDIT",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "akshay.walvekar",
+              "updatedBy": "oleksandr.akulov",
+              "createTime": 1699285335634,
+              "updateTime": 1748385438769,
+              "scrubbed": true
+            },
+            {
+              "typeName": "Table",
+              "attributes": {
+                "partitionCount": 0,
+                "queryUserCount": 0,
+                "atlanSchema": {
+                  "guid": "dcae1efa-251b-4c0f-8e23-e94637c4537d",
+                  "typeName": "Schema",
+                  "uniqueAttributes": {
+                    "qualifiedName": "default/snowflake/1664275472/DBT_FOOD_BEVERAGE/PUBLIC"
+                  }
+                },
+                "qualifiedName": "default/snowflake/1664275472/DBT_FOOD_BEVERAGE/PUBLIC/INSTACART_ORDER_PRODUCTS",
+                "columns": [],
+                "name": "INSTACART_ORDER_PRODUCTS",
+                "description": "All orders mapped to product ids",
+                "queryCount": 0,
+                "columnCount": 4,
+                "isPartitioned": false,
+                "rowCount": 810752,
+                "sizeBytes": 4156928
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "SQL"
+              ],
+              "docId": "au8r0w",
+              "guid": "6cf5b65c-0da1-4512-90bf-eb80cb772f77",
+              "status": "DELETED",
+              "displayText": "INSTACART_ORDER_PRODUCTS",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "edgar.degroot",
+              "updatedBy": "service-account-apikey-59837916-d25b-4613-9dad-df55250d40a9",
+              "createTime": 1664275655428,
+              "updateTime": 1716376622373
+            },
+            {
+              "typeName": "Table",
+              "attributes": {
+                "partitionCount": 0,
+                "queryUserCount": 0,
+                "qualifiedName": "default/fivetran/1729413575/databricks/salesforce/guest_user_anomaly_event_store_feed",
+                "columns": [],
+                "name": "guest_user_anomaly_event_store_feed",
+                "lastProfiledAt": 0,
+                "queryCount": 0,
+                "columnCount": 0,
+                "isPartitioned": false,
+                "rowCount": 0,
+                "sizeBytes": 0,
+                "isProfiled": false
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "SQL"
+              ],
+              "docId": "3u6xjsg",
+              "guid": "a6cc029e-2fed-42dd-a8b0-75d134785a48",
+              "status": "DELETED",
+              "displayText": "guest_user_anomaly_event_store_feed",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "rajat.movaliya",
+              "updatedBy": "rajat.movaliya",
+              "createTime": 1729414975624,
+              "updateTime": 1729490376438
+            },
+            "... (7 more items)"
+          ],
+          "approximateCount": 10000
+        }
+      },
+      "duration": 282
+    },
+    {
+      "step": 2,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "bool": {
+              "must": [
+                {
+                  "exists": {
+                    "field": "__classificationNames"
+                  }
+                }
+              ]
+            }
+          },
+          "size": 10
+        },
+        "attributes": [
+          "guid",
+          "qualifiedName",
+          "name",
+          "typeName",
+          "description",
+          "userDescription",
+          "displayName",
+          "certificateStatus",
+          "certificateStatusMessage",
+          "ownerUsers",
+          "ownerGroups",
+          "classifications",
+          "classificationNames",
+          "meanings",
+          "meaningNames",
+          "__hasLineage"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "certificateStatusMessage",
+              "certificateStatus",
+              "userDescription",
+              "... (13 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "bool": {
+                  "must": [
+                    {
+                      "exists": {
+                        "field": "__classificationNames"
+                      }
+                    }
+                  ]
+                }
+              },
+              "size": 10
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"__classificationNames\"}}]}},\"size\":10}",
+            "querySize": 10,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "entities": [
+            {
+              "typeName": "DataProduct",
+              "attributes": {
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [
+                  "engineers"
+                ],
+                "userDescription": "This is a data product for the Parkland demonstration. ",
+                "qualifiedName": "default/domain/oXS5s3EIiiYCgfb33lBhQ/super/product/iq42f3qHPovfxyco0TpTd",
+                "name": "Parkland Data Product",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": [
+                  "cameron.kayfish",
+                  "trent.jones"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "DataMesh"
+              ],
+              "docId": "3vjmnrs",
+              "guid": "a7b832b9-700e-42dd-a166-659ebe658c31",
+              "status": "DELETED",
+              "displayText": "Parkland Data Product",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "cameron.kayfish",
+              "updatedBy": "service-account-atlan-argo",
+              "createTime": 1731956819831,
+              "updateTime": 1750604879334
+            },
+            {
+              "typeName": "Column",
+              "attributes": {
+                "ownerGroups": [],
+                "userDescription": "the unique id for each customer",
+                "qualifiedName": "default/snowflake/1662973007/DBT_FOOD_BEVERAGE/RAW/INSTACART_CUSTOMER_DETAILS/USER_ID",
+                "name": "USER_ID",
+                "__hasLineage": true,
+                "meanings": [],
+                "ownerUsers": []
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "SQL"
+              ],
+              "docId": "auc66g",
+              "guid": "8d082b7f-71c2-4ec3-9d1c-938c6a12e278",
+              "status": "DELETED",
+              "displayText": "USER_ID",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "edgar.degroot",
+              "updatedBy": "edgar.degroot",
+              "createTime": 1662973256164,
+              "updateTime": 1663715884800,
+              "scrubbed": true
+            },
+            {
+              "typeName": "Column",
+              "attributes": {
+                "ownerGroups": [],
+                "qualifiedName": "default/snowflake/1662973007/DBT_FOOD_BEVERAGE/PUBLIC/INSTACART_ORDERS/user_id",
+                "name": "user_id",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": []
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "SQL"
+              ],
+              "docId": "auc9c8",
+              "guid": "76a96b03-5191-4f5f-aa14-da87ffbc9cb7",
+              "status": "DELETED",
+              "displayText": "user_id",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "edgar.degroot",
+              "updatedBy": "edgar.degroot",
+              "createTime": 1662973256164,
+              "updateTime": 1663719924792,
+              "scrubbed": true
+            },
+            "... (7 more items)"
+          ],
+          "approximateCount": 10000
+        }
+      },
+      "duration": 400
+    },
+    {
+      "step": 3,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "bool": {
+              "must": [
+                {
+                  "term": {
+                    "__hasLineage": true
+                  }
+                }
+              ]
+            }
+          },
+          "size": 10
+        },
+        "attributes": [
+          "guid",
+          "qualifiedName",
+          "name",
+          "typeName"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "qualifiedName",
+              "name",
+              "typeName",
+              "... (1 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "bool": {
+                  "must": [
+                    {
+                      "term": {
+                        "__hasLineage": true
+                      }
+                    }
+                  ]
+                }
+              },
+              "size": 10
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"bool\":{\"must\":[{\"term\":{\"__hasLineage\":true}}]}},\"size\":10}",
+            "querySize": 10,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "entities": [
+            {
+              "typeName": "ColumnProcess",
+              "attributes": {
+                "qualifiedName": "default/sigma/1674133822/c13051d8-e6c2-4672-b674-c99efd40c63e/yaxZwx6DaF/_K-dl3tJCX/aed89c52-a2f3-43e8-8df5-92180b500bc0/MTH_SNAPSHOT/tables/f792ba0ed8fa27984e6e4acc438d2374/columns/dc8fcc1be0653f874979467ca6cca7ea",
+                "name": "MTH_SNAPSHOT → Mth Snapshot"
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Process"
+              ],
+              "docId": "66oxa0g",
+              "guid": "f4a84a57-3434-4c66-924b-12ccca149ac7",
+              "status": "ACTIVE",
+              "displayText": "MTH_SNAPSHOT → Mth Snapshot",
+              "classificationNames": [
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "YWtFs1Zy7XPKqR2ZUAPXlR"
+              ],
+              "classifications": [
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "YWtFs1Zy7XPKqR2ZUAPXlR",
+                  "attributes": {
+                    "WJLiQ2z6dsBQKQMsURoWPI": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "a1ea9e7f-e02a-4a79-9966-a049c1dc8dcc",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                }
+              ],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "ryan.quigley",
+              "updatedBy": "ryan.quigley",
+              "createTime": 1747194876854,
+              "updateTime": 1747194876854
+            },
+            {
+              "typeName": "ColumnProcess",
+              "attributes": {
+                "qualifiedName": "default/sigma/1674133822/c13051d8-e6c2-4672-b674-c99efd40c63e/yaxZwx6DaF/_K-dl3tJCX/aed89c52-a2f3-43e8-8df5-92180b500bc0/BORROWER_ID/tables/f792ba0ed8fa27984e6e4acc438d2374/columns/b03f7716eea4a8bf6c60c2035e96495e",
+                "name": "BORROWER_ID → Borrower Id"
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Process"
+              ],
+              "docId": "6cj5954",
+              "guid": "4d5729d9-eda7-4ad7-93bb-c86cbb94ef1e",
+              "status": "ACTIVE",
+              "displayText": "BORROWER_ID → Borrower Id",
+              "classificationNames": [
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "YWtFs1Zy7XPKqR2ZUAPXlR"
+              ],
+              "classifications": [
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "YWtFs1Zy7XPKqR2ZUAPXlR",
+                  "attributes": {
+                    "WJLiQ2z6dsBQKQMsURoWPI": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "a1ea9e7f-e02a-4a79-9966-a049c1dc8dcc",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                }
+              ],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "ryan.quigley",
+              "updatedBy": "ryan.quigley",
+              "createTime": 1747194876854,
+              "updateTime": 1747194876854
+            },
+            {
+              "typeName": "ColumnProcess",
+              "attributes": {
+                "qualifiedName": "default/sigma/1674133822/c13051d8-e6c2-4672-b674-c99efd40c63e/yaxZwx6DaF/_K-dl3tJCX/aed89c52-a2f3-43e8-8df5-92180b500bc0/LOAN_NBR/tables/f792ba0ed8fa27984e6e4acc438d2374/columns/12eada116dac6876fb8a2629b187a12c",
+                "name": "LOAN_NBR → Loan Nbr"
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Process"
+              ],
+              "docId": "66oxd68",
+              "guid": "432359f2-9566-4bf7-933a-06be180c8126",
+              "status": "ACTIVE",
+              "displayText": "LOAN_NBR → Loan Nbr",
+              "classificationNames": [
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "YWtFs1Zy7XPKqR2ZUAPXlR"
+              ],
+              "classifications": [
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "YWtFs1Zy7XPKqR2ZUAPXlR",
+                  "attributes": {
+                    "WJLiQ2z6dsBQKQMsURoWPI": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "a1ea9e7f-e02a-4a79-9966-a049c1dc8dcc",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                }
+              ],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "ryan.quigley",
+              "updatedBy": "ryan.quigley",
+              "createTime": 1747194876854,
+              "updateTime": 1747194876854
+            },
+            "... (7 more items)"
+          ],
+          "approximateCount": 10000
+        }
+      },
+      "duration": 529
+    },
+    {
+      "step": 4,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "bool": {
+              "must": [
+                {
+                  "exists": {
+                    "field": "__meanings"
+                  }
+                }
+              ]
+            }
+          },
+          "size": 10
+        },
+        "attributes": [
+          "guid",
+          "qualifiedName",
+          "name",
+          "typeName",
+          "description",
+          "userDescription",
+          "displayName",
+          "certificateStatus",
+          "certificateStatusMessage",
+          "ownerUsers",
+          "ownerGroups",
+          "classifications",
+          "classificationNames",
+          "meanings",
+          "meaningNames",
+          "__hasLineage"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "certificateStatusMessage",
+              "certificateStatus",
+              "userDescription",
+              "... (13 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "bool": {
+                  "must": [
+                    {
+                      "exists": {
+                        "field": "__meanings"
+                      }
+                    }
+                  ]
+                }
+              },
+              "size": 10
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"__meanings\"}}]}},\"size\":10}",
+            "querySize": 10,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "entities": [
+            {
+              "typeName": "BusinessPolicy",
+              "attributes": {
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [],
+                "qualifiedName": "default/business_policy/e8f3b45a-304a-465f-9cb4-df9afbb4409e",
+                "displayName": "Databricks Mart Standards",
+                "name": "Databricks Mart Standards",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": [
+                  "ryan.quigley"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset"
+              ],
+              "docId": "6fo706g",
+              "guid": "9e4c88c3-fc23-4cbb-bc72-ea02c3bf1091",
+              "status": "DELETED",
+              "displayText": "Databricks Mart Standards",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "ryan.quigley",
+              "updatedBy": "ryan.quigley",
+              "createTime": 1748442400777,
+              "updateTime": 1748442621939
+            },
+            {
+              "typeName": "DataProduct",
+              "attributes": {
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [
+                  "engineers"
+                ],
+                "userDescription": "This is a data product for the Parkland demonstration. ",
+                "qualifiedName": "default/domain/oXS5s3EIiiYCgfb33lBhQ/super/product/iq42f3qHPovfxyco0TpTd",
+                "name": "Parkland Data Product",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": [
+                  "cameron.kayfish",
+                  "trent.jones"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "DataMesh"
+              ],
+              "docId": "3vjmnrs",
+              "guid": "a7b832b9-700e-42dd-a166-659ebe658c31",
+              "status": "DELETED",
+              "displayText": "Parkland Data Product",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "cameron.kayfish",
+              "updatedBy": "service-account-atlan-argo",
+              "createTime": 1731956819831,
+              "updateTime": 1750604879334
+            },
+            {
+              "typeName": "DbtMetric",
+              "attributes": {
+                "certificateStatus": "VERIFIED",
+                "ownerGroups": [],
+                "qualifiedName": "default/dbt/1670859725/account/24670/environment/114095/job/213121/metric.jaffle_shop.average_order_amount",
+                "name": "Average Order Amount",
+                "__hasLineage": true,
+                "description": "The average size of a jaffle order",
+                "meanings": [],
+                "ownerUsers": [
+                  "ravi"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "DataQuality",
+                "Dbt",
+                "Asset",
+                "Metric",
+                "Catalog"
+              ],
+              "docId": "qf2y6g",
+              "guid": "5f3dcd1b-cd97-4d7f-9c9a-da1ee4a8c695",
+              "status": "DELETED",
+              "displayText": "Average Order Amount",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "kevin.holler",
+              "updatedBy": "utkarsh.g",
+              "createTime": 1676070780643,
+              "updateTime": 1681797841487
+            },
+            "... (7 more items)"
+          ],
+          "approximateCount": 661
+        }
+      },
+      "duration": 379
+    },
+    {
+      "step": 5,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "bool": {
+              "must": [
+                {
+                  "term": {
+                    "__typeName.keyword": "Table"
+                  }
+                }
+              ]
+            }
+          },
+          "size": 10
+        },
+        "attributes": [
+          "guid",
+          "qualifiedName",
+          "name",
+          "typeName",
+          "description",
+          "userDescription",
+          "displayName",
+          "columnCount",
+          "rowCount",
+          "sizeBytes",
+          "isPartitioned",
+          "partitionCount",
+          "queryCount",
+          "queryUserCount",
+          "isProfiled",
+          "lastProfiledAt",
+          "atlanSchema",
+          "columns"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "userDescription",
+              "qualifiedName",
+              "displayName",
+              "... (15 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "bool": {
+                  "must": [
+                    {
+                      "term": {
+                        "__typeName.keyword": "Table"
+                      }
+                    }
+                  ]
+                }
+              },
+              "size": 10
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"bool\":{\"must\":[{\"term\":{\"__typeName.keyword\":\"Table\"}}]}},\"size\":10}",
+            "querySize": 10,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "entities": [
+            {
+              "typeName": "Table",
+              "attributes": {
+                "partitionCount": 0,
+                "queryUserCount": 0,
+                "qualifiedName": "default/snowflake/1699281775/FIVETRAN/DBT_DEMO_DATA_PUBLIC/FIVETRAN_AUDIT",
+                "columns": [],
+                "name": "FIVETRAN_AUDIT",
+                "lastProfiledAt": 0,
+                "queryCount": 0,
+                "columnCount": 12,
+                "isPartitioned": false,
+                "rowCount": 1,
+                "sizeBytes": 4096,
+                "isProfiled": false
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "SQL"
+              ],
+              "docId": "26lijm8",
+              "guid": "ca0da9dc-72d4-45fd-9701-74f619f8392c",
+              "status": "DELETED",
+              "displayText": "FIVETRAN_AUDIT",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "akshay.walvekar",
+              "updatedBy": "oleksandr.akulov",
+              "createTime": 1699285335634,
+              "updateTime": 1748385438769,
+              "scrubbed": true
+            },
+            {
+              "typeName": "Table",
+              "attributes": {
+                "partitionCount": 0,
+                "queryUserCount": 0,
+                "atlanSchema": {
+                  "guid": "dcae1efa-251b-4c0f-8e23-e94637c4537d",
+                  "typeName": "Schema",
+                  "uniqueAttributes": {
+                    "qualifiedName": "default/snowflake/1664275472/DBT_FOOD_BEVERAGE/PUBLIC"
+                  }
+                },
+                "qualifiedName": "default/snowflake/1664275472/DBT_FOOD_BEVERAGE/PUBLIC/INSTACART_ORDER_PRODUCTS",
+                "columns": [],
+                "name": "INSTACART_ORDER_PRODUCTS",
+                "description": "All orders mapped to product ids",
+                "queryCount": 0,
+                "columnCount": 4,
+                "isPartitioned": false,
+                "rowCount": 810752,
+                "sizeBytes": 4156928
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "SQL"
+              ],
+              "docId": "au8r0w",
+              "guid": "6cf5b65c-0da1-4512-90bf-eb80cb772f77",
+              "status": "DELETED",
+              "displayText": "INSTACART_ORDER_PRODUCTS",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "edgar.degroot",
+              "updatedBy": "service-account-apikey-59837916-d25b-4613-9dad-df55250d40a9",
+              "createTime": 1664275655428,
+              "updateTime": 1716376622373
+            },
+            {
+              "typeName": "Table",
+              "attributes": {
+                "partitionCount": 0,
+                "queryUserCount": 0,
+                "qualifiedName": "default/fivetran/1729413575/databricks/salesforce/guest_user_anomaly_event_store_feed",
+                "columns": [],
+                "name": "guest_user_anomaly_event_store_feed",
+                "lastProfiledAt": 0,
+                "queryCount": 0,
+                "columnCount": 0,
+                "isPartitioned": false,
+                "rowCount": 0,
+                "sizeBytes": 0,
+                "isProfiled": false
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "SQL"
+              ],
+              "docId": "3u6xjsg",
+              "guid": "a6cc029e-2fed-42dd-a8b0-75d134785a48",
+              "status": "DELETED",
+              "displayText": "guest_user_anomaly_event_store_feed",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "rajat.movaliya",
+              "updatedBy": "rajat.movaliya",
+              "createTime": 1729414975624,
+              "updateTime": 1729490376438
+            },
+            "... (7 more items)"
+          ],
+          "approximateCount": 10000
+        }
+      },
+      "duration": 250
+    },
+    {
+      "step": 6,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "bool": {
+              "must": [
+                {
+                  "exists": {
+                    "field": "__classificationNames"
+                  }
+                }
+              ]
+            }
+          },
+          "size": 10
+        },
+        "attributes": [
+          "guid",
+          "qualifiedName",
+          "name",
+          "typeName",
+          "description",
+          "userDescription",
+          "displayName",
+          "certificateStatus",
+          "certificateStatusMessage",
+          "ownerUsers",
+          "ownerGroups",
+          "classifications",
+          "classificationNames",
+          "meanings",
+          "meaningNames",
+          "__hasLineage"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "certificateStatusMessage",
+              "certificateStatus",
+              "userDescription",
+              "... (13 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "bool": {
+                  "must": [
+                    {
+                      "exists": {
+                        "field": "__classificationNames"
+                      }
+                    }
+                  ]
+                }
+              },
+              "size": 10
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"__classificationNames\"}}]}},\"size\":10}",
+            "querySize": 10,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "entities": [
+            {
+              "typeName": "DataProduct",
+              "attributes": {
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [
+                  "engineers"
+                ],
+                "userDescription": "This is a data product for the Parkland demonstration. ",
+                "qualifiedName": "default/domain/oXS5s3EIiiYCgfb33lBhQ/super/product/iq42f3qHPovfxyco0TpTd",
+                "name": "Parkland Data Product",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": [
+                  "cameron.kayfish",
+                  "trent.jones"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "DataMesh"
+              ],
+              "docId": "3vjmnrs",
+              "guid": "a7b832b9-700e-42dd-a166-659ebe658c31",
+              "status": "DELETED",
+              "displayText": "Parkland Data Product",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "cameron.kayfish",
+              "updatedBy": "service-account-atlan-argo",
+              "createTime": 1731956819831,
+              "updateTime": 1750604879334
+            },
+            {
+              "typeName": "Column",
+              "attributes": {
+                "ownerGroups": [],
+                "userDescription": "the unique id for each customer",
+                "qualifiedName": "default/snowflake/1662973007/DBT_FOOD_BEVERAGE/RAW/INSTACART_CUSTOMER_DETAILS/USER_ID",
+                "name": "USER_ID",
+                "__hasLineage": true,
+                "meanings": [],
+                "ownerUsers": []
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "SQL"
+              ],
+              "docId": "auc66g",
+              "guid": "8d082b7f-71c2-4ec3-9d1c-938c6a12e278",
+              "status": "DELETED",
+              "displayText": "USER_ID",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "edgar.degroot",
+              "updatedBy": "edgar.degroot",
+              "createTime": 1662973256164,
+              "updateTime": 1663715884800,
+              "scrubbed": true
+            },
+            {
+              "typeName": "Column",
+              "attributes": {
+                "ownerGroups": [],
+                "qualifiedName": "default/snowflake/1662973007/DBT_FOOD_BEVERAGE/PUBLIC/INSTACART_ORDERS/user_id",
+                "name": "user_id",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": []
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "SQL"
+              ],
+              "docId": "auc9c8",
+              "guid": "76a96b03-5191-4f5f-aa14-da87ffbc9cb7",
+              "status": "DELETED",
+              "displayText": "user_id",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "edgar.degroot",
+              "updatedBy": "edgar.degroot",
+              "createTime": 1662973256164,
+              "updateTime": 1663719924792,
+              "scrubbed": true
+            },
+            "... (7 more items)"
+          ],
+          "approximateCount": 10000
+        }
+      },
+      "duration": 192
+    },
+    {
+      "step": 7,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "bool": {
+              "must": [
+                {
+                  "term": {
+                    "__hasLineage": true
+                  }
+                }
+              ]
+            }
+          },
+          "size": 10
+        },
+        "attributes": [
+          "guid",
+          "qualifiedName",
+          "name",
+          "typeName"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "qualifiedName",
+              "name",
+              "typeName",
+              "... (1 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "bool": {
+                  "must": [
+                    {
+                      "term": {
+                        "__hasLineage": true
+                      }
+                    }
+                  ]
+                }
+              },
+              "size": 10
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"bool\":{\"must\":[{\"term\":{\"__hasLineage\":true}}]}},\"size\":10}",
+            "querySize": 10,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "entities": [
+            {
+              "typeName": "ColumnProcess",
+              "attributes": {
+                "qualifiedName": "default/sigma/1674133822/c13051d8-e6c2-4672-b674-c99efd40c63e/yaxZwx6DaF/_K-dl3tJCX/aed89c52-a2f3-43e8-8df5-92180b500bc0/MTH_SNAPSHOT/tables/f792ba0ed8fa27984e6e4acc438d2374/columns/dc8fcc1be0653f874979467ca6cca7ea",
+                "name": "MTH_SNAPSHOT → Mth Snapshot"
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Process"
+              ],
+              "docId": "66oxa0g",
+              "guid": "f4a84a57-3434-4c66-924b-12ccca149ac7",
+              "status": "ACTIVE",
+              "displayText": "MTH_SNAPSHOT → Mth Snapshot",
+              "classificationNames": [
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "YWtFs1Zy7XPKqR2ZUAPXlR"
+              ],
+              "classifications": [
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "YWtFs1Zy7XPKqR2ZUAPXlR",
+                  "attributes": {
+                    "WJLiQ2z6dsBQKQMsURoWPI": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "a1ea9e7f-e02a-4a79-9966-a049c1dc8dcc",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                }
+              ],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "ryan.quigley",
+              "updatedBy": "ryan.quigley",
+              "createTime": 1747194876854,
+              "updateTime": 1747194876854
+            },
+            {
+              "typeName": "ColumnProcess",
+              "attributes": {
+                "qualifiedName": "default/sigma/1674133822/c13051d8-e6c2-4672-b674-c99efd40c63e/yaxZwx6DaF/_K-dl3tJCX/aed89c52-a2f3-43e8-8df5-92180b500bc0/BORROWER_ID/tables/f792ba0ed8fa27984e6e4acc438d2374/columns/b03f7716eea4a8bf6c60c2035e96495e",
+                "name": "BORROWER_ID → Borrower Id"
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Process"
+              ],
+              "docId": "6cj5954",
+              "guid": "4d5729d9-eda7-4ad7-93bb-c86cbb94ef1e",
+              "status": "ACTIVE",
+              "displayText": "BORROWER_ID → Borrower Id",
+              "classificationNames": [
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "YWtFs1Zy7XPKqR2ZUAPXlR"
+              ],
+              "classifications": [
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "YWtFs1Zy7XPKqR2ZUAPXlR",
+                  "attributes": {
+                    "WJLiQ2z6dsBQKQMsURoWPI": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "a1ea9e7f-e02a-4a79-9966-a049c1dc8dcc",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                }
+              ],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "ryan.quigley",
+              "updatedBy": "ryan.quigley",
+              "createTime": 1747194876854,
+              "updateTime": 1747194876854
+            },
+            {
+              "typeName": "ColumnProcess",
+              "attributes": {
+                "qualifiedName": "default/sigma/1674133822/c13051d8-e6c2-4672-b674-c99efd40c63e/yaxZwx6DaF/_K-dl3tJCX/aed89c52-a2f3-43e8-8df5-92180b500bc0/LOAN_NBR/tables/f792ba0ed8fa27984e6e4acc438d2374/columns/12eada116dac6876fb8a2629b187a12c",
+                "name": "LOAN_NBR → Loan Nbr"
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Process"
+              ],
+              "docId": "66oxd68",
+              "guid": "432359f2-9566-4bf7-933a-06be180c8126",
+              "status": "ACTIVE",
+              "displayText": "LOAN_NBR → Loan Nbr",
+              "classificationNames": [
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "YWtFs1Zy7XPKqR2ZUAPXlR"
+              ],
+              "classifications": [
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "YWtFs1Zy7XPKqR2ZUAPXlR",
+                  "attributes": {
+                    "WJLiQ2z6dsBQKQMsURoWPI": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "a1ea9e7f-e02a-4a79-9966-a049c1dc8dcc",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                }
+              ],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "ryan.quigley",
+              "updatedBy": "ryan.quigley",
+              "createTime": 1747194876854,
+              "updateTime": 1747194876854
+            },
+            "... (7 more items)"
+          ],
+          "approximateCount": 10000
+        }
+      },
+      "duration": 394
+    },
+    {
+      "step": 8,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "bool": {
+              "must": [
+                {
+                  "exists": {
+                    "field": "__meanings"
+                  }
+                }
+              ]
+            }
+          },
+          "size": 10
+        },
+        "attributes": [
+          "guid",
+          "qualifiedName",
+          "name",
+          "typeName",
+          "description",
+          "userDescription",
+          "displayName",
+          "certificateStatus",
+          "certificateStatusMessage",
+          "ownerUsers",
+          "ownerGroups",
+          "classifications",
+          "classificationNames",
+          "meanings",
+          "meaningNames",
+          "__hasLineage"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "certificateStatusMessage",
+              "certificateStatus",
+              "userDescription",
+              "... (13 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "bool": {
+                  "must": [
+                    {
+                      "exists": {
+                        "field": "__meanings"
+                      }
+                    }
+                  ]
+                }
+              },
+              "size": 10
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"__meanings\"}}]}},\"size\":10}",
+            "querySize": 10,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "entities": [
+            {
+              "typeName": "BusinessPolicy",
+              "attributes": {
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [],
+                "qualifiedName": "default/business_policy/e8f3b45a-304a-465f-9cb4-df9afbb4409e",
+                "displayName": "Databricks Mart Standards",
+                "name": "Databricks Mart Standards",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": [
+                  "ryan.quigley"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset"
+              ],
+              "docId": "6fo706g",
+              "guid": "9e4c88c3-fc23-4cbb-bc72-ea02c3bf1091",
+              "status": "DELETED",
+              "displayText": "Databricks Mart Standards",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "ryan.quigley",
+              "updatedBy": "ryan.quigley",
+              "createTime": 1748442400777,
+              "updateTime": 1748442621939
+            },
+            {
+              "typeName": "DataProduct",
+              "attributes": {
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [
+                  "engineers"
+                ],
+                "userDescription": "This is a data product for the Parkland demonstration. ",
+                "qualifiedName": "default/domain/oXS5s3EIiiYCgfb33lBhQ/super/product/iq42f3qHPovfxyco0TpTd",
+                "name": "Parkland Data Product",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": [
+                  "cameron.kayfish",
+                  "trent.jones"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "DataMesh"
+              ],
+              "docId": "3vjmnrs",
+              "guid": "a7b832b9-700e-42dd-a166-659ebe658c31",
+              "status": "DELETED",
+              "displayText": "Parkland Data Product",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "cameron.kayfish",
+              "updatedBy": "service-account-atlan-argo",
+              "createTime": 1731956819831,
+              "updateTime": 1750604879334
+            },
+            {
+              "typeName": "DbtMetric",
+              "attributes": {
+                "certificateStatus": "VERIFIED",
+                "ownerGroups": [],
+                "qualifiedName": "default/dbt/1670859725/account/24670/environment/114095/job/213121/metric.jaffle_shop.average_order_amount",
+                "name": "Average Order Amount",
+                "__hasLineage": true,
+                "description": "The average size of a jaffle order",
+                "meanings": [],
+                "ownerUsers": [
+                  "ravi"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "DataQuality",
+                "Dbt",
+                "Asset",
+                "Metric",
+                "Catalog"
+              ],
+              "docId": "qf2y6g",
+              "guid": "5f3dcd1b-cd97-4d7f-9c9a-da1ee4a8c695",
+              "status": "DELETED",
+              "displayText": "Average Order Amount",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "kevin.holler",
+              "updatedBy": "utkarsh.g",
+              "createTime": 1676070780643,
+              "updateTime": 1681797841487
+            },
+            "... (7 more items)"
+          ],
+          "approximateCount": 661
+        }
+      },
+      "duration": 192
+    },
+    {
+      "step": 9,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "bool": {
+              "must": [
+                {
+                  "term": {
+                    "__typeName.keyword": "Table"
+                  }
+                }
+              ]
+            }
+          },
+          "size": 10
+        },
+        "attributes": [
+          "guid",
+          "qualifiedName",
+          "name",
+          "typeName",
+          "description",
+          "userDescription",
+          "displayName",
+          "columnCount",
+          "rowCount",
+          "sizeBytes",
+          "isPartitioned",
+          "partitionCount",
+          "queryCount",
+          "queryUserCount",
+          "isProfiled",
+          "lastProfiledAt",
+          "atlanSchema",
+          "columns"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "userDescription",
+              "qualifiedName",
+              "displayName",
+              "... (15 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "bool": {
+                  "must": [
+                    {
+                      "term": {
+                        "__typeName.keyword": "Table"
+                      }
+                    }
+                  ]
+                }
+              },
+              "size": 10
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"bool\":{\"must\":[{\"term\":{\"__typeName.keyword\":\"Table\"}}]}},\"size\":10}",
+            "querySize": 10,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "entities": [
+            {
+              "typeName": "Table",
+              "attributes": {
+                "partitionCount": 0,
+                "queryUserCount": 0,
+                "qualifiedName": "default/snowflake/1699281775/FIVETRAN/DBT_DEMO_DATA_PUBLIC/FIVETRAN_AUDIT",
+                "columns": [],
+                "name": "FIVETRAN_AUDIT",
+                "lastProfiledAt": 0,
+                "queryCount": 0,
+                "columnCount": 12,
+                "isPartitioned": false,
+                "rowCount": 1,
+                "sizeBytes": 4096,
+                "isProfiled": false
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "SQL"
+              ],
+              "docId": "26lijm8",
+              "guid": "ca0da9dc-72d4-45fd-9701-74f619f8392c",
+              "status": "DELETED",
+              "displayText": "FIVETRAN_AUDIT",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "akshay.walvekar",
+              "updatedBy": "oleksandr.akulov",
+              "createTime": 1699285335634,
+              "updateTime": 1748385438769,
+              "scrubbed": true
+            },
+            {
+              "typeName": "Table",
+              "attributes": {
+                "partitionCount": 0,
+                "queryUserCount": 0,
+                "atlanSchema": {
+                  "guid": "dcae1efa-251b-4c0f-8e23-e94637c4537d",
+                  "typeName": "Schema",
+                  "uniqueAttributes": {
+                    "qualifiedName": "default/snowflake/1664275472/DBT_FOOD_BEVERAGE/PUBLIC"
+                  }
+                },
+                "qualifiedName": "default/snowflake/1664275472/DBT_FOOD_BEVERAGE/PUBLIC/INSTACART_ORDER_PRODUCTS",
+                "columns": [],
+                "name": "INSTACART_ORDER_PRODUCTS",
+                "description": "All orders mapped to product ids",
+                "queryCount": 0,
+                "columnCount": 4,
+                "isPartitioned": false,
+                "rowCount": 810752,
+                "sizeBytes": 4156928
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "SQL"
+              ],
+              "docId": "au8r0w",
+              "guid": "6cf5b65c-0da1-4512-90bf-eb80cb772f77",
+              "status": "DELETED",
+              "displayText": "INSTACART_ORDER_PRODUCTS",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "edgar.degroot",
+              "updatedBy": "service-account-apikey-59837916-d25b-4613-9dad-df55250d40a9",
+              "createTime": 1664275655428,
+              "updateTime": 1716376622373
+            },
+            {
+              "typeName": "Table",
+              "attributes": {
+                "partitionCount": 0,
+                "queryUserCount": 0,
+                "qualifiedName": "default/fivetran/1729413575/databricks/salesforce/guest_user_anomaly_event_store_feed",
+                "columns": [],
+                "name": "guest_user_anomaly_event_store_feed",
+                "lastProfiledAt": 0,
+                "queryCount": 0,
+                "columnCount": 0,
+                "isPartitioned": false,
+                "rowCount": 0,
+                "sizeBytes": 0,
+                "isProfiled": false
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "SQL"
+              ],
+              "docId": "3u6xjsg",
+              "guid": "a6cc029e-2fed-42dd-a8b0-75d134785a48",
+              "status": "DELETED",
+              "displayText": "guest_user_anomaly_event_store_feed",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "rajat.movaliya",
+              "updatedBy": "rajat.movaliya",
+              "createTime": 1729414975624,
+              "updateTime": 1729490376438
+            },
+            "... (7 more items)"
+          ],
+          "approximateCount": 10000
+        }
+      },
+      "duration": 190
+    },
+    {
+      "step": 10,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "bool": {
+              "must": [
+                {
+                  "exists": {
+                    "field": "__classificationNames"
+                  }
+                }
+              ]
+            }
+          },
+          "size": 10
+        },
+        "attributes": [
+          "guid",
+          "qualifiedName",
+          "name",
+          "typeName",
+          "description",
+          "userDescription",
+          "displayName",
+          "certificateStatus",
+          "certificateStatusMessage",
+          "ownerUsers",
+          "ownerGroups",
+          "classifications",
+          "classificationNames",
+          "meanings",
+          "meaningNames",
+          "__hasLineage"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "certificateStatusMessage",
+              "certificateStatus",
+              "userDescription",
+              "... (13 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "bool": {
+                  "must": [
+                    {
+                      "exists": {
+                        "field": "__classificationNames"
+                      }
+                    }
+                  ]
+                }
+              },
+              "size": 10
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"__classificationNames\"}}]}},\"size\":10}",
+            "querySize": 10,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "entities": [
+            {
+              "typeName": "DataProduct",
+              "attributes": {
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [
+                  "engineers"
+                ],
+                "userDescription": "This is a data product for the Parkland demonstration. ",
+                "qualifiedName": "default/domain/oXS5s3EIiiYCgfb33lBhQ/super/product/iq42f3qHPovfxyco0TpTd",
+                "name": "Parkland Data Product",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": [
+                  "cameron.kayfish",
+                  "trent.jones"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "DataMesh"
+              ],
+              "docId": "3vjmnrs",
+              "guid": "a7b832b9-700e-42dd-a166-659ebe658c31",
+              "status": "DELETED",
+              "displayText": "Parkland Data Product",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "cameron.kayfish",
+              "updatedBy": "service-account-atlan-argo",
+              "createTime": 1731956819831,
+              "updateTime": 1750604879334
+            },
+            {
+              "typeName": "Column",
+              "attributes": {
+                "ownerGroups": [],
+                "userDescription": "the unique id for each customer",
+                "qualifiedName": "default/snowflake/1662973007/DBT_FOOD_BEVERAGE/RAW/INSTACART_CUSTOMER_DETAILS/USER_ID",
+                "name": "USER_ID",
+                "__hasLineage": true,
+                "meanings": [],
+                "ownerUsers": []
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "SQL"
+              ],
+              "docId": "auc66g",
+              "guid": "8d082b7f-71c2-4ec3-9d1c-938c6a12e278",
+              "status": "DELETED",
+              "displayText": "USER_ID",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "edgar.degroot",
+              "updatedBy": "edgar.degroot",
+              "createTime": 1662973256164,
+              "updateTime": 1663715884800,
+              "scrubbed": true
+            },
+            {
+              "typeName": "Column",
+              "attributes": {
+                "ownerGroups": [],
+                "qualifiedName": "default/snowflake/1662973007/DBT_FOOD_BEVERAGE/PUBLIC/INSTACART_ORDERS/user_id",
+                "name": "user_id",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": []
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "SQL"
+              ],
+              "docId": "auc9c8",
+              "guid": "76a96b03-5191-4f5f-aa14-da87ffbc9cb7",
+              "status": "DELETED",
+              "displayText": "user_id",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "edgar.degroot",
+              "updatedBy": "edgar.degroot",
+              "createTime": 1662973256164,
+              "updateTime": 1663719924792,
+              "scrubbed": true
+            },
+            "... (7 more items)"
+          ],
+          "approximateCount": 10000
+        }
+      },
+      "duration": 255
+    },
+    {
+      "step": 11,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "bool": {
+              "must": [
+                {
+                  "term": {
+                    "__hasLineage": true
+                  }
+                }
+              ]
+            }
+          },
+          "size": 10
+        },
+        "attributes": [
+          "guid",
+          "qualifiedName",
+          "name",
+          "typeName"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "qualifiedName",
+              "name",
+              "typeName",
+              "... (1 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "bool": {
+                  "must": [
+                    {
+                      "term": {
+                        "__hasLineage": true
+                      }
+                    }
+                  ]
+                }
+              },
+              "size": 10
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"bool\":{\"must\":[{\"term\":{\"__hasLineage\":true}}]}},\"size\":10}",
+            "querySize": 10,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "entities": [
+            {
+              "typeName": "ColumnProcess",
+              "attributes": {
+                "qualifiedName": "default/sigma/1674133822/c13051d8-e6c2-4672-b674-c99efd40c63e/yaxZwx6DaF/_K-dl3tJCX/aed89c52-a2f3-43e8-8df5-92180b500bc0/MTH_SNAPSHOT/tables/f792ba0ed8fa27984e6e4acc438d2374/columns/dc8fcc1be0653f874979467ca6cca7ea",
+                "name": "MTH_SNAPSHOT → Mth Snapshot"
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Process"
+              ],
+              "docId": "66oxa0g",
+              "guid": "f4a84a57-3434-4c66-924b-12ccca149ac7",
+              "status": "ACTIVE",
+              "displayText": "MTH_SNAPSHOT → Mth Snapshot",
+              "classificationNames": [
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "YWtFs1Zy7XPKqR2ZUAPXlR"
+              ],
+              "classifications": [
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "YWtFs1Zy7XPKqR2ZUAPXlR",
+                  "attributes": {
+                    "WJLiQ2z6dsBQKQMsURoWPI": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "a1ea9e7f-e02a-4a79-9966-a049c1dc8dcc",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                }
+              ],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "ryan.quigley",
+              "updatedBy": "ryan.quigley",
+              "createTime": 1747194876854,
+              "updateTime": 1747194876854
+            },
+            {
+              "typeName": "ColumnProcess",
+              "attributes": {
+                "qualifiedName": "default/sigma/1674133822/c13051d8-e6c2-4672-b674-c99efd40c63e/yaxZwx6DaF/_K-dl3tJCX/aed89c52-a2f3-43e8-8df5-92180b500bc0/BORROWER_ID/tables/f792ba0ed8fa27984e6e4acc438d2374/columns/b03f7716eea4a8bf6c60c2035e96495e",
+                "name": "BORROWER_ID → Borrower Id"
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Process"
+              ],
+              "docId": "6cj5954",
+              "guid": "4d5729d9-eda7-4ad7-93bb-c86cbb94ef1e",
+              "status": "ACTIVE",
+              "displayText": "BORROWER_ID → Borrower Id",
+              "classificationNames": [
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "YWtFs1Zy7XPKqR2ZUAPXlR"
+              ],
+              "classifications": [
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "YWtFs1Zy7XPKqR2ZUAPXlR",
+                  "attributes": {
+                    "WJLiQ2z6dsBQKQMsURoWPI": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "a1ea9e7f-e02a-4a79-9966-a049c1dc8dcc",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                }
+              ],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "ryan.quigley",
+              "updatedBy": "ryan.quigley",
+              "createTime": 1747194876854,
+              "updateTime": 1747194876854
+            },
+            {
+              "typeName": "ColumnProcess",
+              "attributes": {
+                "qualifiedName": "default/sigma/1674133822/c13051d8-e6c2-4672-b674-c99efd40c63e/yaxZwx6DaF/_K-dl3tJCX/aed89c52-a2f3-43e8-8df5-92180b500bc0/LOAN_NBR/tables/f792ba0ed8fa27984e6e4acc438d2374/columns/12eada116dac6876fb8a2629b187a12c",
+                "name": "LOAN_NBR → Loan Nbr"
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Process"
+              ],
+              "docId": "66oxd68",
+              "guid": "432359f2-9566-4bf7-933a-06be180c8126",
+              "status": "ACTIVE",
+              "displayText": "LOAN_NBR → Loan Nbr",
+              "classificationNames": [
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "BLVyaOlGWDrkLFZgmZCjLa",
+                "DzJNf4IcSjA6A9t0GS6GzZ",
+                "J5q2QzErHG4unHTA0C5GE0",
+                "OlAEuL66vf8sISCNDMalnL",
+                "YWtFs1Zy7XPKqR2ZUAPXlR"
+              ],
+              "classifications": [
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "98cd3f7e-7fa2-44c0-a271-48a933caf387",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "e6c675d2-96b7-41d3-9d10-87ebca758a77",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "BLVyaOlGWDrkLFZgmZCjLa",
+                  "attributes": {
+                    "superTypeNames": "[]",
+                    "Yjv2MkCAA134ZGemITxVEZ": []
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "DzJNf4IcSjA6A9t0GS6GzZ",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "J5q2QzErHG4unHTA0C5GE0",
+                  "attributes": {
+                    "lsYqvADVmBEuh7Z6qvmZGe": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "OlAEuL66vf8sISCNDMalnL",
+                  "attributes": {
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "cba7cd6b-5b5d-4d79-b4e4-8fa6f3b7be90",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                },
+                {
+                  "typeName": "YWtFs1Zy7XPKqR2ZUAPXlR",
+                  "attributes": {
+                    "WJLiQ2z6dsBQKQMsURoWPI": [],
+                    "superTypeNames": "[]"
+                  },
+                  "entityGuid": "a1ea9e7f-e02a-4a79-9966-a049c1dc8dcc",
+                  "entityStatus": "ACTIVE",
+                  "propagate": true,
+                  "removePropagationsOnEntityDelete": true,
+                  "restrictPropagationThroughLineage": false,
+                  "restrictPropagationThroughHierarchy": false
+                }
+              ],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "ryan.quigley",
+              "updatedBy": "ryan.quigley",
+              "createTime": 1747194876854,
+              "updateTime": 1747194876854
+            },
+            "... (7 more items)"
+          ],
+          "approximateCount": 10000
+        }
+      },
+      "duration": 423
+    },
+    {
+      "step": 12,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "bool": {
+              "must": [
+                {
+                  "exists": {
+                    "field": "__meanings"
+                  }
+                }
+              ]
+            }
+          },
+          "size": 10
+        },
+        "attributes": [
+          "guid",
+          "qualifiedName",
+          "name",
+          "typeName",
+          "description",
+          "userDescription",
+          "displayName",
+          "certificateStatus",
+          "certificateStatusMessage",
+          "ownerUsers",
+          "ownerGroups",
+          "classifications",
+          "classificationNames",
+          "meanings",
+          "meaningNames",
+          "__hasLineage"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "certificateStatusMessage",
+              "certificateStatus",
+              "userDescription",
+              "... (13 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "bool": {
+                  "must": [
+                    {
+                      "exists": {
+                        "field": "__meanings"
+                      }
+                    }
+                  ]
+                }
+              },
+              "size": 10
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"__meanings\"}}]}},\"size\":10}",
+            "querySize": 10,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "entities": [
+            {
+              "typeName": "BusinessPolicy",
+              "attributes": {
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [],
+                "qualifiedName": "default/business_policy/e8f3b45a-304a-465f-9cb4-df9afbb4409e",
+                "displayName": "Databricks Mart Standards",
+                "name": "Databricks Mart Standards",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": [
+                  "ryan.quigley"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset"
+              ],
+              "docId": "6fo706g",
+              "guid": "9e4c88c3-fc23-4cbb-bc72-ea02c3bf1091",
+              "status": "DELETED",
+              "displayText": "Databricks Mart Standards",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "ryan.quigley",
+              "updatedBy": "ryan.quigley",
+              "createTime": 1748442400777,
+              "updateTime": 1748442621939
+            },
+            {
+              "typeName": "DataProduct",
+              "attributes": {
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [
+                  "engineers"
+                ],
+                "userDescription": "This is a data product for the Parkland demonstration. ",
+                "qualifiedName": "default/domain/oXS5s3EIiiYCgfb33lBhQ/super/product/iq42f3qHPovfxyco0TpTd",
+                "name": "Parkland Data Product",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": [
+                  "cameron.kayfish",
+                  "trent.jones"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "DataMesh"
+              ],
+              "docId": "3vjmnrs",
+              "guid": "a7b832b9-700e-42dd-a166-659ebe658c31",
+              "status": "DELETED",
+              "displayText": "Parkland Data Product",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "cameron.kayfish",
+              "updatedBy": "service-account-atlan-argo",
+              "createTime": 1731956819831,
+              "updateTime": 1750604879334
+            },
+            {
+              "typeName": "DbtMetric",
+              "attributes": {
+                "certificateStatus": "VERIFIED",
+                "ownerGroups": [],
+                "qualifiedName": "default/dbt/1670859725/account/24670/environment/114095/job/213121/metric.jaffle_shop.average_order_amount",
+                "name": "Average Order Amount",
+                "__hasLineage": true,
+                "description": "The average size of a jaffle order",
+                "meanings": [],
+                "ownerUsers": [
+                  "ravi"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "DataQuality",
+                "Dbt",
+                "Asset",
+                "Metric",
+                "Catalog"
+              ],
+              "docId": "qf2y6g",
+              "guid": "5f3dcd1b-cd97-4d7f-9c9a-da1ee4a8c695",
+              "status": "DELETED",
+              "displayText": "Average Order Amount",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "kevin.holler",
+              "updatedBy": "utkarsh.g",
+              "createTime": 1676070780643,
+              "updateTime": 1681797841487
+            },
+            "... (7 more items)"
+          ],
+          "approximateCount": 661
+        }
+      },
+      "duration": 214
+    }
+  ]
+}

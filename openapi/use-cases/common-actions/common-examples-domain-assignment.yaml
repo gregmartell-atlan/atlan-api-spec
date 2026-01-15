@@ -1,0 +1,73 @@
+id: common-examples-domain-assignment
+title: Link domain and assets
+category: common-actions
+icon: zap
+relatedTypes:
+  - Asset
+  - DataDomain
+description: Link your asset to a domain for easy discovery and governance.
+externalDocs:
+  url: https://developer.atlan.com/snippets/common-examples/domain-assignment/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Add an asset to a domain
+    description: |-
+      3.0.0 4.0.0
+      You can add an asset to a domain or update an existing domain by updating the asset's domainGUIDs. In the example below, we're adding a Table (MARKETING_SALES) to the domain (Marketing).
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1726834662/RAW/WIDEWORLDIMPORTERS/MARKETING_SALES
+                name: MARKETING_SALES
+                domainGUIDs:
+                  - db711647-99a9-4c50-93c5-fab0b992a0cc
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1726834662/RAW/WIDEWORLDIMPORTERS/MARKETING_SALES
+                  name: MARKETING_SALES
+                  domainGUIDs:
+                    - db711647-99a9-4c50-93c5-fab0b992a0cc
+                guid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                status: ACTIVE
+  - step: 2
+    title: Retrieve Assets by Domain
+    description: |-
+      3.0.0 4.0.0
+      You can retrieve all assets associated with a domain by filtering on the domainGUIDs.  In the example below, we retrieve all assets linked to the (Marketing) domain.
+  - step: 3
+    title: Remove an asset from a domain
+    description: |-
+      3.0.0 4.0.0
+      You can remove an asset from a domain by updating the asset's domainGUIDs. In the example below, we're removing a table (MARKETING_SALES) asset from the existing linked domain.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-3-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1726834662/RAW/WIDEWORLDIMPORTERS/MARKETING_SALES
+                name: MARKETING_SALES
+                domainGUIDs: []
+        response:
+          mutatedEntities:
+            DELETE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1726834662/RAW/WIDEWORLDIMPORTERS/MARKETING_SALES
+                  name: MARKETING_SALES
+                  domainGUIDs: []
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: DELETED

@@ -1,0 +1,91 @@
+# Use Case: Manage data contracts
+# Auto-generated from: https://developer.atlan.com/snippets/datacontract/manage/
+# Generated at: 2026-01-13T02:58:00.306Z
+
+id: datacontract-manage
+title: "Manage data contracts"
+category: data-contracts
+icon: zap
+relatedTypes:
+  - DataContract
+
+description: >-
+  Manage data contracts in Atlan. Data contracts define the expected schema, quality rules, and SLAs for data assets, ensuring producers and consumers have clear agreements.
+
+externalDocs:
+  url: https://developer.atlan.com/snippets/datacontract/manage/
+  description: Official Atlan documentation
+
+steps:
+  - step: 1
+    title: "Initialize a contract"
+    description: >-
+      To generate a contract for an existing asset in Atlan:
+    notes:
+      - type: question
+        title: "Can I manage contracts without Atlan connectivity?"
+        content: >-
+          You can also initialize a contract without any connection to Atlan, by leaving out the --asset and --data-source arguments. This will provide you a skeletal contract you can then fill in yourself.
+  - step: 2
+    title: "Validate contract"
+    description: >-
+      You can validate the contract file is syntactically correct and refers to an asset known to Atlan:
+  - step: 3
+    title: "Push contract"
+    description: >-
+      To apply the contract in Atlan, you then need to push the contract:
+  - step: 4
+    title: "Sync metadata"
+    description: >-
+      To sync metadata from a contract file to the asset governed by the contract in Atlan:
+    notes:
+      - type: warning
+        title: "If multiple terms exist with the same name"
+        content: >-
+          If multiple terms are found with the same name in Atlan, these will be returned as a conflict (rather than any being added to the asset).
+  - step: 5
+    title: "Managing via CI/CD"
+    description: >-
+      You can combine the actions above to manage data contracts via automated CI/CD pipelines. For example, a process to automate publication of data contracts could be as follows:
+      
+      First, configure the CLI within your CI/CD environment.
+      
+      Separate sensitive and non-sensitive configuration
+      
+      As a general rule, we recommend removing sensitive information (like the API token) from your configuration file. Instead manage this through an environment variable, which your CI/CD environment can inject into the job that runs the CLI. (For example, in GitHub you can use GitHub Secrets  to manage the API token and have it automatically injected as an environment variable in GitHub Actions.)
+      
+      The non-sensitive configuration details can remain in the configuration file, and the configuration file itself can then be version-controlled in your source code repository, too.
+      
+      The examples below assume you have stored:
+      
+      Once configured, you can use the CLI to publish any new contracts or changes to existing contracts:
+    notes:
+      - type: recommendation
+        title: "Separate sensitive and non-sensitive configuration"
+        content: >-
+          As a general rule, we recommend removing sensitive information (like the API token) from your configuration file. Instead manage this through an environment variable, which your CI/CD environment can inject into the job that runs the CLI. (For example, in GitHub you can use GitHub Secrets  to manage the API token and have it automatically injected as an environment variable in GitHub Actions.)
+          The non-sensitive configuration details can remain in the configuration file, and the configuration file itself can then be version-controlled in your source code repository, too.
+          The examples below assume you have stored:
+          
+          your tenant's URL in a repository secret named ATLAN_BASE_URL
+          the API token in a repository secret named ATLAN_API_KEY
+      - type: warning
+        title: "Leave sensitive information out"
+        content: >-
+          Leave the sensitive information (like API token and URL of your tenant) out of the configuration file. These can instead be stored as GitHub Secrets and used via environment variables in the GitHub Action.
+  - step: 6
+    title: "Configure CLI for CI/CD"
+    description: >-
+      First, configure the CLI within your CI/CD environment.
+      
+      Separate sensitive and non-sensitive configuration
+      
+      As a general rule, we recommend removing sensitive information (like the API token) from your configuration file. Instead manage this through an environment variable, which your CI/CD environment can inject into the job that runs the CLI. (For example, in GitHub you can use GitHub Secrets  to manage the API token and have it automatically injected as an environment variable in GitHub Actions.)
+      
+      The non-sensitive configuration details can remain in the configuration file, and the configuration file itself can then be version-controlled in your source code repository, too.
+      
+      The examples below assume you have stored:
+  - step: 7
+    title: "Publish contracts from CI/CD"
+    description: >-
+      Once configured, you can use the CLI to publish any new contracts or changes to existing contracts:

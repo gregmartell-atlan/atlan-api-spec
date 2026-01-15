@@ -1,0 +1,141 @@
+{
+  "id": "classificationdef",
+  "title": "ClassificationDef",
+  "url": "https://developer.atlan.com/snippets/tags/manage/",
+  "description": "Definition of an Atlan tag (classification) structure. Atlan tags are governance labels used to classify assets (e.g., PII, Confidential, Deprecated). They are managed via the /api/meta/types/typedefs endpoint. Note: This is different from source-synced tags (SnowflakeTag, DbtTag, etc.) which are entity types representing tags from external systems.",
+  "inheritance": ["TypeDef"],
+  "properties": [
+    {
+      "name": "category",
+      "type": "string",
+      "readOnly": false,
+      "description": "Type category. Always 'CLASSIFICATION' for Atlan tags."
+    },
+    {
+      "name": "guid",
+      "type": "string",
+      "readOnly": true,
+      "description": "Globally unique identifier for this tag definition."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "readOnly": false,
+      "description": "Internal hashed-string name of the tag (e.g., 'S7qnUqZ5mBMBpzQ3Wzt6yD'). Use this value when applying tags to assets via the API."
+    },
+    {
+      "name": "displayName",
+      "type": "string",
+      "readOnly": false,
+      "description": "Human-readable name displayed in the Atlan UI."
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "readOnly": false,
+      "description": "Description of what this tag represents."
+    },
+    {
+      "name": "attributeDefs",
+      "type": "array<AttributeDef>",
+      "readOnly": false,
+      "description": "Optional attributes that can be set when applying this tag to an asset. For example, a 'Sensitivity Level' attribute with allowed values."
+    },
+    {
+      "name": "superTypes",
+      "type": "array<string>",
+      "readOnly": false,
+      "description": "Parent classification types (inheritance hierarchy)."
+    },
+    {
+      "name": "subTypes",
+      "type": "array<string>",
+      "readOnly": true,
+      "description": "Child classification types that inherit from this tag."
+    },
+    {
+      "name": "entityTypes",
+      "type": "array<string>",
+      "readOnly": false,
+      "description": "Asset types this tag can be applied to. Empty array means all types."
+    },
+    {
+      "name": "options",
+      "type": "object",
+      "readOnly": false,
+      "description": "Visual and behavioral options for the tag including color, iconType (icon/emoji/image), icon (Phosphor icon name), emoji, and imageID."
+    },
+    {
+      "name": "options.color",
+      "type": "string",
+      "readOnly": false,
+      "description": "Tag color (e.g., 'Red', 'Green', 'Blue', 'Yellow')."
+    },
+    {
+      "name": "options.iconType",
+      "type": "enum",
+      "readOnly": false,
+      "description": "Type of icon to display: 'icon', 'emoji', or 'image'."
+    },
+    {
+      "name": "options.icon",
+      "type": "string",
+      "readOnly": false,
+      "description": "Phosphor icon name when iconType is 'icon' (e.g., 'PhPassword', 'PhRocketLaunch')."
+    },
+    {
+      "name": "options.emoji",
+      "type": "string",
+      "readOnly": false,
+      "description": "Emoji character when iconType is 'emoji'."
+    },
+    {
+      "name": "options.imageID",
+      "type": "string",
+      "readOnly": false,
+      "description": "Uploaded image ID when iconType is 'image'."
+    },
+    {
+      "name": "skipDisplayNameUniquenessCheck",
+      "type": "boolean",
+      "readOnly": false,
+      "description": "Whether to skip uniqueness validation for displayName. Default is false."
+    },
+    {
+      "name": "typeVersion",
+      "type": "string",
+      "readOnly": true,
+      "description": "Version of the type definition (e.g., '1.0')."
+    },
+    {
+      "name": "version",
+      "type": "integer",
+      "readOnly": true,
+      "description": "Numeric version counter, incremented on each update."
+    },
+    {
+      "name": "createTime",
+      "type": "timestamp",
+      "readOnly": true,
+      "description": "Epoch timestamp (milliseconds) when this tag was created."
+    },
+    {
+      "name": "updateTime",
+      "type": "timestamp",
+      "readOnly": true,
+      "description": "Epoch timestamp (milliseconds) when this tag was last updated."
+    },
+    {
+      "name": "createdBy",
+      "type": "string",
+      "readOnly": true,
+      "description": "Username or service account that created this tag."
+    },
+    {
+      "name": "updatedBy",
+      "type": "string",
+      "readOnly": true,
+      "description": "Username or service account that last updated this tag."
+    }
+  ]
+}

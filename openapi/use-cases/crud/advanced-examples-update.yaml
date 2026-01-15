@@ -1,0 +1,133 @@
+id: advanced-examples-update
+title: Updating an asset
+category: crud
+icon: zap
+relatedTypes:
+  - Asset
+description: |-
+  All objects in the SDK that you can update within Atlan implement the builder pattern. This allows you to progressively build-up the object you want to update. In addition, each object provides a method that takes the minimal set of required fields to update that asset, when it already exists in Atlan.
+  Include only your intended changes, nothing more
+  When enriching an asset in Atlan, you only need to specify the information you want to change. Any information you do not include in your update 
+externalDocs:
+  url: https://developer.atlan.com/snippets/advanced-examples/update/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Build minimal object needed
+    description: |-
+      2.0.0 1.0.0
+      For example, to update a glossary term we need to provide the qualifiedName and name of the term, and the GUID of the glossary in which it exists:
+    notes:
+      - type: recommendation
+        title: Implicit in the API calls below
+        content: There is nothing specific to do for this step when using the raw APIs   constructing the object is simply what you place in the payload of the API calls in the steps below.
+  - step: 2
+    title: Enrich before updating
+    description: |-
+      The term object now has the minimal required information for Atlan to update it. Without any additional enrichment, though, there isn't really anything to update...
+      1.4.0 1.0.0
+      So first you should enrich the object:
+    notes:
+      - type: warning
+        title: Assign the result back
+        content: Remember to assign the result of the build() operation back to your original object. Otherwise the result is not persisted back into any variable! (In this case we're assigning to the term variable back on line 5.)
+      - type: warning
+        title: Assign the result back
+        content: Remember to assign the result of the build() operation back to your original object. Otherwise the result is not persisted back into any variable! (In this case we're assigning to the term variable back on line 5.)
+      - type: recommendation
+        title: Implicit in the API calls below
+        content: There is nothing specific to do for this step when using the raw APIs   constructing the object is simply what you place in the payload of the API calls in the steps below.
+  - step: 3
+    title: Update the asset from the object
+    description: |-
+      1.4.0 4.0.0
+      You can then actually update the object in Atlan1:
+    notes:
+      - type: warning
+        title: Must exactly match the qualifiedName of an existing asset
+        content: If this does not exactly match the qualifiedName of an existing asset, the API call will instead create a new asset rather than updating an existing one.
+      - type: warning
+        title: Case-sensitive, exact match
+        content: If you use a different capitalization or spelling for the qualifiedName, you may accidentally create a new asset rather than updating the existing one.2
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-3-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AtlasGlossaryTerm
+              attributes:
+                name: Example Term
+                qualifiedName: gsNccqJraDZqM6WyGP3ea@FzCMyPR2LxkPFgr8eNGrq
+                anchor:
+                  typeName: AtlasGlossary
+                  guid: b4113341-251b-4adc-81fb-2420501c30e6
+                certificateStatus: VERIFIED
+                announcementType: information
+                announcementTitle: Imported
+                announcementMessage: This term was imported from ...
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: AtlasGlossaryTerm
+                attributes:
+                  qualifiedName: gsNccqJraDZqM6WyGP3ea@FzCMyPR2LxkPFgr8eNGrq
+                  name: Example Term
+                  certificateStatus: VERIFIED
+                  announcementType: information
+                  announcementTitle: Imported
+                  announcementMessage: This term was imported from ...
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+                relationshipAttributes:
+                  anchor:
+                    guid: b4113341-251b-4adc-81fb-2420501c30e6
+                    typeName: AtlasGlossary
+  - step: 4
+    title: Remove information from an asset
+    description: |-
+      1.4.0 4.0.0
+      As mentioned in Enrich before updating section, only the information in your request will be updated on the object. But what if you want to remove some information that already exists on the asset in Atlan?
+    notes:
+      - type: warning
+        title: Assign the result back
+        content: Remember to assign the result of the build() operation back to your original object. Otherwise the result is not persisted back into any variable! (In this case we're assigning to the term variable back on line 5.)
+      - type: warning
+        title: Assign the result back
+        content: Remember to assign the result of the build() operation back to your original object. Otherwise the result is not persisted back into any variable! (In this case we're assigning to the term variable back on line 5.)
+      - type: warning
+        title: Must exactly match the qualifiedName of an existing asset
+        content: If this does not exactly match the qualifiedName of an existing asset, the API call will instead create a new asset rather than updating an existing one.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-4-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AtlasGlossaryTerm
+              attributes:
+                name: Example Term
+                qualifiedName: gsNccqJraDZqM6WyGP3ea@FzCMyPR2LxkPFgr8eNGrq
+                anchor:
+                  typeName: AtlasGlossary
+                  guid: b4113341-251b-4adc-81fb-2420501c30e6
+                certificateStatus: null
+                certificateStatusMessage: null
+                announcementType: null
+                announcementTitle: null
+                announcementMessage: null
+        response:
+          mutatedEntities:
+            DELETE:
+              - typeName: AtlasGlossaryTerm
+                attributes:
+                  qualifiedName: gsNccqJraDZqM6WyGP3ea@FzCMyPR2LxkPFgr8eNGrq
+                  name: Example Term
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: DELETED
+                relationshipAttributes:
+                  anchor:
+                    guid: b4113341-251b-4adc-81fb-2420501c30e6
+                    typeName: AtlasGlossary

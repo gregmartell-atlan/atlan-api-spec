@@ -1,0 +1,150 @@
+id: tags-manage
+title: Manage Atlan tags
+category: governance
+icon: zap
+relatedTypes:
+  - BigqueryTag
+  - BusinessMetadataDef
+  - ClassificationDef
+  - DatabricksUnityCatalogTag
+  - DbtTag
+  - SnowflakeTag
+  - SourceTagAttachment
+  - Tag
+description: |-
+  Atlan tags (also known as classifications) are governance labels you create and manage within Atlan to classify assets (e.g., PII, Confidential, Deprecated). They are defined as ClassificationDefs via the `/api/meta/types/typedefs` endpoint.
+
+  **Understanding Tag Types in Atlan:**
+  - **Atlan Tags (ClassificationDefs):** Governance tags you create and manage in Atlan. These are
+    stored as type definitions and can be applied to any asset. Use the typedefs API to manage these.
+
+  - **Source-Synced Tags:** Tags that originate from external systems like Snowflake, Databricks,
+    dbt, or BigQuery. These are represented as entity types (SnowflakeTag, DbtTag, etc.) and are
+    synced into Atlan during crawling. They cannot be created via the Atlan API.
+
+  - **Tag Entity Type:** The base entity type for source-specific tag assets. See the Data Model
+    for Tag, SnowflakeTag, DbtTag, BigqueryTag, and DatabricksUnityCatalogTag.
+
+
+  This use case covers managing Atlan tags (ClassificationDefs). For applying tags to assets, see "Tag (classify) assets".
+externalDocs:
+  url: https://developer.atlan.com/snippets/tags/manage/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Build minimal object needed
+    description: |-
+      1.3.3 1.0.0
+      For example, to create an Atlan tag to identify personally-identifiable information:
+    notes:
+      - type: warning
+        title: Image option not shown
+        content: The option to use your own image is significantly more complicated, as it involves constructing a multipart form-encoded upload of the binary image data first, and then using the resulting uploaded object's details to use the image within the tag.
+      - type: question
+        title: Where can I see each icon?
+        content: We use Phosphor  for the icons. They have a beautiful icon browser on their site to search and preview the icons.
+    method: POST
+    endpoint: /api/meta/types/typedefs
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/types/typedefs
+        request:
+          classificationDefs:
+            - category: CLASSIFICATION
+              name: PII
+              description: Personally-Identifiable Information
+              displayName: PII
+              options:
+                color: Red
+                icon: PhPassword
+                iconType: icon
+              skipDisplayNameUniquenessCheck: false
+  - step: 2
+    title: Create the Atlan tag from the object
+    description: |-
+      1.3.3 4.0.0
+      Now that the object is built, it will have the required information for Atlan to create it:
+    notes:
+      - type: recommendation
+        title: Creation implicit in step above
+        content: The actual creation of the Atlan tag is implicit in the example above.
+  - step: 3
+    title: Update Atlan tags
+    description: "To update Atlan tags:"
+    method: PUT
+    endpoint: /api/meta/types/typedefs
+    examples:
+      - key: example-3-1
+        summary: PUT /api/meta/types/typedefs
+        request:
+          enumDefs: []
+          structDefs: []
+          classificationDefs:
+            - category: CLASSIFICATION
+              createTime: 1716829706708
+              createdBy: service-account-apikey-2e721c86-2814-4c98-8e1a-fc3fdf6b0489
+              guid: 884091b2-4fbc-4c8e-85d1-173ad90547cf
+              name: S7qnUqZ5mBMBpzQ3Wzt6yD
+              typeVersion: "1.0"
+              updateTime: 1716835149934
+              updatedBy: service-account-apikey-2e721c86-2814-4c98-8e1a-fc3fdf6b0489
+              version: 16
+              attributeDefs: []
+              entityTypes: []
+              displayName: MyTagName
+              options:
+                color: Green
+                emoji: 💪
+                imageID: ""
+                iconName: PhRocketLaunch
+                iconType: emoji
+              subTypes: []
+              superTypes: []
+          entityDefs: []
+          relationshipDefs: []
+          businessMetadataDefs: []
+  - step: 4
+    title: Retrieve Atlan tags
+    description: |-
+      2.1.0 4.0.0
+      To retrieve Atlan tag by its hashed-string name eg: S7qnUqZ5mBMBpzQ3Wzt6yD:
+    notes:
+      - type: recommendation
+        title: Atlan tag have a hashed-string representation
+        content: "Use their hashed-string name when retrieving its structure eg: S7qnUqZ5mBMBpzQ3Wzt6yD."
+    method: GET
+    endpoint: /api/meta/types/typedef/name/S7qnUqZ5mBMBpzQ3Wzt6yD
+    examples:
+      - key: example-4-1
+        summary: GET /api/meta/types/typedef/name/S7qnUqZ5mBMBpzQ3Wzt6yD
+  - step: 5
+    title: Retrieve all Atlan tags
+    description: |-
+      1.3.3 4.0.0
+      To retrieve all Atlan tags:
+    method: GET
+    endpoint: /api/meta/types/typedefs/
+    queryString: type=CLASSIFICATION
+    examples:
+      - key: example-5-1
+        summary: GET /api/meta/types/typedefs/
+        response:
+          classificationDefs: []
+          businessMetadataDefs: []
+          enumDefs: []
+          entityDefs: []
+          relationshipDefs: []
+  - step: 6
+    title: Delete Atlan tags
+    description: |-
+      1.3.3 4.0.0
+      Delete Atlan tags by its human-readable name:
+    notes:
+      - type: recommendation
+        title: Atlan tag have a hashed-string representation
+        content: "Use their hashed-string name when deleting its structure eg: S7qnUqZ5mBMBpzQ3Wzt6yD."
+    method: DELETE
+    endpoint: /api/meta/types/typedef/name/S7qnUqZ5mBMBpzQ3Wzt6yD
+    examples:
+      - key: example-6-1
+        summary: DELETE /api/meta/types/typedef/name/S7qnUqZ5mBMBpzQ3Wzt6yD

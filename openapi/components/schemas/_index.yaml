@@ -1,0 +1,59 @@
+# Components / Schemas index
+# Each schema is defined in its own file and referenced here.
+
+Asset:
+  $ref: './Asset.yaml'
+
+AssetMutationEntity:
+  $ref: './AssetMutation.yaml#/AssetMutationEntity'
+
+AssetMutationRequest:
+  $ref: './AssetMutation.yaml#/AssetMutationRequest'
+
+AssetMutationResponse:
+  $ref: './AssetMutation.yaml#/AssetMutationResponse'
+
+MetaIndexSearchRequest:
+  $ref: './Search.yaml#/MetaIndexSearchRequest'
+
+MetaIndexSearchResponse:
+  $ref: './Search.yaml#/MetaIndexSearchResponse'
+
+ServiceIndexSearchRequest:
+  $ref: './Search.yaml#/ServiceIndexSearchRequest'
+
+LineageListRequest:
+  $ref: './Lineage.yaml#/LineageListRequest'
+
+LineageRelation:
+  $ref: './Lineage.yaml#/LineageRelation'
+
+LineageListResponse:
+  $ref: './Lineage.yaml#/LineageListResponse'
+
+ErrorResponse:
+  $ref: './ErrorResponse.yaml'
+
+AttributeDef:
+  $ref: './TypeDefs.yaml#/AttributeDef'
+
+EnumElementDef:
+  $ref: './TypeDefs.yaml#/EnumElementDef'
+
+EnumDef:
+  $ref: './TypeDefs.yaml#/EnumDef'
+
+ClassificationDef:
+  $ref: './TypeDefs.yaml#/ClassificationDef'
+
+BusinessMetadataDef:
+  $ref: './TypeDefs.yaml#/BusinessMetadataDef'
+
+TypeDefMutationRequest:
+  $ref: './TypeDefs.yaml#/TypeDefMutationRequest'
+
+TypeDefMutationResponse:
+  $ref: './TypeDefs.yaml#/TypeDefMutationResponse'
+
+TypeDefListResponse:
+  $ref: './TypeDefs.yaml#/TypeDefListResponse'

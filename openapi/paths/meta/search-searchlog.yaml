@@ -1,0 +1,83 @@
+post:
+  operationId: searchLogs
+  summary: Search asset access logs
+  description: |
+    Search for asset access/usage logs. This can be used to understand
+    which assets are being accessed, by whom, and how frequently.
+
+    ## Use cases
+    - [Search logs](https://developer.atlan.com/snippets/search-logs/)
+    - [Review accesses](https://developer.atlan.com/snippets/access-control/access-events/)
+  externalDocs:
+    url: https://developer.atlan.com/snippets/search-logs/
+    description: Search logs documentation
+  tags:
+    - Access events
+    - Searching
+  security:
+    - AtlanToken: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            dsl:
+              type: object
+              description: Elasticsearch-style query for access logs.
+          required:
+            - dsl
+        examples:
+          recentAccesses:
+            summary: Get recent asset accesses
+            value:
+              dsl:
+                from: 0
+                size: 100
+                query:
+                  match_all: {}
+                sort:
+                  - timestamp:
+                      order: desc
+  responses:
+    '200':
+      description: Search log results
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              approximateCount:
+                type: integer
+              logs:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    entityGuid:
+                      type: string
+                    userName:
+                      type: string
+                    timestamp:
+                      type: integer
+                    action:
+                      type: string
+    '400':
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '401':
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '500':
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'

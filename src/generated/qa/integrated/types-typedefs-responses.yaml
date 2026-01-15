@@ -1,0 +1,276 @@
+x-generated: true
+x-generatedAt: "2026-01-15T16:29:08.919Z"
+x-sourcePathFile: openapi/paths/meta/types-typedefs.yaml
+responseExamples:
+  discover_classifications_response_0:
+    summary: discover-classifications - Response
+    x-useCase: discover-classifications
+    x-chainStep: discover-classifications
+    value:
+      enumDefs: []
+      structDefs: []
+      classificationDefs:
+        - category: CLASSIFICATION
+          guid: 682e6b91-9121-4748-bbae-af225ee8e98b
+          createdBy: ryan.quigley
+          updatedBy: service-account-atlan-argo
+          createTime: 1740600943664
+          updateTime: 1767832413445
+          version: 203
+          name: Vyc79KGveSy62DfOKQAZ9G
+          description: Cleansed and conformed data
+          typeVersion: "1.0"
+          serviceType: atlan
+          options:
+            imageID: ""
+            hasTag: "true"
+            color: Gray
+            emoji: ""
+            iconName: PhMedal
+            iconType: icon
+            createdFromAtlan: "false"
+          attributeDefs:
+            - name: Ge0JWQ0QyADOjA6RTgg7Yl
+              typeName: array<SourceTagAttachment>
+              isOptional: true
+              cardinality: SET
+              valuesMinCount: 0
+              valuesMaxCount: 2147483647
+              isUnique: false
+              isIndexable: false
+              includeInNotification: false
+              skipScrubbing: false
+              searchWeight: -1
+              displayName: sourceTagAttachment
+              isDefaultValueNull: false
+          superTypes: []
+          entityTypes:
+            - Asset
+          displayName: Silver
+          subTypes: []
+        - category: CLASSIFICATION
+          guid: 3b395a13-f2da-4809-acde-c98de4aeffa0
+          createdBy: edgar.degroot
+          updatedBy: service-account-atlan-argo
+          createTime: 1705335844784
+          updateTime: 1767832413523
+          version: 202
+          name: OlAEuL66vf8sISCNDMalnL
+          description: ""
+          typeVersion: "1.0"
+          options:
+            imageID: ""
+            color: Green
+            emoji: ""
+            iconName: PhPerson
+            iconType: icon
+          attributeDefs: []
+          superTypes: []
+          entityTypes: []
+          displayName: Customer Service
+          subTypes: []
+        - ... (33 more items)
+      entityDefs: []
+      relationshipDefs: []
+      businessMetadataDefs: []
+  discover_custom_metadata_response_1:
+    summary: discover-custom-metadata - Response
+    x-useCase: discover-custom-metadata
+    x-chainStep: discover-custom-metadata
+    value:
+      enumDefs: []
+      structDefs: []
+      classificationDefs: []
+      entityDefs: []
+      relationshipDefs: []
+      businessMetadataDefs: []
+  discover_enums_response_2:
+    summary: discover-enums - Response
+    x-useCase: discover-enums
+    x-chainStep: discover-enums
+    value:
+      enumDefs:
+        - category: ENUM
+          guid: 24cdc24b-9155-4c82-a7cd-a1600da7d3e0
+          createdBy: service-account-atlan-argo
+          updatedBy: service-account-atlan-argo
+          createTime: 1646880651221
+          updateTime: 1767832400723
+          version: 291
+          name: AtlasGlossaryTermRelationshipStatus
+          description: How reliable the relationship is between two glossary terms.
+          typeVersion: "1.0"
+          serviceType: atlas_core
+          elementDefs:
+            - value: DRAFT
+              description: DRAFT means the relationship is under development.
+              ordinal: 0
+            - value: ACTIVE
+              description: ACTIVE means the relationship is validated and in use.
+              ordinal: 1
+            - ... (3 more items)
+        - category: ENUM
+          guid: f39c3120-1e9a-4675-a591-2932c3a32b5d
+          createdBy: service-account-atlan-argo
+          updatedBy: service-account-atlan-argo
+          createTime: 1741134425142
+          updateTime: 1768350487170
+          version: 362
+          name: FormFieldType
+          description: Type of the field in a form.
+          typeVersion: "1.0"
+          serviceType: atlas_core
+          elementDefs:
+            - value: INT
+              ordinal: 0
+            - value: STRING
+              ordinal: 1
+            - ... (4 more items)
+        - ... (132 more items)
+      structDefs: []
+      classificationDefs: []
+      entityDefs: []
+      relationshipDefs: []
+      businessMetadataDefs: []
+  discover_governance_response_3:
+    summary: discover-governance - Response
+    x-useCase: discover-governance
+    x-chainStep: get-classification-defs
+    value:
+      enumDefs: []
+      structDefs: []
+      classificationDefs:
+        - category: CLASSIFICATION
+          guid: 682e6b91-9121-4748-bbae-af225ee8e98b
+          createdBy: ryan.quigley
+          updatedBy: service-account-atlan-argo
+          createTime: 1740600943664
+          updateTime: 1767832413445
+          version: 203
+          name: Vyc79KGveSy62DfOKQAZ9G
+          description: Cleansed and conformed data
+          typeVersion: "1.0"
+          serviceType: atlan
+          options:
+            imageID: ""
+            hasTag: "true"
+            color: Gray
+            emoji: ""
+            iconName: PhMedal
+            iconType: icon
+            createdFromAtlan: "false"
+          attributeDefs:
+            - name: Ge0JWQ0QyADOjA6RTgg7Yl
+              typeName: array<SourceTagAttachment>
+              isOptional: true
+              cardinality: SET
+              valuesMinCount: 0
+              valuesMaxCount: 2147483647
+              isUnique: false
+              isIndexable: false
+              includeInNotification: false
+              skipScrubbing: false
+              searchWeight: -1
+              displayName: sourceTagAttachment
+              isDefaultValueNull: false
+          superTypes: []
+          entityTypes:
+            - Asset
+          displayName: Silver
+          subTypes: []
+        - category: CLASSIFICATION
+          guid: 3b395a13-f2da-4809-acde-c98de4aeffa0
+          createdBy: edgar.degroot
+          updatedBy: service-account-atlan-argo
+          createTime: 1705335844784
+          updateTime: 1767832413523
+          version: 202
+          name: OlAEuL66vf8sISCNDMalnL
+          description: ""
+          typeVersion: "1.0"
+          options:
+            imageID: ""
+            color: Green
+            emoji: ""
+            iconName: PhPerson
+            iconType: icon
+          attributeDefs: []
+          superTypes: []
+          entityTypes: []
+          displayName: Customer Service
+          subTypes: []
+        - ... (33 more items)
+      entityDefs: []
+      relationshipDefs: []
+      businessMetadataDefs: []
+  typedef_operations_response_6:
+    summary: typedef-operations - Response
+    x-useCase: typedef-operations
+    x-chainStep: get-classification-typedefs
+    value:
+      enumDefs: []
+      structDefs: []
+      classificationDefs:
+        - category: CLASSIFICATION
+          guid: 682e6b91-9121-4748-bbae-af225ee8e98b
+          createdBy: ryan.quigley
+          updatedBy: service-account-atlan-argo
+          createTime: 1740600943664
+          updateTime: 1767832413445
+          version: 203
+          name: Vyc79KGveSy62DfOKQAZ9G
+          description: Cleansed and conformed data
+          typeVersion: "1.0"
+          serviceType: atlan
+          options:
+            imageID: ""
+            hasTag: "true"
+            color: Gray
+            emoji: ""
+            iconName: PhMedal
+            iconType: icon
+            createdFromAtlan: "false"
+          attributeDefs:
+            - name: Ge0JWQ0QyADOjA6RTgg7Yl
+              typeName: array<SourceTagAttachment>
+              isOptional: true
+              cardinality: SET
+              valuesMinCount: 0
+              valuesMaxCount: 2147483647
+              isUnique: false
+              isIndexable: false
+              includeInNotification: false
+              skipScrubbing: false
+              searchWeight: -1
+              displayName: sourceTagAttachment
+              isDefaultValueNull: false
+          superTypes: []
+          entityTypes:
+            - Asset
+          displayName: Silver
+          subTypes: []
+        - category: CLASSIFICATION
+          guid: 3b395a13-f2da-4809-acde-c98de4aeffa0
+          createdBy: edgar.degroot
+          updatedBy: service-account-atlan-argo
+          createTime: 1705335844784
+          updateTime: 1767832413523
+          version: 202
+          name: OlAEuL66vf8sISCNDMalnL
+          description: ""
+          typeVersion: "1.0"
+          options:
+            imageID: ""
+            color: Green
+            emoji: ""
+            iconName: PhPerson
+            iconType: icon
+          attributeDefs: []
+          superTypes: []
+          entityTypes: []
+          displayName: Customer Service
+          subTypes: []
+        - ... (33 more items)
+      entityDefs: []
+      relationshipDefs: []
+      businessMetadataDefs: []

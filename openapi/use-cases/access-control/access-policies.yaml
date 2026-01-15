@@ -1,0 +1,345 @@
+id: access-policies
+title: Policies
+category: access-control
+icon: zap
+relatedTypes:
+  - Asset
+  - AuthPolicy
+description: Policies control which assets users can access, and what operations they can carry out on those assets.
+externalDocs:
+  url: https://developer.atlan.com/snippets/access/policies/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Retrieve policies
+    description: |-
+      0.0.15 1.4.0 4.0.0
+      To retrieve a policy from a persona, you need to search for the policy by some characteristic:
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            query:
+              bool:
+                filter:
+                  - term:
+                      __typeName.keyword:
+                        value: AuthPolicy
+                  - term:
+                      __state:
+                        value: ACTIVE
+                  - term:
+                      policyCategory:
+                        value: persona
+                  - prefix:
+                      policyResources:
+                        value: entity:default/snowflake/1696324735
+            sort:
+              - __guid:
+                  order: asc
+            track_total_hits: true
+          attributes:
+            - name
+            - accessControl
+            - policyResources
+            - connectionQualifiedName
+            - policyType
+            - policySubCategory
+          relationAttributes:
+            - isAccessControlEnabled
+            - name
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"filter\":[{\"term\":{\"__typeName.keyword\":{\"value\":\"AuthPolicy\"}}},{\"term\":{\"__state\":{\"value\":\"ACTIVE\"}}},{\"term\":{\"policyCategory\":{\"value\":\"persona\"}}},{\"prefix\":{\"policyResources\":{\"value\":\"entity:default/snowflake/1696324735\"}}}]}}"
+            attributes:
+              - name
+              - accessControl
+              - policyResources
+              - connectionQualifiedName
+              - policyType
+              - policySubCategory
+          approximateCount: 25
+          entities:
+            - typeName: AuthPolicy
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/AUTHPOLICY_1
+                name: AuthPolicy_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: AuthPolicy_1
+            - typeName: AuthPolicy
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/AUTHPOLICY_2
+                name: AuthPolicy_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: AuthPolicy_2
+      - key: example-1-2
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            query:
+              bool:
+                filter:
+                  - term:
+                      __typeName.keyword:
+                        value: AuthPolicy
+                  - term:
+                      __state:
+                        value: ACTIVE
+                  - term:
+                      policyCategory:
+                        value: purpose
+                  - prefix:
+                      policyResources:
+                        value: tag:RRbkpEJKNC4qsbKB7fKFNN
+            sort:
+              - __guid:
+                  order: asc
+            track_total_hits: true
+          attributes:
+            - name
+            - accessControl
+            - policyResources
+            - policyCategory
+            - policySubCategory
+          relationAttributes:
+            - isAccessControlEnabled
+            - name
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"filter\":[{\"term\":{\"__typeName.keyword\":{\"value\":\"AuthPolicy\"}}},{\"term\":{\"__state\":{\"value\":\"ACTIVE\"}}},{\"term\":{\"policyCategory\":{\"value\":\"purpose\"}}},{\"prefix\":{\"policyResources\":{\"value\":\"tag:RRbkpEJKNC4qsbKB7fKFNN\"}}}]}}"
+            attributes:
+              - name
+              - accessControl
+              - policyResources
+              - policyCategory
+              - policySubCategory
+          approximateCount: 25
+          entities:
+            - typeName: AuthPolicy
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/AUTHPOLICY_1
+                name: AuthPolicy_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: AuthPolicy_1
+            - typeName: AuthPolicy
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/AUTHPOLICY_2
+                name: AuthPolicy_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: AuthPolicy_2
+  - step: 2
+    title: From a persona
+    description: |-
+      0.0.15 1.4.0 4.0.0
+      To retrieve a policy from a persona, you need to search for the policy by some characteristic:
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-2-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            query:
+              bool:
+                filter:
+                  - term:
+                      __typeName.keyword:
+                        value: AuthPolicy
+                  - term:
+                      __state:
+                        value: ACTIVE
+                  - term:
+                      policyCategory:
+                        value: persona
+                  - prefix:
+                      policyResources:
+                        value: entity:default/snowflake/1696324735
+            sort:
+              - __guid:
+                  order: asc
+            track_total_hits: true
+          attributes:
+            - name
+            - accessControl
+            - policyResources
+            - connectionQualifiedName
+            - policyType
+            - policySubCategory
+          relationAttributes:
+            - isAccessControlEnabled
+            - name
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"filter\":[{\"term\":{\"__typeName.keyword\":{\"value\":\"AuthPolicy\"}}},{\"term\":{\"__state\":{\"value\":\"ACTIVE\"}}},{\"term\":{\"policyCategory\":{\"value\":\"persona\"}}},{\"prefix\":{\"policyResources\":{\"value\":\"entity:default/snowflake/1696324735\"}}}]}}"
+            attributes:
+              - name
+              - accessControl
+              - policyResources
+              - connectionQualifiedName
+              - policyType
+              - policySubCategory
+          approximateCount: 25
+          entities:
+            - typeName: AuthPolicy
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/AUTHPOLICY_1
+                name: AuthPolicy_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: AuthPolicy_1
+            - typeName: AuthPolicy
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/AUTHPOLICY_2
+                name: AuthPolicy_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: AuthPolicy_2
+  - step: 3
+    title: From a purpose
+    description: |-
+      0.0.15 6.0.0 4.0.0
+      Similarly, to retrieve a policy from a purpose you need to search for the policy by some characteristic:
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-3-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            query:
+              bool:
+                filter:
+                  - term:
+                      __typeName.keyword:
+                        value: AuthPolicy
+                  - term:
+                      __state:
+                        value: ACTIVE
+                  - term:
+                      policyCategory:
+                        value: purpose
+                  - prefix:
+                      policyResources:
+                        value: tag:RRbkpEJKNC4qsbKB7fKFNN
+            sort:
+              - __guid:
+                  order: asc
+            track_total_hits: true
+          attributes:
+            - name
+            - accessControl
+            - policyResources
+            - policyCategory
+            - policySubCategory
+          relationAttributes:
+            - isAccessControlEnabled
+            - name
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"filter\":[{\"term\":{\"__typeName.keyword\":{\"value\":\"AuthPolicy\"}}},{\"term\":{\"__state\":{\"value\":\"ACTIVE\"}}},{\"term\":{\"policyCategory\":{\"value\":\"purpose\"}}},{\"prefix\":{\"policyResources\":{\"value\":\"tag:RRbkpEJKNC4qsbKB7fKFNN\"}}}]}}"
+            attributes:
+              - name
+              - accessControl
+              - policyResources
+              - policyCategory
+              - policySubCategory
+          approximateCount: 25
+          entities:
+            - typeName: AuthPolicy
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/AUTHPOLICY_1
+                name: AuthPolicy_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: AuthPolicy_1
+            - typeName: AuthPolicy
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/AUTHPOLICY_2
+                name: AuthPolicy_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: AuthPolicy_2
+  - step: 4
+    title: Update policies
+    description: |-
+      Different update approach from most assets
+      Unlike most assets, to update policies you should first retrieve the existing policy and then update it in its entirety. You can do this by either retrieving the entire policy asset by its GUID (if you know it), or by retrieving the policy using the instructions above under Retrieve policies. You must request at least the attributes defined in that section on each policy to be able to update the policy.
+      0.0.15 1.4.0 4.0.0
+      To update an existing policies, once you have retrieved it:
+    notes:
+      - type: warning
+        title: Different update approach from most assets
+        content: Unlike most assets, to update policies you should first retrieve the existing policy and then update it in its entirety. You can do this by either retrieving the entire policy asset by its GUID (if you know it), or by retrieving the policy using the instructions above under Retrieve policies. You must request at least the attributes defined in that section on each policy to be able to update the policy.
+      - type: warning
+        title: Multiple API calls required
+        content: You will need to first retrieve the policy you want to update. You can then replace any values in the response payload for that policy and POST the revised payload to /api/meta/entity/bulk.
+  - step: 5
+    title: Remove policies
+    description: |-
+      To remove a policy, you need only delete it as you would any other asset.
+      0.0.15 1.4.0 4.0.0
+      To find the GUID of a specific policy in a persona:
+    notes:
+      - type: warning
+        title: Multiple API calls required
+        content: You will need to first run a search for all personas with a given name. You can then retrieve the full persona by its GUID, to see all of its policies and their details. You can then iterate through those details to see the displayText for the name that's been given to each policy, and retrieve each policy's guid to be able to individually delete the appropriate policy.
+      - type: warning
+        title: Multiple API calls required
+        content: You will need to first run a search for all purposes with a given name. You can then retrieve the full purpose by its GUID, to see all of its policies and their details. You can then iterate through those details to see the displayText for the name that's been given to each policy, and retrieve each policy's guid to be able to individually delete the appropriate policy.
+  - step: 6
+    title: From a persona
+    description: |-
+      0.0.15 1.4.0 4.0.0
+      To find the GUID of a specific policy in a persona:
+  - step: 7
+    title: From a purpose
+    description: |-
+      0.0.15 1.4.0 4.0.0
+      To find the GUID of a specific policy in a purpose:

@@ -1,0 +1,51 @@
+{
+  "useCase": "classification-read-operations",
+  "description": "API calls for classification-read-operations",
+  "steps": [
+    {
+      "step": 1,
+      "endpoint": "GET /api/meta/entity/guid/b9d5dbbc-ee8a-4c5e-a946-a47033892172/classifications",
+      "response": {
+        "status": 200,
+        "body": {
+          "list": [],
+          "startIndex": 0,
+          "pageSize": 0,
+          "totalCount": 0,
+          "sortType": "NONE"
+        }
+      },
+      "duration": 157
+    },
+    {
+      "step": 2,
+      "endpoint": "GET /api/meta/entity/guid/b9d5dbbc-ee8a-4c5e-a946-a47033892172/classifications",
+      "response": {
+        "status": 200,
+        "body": {
+          "list": [],
+          "startIndex": 0,
+          "pageSize": 0,
+          "totalCount": 0,
+          "sortType": "NONE"
+        }
+      },
+      "duration": 150
+    },
+    {
+      "step": 3,
+      "endpoint": "GET /api/meta/entity/guid/b9d5dbbc-ee8a-4c5e-a946-a47033892172/classifications",
+      "response": {
+        "status": 200,
+        "body": {
+          "list": [],
+          "startIndex": 0,
+          "pageSize": 0,
+          "totalCount": 0,
+          "sortType": "NONE"
+        }
+      },
+      "duration": 156
+    }
+  ]
+}

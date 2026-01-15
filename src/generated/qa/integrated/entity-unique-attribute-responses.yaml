@@ -1,0 +1,425 @@
+x-generated: true
+x-generatedAt: "2026-01-15T16:29:08.932Z"
+x-sourcePathFile: openapi/paths/meta/entity-unique-attribute.yaml
+responseExamples:
+  get_entity_by_unique_attribute_response_0:
+    summary: get-entity-by-unique-attribute - Response
+    x-useCase: get-entity-by-unique-attribute
+    x-chainStep: get-by-qualified-name
+    value:
+      referredEntities: {}
+      entity:
+        typeName: Table
+        attributes:
+          popularityScore: 1.17549435e-38
+          assetDbtJobLastRunQueuedDuration: null
+          assetMcMonitorNames: []
+          partitionStrategy: null
+          databaseName: WIDE_WORLD_IMPORTERS
+          assetPoliciesCount: 1
+          assetDbtTestStatus: null
+          lastSyncRun: atlan-snowflake-1698696666-zw9fd
+          assetSourceReadme: null
+          tableName: null
+          domainGUIDs: []
+          assetMcIncidentQualifiedNames: []
+          sourceUpdatedAt: 1736211544000
+          alpha_assetDQScheduleSourceSyncedAt: 1747931150760
+          icebergTableType: null
+          lastProfiledAt: 0
+          assetUserDefinedType: null
+          assetDbtJobLastRunArtifactS3Path: null
+          assetDbtTags: []
+          assetDbtAccountName: null
+          assetDbtJobLastRunOwnerThreadId: null
+          assetDbtEnvironmentDbtVersion: null
+          assetDQScheduleSourceSyncErrorMessage: null
+          alpha_assetDQRowScopeFilterColumnQualifiedName: null
+          assetDbtMeta: null
+          assetDQRuleAttachedDimensions: []
+          sourceLastReadAt: 0
+          assetDbtSourceFreshnessCriteria: null
+          metrics: []
+          assetDQScheduleType: null
+          certificateStatus: DEPRECATED
+          hasContract: true
+          displayName: null
+          applicationFieldQualifiedName: null
+          applicationQualifiedName: null
+          partitionList: null
+          assetDbtSemanticLayerProxyUrl: null
+          alpha_assetDQRulePassedDimensions: []
+          certificateUpdatedBy: service-account-atlan-argo
+          assetMcMonitorQualifiedNames: []
+          assetDbtJobLastRunStartedAt: 0
+          alpha_assetDQFreshnessValue: 0
+          rowCount: 663
+          inputToAirflowTasks: []
+          calculationViewQualifiedName: null
+          sourceOwners: null
+          productGUIDs:
+            - 0cf77d31-a525-4af2-b1b8-9f941cbab539
+            - 32e1e82c-6857-45a4-bcaf-200bf2df7c35
+            - ... (3 more items)
+          userDescription: testdescription
+          adminGroups: []
+          assetSodaSourceURL: null
+          assetDbtJobLastRunCreatedAt: 0
+          assetDbtJobNextRun: 0
+          outputFromAirflowTasks: []
+          assetCoverImage: null
+          queries: []
+          alpha_assetDQRuleFailedCount: 0
+          externalLocation: null
+          assetDQResult: null
+          assetDQRulePassedRuleTypes: []
+          sourceEmbedURL: null
+          assetDbtJobLastRunUrl: null
+          dbtSources: []
+          outputProductGUIDs: []
+          assetDbtJobNextRunHumanized: null
+          assetDbtJobScheduleCronHumanized: null
+          alpha_assetDQRuleAttachedRuleTypes: []
+          assetDQFreshnessExpectation: null
+          queryCountUpdatedAt: 0
+          alpha_assetDQRuleFailedRuleTypes: []
+          schemaName: PROCESSED_GOLD
+          sqlDbtModels: []
+          queryUserCount: 0
+          queryPreviewConfig: null
+          atlanSchema:
+            guid: b5300d38-7636-402a-88ad-263bbb65f7c1
+            typeName: Schema
+          announcementUpdatedAt: 0
+          assetDQRulePassedCount: null
+          partitions: []
+          qualifiedName: default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP
+          assetMcIncidentPriorities: []
+          lexicographicalSortOrder: null
+          assetMcMonitorStatuses: []
+          starredBy:
+            - edgar.degroot
+          name: DIM_CUSTOMER_SP
+          certificateUpdatedAt: 1756317462378
+          assetAnomaloAppliedCheckTypes: []
+          announcementUpdatedBy: null
+          assetAnomaloSourceUrl: null
+          assetThemeHex: null
+          sourceReadQueryCost: 0
+          alpha_assetDQScheduleCrontab: null
+          connectionQualifiedName: default/snowflake/1698696666
+          isAIGenerated: false
+          description: null
+          isTemporary: false
+          externalLocationFormat: null
+          alpha_assetDQScheduleSourceSyncErrorMessage: "failed to fetch credential GUID: credential GUID not found or invalid"
+          assetMcIncidentStates: []
+          alpha_assetDQRuleTotalCount: 0
+          assetDbtJobLastRunUpdatedAt: 0
+          ownerGroups: []
+          sourceReadExpensiveQueryRecordList: []
+          isPartial: false
+          calculationViewName: null
+          sourceReadTopUserList: []
+          assetMcIncidentNames: []
+          alpha_assetDQScheduleType: null
+          replicatedTo: null
+          adminRoles: []
+          databaseQualifiedName: default/snowflake/1698696666/WIDE_WORLD_IMPORTERS
+          viewQualifiedName: null
+          assetDbtJobLastRunGitBranch: null
+          assetDQScheduleSourceSyncRawError: null
+          queryUserMap: null
+          assetDbtWorkflowLastUpdated: null
+          icebergCatalogSource: null
+          assetDbtProjectName: null
+          sizeBytes: 41984
+          sourceUpdatedBy: null
+          assetDbtJobLastRunGitSha: null
+          assetMcLastSyncRunAt: 0
+          sourceReadUserCount: 0
+          assetSmusMetadataFormNames: []
+          tableQualifiedName: null
+          assetDbtJobLastRunStatusMessage: null
+          sampleDataUrl: null
+          assetInternalPopularityScore: 1
+          viewerGroups: []
+          assetDbtJobLastRun: 0
+          assetDQRowScopeFilterColumnQualifiedName: null
+          assetDQScheduleSourceSyncedAt: null
+          assetAnomaloLastCheckRunAt: 0
+          __hasLineage: false
+          assetSodaLastSyncRunAt: 0
+          starredCount: 1
+          assetAnomaloFailedCheckCount: 0
+          partitionCount: 0
+          lastRowChangedAt: 0
+          sourceReadRecentUserList: []
+          assetMcIncidentTypes: []
+          assetSodaLastScanAt: 0
+          assetDQRuleTotalCount: null
+          assetDbtJobLastRunArtifactsSaved: false
+          starredDetailsList:
+            - typeName: StarredDetails
+              attributes:
+                assetStarredBy: ...
+                assetStarredAt: ...
+          assetDbtJobLastRunQueuedDurationHumanized: null
+          alpha_assetDQRuleLastRunAt: 0
+          assetDbtJobStatus: null
+          certificateStatusMessage: null
+          sourceCreatedAt: 1736211543000
+          assetDbtJobLastRunDequedAt: 0
+          tableImpalaParameters: null
+          sourceReadSlowQueryRecordList: []
+          alpha_assetDQRulePassedRuleTypes: []
+          sourceQueryComputeCostList: []
+          assetExternalDQMetadataDetails: null
+          sqlIsSecure: null
+          assetDbtJobLastRunNotificationsSent: false
+          airflowTask: null
+          assetDQScheduleSourceSyncStatus: null
+          assetMcMonitorTypes: []
+          dbtModels: []
+          assetDbtJobLastRunTotalDuration: null
+          assetSodaCheckCount: 0
+          outputFromSparkJobs: []
+          assetDbtJobLastRunTotalDurationHumanized: null
+          alpha_assetDQFreshnessExpectation: 0
+          assetDQRuleFailedRuleTypes: []
+          subType: null
+          assetMcIncidentSeverities: []
+          connectionName: null
+          assetMcAlertQualifiedNames: []
+          assetSodaCheckStatuses: null
+          icebergCatalogName: null
+          assetDbtJobLastRunExecutedByThreadId: null
+          replicatedFrom: null
+          assetDbtJobLastRunHasSourcesGenerated: false
+          sourceCostUnit: null
+          assetDbtUniqueId: null
+          columns:
+            - guid: b0787c19-f36b-4d68-ba06-fbc517194fac
+              typeName: Column
+            - guid: e798e382-c3d6-4ceb-8906-2b2d520b2cfe
+              typeName: Column
+            - ... (17 more items)
+          assetSodaDQStatus: null
+          assetDbtJobLastRunHasDocsGenerated: false
+          queryCount: 0
+          assetTags: []
+          alpha_assetDQScheduleSourceSyncRawError: null
+          tableType: null
+          assetAnomaloCheckCount: 0
+          announcementType: null
+          tableRetentionTime: 1
+          tableObjectCount: null
+          assetDQRuleLastRunAt: null
+          schemaQualifiedName: default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD
+          viewerUsers: []
+          assetSmusMetadataFormDetails: []
+          viewScore: 1.17549435e-38
+          assetAnomaloFailedCheckTypes: []
+          assetSpaceName: null
+          icebergCatalogTableNamespace: null
+          assetDQScheduleTimeZone: null
+          sourceReadPopularQueryRecordList: []
+          sqlAIModelContextQualifiedName: null
+          sourceTotalCost: 0
+          assetDQRuleResultTags: []
+          tenantId: default
+          alpha_assetDQResult: null
+          icebergTableBaseLocation: null
+          announcementMessage: null
+          lastSyncRunAt: 1747185085939
+          assetDbtEnvironmentName: null
+          nonCompliantAssetPolicyGUIDs: []
+          assetDQRuleFailedCount: null
+          sourceQueryComputeCostRecordList: []
+          assetDbtJobLastRunRunDurationHumanized: null
+          inputToSparkJobs: []
+          assetDbtJobLastRunRunDuration: null
+          adminUsers: []
+          assetMcIsMonitored: false
+          sourceURL: null
+          isSharded: false
+          isEditable: true
+          assetDQFreshnessValue: null
+          viewName: null
+          sourceReadCount: 0
+          assetRedirectGUIDs: []
+          alpha_assetDQScheduleTimeZone: null
+          assetDQScheduleSourceSyncErrorCode: null
+          announcementTitle: null
+          links: []
+          isQueryPreview: true
+          assetDbtAlias: null
+          alpha_assetDQScheduleSourceSyncErrorCode: null
+          assetDQRuleFailedDimensions: []
+          icebergCatalogTableName: null
+          assetSpaceQualifiedName: null
+          tableExternalVolumeName: null
+          alpha_assetDQRuleFailedDimensions: []
+          connectorName: snowflake
+          assetDbtJobSchedule: null
+          files: []
+          assetAnomaloCheckStatuses: null
+          ownerUsers: []
+          lastSyncWorkflowName: atlan-snowflake-crawler
+          sourceCreatedBy: ACCOUNTADMIN
+          assetMcIncidentSubTypes: []
+          dbtQualifiedName: null
+          isPartitioned: false
+          assetPolicyGUIDs: []
+          externalLocationRegion: null
+          isDiscoverable: true
+          alias: null
+          assetSmusMetadataFormKeyValueDetails: []
+          sourceReadTopUserRecordList: []
+          assetMcMonitorScheduleTypes: []
+          isProfiled: false
+          alpha_assetDQRuleAttachedDimensions: []
+          alpha_assetDQRuleResultTags: []
+          assetDQRulePassedDimensions: []
+          tableDefinition: null
+          alpha_assetDQScheduleSourceSyncStatus: FAILURE
+          sourceReadRecentUserRecordList: []
+          assetIcon: null
+          assetAnomaloDQStatus: null
+          columnCount: 19
+          readme: null
+          assetDQScheduleCrontab: null
+          assetDbtPackageName: null
+          sqlDBTSources: []
+          assetDbtJobName: null
+          assetDQRuleAttachedRuleTypes: []
+          alpha_assetDQRulePassedCount: 0
+        guid: b9d5dbbc-ee8a-4c5e-a946-a47033892172
+        isIncomplete: false
+        status: ACTIVE
+        createdBy: ryan.quigley
+        updatedBy: service-account-atlan-argo
+        createTime: 1747185436766
+        updateTime: 1765929858468
+        version: 0
+        superTypeNames:
+          - Referenceable
+          - Asset
+          - ... (2 more items)
+        docId: 6aye614
+        relationshipAttributes:
+          schemaRegistrySubjects: []
+          dbtSources: []
+          dqBaseDatasetRules: []
+          columns:
+            - guid: b0787c19-f36b-4d68-ba06-fbc517194fac
+              typeName: Column
+              entityStatus: ACTIVE
+              displayText: CREDITLIMIT
+              relationshipType: table_columns
+              relationshipGuid: 7001941a-5b36-48e6-953e-4fd327a13fdd
+              relationshipStatus: ACTIVE
+              relationshipAttributes:
+                typeName: ...
+            - guid: e798e382-c3d6-4ceb-8906-2b2d520b2cfe
+              typeName: Column
+              entityStatus: ACTIVE
+              displayText: DELIVERYADDRESSLINE1
+              relationshipType: table_columns
+              relationshipGuid: c5cd7334-c7a9-49b3-8dc2-13dc2d2f5884
+              relationshipStatus: ACTIVE
+              relationshipAttributes:
+                typeName: ...
+            - ... (17 more items)
+          userDefRelationshipFrom: []
+          inputToSparkJobs: []
+          alpha_dqBaseDatasetRules: []
+          facts: []
+          sqlDbtModels: []
+          partialChildFields: []
+          dbtTests: []
+          atlanSchema:
+            guid: b5300d38-7636-402a-88ad-263bbb65f7c1
+            typeName: Schema
+            entityStatus: ACTIVE
+            displayText: PROCESSED_GOLD
+            relationshipType: schema_tables
+            relationshipGuid: b0ceaed0-9a0d-4d59-bf5a-d85e449abb2e
+            relationshipStatus: ACTIVE
+            relationshipAttributes:
+              typeName: schema_tables
+          mcIncidents: []
+          links: []
+          inputToAirflowTasks: []
+          inputPortDataProducts: []
+          partitions: []
+          inputToProcesses: []
+          dataContractLatestCertified: null
+          anomaloChecks: []
+          userDefRelationshipTo: []
+          modelImplementedAttributes: []
+          outputPortDataProducts: []
+          outputFromAirflowTasks: []
+          airflowTask: null
+          readme: null
+          dqReferenceDatasetRules: []
+          applicationField: null
+          queries: []
+          meanings:
+            - guid: be81ac35-d93f-4b4b-a49a-b1c7046e575d
+              typeName: AtlasGlossaryTerm
+              entityStatus: ACTIVE
+              displayText: Customer
+              relationshipType: AtlasGlossarySemanticAssignment
+              relationshipGuid: 8562f00b-6de9-4ede-9987-8f7213cd86ff
+              relationshipStatus: ACTIVE
+              relationshipAttributes:
+                typeName: ...
+                attributes: ...
+          dataContractLatest:
+            guid: 3b6f1508-98c8-4c75-9c51-bfd6e859226c
+            typeName: DataContract
+            entityStatus: ACTIVE
+            displayText: Data contract for DIM_CUSTOMER_SP
+            relationshipType: data_contract_asset_latest_data_contract_latest
+            relationshipGuid: 38bb2696-355b-4685-bf72-d8af4a61014d
+            relationshipStatus: ACTIVE
+            relationshipAttributes:
+              typeName: data_contract_asset_latest_data_contract_latest
+          sqlDBTSources: []
+          alpha_dqReferenceDatasetRules: []
+          dbtModels: []
+          dbtSeedAssets: []
+          mcMonitors: []
+          outputFromSparkJobs: []
+          application: null
+          files: []
+          modelImplementedEntities: []
+          metrics: []
+          sodaChecks: []
+          partialChildObjects: []
+          outputFromProcesses: []
+          dimensions: []
+        classifications: []
+        customAttributes:
+          auto_clustering_on: "NO"
+          auto_increment: ""
+          columns_participating_in_part_key: ""
+          engine: ""
+          is_insertable_into: "YES"
+          is_transient: "YES"
+          is_typed: "YES"
+          last_ddl: "1736211543000"
+          number_columns_in_part_key: ""
+          retention_time: "1"
+          stage_url: ""
+        businessAttributes:
+          cRuqNRMTmeaytXEZJPigCs:
+            d18B8OGcdNQvd0vF571shK: []
+            qIom2D1J1ZQiA2RvKxbomI: []
+          x8E67N8b0vOeOg6Xpt9Q6U:
+            g4bU7QnO7NgveWnGqjKdgH: []
+            LaAGFQ0H0Gq8W1dc8m4Yj3: []
+          Sbc2h0fp0hgV9kMmfmJree:
+            MLKs8Mb9lVxhOFAY8F1Tc9: []
+        labels: []

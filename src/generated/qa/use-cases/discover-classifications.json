@@ -1,0 +1,112 @@
+{
+  "useCase": "discover-classifications",
+  "description": "API calls for discover-classifications",
+  "steps": [
+    {
+      "step": 1,
+      "endpoint": "GET /api/meta/types/typedefs?type=classification",
+      "response": {
+        "status": 200,
+        "body": {
+          "enumDefs": [],
+          "structDefs": [],
+          "classificationDefs": [
+            {
+              "category": "CLASSIFICATION",
+              "guid": "682e6b91-9121-4748-bbae-af225ee8e98b",
+              "createdBy": "ryan.quigley",
+              "updatedBy": "service-account-atlan-argo",
+              "createTime": 1740600943664,
+              "updateTime": 1767832413445,
+              "version": 203,
+              "name": "Vyc79KGveSy62DfOKQAZ9G",
+              "description": "Cleansed and conformed data",
+              "typeVersion": "1.0",
+              "serviceType": "atlan",
+              "options": {
+                "imageID": "",
+                "hasTag": "true",
+                "color": "Gray",
+                "emoji": "",
+                "iconName": "PhMedal",
+                "iconType": "icon",
+                "createdFromAtlan": "false"
+              },
+              "attributeDefs": [
+                {
+                  "name": "Ge0JWQ0QyADOjA6RTgg7Yl",
+                  "typeName": "array<SourceTagAttachment>",
+                  "isOptional": true,
+                  "cardinality": "SET",
+                  "valuesMinCount": 0,
+                  "valuesMaxCount": 2147483647,
+                  "isUnique": false,
+                  "isIndexable": false,
+                  "includeInNotification": false,
+                  "skipScrubbing": false,
+                  "searchWeight": -1,
+                  "displayName": "sourceTagAttachment",
+                  "isDefaultValueNull": false
+                }
+              ],
+              "superTypes": [],
+              "entityTypes": [
+                "Asset"
+              ],
+              "displayName": "Silver",
+              "subTypes": []
+            },
+            {
+              "category": "CLASSIFICATION",
+              "guid": "3b395a13-f2da-4809-acde-c98de4aeffa0",
+              "createdBy": "edgar.degroot",
+              "updatedBy": "service-account-atlan-argo",
+              "createTime": 1705335844784,
+              "updateTime": 1767832413523,
+              "version": 202,
+              "name": "OlAEuL66vf8sISCNDMalnL",
+              "description": "",
+              "typeVersion": "1.0",
+              "options": {
+                "imageID": "",
+                "color": "Green",
+                "emoji": "",
+                "iconName": "PhPerson",
+                "iconType": "icon"
+              },
+              "attributeDefs": [],
+              "superTypes": [],
+              "entityTypes": [],
+              "displayName": "Customer Service",
+              "subTypes": []
+            },
+            {
+              "category": "CLASSIFICATION",
+              "guid": "fa29e6d6-a37b-42a1-9c04-ab4cb9bf4f67",
+              "createdBy": "service-account-apikey-9471cf12-f45c-4275-b280-3e01d26f57e8",
+              "updatedBy": "service-account-atlan-argo",
+              "createTime": 1646914738761,
+              "updateTime": 1767832413576,
+              "version": 219,
+              "name": "VwN5VzRHlHVIWB4cbaxM5R",
+              "description": "Data that may be freely disclosed in public.",
+              "typeVersion": "1.0",
+              "options": {
+                "color": "Green"
+              },
+              "attributeDefs": [],
+              "superTypes": [],
+              "entityTypes": [],
+              "displayName": "Public",
+              "subTypes": []
+            },
+            "... (32 more items)"
+          ],
+          "entityDefs": [],
+          "relationshipDefs": [],
+          "businessMetadataDefs": []
+        }
+      }
+    }
+  ]
+}

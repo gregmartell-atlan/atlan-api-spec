@@ -1,0 +1,50 @@
+# Use Case: Deleting users and groups
+# Auto-generated from: https://developer.atlan.com/snippets/users-groups/delete/
+# Generated at: 2026-01-13T02:58:00.309Z
+
+id: users-groups-delete
+title: "Deleting users and groups"
+category: access-control
+icon: zap
+
+description: >-
+  Deleting users and groups uses a similar pattern to the retrieval operations. For this you can use static methods provided by the AtlanUser and AtlanGroup classes.
+  
+  All delete operations are permanent
+  
+  All delete operations on users and groups are permanent, hard-deletes. There is no way to archive (soft-delete) users and groups.
+
+externalDocs:
+  url: https://developer.atlan.com/snippets/users-groups/delete/
+  description: Official Atlan documentation
+
+steps:
+  - step: 1
+    title: "Delete a group"
+    description: >-
+      0.0.13
+      1.3.3
+      4.0.0
+      
+      For example, to delete a group:
+    notes:
+      - type: recommendation
+        title: "Group ID in the URL"
+        content: >-
+          Note that you must provide the unique ID (GUID) of the group to delete it.
+    method: POST
+    endpoint: /api/service/groups/e79cb8eb-2bb6-4821-914c-f8dfd21fedc7/delete
+    examples:
+      - key: example-1-1
+        summary: "POST /api/service/groups/e79cb8eb-2bb6-4821-914c-f8dfd21fedc7/delete"
+  - step: 2
+    title: "Delete a user"
+    description: >-
+      Irreversible operation that requires admin user's bearer token
+      
+      Deleting a user is irreversible   be certain you want to fully remove the user and all references to the user (their ownership of assets, workflows, and so on) before running this operation. This operation can only be done using an admin user's bearer token, not an API token.
+    notes:
+      - type: warning
+        title: "Irreversible operation that requires admin user's bearer token"
+        content: >-
+          Deleting a user is irreversible   be certain you want to fully remove the user and all references to the user (their ownership of assets, workflows, and so on) before running this operation. This operation can only be done using an admin user's bearer token, not an API token.

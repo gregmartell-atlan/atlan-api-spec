@@ -1,0 +1,19 @@
+# Use Case: Sigma assets package
+# Auto-generated from: https://developer.atlan.com/snippets/workflows/packages/sigma-assets/
+# Generated at: 2026-01-13T02:58:00.319Z
+
+id: workflows-packages-sigma-assets
+title: "Sigma assets package"
+category: workflows
+icon: zap
+relatedTypes:
+  - Workflow
+  - WorkflowRun
+
+description: >-
+  Configure and run Sigma package workflows. This package crawls metadata from Sigma and syncs it to your Atlan catalog.
+
+externalDocs:
+  url: https://developer.atlan.com/snippets/workflows/packages/sigma-assets/
+  description: Official Atlan documentation
+

@@ -1,0 +1,46 @@
+post:
+  operationId: getLineage
+  summary: Get lineage graph (alternative endpoint)
+  description: |
+    Alternative lineage traversal endpoint. Functionally similar to `/api/meta/lineage/list`.
+
+    ## Use cases
+    - [Lineage – Traverse](https://developer.atlan.com/snippets/common-examples/lineage/traverse/)
+  externalDocs:
+    url: https://developer.atlan.com/snippets/common-examples/lineage/traverse/
+    description: Traversing lineage – Raw REST API examples
+  tags:
+    - Lineage – Traverse
+  security:
+    - AtlanToken: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/Lineage.yaml#/LineageListRequest'
+  responses:
+    '200':
+      description: Lineage graph
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Lineage.yaml#/LineageListResponse'
+    '400':
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '401':
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '500':
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'

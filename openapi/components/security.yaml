@@ -1,0 +1,22 @@
+securitySchemes:
+  AtlanToken:
+    type: http
+    scheme: bearer
+    bearerFormat: opaque
+    description: |
+      Atlan API token. Generate in **Atlan Settings → API Tokens**.
+
+      Example:
+      ```
+      Authorization: Bearer atlan-api-1234567890abcdef...
+      ```
+
+  AtlanOAuthClient:
+    type: oauth2
+    description: |
+      OAuth 2.0 client credentials flow. The resulting access token is still
+      presented via `Authorization: Bearer ...`.
+    flows:
+      clientCredentials:
+        tokenUrl: /api/service/oauth-clients/token
+        scopes: {}

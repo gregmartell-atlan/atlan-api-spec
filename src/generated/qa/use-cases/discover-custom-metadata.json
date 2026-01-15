@@ -1,0 +1,21 @@
+{
+  "useCase": "discover-custom-metadata",
+  "description": "API calls for discover-custom-metadata",
+  "steps": [
+    {
+      "step": 1,
+      "endpoint": "GET /api/meta/types/typedefs?type=businessMetadata",
+      "response": {
+        "status": 200,
+        "body": {
+          "enumDefs": [],
+          "structDefs": [],
+          "classificationDefs": [],
+          "entityDefs": [],
+          "relationshipDefs": [],
+          "businessMetadataDefs": []
+        }
+      }
+    }
+  ]
+}

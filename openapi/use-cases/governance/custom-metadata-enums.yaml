@@ -1,0 +1,177 @@
+id: custom-metadata-enums
+title: Manage options (enumerations)
+category: governance
+icon: zap
+relatedTypes:
+  - BusinessMetadataDef
+  - ClassificationDef
+description: Options (or enumerations) in Atlan allow you to define a set of valid values for custom metadata attributes. Like other objects in the SDK, enumerations implement the builder pattern. This allows you to progressively build-up the list of values you want to create.
+externalDocs:
+  url: https://developer.atlan.com/snippets/custom-metadata/enums/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Build minimal object needed
+    description: |-
+      1.3.3 1.0.0
+      For example, to create an enumeration to capture a data quality dimension:
+    method: POST
+    endpoint: /api/meta/types/typedefs
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/types/typedefs
+        request:
+          enumDefs:
+            - category: ENUM
+              name: DataQualityDimensions
+              elementDefs:
+                - value: Accuracy
+                  ordinal: 0
+                - value: Completeness
+                  ordinal: 1
+                - value: Consistency
+                  ordinal: 2
+                - value: Timeliness
+                  ordinal: 3
+                - value: Validity
+                  ordinal: 4
+                - value: Uniqueness
+                  ordinal: 5
+  - step: 2
+    title: Create the enumeration from the object
+    description: |-
+      1.3.3 4.0.0
+      Now that the object is built, this enumDef object will have the required information for Atlan to create it. You can then actually create the enumeration in Atlan by calling the create() method on the object itself:
+    notes:
+      - type: recommendation
+        title: Creation implicit in step above
+        content: The actual creation of the enumeration structure is implicit in the example above.
+  - step: 3
+    title: Use an enumeration in a custom metadata definition
+    description: |-
+      7.0.0 4.0.0
+      To use an enumeration to restrain the values for an attribute in a custom metadata definition:
+    method: POST
+    endpoint: /api/meta/types/typedefs
+    examples:
+      - key: example-3-1
+        summary: POST /api/meta/types/typedefs
+        request:
+          businessMetadataDefs:
+            - category: BUSINESS_METADATA
+              name: DQ
+              attributeDefs:
+                - name: ""
+                  displayName: Dimension
+                  description: ""
+                  typeName: DataQualityDimensions
+                  isOptional: true
+                  cardinality: SINGLE
+                  valuesMinCount: 0
+                  valuesMaxCount: 1
+                  isUnique: false
+                  isIndexable: true
+                  includeInNotification: false
+                  options:
+                    applicableEntityTypes: "[\"Asset\"]"
+                    customApplicableEntityTypes: "[\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\",\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\"]"
+                    allowSearch: false
+                    maxStrLength: "100000000"
+                    allowFiltering: true
+                    multiValueSelect: false
+                    showInOverview: false
+                    primitiveType: enum
+                    isEnum: true
+                    enumType: DataQualityDimensions
+                  isNew: true
+                  enumValues:
+                    - Accuracy
+                    - Completeness
+                    - Consistency
+                    - Timeliness
+                    - Validity
+                    - Uniqueness
+              displayName: DQ
+              options:
+                logoType: emoji
+                emoji: 🔖
+  - step: 4
+    title: Update options (enumerations)
+    description: |-
+      7.0.0 4.0.0
+      For example, to update our data quality dimension enumeration by adding a new set of valid values.
+    method: PUT
+    endpoint: /api/meta/types/typedefs
+    examples:
+      - key: example-4-1
+        summary: PUT /api/meta/types/typedefs
+        request:
+          enumDefs:
+            - category: ENUM
+              name: DataQualityDimensions
+              elementDefs:
+                - value: Accuracy
+                  ordinal: 0
+                - value: Completeness
+                  ordinal: 1
+                - value: Consistency
+                  ordinal: 2
+                - value: Timeliness
+                  ordinal: 3
+                - value: Validity
+                  ordinal: 4
+                - value: Uniqueness
+                  ordinal: 5
+                - value: Unknown
+                  ordinal: 6
+                - value: Others
+                  ordinal: 7
+  - step: 5
+    title: Retrieve options (enumerations)
+    description: |-
+      2.1.0 1.0.0
+      To retrieve options (enumeration) by name:
+    notes:
+      - type: recommendation
+        title: Options (enumerations) do not have a hashed-string representation
+        content: |-
+          Note that unlike a custom metadata structure, options (enumerations) do not have a hashed-string name. Therefore, use their human-readable name when retrieving its structure.
+          URL-encoding However, since this name is embedded in the URL for retrieval, it does need to be url-encoded. For example, if the name contains spaces these need to be replaced with %20.
+    method: GET
+    endpoint: /api/meta/types/typedef/name/DataQualityDimensions
+    examples:
+      - key: example-5-1
+        summary: GET /api/meta/types/typedef/name/DataQualityDimensions
+  - step: 6
+    title: Retrieve all options (enumerations)
+    description: |-
+      1.3.3 4.0.0
+      To retrieve all options (enumeration):
+    method: GET
+    endpoint: /api/meta/types/typedefs/
+    queryString: type=ENUM
+    examples:
+      - key: example-6-1
+        summary: GET /api/meta/types/typedefs/
+        response:
+          classificationDefs: []
+          businessMetadataDefs: []
+          enumDefs: []
+          entityDefs: []
+          relationshipDefs: []
+  - step: 7
+    title: Delete options (enumerations)
+    description: |-
+      1.3.3 4.0.0
+      To delete options (enumeration):
+    notes:
+      - type: recommendation
+        title: Options (enumerations) do not have a hashed-string representation
+        content: |-
+          Note that unlike a custom metadata structure, options (enumerations) do not have a hashed-string name. Therefore, use their human-readable name when deleting.
+          URL-encoding However, since this name is embedded in the URL for deletion, it does need to be url-encoded. For example, if the name contains spaces these need to be replaced with %20.
+    method: DELETE
+    endpoint: /api/meta/types/typedef/name/DataQualityDimensions
+    examples:
+      - key: example-7-1
+        summary: DELETE /api/meta/types/typedef/name/DataQualityDimensions

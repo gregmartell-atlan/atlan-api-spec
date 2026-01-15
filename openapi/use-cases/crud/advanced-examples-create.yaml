@@ -1,0 +1,107 @@
+id: advanced-examples-create
+title: Creating an asset
+category: crud
+icon: zap
+relatedTypes:
+  - Asset
+description: |-
+  All objects in the SDK that you can create within Atlan implement the builder pattern. This allows you to progressively build-up the object you want to create. In addition, each object provides a method that takes the minimal set of required fields to create that asset.
+  Each type of asset has a different containment hierarchy
+  Every asset in Atlan can have slightly different parent objects in which they exist. For example, a GlossaryTerm cannot exist outside a Glossary. A Column cannot exist ou
+externalDocs:
+  url: https://developer.atlan.com/snippets/advanced-examples/create/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Build minimal object needed
+    description: |-
+      2.0.0 1.0.0
+      For example, to create a glossary term you need to provide the name of the term and either the GUID or qualifiedName of the glossary in which to create the term:
+    notes:
+      - type: recommendation
+        title: Implicit in the API calls below
+        content: There is nothing specific to do for this step when using the raw APIs   constructing the object is simply what you place in the payload of the API calls in the steps below.
+  - step: 2
+    title: Create the asset from the object
+    description: |-
+      1.4.0 4.0.0
+      This term object will have the minimal required information for Atlan to create it. You must then actually persist the object in Atlan1:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-2-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AtlasGlossaryTerm
+              attributes:
+                name: Example Term
+                qualifiedName: Example Term
+                anchor:
+                  typeName: AtlasGlossary
+                  guid: b4113341-251b-4adc-81fb-2420501c30e6
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: AtlasGlossaryTerm
+                attributes:
+                  qualifiedName: be81ac35-d93f-4b4b-a49a-b1c7046e575d
+                  name: Example Term
+                guid: be81ac35-d93f-4b4b-a49a-b1c7046e575d
+                status: ACTIVE
+                relationshipAttributes:
+                  anchor:
+                    guid: b4113341-251b-4adc-81fb-2420501c30e6
+                    typeName: AtlasGlossary
+                    displayText: Example Glossary
+          guidAssignments:
+            "-1234567890": be81ac35-d93f-4b4b-a49a-b1c7046e575d
+  - step: 3
+    title: (Optional) Enrich before creating
+    description: |-
+      2.0.0 4.0.0
+      If you want to further enrich the asset before creating it, you can do this using the builder pattern:
+    notes:
+      - type: warning
+        title: Assign the result back
+        content: Remember to assign the result of the build() operation back to a variable! (In the example above this happens on line 5 with GlossaryTerm term =.)
+      - type: warning
+        title: Assign the result back
+        content: Remember to assign the result of the build() operation back to a variable! (In the example above this happens on line 6 with val term =.)
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-3-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AtlasGlossaryTerm
+              attributes:
+                name: Example Term
+                qualifiedName: Example Term
+                anchor:
+                  typeName: AtlasGlossary
+                  guid: b4113341-251b-4adc-81fb-2420501c30e6
+                certificateStatus: VERIFIED
+                announcementType: information
+                announcementTitle: Imported
+                announcementMessage: This term was imported from...
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: AtlasGlossaryTerm
+                attributes:
+                  qualifiedName: Example Term
+                  name: Example Term
+                  certificateStatus: VERIFIED
+                  announcementType: information
+                  announcementTitle: Imported
+                  announcementMessage: This term was imported from...
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+                relationshipAttributes:
+                  anchor:
+                    guid: b4113341-251b-4adc-81fb-2420501c30e6
+                    typeName: AtlasGlossary
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000

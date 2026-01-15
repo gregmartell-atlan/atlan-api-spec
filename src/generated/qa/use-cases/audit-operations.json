@@ -1,0 +1,522 @@
+{
+  "useCase": "audit-operations",
+  "description": "API calls for audit-operations",
+  "steps": [
+    {
+      "step": 1,
+      "endpoint": "POST /api/meta/entity/auditSearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "term": {
+              "entityId": "b9d5dbbc-ee8a-4c5e-a946-a47033892172"
+            }
+          },
+          "size": 10,
+          "sort": [
+            {
+              "timestamp": {
+                "order": "desc"
+              }
+            }
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "entityAudits": [
+            {
+              "entityQualifiedName": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP",
+              "typeName": "Table",
+              "entityId": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+              "timestamp": 1765929858468,
+              "created": 1765929858697,
+              "user": "service-account-atlan-argo",
+              "action": "ENTITY_UPDATE",
+              "details": null,
+              "eventKey": "b9d5dbbc-ee8a-4c5e-a946-a47033892172:1765929858468",
+              "entity": null,
+              "type": null,
+              "detail": {
+                "typeName": "Table",
+                "attributes": {
+                  "assetInternalPopularityScore": "1.0"
+                },
+                "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                "isIncomplete": false,
+                "provenanceType": 0,
+                "updatedBy": "service-account-atlan-argo",
+                "updateTime": 1765929858468,
+                "version": 0,
+                "superTypeNames": [],
+                "proxy": false
+              },
+              "entityDetail": {
+                "typeName": "Table",
+                "attributes": {},
+                "superTypeNames": [],
+                "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                "status": "ACTIVE",
+                "classifications": [],
+                "isIncomplete": false,
+                "createdBy": "ryan.quigley",
+                "updatedBy": "service-account-atlan-argo",
+                "createTime": 1747185436766,
+                "updateTime": 1765929858468
+              },
+              "headers": {
+                "x-atlan-request-id": "8e1558dd231aedc4f420b32453f25cc3",
+                "x-atlan-route": "attribute-update-rest",
+                "x-atlan-client-origin": "atlan_popularity_app",
+                "Content-Length": "5900"
+              }
+            },
+            {
+              "entityQualifiedName": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP",
+              "typeName": "Table",
+              "entityId": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+              "timestamp": 1764201818536,
+              "created": 1764201818756,
+              "user": "service-account-atlan-argo",
+              "action": "ENTITY_UPDATE",
+              "details": null,
+              "eventKey": "b9d5dbbc-ee8a-4c5e-a946-a47033892172:1764201818536",
+              "entity": null,
+              "type": null,
+              "detail": {
+                "typeName": "Table",
+                "attributes": {
+                  "assetInternalPopularityScore": "0.0"
+                },
+                "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                "isIncomplete": false,
+                "provenanceType": 0,
+                "updatedBy": "service-account-atlan-argo",
+                "updateTime": 1764201818536,
+                "version": 0,
+                "superTypeNames": [],
+                "proxy": false
+              },
+              "entityDetail": {
+                "typeName": "Table",
+                "attributes": {},
+                "superTypeNames": [],
+                "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                "status": "ACTIVE",
+                "classifications": [],
+                "isIncomplete": false,
+                "createdBy": "ryan.quigley",
+                "updatedBy": "service-account-atlan-argo",
+                "createTime": 1747185436766,
+                "updateTime": 1765929858468
+              },
+              "headers": {
+                "x-atlan-request-id": "fca53734ae5a93f06a41cf80bcd6d2cd",
+                "x-atlan-route": "attribute-update-rest",
+                "x-atlan-client-origin": "atlan_popularity_app",
+                "Content-Length": "5884"
+              }
+            },
+            {
+              "entityQualifiedName": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP",
+              "typeName": "Table",
+              "entityId": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+              "timestamp": 1764115384635,
+              "created": 1764115384881,
+              "user": "service-account-atlan-argo",
+              "action": "ENTITY_UPDATE",
+              "details": null,
+              "eventKey": "b9d5dbbc-ee8a-4c5e-a946-a47033892172:1764115384635",
+              "entity": null,
+              "type": null,
+              "detail": {
+                "typeName": "Table",
+                "attributes": {
+                  "assetInternalPopularityScore": "1.0527000427246094"
+                },
+                "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                "isIncomplete": false,
+                "provenanceType": 0,
+                "updatedBy": "service-account-atlan-argo",
+                "updateTime": 1764115384635,
+                "version": 0,
+                "superTypeNames": [],
+                "proxy": false
+              },
+              "entityDetail": {
+                "typeName": "Table",
+                "attributes": {},
+                "superTypeNames": [],
+                "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                "status": "ACTIVE",
+                "classifications": [],
+                "isIncomplete": false,
+                "createdBy": "ryan.quigley",
+                "updatedBy": "service-account-atlan-argo",
+                "createTime": 1747185436766,
+                "updateTime": 1765929858468
+              },
+              "headers": {
+                "x-atlan-request-id": "a46e873600c6904ffd79a8beecfd406d",
+                "x-atlan-route": "attribute-update-rest",
+                "x-atlan-client-origin": "atlan_popularity_app",
+                "Content-Length": "6270"
+              }
+            },
+            "... (7 more items)"
+          ],
+          "aggregations": null,
+          "count": 10,
+          "totalCount": 114,
+          "linkedEntities": {}
+        }
+      },
+      "duration": 9061
+    },
+    {
+      "step": 2,
+      "endpoint": "POST /api/meta/entity/auditSearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "term": {
+              "entityId": "b9d5dbbc-ee8a-4c5e-a946-a47033892172"
+            }
+          },
+          "size": 10,
+          "sort": [
+            {
+              "timestamp": {
+                "order": "desc"
+              }
+            }
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "entityAudits": [
+            {
+              "entityQualifiedName": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP",
+              "typeName": "Table",
+              "entityId": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+              "timestamp": 1765929858468,
+              "created": 1765929858697,
+              "user": "service-account-atlan-argo",
+              "action": "ENTITY_UPDATE",
+              "details": null,
+              "eventKey": "b9d5dbbc-ee8a-4c5e-a946-a47033892172:1765929858468",
+              "entity": null,
+              "type": null,
+              "detail": {
+                "typeName": "Table",
+                "attributes": {
+                  "assetInternalPopularityScore": "1.0"
+                },
+                "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                "isIncomplete": false,
+                "provenanceType": 0,
+                "updatedBy": "service-account-atlan-argo",
+                "updateTime": 1765929858468,
+                "version": 0,
+                "superTypeNames": [],
+                "proxy": false
+              },
+              "entityDetail": {
+                "typeName": "Table",
+                "attributes": {},
+                "superTypeNames": [],
+                "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                "status": "ACTIVE",
+                "classifications": [],
+                "isIncomplete": false,
+                "createdBy": "ryan.quigley",
+                "updatedBy": "service-account-atlan-argo",
+                "createTime": 1747185436766,
+                "updateTime": 1765929858468
+              },
+              "headers": {
+                "x-atlan-request-id": "8e1558dd231aedc4f420b32453f25cc3",
+                "x-atlan-route": "attribute-update-rest",
+                "x-atlan-client-origin": "atlan_popularity_app",
+                "Content-Length": "5900"
+              }
+            },
+            {
+              "entityQualifiedName": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP",
+              "typeName": "Table",
+              "entityId": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+              "timestamp": 1764201818536,
+              "created": 1764201818756,
+              "user": "service-account-atlan-argo",
+              "action": "ENTITY_UPDATE",
+              "details": null,
+              "eventKey": "b9d5dbbc-ee8a-4c5e-a946-a47033892172:1764201818536",
+              "entity": null,
+              "type": null,
+              "detail": {
+                "typeName": "Table",
+                "attributes": {
+                  "assetInternalPopularityScore": "0.0"
+                },
+                "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                "isIncomplete": false,
+                "provenanceType": 0,
+                "updatedBy": "service-account-atlan-argo",
+                "updateTime": 1764201818536,
+                "version": 0,
+                "superTypeNames": [],
+                "proxy": false
+              },
+              "entityDetail": {
+                "typeName": "Table",
+                "attributes": {},
+                "superTypeNames": [],
+                "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                "status": "ACTIVE",
+                "classifications": [],
+                "isIncomplete": false,
+                "createdBy": "ryan.quigley",
+                "updatedBy": "service-account-atlan-argo",
+                "createTime": 1747185436766,
+                "updateTime": 1765929858468
+              },
+              "headers": {
+                "x-atlan-request-id": "fca53734ae5a93f06a41cf80bcd6d2cd",
+                "x-atlan-route": "attribute-update-rest",
+                "x-atlan-client-origin": "atlan_popularity_app",
+                "Content-Length": "5884"
+              }
+            },
+            {
+              "entityQualifiedName": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP",
+              "typeName": "Table",
+              "entityId": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+              "timestamp": 1764115384635,
+              "created": 1764115384881,
+              "user": "service-account-atlan-argo",
+              "action": "ENTITY_UPDATE",
+              "details": null,
+              "eventKey": "b9d5dbbc-ee8a-4c5e-a946-a47033892172:1764115384635",
+              "entity": null,
+              "type": null,
+              "detail": {
+                "typeName": "Table",
+                "attributes": {
+                  "assetInternalPopularityScore": "1.0527000427246094"
+                },
+                "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                "isIncomplete": false,
+                "provenanceType": 0,
+                "updatedBy": "service-account-atlan-argo",
+                "updateTime": 1764115384635,
+                "version": 0,
+                "superTypeNames": [],
+                "proxy": false
+              },
+              "entityDetail": {
+                "typeName": "Table",
+                "attributes": {},
+                "superTypeNames": [],
+                "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                "status": "ACTIVE",
+                "classifications": [],
+                "isIncomplete": false,
+                "createdBy": "ryan.quigley",
+                "updatedBy": "service-account-atlan-argo",
+                "createTime": 1747185436766,
+                "updateTime": 1765929858468
+              },
+              "headers": {
+                "x-atlan-request-id": "a46e873600c6904ffd79a8beecfd406d",
+                "x-atlan-route": "attribute-update-rest",
+                "x-atlan-client-origin": "atlan_popularity_app",
+                "Content-Length": "6270"
+              }
+            },
+            "... (7 more items)"
+          ],
+          "aggregations": null,
+          "count": 10,
+          "totalCount": 114,
+          "linkedEntities": {}
+        }
+      },
+      "duration": 6619
+    },
+    {
+      "step": 3,
+      "endpoint": "POST /api/meta/entity/auditSearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "term": {
+              "entityId": "b9d5dbbc-ee8a-4c5e-a946-a47033892172"
+            }
+          },
+          "size": 10,
+          "sort": [
+            {
+              "timestamp": {
+                "order": "desc"
+              }
+            }
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "entityAudits": [
+            {
+              "entityQualifiedName": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP",
+              "typeName": "Table",
+              "entityId": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+              "timestamp": 1765929858468,
+              "created": 1765929858697,
+              "user": "service-account-atlan-argo",
+              "action": "ENTITY_UPDATE",
+              "details": null,
+              "eventKey": "b9d5dbbc-ee8a-4c5e-a946-a47033892172:1765929858468",
+              "entity": null,
+              "type": null,
+              "detail": {
+                "typeName": "Table",
+                "attributes": {
+                  "assetInternalPopularityScore": "1.0"
+                },
+                "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                "isIncomplete": false,
+                "provenanceType": 0,
+                "updatedBy": "service-account-atlan-argo",
+                "updateTime": 1765929858468,
+                "version": 0,
+                "superTypeNames": [],
+                "proxy": false
+              },
+              "entityDetail": {
+                "typeName": "Table",
+                "attributes": {},
+                "superTypeNames": [],
+                "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                "status": "ACTIVE",
+                "classifications": [],
+                "isIncomplete": false,
+                "createdBy": "ryan.quigley",
+                "updatedBy": "service-account-atlan-argo",
+                "createTime": 1747185436766,
+                "updateTime": 1765929858468
+              },
+              "headers": {
+                "x-atlan-request-id": "8e1558dd231aedc4f420b32453f25cc3",
+                "x-atlan-route": "attribute-update-rest",
+                "x-atlan-client-origin": "atlan_popularity_app",
+                "Content-Length": "5900"
+              }
+            },
+            {
+              "entityQualifiedName": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP",
+              "typeName": "Table",
+              "entityId": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+              "timestamp": 1764201818536,
+              "created": 1764201818756,
+              "user": "service-account-atlan-argo",
+              "action": "ENTITY_UPDATE",
+              "details": null,
+              "eventKey": "b9d5dbbc-ee8a-4c5e-a946-a47033892172:1764201818536",
+              "entity": null,
+              "type": null,
+              "detail": {
+                "typeName": "Table",
+                "attributes": {
+                  "assetInternalPopularityScore": "0.0"
+                },
+                "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                "isIncomplete": false,
+                "provenanceType": 0,
+                "updatedBy": "service-account-atlan-argo",
+                "updateTime": 1764201818536,
+                "version": 0,
+                "superTypeNames": [],
+                "proxy": false
+              },
+              "entityDetail": {
+                "typeName": "Table",
+                "attributes": {},
+                "superTypeNames": [],
+                "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                "status": "ACTIVE",
+                "classifications": [],
+                "isIncomplete": false,
+                "createdBy": "ryan.quigley",
+                "updatedBy": "service-account-atlan-argo",
+                "createTime": 1747185436766,
+                "updateTime": 1765929858468
+              },
+              "headers": {
+                "x-atlan-request-id": "fca53734ae5a93f06a41cf80bcd6d2cd",
+                "x-atlan-route": "attribute-update-rest",
+                "x-atlan-client-origin": "atlan_popularity_app",
+                "Content-Length": "5884"
+              }
+            },
+            {
+              "entityQualifiedName": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP",
+              "typeName": "Table",
+              "entityId": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+              "timestamp": 1764115384635,
+              "created": 1764115384881,
+              "user": "service-account-atlan-argo",
+              "action": "ENTITY_UPDATE",
+              "details": null,
+              "eventKey": "b9d5dbbc-ee8a-4c5e-a946-a47033892172:1764115384635",
+              "entity": null,
+              "type": null,
+              "detail": {
+                "typeName": "Table",
+                "attributes": {
+                  "assetInternalPopularityScore": "1.0527000427246094"
+                },
+                "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                "isIncomplete": false,
+                "provenanceType": 0,
+                "updatedBy": "service-account-atlan-argo",
+                "updateTime": 1764115384635,
+                "version": 0,
+                "superTypeNames": [],
+                "proxy": false
+              },
+              "entityDetail": {
+                "typeName": "Table",
+                "attributes": {},
+                "superTypeNames": [],
+                "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                "status": "ACTIVE",
+                "classifications": [],
+                "isIncomplete": false,
+                "createdBy": "ryan.quigley",
+                "updatedBy": "service-account-atlan-argo",
+                "createTime": 1747185436766,
+                "updateTime": 1765929858468
+              },
+              "headers": {
+                "x-atlan-request-id": "a46e873600c6904ffd79a8beecfd406d",
+                "x-atlan-route": "attribute-update-rest",
+                "x-atlan-client-origin": "atlan_popularity_app",
+                "Content-Length": "6270"
+              }
+            },
+            "... (7 more items)"
+          ],
+          "aggregations": null,
+          "count": 10,
+          "totalCount": 114,
+          "linkedEntities": {}
+        }
+      },
+      "duration": 8277
+    }
+  ]
+}

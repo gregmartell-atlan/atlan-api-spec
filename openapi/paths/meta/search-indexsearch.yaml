@@ -1,0 +1,2043 @@
+post:
+  operationId: searchAssets
+  summary: Search for assets
+  description: |
+    Search Atlan's metadata catalog using an Elasticsearch-style DSL.
+
+    This is the primary search endpoint used throughout Atlan for finding assets,
+    filtering by type, status, ownership, tags, and more.
+
+    See [Searching reference](https://developer.atlan.com/search/) for query patterns.
+
+    ## Use cases
+    - [Search assets](https://developer.atlan.com/snippets/common-examples/finding/)
+    - [Search examples](https://developer.atlan.com/snippets/common-examples/finding/examples/)
+  externalDocs:
+    url: https://developer.atlan.com/snippets/common-examples/finding/examples/
+    description: Search examples and patterns
+  tags:
+    - "Manage relationships"
+    - "Search assets"
+    - "Search examples"
+    - "Retrieve glossary by name"
+    - "Traverse glossary hierarchy"
+    - "Manage Data Domains"
+    - "Manage Data Products"
+    - "Manage personas"
+    - "Manage purposes"
+    - "Manage policies"
+  security:
+    - AtlanToken: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/Search.yaml#/MetaIndexSearchRequest'
+        examples:
+          manage_relationships_0:
+            summary: "Manage relationships - example 1"
+            x-useCaseTag: "Manage relationships"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/relationship-attributes/
+            x-atlanSnippet: |-
+              {
+                 "attributes": [
+                   "userDefRelationshipTo",  // (1)
+                   "userDefRelationshipFrom" // (2)
+                 ],
+                 "dsl": {
+                   "from": 0,
+                   "size": 100,
+                   "aggregations": {},
+                   "track_total_hits": true,
+                   "query": {
+                     "bool": {
+                       "must": [
+                         {
+                           "term": {
+                             "__superTypeNames.keyword": {
+                               "value": "Referenceable"
+                             }
+                           }
+                         }
+                       ],
+                       "should": [
+                         {
+                           "term": {
+                             "__guid": {
+                               "value": "f558a01a-2e16-440c-ba2d-fed2099e540a", // (3)
+                               "case_insensitive": false
+                             }
+                           }
+                         },
+                         {
+                           "term": {
+                             "__guid": {
+                               "value": "540ee0f6-bb26-4b1a-88b7-31cfc26746b4", // (4)
+                               "case_insensitive": false
+                             }
+                           }
+                         }
+                       ],
+                       "filter": [
+                         {
+                           "term": {
+                             "__superTypeNames.keyword": {
+                               "value": "Asset"
+                             }
+                           }
+                         },
+                         {
+                           "term": {
+                             "__state": {
+                               "value": "ACTIVE"
+                             }
+                           }
+                         },
+                         {
+                           "term": {
+                             "__superTypeNames.keyword": {
+                               "value": "Referenceable"
+                             }
+                           }
+                         }
+                       ],
+                       "minimum_should_match": 1
+                     }
+                   },
+                   "sort": [
+                     {
+                       "__guid": {
+                         "order": "asc"
+                       }
+                     }
+                   ]
+                 },
+                 "relationAttributes": [
+                   "name"
+                 ],
+                 "includeRelationshipAttributes": true // (5)
+              }
+            value:
+              attributes:
+                  - userDefRelationshipTo
+                  - userDefRelationshipFrom
+              dsl:
+                from: 0
+                size: 100
+                aggregations: {}
+                track_total_hits: true
+                query:
+                  bool:
+                    must:
+                        - term:
+                            __superTypeNames.keyword:
+                              value: Referenceable
+                    should:
+                        - term:
+                            __guid:
+                              value: f558a01a-2e16-440c-ba2d-fed2099e540a
+                              case_insensitive: false
+                        - term:
+                            __guid:
+                              value: 540ee0f6-bb26-4b1a-88b7-31cfc26746b4
+                              case_insensitive: false
+                    filter:
+                        - term:
+                            __superTypeNames.keyword:
+                              value: Asset
+                        - term:
+                            __state:
+                              value: ACTIVE
+                        - term:
+                            __superTypeNames.keyword:
+                              value: Referenceable
+                    minimum_should_match: 1
+                sort:
+                    - __guid:
+                        order: asc
+              relationAttributes:
+                  - name
+              includeRelationshipAttributes: true
+
+          search_assets_1:
+            summary: "Search assets - with count"
+            x-useCaseTag: "Search assets"
+            x-docUrl: https://developer.atlan.com/snippets/advanced-examples/search/
+            x-atlanSnippet: |-
+              {
+                "dsl": { // (1)
+                  "from": 0, // (2)
+                  "size": 100,
+                  "query": {
+                    // (3)
+                  },
+                  "track_total_hits": true // (4)
+                },
+                "attributes": [ // (5)
+                  "anchor"
+                ],
+                "relationAttributes": [ // (6)
+                  "certificateStatus"
+                ],
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false, // (7)
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                from: 0
+                size: 100
+                query: {}
+                track_total_hits: true
+              attributes:
+                  - anchor
+              relationAttributes:
+                  - certificateStatus
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          search_assets_2:
+            summary: "Search assets - with count"
+            x-useCaseTag: "Search assets"
+            x-docUrl: https://developer.atlan.com/snippets/advanced-examples/search/
+            x-atlanSnippet: |-
+              {
+                "dsl": { // (1)
+                  "from": 0, // (2)
+                  "size": 100,
+                  "query": {
+                    // (3)
+                  },
+                  "track_total_hits": true // (4)
+                },
+                "attributes": [ // (5)
+                  "anchor"
+                ],
+                "relationAttributes": [ // (6)
+                  "certificateStatus"
+                ],
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false, // (7)
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                from: 0
+                size: 100
+                query: {}
+                track_total_hits: true
+              attributes:
+                  - anchor
+              relationAttributes:
+                  - certificateStatus
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          search_examples_3:
+            summary: "Search examples - with count"
+            x-useCaseTag: "Search examples"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/finding/examples/
+            x-atlanSnippet: |-
+              {
+                "dsl": { // (1)
+                  "query": {
+                    "bool": { // (2)
+                      "filter": [ // (3)
+                        {
+                          "term": { // (4)
+                            "__state": {
+                              "value": "ACTIVE"
+                            }
+                          }
+                        },
+                        {
+                          "term": { // (5)
+                            "__typeName.keyword": {
+                              "value": "Connection"
+                            }
+                          }
+                        },
+                        {
+                          "term": { // (6)
+                            "name.keyword": {
+                              "value": "production"
+                            }
+                          }
+                        },
+                        {
+                          "term": { // (7)
+                            "connectorName": {
+                              "value": "snowflake"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "track_total_hits": true
+                },
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false,
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                query:
+                  bool:
+                    filter:
+                        - term:
+                            __state:
+                              value: ACTIVE
+                        - term:
+                            __typeName.keyword:
+                              value: Connection
+                        - term:
+                            name.keyword:
+                              value: production
+                        - term:
+                            connectorName:
+                              value: snowflake
+                track_total_hits: true
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          search_examples_4:
+            summary: "Search examples - with count"
+            x-useCaseTag: "Search examples"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/finding/examples/
+            x-atlanSnippet: |-
+              {
+                "dsl": { // (1)
+                  "from": 0,
+                  "size": 100,
+                  "query": {
+                    "bool": { // (2)
+                      "filter": [ // (3)
+                        {
+                          "term": { // (4)
+                            "__typeName.keyword": {
+                              "value": "Connection"
+                            }
+                          }
+                        },
+                        {
+                          "term": {
+                            "__state": { // (5)
+                              "value": "ACTIVE"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "track_total_hits": true
+                },
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false,
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                from: 0
+                size: 100
+                query:
+                  bool:
+                    filter:
+                        - term:
+                            __typeName.keyword:
+                              value: Connection
+                        - term:
+                            __state:
+                              value: ACTIVE
+                track_total_hits: true
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          search_examples_5:
+            summary: "Search examples - with count"
+            x-useCaseTag: "Search examples"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/finding/examples/
+            x-atlanSnippet: |-
+              {
+                "dsl": { // (1)
+                  "query": {
+                    "bool": { // (2)
+                      "filter": [ // (3)
+                        {
+                          "prefix": { // (4)
+                            "qualifiedName": {
+                              "value": "default/snowflake/1662194632/MYDB/MY_SCH"
+                            }
+                          }
+                        },
+                        {
+                          "term": { // (5)
+                            "__typeName.keyword": {
+                              "value": "Column"
+                            }
+                          }
+                        },
+                        {
+                          "term": { // (6)
+                            "__state": {
+                              "value": "ACTIVE"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "from": 0, // (7)
+                  "size": 100,
+                  "track_total_hits": true
+                },
+                "attributes": [ // (8)
+                  "description"
+                ],
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false,
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                query:
+                  bool:
+                    filter:
+                        - prefix:
+                            qualifiedName:
+                              value: default/snowflake/1662194632/MYDB/MY_SCH
+                        - term:
+                            __typeName.keyword:
+                              value: Column
+                        - term:
+                            __state:
+                              value: ACTIVE
+                from: 0
+                size: 100
+                track_total_hits: true
+              attributes:
+                  - description
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          search_examples_6:
+            summary: "Search examples - with count"
+            x-useCaseTag: "Search examples"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/finding/examples/
+            x-atlanSnippet: |-
+              {
+                "dsl": { // (1)
+                  "query": { // (2)
+                    "exists": { // (3)
+                      "field": "omrIzGB4oYlZrFKfTIUz6D" // (4)
+                    }
+                  },
+                  "track_total_hits": true
+                },
+                "attributes": [
+                  "UQot6bU4XcGcIx8gAQ1dsW.omrIzGB4oYlZrFKfTIUz6D" // (5)
+                ],
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false,
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                query:
+                  exists:
+                    field: omrIzGB4oYlZrFKfTIUz6D
+                track_total_hits: true
+              attributes:
+                  - UQot6bU4XcGcIx8gAQ1dsW.omrIzGB4oYlZrFKfTIUz6D
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          search_examples_7:
+            summary: "Search examples - with count"
+            x-useCaseTag: "Search examples"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/finding/examples/
+            x-atlanSnippet: |-
+              {
+                "dsl": { // (1)
+                  "query": { // (2)
+                    "term": { // (3)
+                      "omrIzGB4oYlZrFKfTIUz6D": { // (4)
+                        "value": "This exact value" // (5)
+                      }
+                    }
+                  },
+                  "track_total_hits": true
+                },
+                "attributes": [
+                  "UQot6bU4XcGcIx8gAQ1dsW.omrIzGB4oYlZrFKfTIUz6D" // (6)
+                ],
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false,
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                query:
+                  term:
+                    omrIzGB4oYlZrFKfTIUz6D:
+                      value: This exact value
+                track_total_hits: true
+              attributes:
+                  - UQot6bU4XcGcIx8gAQ1dsW.omrIzGB4oYlZrFKfTIUz6D
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          search_examples_8:
+            summary: "Search examples - with count"
+            x-useCaseTag: "Search examples"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/finding/examples/
+            x-atlanSnippet: |-
+              {
+                "dsl": { // (1)
+                  "query": { // (2)
+                    "terms": { // (3)
+                      "__meanings": [ // (4)
+                        "5h2wMbSbWtRN1V1b05Mtb@LD5Tb30qbuYCZKsmFRpmS" // (5)
+                      ]
+                    }
+                  },
+                  "track_total_hits": true
+                },
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false,
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                query:
+                  terms:
+                    __meanings:
+                        - 5h2wMbSbWtRN1V1b05Mtb@LD5Tb30qbuYCZKsmFRpmS
+                track_total_hits: true
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          search_examples_9:
+            summary: "Search examples - with count"
+            x-useCaseTag: "Search examples"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/finding/examples/
+            x-atlanSnippet: |-
+              {
+                "dsl": { // (1)
+                  "query": {
+                    "bool": { // (2)
+                      "minimum_should_match": "1", // (3)
+                      "should": [ // (4)
+                        {
+                          "terms": {
+                            "__traitNames": [ // (4)
+                              "wAI4bROOqCQzES8HCNso9F" // (5)
+                            ]
+                          }
+                        },
+                        {
+                          "terms": {
+                            "__propagatedTraitNames": [ // (6)
+                              "wAI4bROOqCQzES8HCNso9F" // (7)
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "track_total_hits": true
+                },
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false,
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                query:
+                  bool:
+                    minimum_should_match: "1"
+                    should:
+                        - terms:
+                            __traitNames:
+                                - wAI4bROOqCQzES8HCNso9F
+                        - terms:
+                            __propagatedTraitNames:
+                                - wAI4bROOqCQzES8HCNso9F
+                track_total_hits: true
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          search_examples_10:
+            summary: "Search examples - with count"
+            x-useCaseTag: "Search examples"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/finding/examples/
+            x-atlanSnippet: |-
+              {
+                "dsl": { // (1)
+                  "query": {
+                    "bool": { // (2)
+                      "filter": [
+                        {
+                          "term": {
+                            "__traitNames": { // (3)
+                              "value": "Z96sGJrF0S68PxYTUdKG6b", // (4)
+                              "case_insensitive": false
+                            }
+                          }
+                        },
+                        {
+                          "span_within": { // (5)
+                            "big": {
+                              "span_near": {
+                                "clauses": [
+                                  {
+                                    "span_term": {
+                                      "__classificationsText.text": { // (6)
+                                        "value": "Z96sGJrF0S68PxYTUdKG6b"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "span_term": {
+                                      "__classificationsText.text": { // (7)
+                                        "value": "default/snowflake/1726834662/ANALYTICS/WIDE_WORLD_IMPORTERS/CONFIDENTIAL"
+                                      }
+                                    }
+                                  }
+                                ],
+                                "in_order": true,
+                                "slop": 10000000
+                              }
+                            },
+                            "little": {
+                              "span_near": {
+                                "clauses": [
+                                  {
+                                    "span_term": {
+                                      "__classificationsText.text": { // (8)
+                                        "value": "tagAttachmentValue"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "span_term": {
+                                      "__classificationsText.text": {
+                                        "value": "Highly" // (9)
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "span_term": {
+                                      "__classificationsText.text": {
+                                        "value": "Restricted"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "span_term": {
+                                      "__classificationsText.text": {
+                                        "value": "tagAttachmentKey" // (10)
+                                      }
+                                    }
+                                  }
+                                ],
+                                "in_order": true,
+                                "slop": 0
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "track_total_hits": true
+                },
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false,
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                query:
+                  bool:
+                    filter:
+                        - term:
+                            __traitNames:
+                              value: Z96sGJrF0S68PxYTUdKG6b
+                              case_insensitive: false
+                        - span_within:
+                            big:
+                              span_near:
+                                clauses:
+                                    - span_term:
+                                        __classificationsText.text:
+                                          value: Z96sGJrF0S68PxYTUdKG6b
+                                    - span_term:
+                                        __classificationsText.text:
+                                          value: default/snowflake/1726834662/ANALYTICS/WIDE_WORLD_IMPORTERS/CONFIDENTIAL
+                                in_order: true
+                                slop: 10000000
+                            little:
+                              span_near:
+                                clauses:
+                                    - span_term:
+                                        __classificationsText.text:
+                                          value: tagAttachmentValue
+                                    - span_term:
+                                        __classificationsText.text:
+                                          value: Highly
+                                    - span_term:
+                                        __classificationsText.text:
+                                          value: Restricted
+                                    - span_term:
+                                        __classificationsText.text:
+                                          value: tagAttachmentKey
+                                in_order: true
+                                slop: 0
+                track_total_hits: true
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          search_examples_11:
+            summary: "Search examples - with count"
+            x-useCaseTag: "Search examples"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/finding/examples/
+            x-atlanSnippet: |-
+              {
+                "dsl": { // (1)
+                  "query": { // (2)
+                    "term": { // (3)
+                      "certificateStatus": { // (4)
+                        "value": "DEPRECATED" // (5)
+                      }
+                    }
+                  },
+                  "track_total_hits": true
+                },
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false,
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                query:
+                  term:
+                    certificateStatus:
+                      value: DEPRECATED
+                track_total_hits: true
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          search_examples_12:
+            summary: "Search examples - with count"
+            x-useCaseTag: "Search examples"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/finding/examples/
+            x-atlanSnippet: |-
+              {
+                "dsl": { // (1)
+                  "query": {
+                    "bool": { // (2)
+                      "filter": [ // (3)
+                        {
+                          "term": {
+                            "certificateStatus": { // (4)
+                              "value": "VERIFIED"
+                            }
+                          }
+                        }
+                      ],
+                      "must_not": [ // (5)
+                        {
+                          "exists": {
+                            "field": "description"
+                          }
+                        },
+                        {
+                          "exists": {
+                            "field": "userDescription"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "track_total_hits": true
+                },
+                "attributes": [
+                  "ownerUsers", // (6)
+                  "ownerGroups" // (7)
+                ],
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false,
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                query:
+                  bool:
+                    filter:
+                        - term:
+                            certificateStatus:
+                              value: VERIFIED
+                    must_not:
+                        - exists:
+                            field: description
+                        - exists:
+                            field: userDescription
+                track_total_hits: true
+              attributes:
+                  - ownerUsers
+                  - ownerGroups
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          retrieve_glossary_by_name_13:
+            summary: "Retrieve glossary by name - example 4"
+            x-useCaseTag: "Retrieve glossary by name"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/glossary/retrieve-by-name/
+            x-atlanSnippet: |-
+              {
+                "dsl": { // (1)
+                  "from": 0,
+                  "size": 2,
+                  "query": {
+                    "bool": {
+                      "filter": [
+                        {
+                          "term": {
+                            "__state": {
+                              "value": "ACTIVE"
+                            }
+                          }
+                        },
+                        {
+                          "term": { // (2)
+                            "__typeName.keyword": {
+                              "value": "AtlasGlossary"
+                            }
+                          }
+                        },
+                        {
+                          "term": { // (3)
+                            "name.keyword": {
+                              "value": "Concepts"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "track_total_hits": true
+                },
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false,
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                from: 0
+                size: 2
+                query:
+                  bool:
+                    filter:
+                        - term:
+                            __state:
+                              value: ACTIVE
+                        - term:
+                            __typeName.keyword:
+                              value: AtlasGlossary
+                        - term:
+                            name.keyword:
+                              value: Concepts
+                track_total_hits: true
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          retrieve_glossary_by_name_14:
+            summary: "Retrieve glossary by name - example 5"
+            x-useCaseTag: "Retrieve glossary by name"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/glossary/retrieve-by-name/
+            x-atlanSnippet: |-
+              {
+                "dsl": { // (1)
+                  "from": 0,
+                  "size": 2,
+                  "query": {
+                    "bool": {
+                      "filter": [
+                        {
+                          "term": {
+                            "__state": {
+                              "value": "ACTIVE"
+                            }
+                          }
+                        },
+                        {
+                          "term": { // (2)
+                            "__typeName.keyword": {
+                              "value": "AtlasGlossaryCategory"
+                            }
+                          }
+                        },
+                        {
+                          "term": { // (3)
+                            "name.keyword": {
+                              "value": "Finance"
+                            }
+                          }
+                        },
+                        {
+                          "term": { // (4)
+                            "__glossary": {
+                              "value": "LD5Tb30qbuYCZKsmFRpmS"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "track_total_hits": true
+                },
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false,
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                from: 0
+                size: 2
+                query:
+                  bool:
+                    filter:
+                        - term:
+                            __state:
+                              value: ACTIVE
+                        - term:
+                            __typeName.keyword:
+                              value: AtlasGlossaryCategory
+                        - term:
+                            name.keyword:
+                              value: Finance
+                        - term:
+                            __glossary:
+                              value: LD5Tb30qbuYCZKsmFRpmS
+                track_total_hits: true
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          retrieve_glossary_by_name_15:
+            summary: "Retrieve glossary by name - example 1"
+            x-useCaseTag: "Retrieve glossary by name"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/glossary/retrieve-by-name/
+            x-atlanSnippet: |-
+              {
+                "dsl": { // (1)
+                  "from": 0,
+                  "size": 2,
+                  "query": {
+                    "bool": {
+                      "filter": [
+                        {
+                          "term": {
+                            "__state": {
+                              "value": "ACTIVE"
+                            }
+                          }
+                        },
+                        {
+                          "term": { // (2)
+                            "__typeName.keyword": {
+                              "value": "AtlasGlossaryTerm"
+                            }
+                          }
+                        },
+                        {
+                          "term": { // (3)
+                            "name.keyword": {
+                              "value": "Revenue"
+                            }
+                          }
+                        },
+                        {
+                          "term": { // (4)
+                            "__glossary": {
+                              "value": "LD5Tb30qbuYCZKsmFRpmS"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "track_total_hits": true
+                },
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false,
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                from: 0
+                size: 2
+                query:
+                  bool:
+                    filter:
+                        - term:
+                            __state:
+                              value: ACTIVE
+                        - term:
+                            __typeName.keyword:
+                              value: AtlasGlossaryTerm
+                        - term:
+                            name.keyword:
+                              value: Revenue
+                        - term:
+                            __glossary:
+                              value: LD5Tb30qbuYCZKsmFRpmS
+                track_total_hits: true
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          traverse_glossary_hierarchy_16:
+            summary: "Traverse glossary hierarchy - example 2"
+            x-useCaseTag: "Traverse glossary hierarchy"
+            x-docUrl: https://developer.atlan.com/snippets/common-examples/glossary/hierarchy/
+            x-atlanSnippet: |-
+              {
+                "dsl": { // (1)
+                  "from": 0, // (2)
+                  "size": 20, // (3)
+                  "query": {
+                    "bool": {
+                      "filter": [
+                        {
+                          "term": { // (4)
+                            "__state": {
+                              "value": "ACTIVE"
+                            }
+                          }
+                        },
+                        {
+                          "term": { // (5)
+                            "__typeName.keyword": {
+                              "value": "AtlasGlossaryCategory"
+                            }
+                          }
+                        },
+                        {
+                          "term": { // (6)
+                            "__glossary": {
+                              "value": "LD5Tb30qbuYCZKsmFRpmS"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "sort": [ // (7)
+                    {
+                      "name.keyword": {
+                        "order": "asc"
+                      }
+                    }
+                  ],
+                  "track_total_hits": true
+                },
+                "attributes": [
+                  "parentCategory" // (8)
+                ],
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false,
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                from: 0
+                size: 20
+                query:
+                  bool:
+                    filter:
+                        - term:
+                            __state:
+                              value: ACTIVE
+                        - term:
+                            __typeName.keyword:
+                              value: AtlasGlossaryCategory
+                        - term:
+                            __glossary:
+                              value: LD5Tb30qbuYCZKsmFRpmS
+                sort:
+                    - name.keyword:
+                        order: asc
+                track_total_hits: true
+              attributes:
+                  - parentCategory
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          manage_data_domains_17:
+            summary: "Manage Data Domains - example 3"
+            x-useCaseTag: "Manage Data Domains"
+            x-docUrl: https://developer.atlan.com/snippets/datamesh/datadomains/
+            x-atlanSnippet: |-
+              {
+                "dsl": {
+                  "from": 0,
+                  "size": 100,
+                  "aggregations": {},
+                  "track_total_hits": true,
+                  "query": {
+                    "bool": {
+                      "filter": [
+                        {
+                          "term": {
+                            "name.keyword": {
+                              "value": "marketing" // (1)
+                            }
+                          }
+                        },
+                        {
+                          "term": {
+                            "__typeName.keyword": {
+                              "value": "DataDomain"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "sort": [
+                    {
+                      "__guid": {
+                        "order": "asc"
+                      }
+                    }
+                  ]
+                },
+                "attributes": [
+                  "certificateStatus"  // (2)
+                ]
+              }
+            value:
+              dsl:
+                from: 0
+                size: 100
+                aggregations: {}
+                track_total_hits: true
+                query:
+                  bool:
+                    filter:
+                        - term:
+                            name.keyword:
+                              value: marketing
+                        - term:
+                            __typeName.keyword:
+                              value: DataDomain
+                sort:
+                    - __guid:
+                        order: asc
+              attributes:
+                  - certificateStatus
+
+          manage_data_products_18:
+            summary: "Manage Data Products - example 4"
+            x-useCaseTag: "Manage Data Products"
+            x-docUrl: https://developer.atlan.com/snippets/datamesh/dataproducts/
+            x-atlanSnippet: |-
+              {
+                "dsl": {
+                  "from": 0,
+                  "size": 100,
+                  "aggregations": {},
+                  "track_total_hits": true,
+                  "query": {
+                    "bool": {
+                      "filter": [
+                        {
+                          "term": {
+                            "name.keyword": {
+                              "value": "marketingInfluence" // (1)
+                            }
+                          }
+                        },
+                        {
+                          "term": {
+                            "__typeName.keyword": {
+                              "value": "DataProduct"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "sort": [
+                    {
+                      "__guid": {
+                        "order": "asc"
+                      }
+                    }
+                  ]
+                },
+                "attributes": [
+                  "certificateStatus"  // (2)
+                ]
+              }
+            value:
+              dsl:
+                from: 0
+                size: 100
+                aggregations: {}
+                track_total_hits: true
+                query:
+                  bool:
+                    filter:
+                        - term:
+                            name.keyword:
+                              value: marketingInfluence
+                        - term:
+                            __typeName.keyword:
+                              value: DataProduct
+                sort:
+                    - __guid:
+                        order: asc
+              attributes:
+                  - certificateStatus
+
+          manage_data_products_19:
+            summary: "Manage Data Products - example 5"
+            x-useCaseTag: "Manage Data Products"
+            x-docUrl: https://developer.atlan.com/snippets/datamesh/dataproducts/
+            x-atlanSnippet: |-
+              {
+                "dsl": {
+                  "from": 0,
+                  "size": 100,
+                  "aggregations": {},
+                  "track_total_hits": true,
+                  "query": {
+                    "bool": {
+                      "filter": {
+                        "bool": {
+                          "filter": [  // (1)
+                            {
+                              "term": {
+                                "__state": {
+                                  "value": "ACTIVE",
+                                  "case_insensitive": false 
+                                }
+                              }
+                            },
+                            {
+                              "term": {
+                                "__typeName.keyword": {
+                                  "value": "Table", 
+                                  "case_insensitive": false 
+                                }
+                              }
+                            }
+                          ]
+                      }
+                      }
+                    }
+                  },
+                  "sort": []
+                },
+                "attributes": [ // (2)
+                  "certificateStatus","connectorName", 
+                  "__customAttributes", "certificateStatus", 
+                ]
+              }
+            value:
+              dsl:
+                from: 0
+                size: 100
+                aggregations: {}
+                track_total_hits: true
+                query:
+                  bool:
+                    filter:
+                      bool:
+                        filter:
+                            - term:
+                                __state:
+                                  value: ACTIVE
+                                  case_insensitive: false
+                            - term:
+                                __typeName.keyword:
+                                  value: Table
+                                  case_insensitive: false
+                sort: []
+              attributes:
+                  - certificateStatus
+                  - connectorName
+                  - __customAttributes
+                  - certificateStatus
+
+          manage_personas_20:
+            summary: "Manage personas - example 1"
+            x-useCaseTag: "Manage personas"
+            x-docUrl: https://developer.atlan.com/snippets/access/personas/
+            x-atlanSnippet: |-
+              {
+                "dsl": {
+                  "query": { // (1)
+                    "bool": {
+                      "filter": [
+                        {
+                          "term": {
+                            "__state": {
+                              "value": "ACTIVE"
+                            }
+                          }
+                        },
+                        {
+                          "term": {
+                            "__typeName.keyword": {
+                              "value": "Persona" // (2)
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "track_total_hits": true
+                },
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false,
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                query:
+                  bool:
+                    filter:
+                        - term:
+                            __state:
+                              value: ACTIVE
+                        - term:
+                            __typeName.keyword:
+                              value: Persona
+                track_total_hits: true
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          manage_personas_21:
+            summary: "Manage personas - example 2"
+            x-useCaseTag: "Manage personas"
+            x-docUrl: https://developer.atlan.com/snippets/access/personas/
+            x-atlanSnippet: |-
+              {
+                "dsl": {
+                  "query": {
+                    "bool": {
+                      "filter": [
+                        {
+                          "term": {
+                            "__state": {
+                              "value": "ACTIVE"
+                            }
+                          }
+                        },
+                        {
+                          "term": {
+                            "__typeName.keyword": {
+                              "value": "Persona" // (1)
+                            }
+                          }
+                        },
+                        {
+                          "term": {
+                            "name.keyword": {
+                              "value": "Data Assets" // (2)
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "track_total_hits": true
+                },
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false,
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                query:
+                  bool:
+                    filter:
+                        - term:
+                            __state:
+                              value: ACTIVE
+                        - term:
+                            __typeName.keyword:
+                              value: Persona
+                        - term:
+                            name.keyword:
+                              value: Data Assets
+                track_total_hits: true
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          manage_personas_22:
+            summary: "Manage personas - example 3"
+            x-useCaseTag: "Manage personas"
+            x-docUrl: https://developer.atlan.com/snippets/access/personas/
+            x-atlanSnippet: |-
+              {
+                "dsl": { // (1)
+                  "query": {
+                    "bool": {
+                      "filter": [
+                        {
+                          "term": {
+                            "__typeName.keyword": {
+                              "value": "Persona"
+                            }
+                          }
+                        },
+                        {
+                          "term": {
+                            "__state": {
+                              "value": "ACTIVE"
+                            }
+                          }
+                        },
+                        {
+                          "term": {
+                            "name.keyword": {
+                              "value": "Data Assets" // (2)
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "sort": [
+                    {
+                      "__guid": {
+                        "order": "asc"
+                      }
+                    }
+                  ],
+                  "track_total_hits": true
+                },
+                "attributes": [
+                  "policies" // (3)
+                ],
+                "relationAttributes": [ // (4)
+                  "name",
+                  "policyType",
+                  "policyResources",
+                  "policyActions"
+                ],
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false,
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                query:
+                  bool:
+                    filter:
+                        - term:
+                            __typeName.keyword:
+                              value: Persona
+                        - term:
+                            __state:
+                              value: ACTIVE
+                        - term:
+                            name.keyword:
+                              value: Data Assets
+                sort:
+                    - __guid:
+                        order: asc
+                track_total_hits: true
+              attributes:
+                  - policies
+              relationAttributes:
+                  - name
+                  - policyType
+                  - policyResources
+                  - policyActions
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          manage_purposes_23:
+            summary: "Manage purposes - example 4"
+            x-useCaseTag: "Manage purposes"
+            x-docUrl: https://developer.atlan.com/snippets/access/purposes/
+            x-atlanSnippet: |-
+              {
+                "dsl": {
+                  "query": { // (1)
+                    "bool": {
+                      "filter": [
+                        {
+                          "term": {
+                            "__state": {
+                              "value": "ACTIVE"
+                            }
+                          }
+                        },
+                        {
+                          "term": {
+                            "__typeName.keyword": {
+                              "value": "Purpose" // (2)
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "track_total_hits": true
+                },
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false,
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                query:
+                  bool:
+                    filter:
+                        - term:
+                            __state:
+                              value: ACTIVE
+                        - term:
+                            __typeName.keyword:
+                              value: Purpose
+                track_total_hits: true
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          manage_purposes_24:
+            summary: "Manage purposes - example 5"
+            x-useCaseTag: "Manage purposes"
+            x-docUrl: https://developer.atlan.com/snippets/access/purposes/
+            x-atlanSnippet: |-
+              {
+                "dsl": {
+                  "query": {
+                    "bool": {
+                      "filter": [
+                        {
+                          "term": {
+                            "__state": {
+                              "value": "ACTIVE"
+                            }
+                          }
+                        },
+                        {
+                          "term": {
+                            "__typeName.keyword": {
+                              "value": "Purpose" // (1)
+                            }
+                          }
+                        },
+                        {
+                          "term": {
+                            "name.keyword": {
+                              "value": "Known Issues" // (2)
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "track_total_hits": true
+                },
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false,
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                query:
+                  bool:
+                    filter:
+                        - term:
+                            __state:
+                              value: ACTIVE
+                        - term:
+                            __typeName.keyword:
+                              value: Purpose
+                        - term:
+                            name.keyword:
+                              value: Known Issues
+                track_total_hits: true
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          manage_purposes_25:
+            summary: "Manage purposes - example 1"
+            x-useCaseTag: "Manage purposes"
+            x-docUrl: https://developer.atlan.com/snippets/access/purposes/
+            x-atlanSnippet: |-
+              {
+                "dsl": { // (1)
+                  "query": {
+                    "bool": {
+                      "filter": [
+                        {
+                          "term": {
+                            "__typeName.keyword": {
+                              "value": "Purpose"
+                            }
+                          }
+                        },
+                        {
+                          "term": {
+                            "__state": {
+                              "value": "ACTIVE"
+                            }
+                          }
+                        },
+                        {
+                          "term": {
+                            "name.keyword": {
+                              "value": "Known Issues" // (2)
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "sort": [
+                    {
+                      "__guid": {
+                        "order": "asc"
+                      }
+                    }
+                  ],
+                  "track_total_hits": true
+                },
+                "attributes": [
+                  "policies" // (3)
+                ],
+                "relationAttributes": [ // (4)
+                  "name",
+                  "policyType",
+                  "policyResources",
+                  "policyActions"
+                ],
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false,
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                query:
+                  bool:
+                    filter:
+                        - term:
+                            __typeName.keyword:
+                              value: Purpose
+                        - term:
+                            __state:
+                              value: ACTIVE
+                        - term:
+                            name.keyword:
+                              value: Known Issues
+                sort:
+                    - __guid:
+                        order: asc
+                track_total_hits: true
+              attributes:
+                  - policies
+              relationAttributes:
+                  - name
+                  - policyType
+                  - policyResources
+                  - policyActions
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          manage_policies_26:
+            summary: "Manage policies - example 2"
+            x-useCaseTag: "Manage policies"
+            x-docUrl: https://developer.atlan.com/snippets/access/policies/
+            x-atlanSnippet: |-
+              {
+                "dsl": { // (1)
+                  "query": {
+                    "bool": {
+                      "filter": [
+                        {
+                          "term": {
+                            "__typeName.keyword": {
+                              "value": "AuthPolicy"
+                            }
+                          }
+                        },
+                        {
+                          "term": {
+                            "__state": {
+                              "value": "ACTIVE"
+                            }
+                          }
+                        },
+                        {
+                          "term": {
+                            "policyCategory": {
+                              "value": "persona"
+                            }
+                          }
+                        },
+                        {
+                          "prefix": {
+                            "policyResources": { // (2)
+                              "value": "entity:default/snowflake/1696324735"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "sort": [
+                    {
+                      "__guid": {
+                        "order": "asc"
+                      }
+                    }
+                  ],
+                  "track_total_hits": true
+                },
+                "attributes": [
+                  "name",
+                  "accessControl", // (3)
+                  "policyResources",
+                  "connectionQualifiedName",
+                  "policyType",
+                  "policySubCategory"
+                ],
+                "relationAttributes": [ // (4)
+                  "isAccessControlEnabled",
+                  "name"
+                ],
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false,
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                query:
+                  bool:
+                    filter:
+                        - term:
+                            __typeName.keyword:
+                              value: AuthPolicy
+                        - term:
+                            __state:
+                              value: ACTIVE
+                        - term:
+                            policyCategory:
+                              value: persona
+                        - prefix:
+                            policyResources:
+                              value: "entity:default/snowflake/1696324735"
+                sort:
+                    - __guid:
+                        order: asc
+                track_total_hits: true
+              attributes:
+                  - name
+                  - accessControl
+                  - policyResources
+                  - connectionQualifiedName
+                  - policyType
+                  - policySubCategory
+              relationAttributes:
+                  - isAccessControlEnabled
+                  - name
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+          manage_policies_27:
+            summary: "Manage policies - example 3"
+            x-useCaseTag: "Manage policies"
+            x-docUrl: https://developer.atlan.com/snippets/access/policies/
+            x-atlanSnippet: |-
+              {
+                "dsl": { // (1)
+                  "query": {
+                    "bool": {
+                      "filter": [
+                        {
+                          "term": {
+                            "__typeName.keyword": {
+                              "value": "AuthPolicy"
+                            }
+                          }
+                        },
+                        {
+                          "term": {
+                            "__state": {
+                              "value": "ACTIVE"
+                            }
+                          }
+                        },
+                        {
+                          "term": {
+                            "policyCategory": {
+                              "value": "purpose"
+                            }
+                          }
+                        },
+                        {
+                          "prefix": {
+                            "policyResources": { // (2)
+                              "value": "tag:RRbkpEJKNC4qsbKB7fKFNN"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "sort": [
+                    {
+                      "__guid": {
+                        "order": "asc"
+                      }
+                    }
+                  ],
+                  "track_total_hits": true
+                },
+                "attributes": [ // (4)
+                  "name",
+                  "accessControl",
+                  "policyResources",
+                  "policyCategory",
+                  "policySubCategory"
+                ],
+                "relationAttributes": [
+                  "isAccessControlEnabled",
+                  "name"
+                ],
+                "suppressLogs": true,
+                "showSearchScore": false,
+                "excludeMeanings": false,
+                "excludeClassifications": false
+              }
+            value:
+              dsl:
+                query:
+                  bool:
+                    filter:
+                        - term:
+                            __typeName.keyword:
+                              value: AuthPolicy
+                        - term:
+                            __state:
+                              value: ACTIVE
+                        - term:
+                            policyCategory:
+                              value: purpose
+                        - prefix:
+                            policyResources:
+                              value: "tag:RRbkpEJKNC4qsbKB7fKFNN"
+                sort:
+                    - __guid:
+                        order: asc
+                track_total_hits: true
+              attributes:
+                  - name
+                  - accessControl
+                  - policyResources
+                  - policyCategory
+                  - policySubCategory
+              relationAttributes:
+                  - isAccessControlEnabled
+                  - name
+              suppressLogs: true
+              showSearchScore: false
+              excludeMeanings: false
+              excludeClassifications: false
+
+  responses:
+    '200':
+      description: Search results
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Search.yaml#/MetaIndexSearchResponse'
+          examples:
+            search_tables:
+              summary: Search for Tables
+              description: Search for all Table assets with pagination
+              value:
+                queryType: INDEX
+                searchParameters:
+                  attributes:
+                    - name
+                    - qualifiedName
+                    - columnCount
+                    - rowCount
+                  showSearchScore: false
+                  excludeMeanings: false
+                  excludeClassifications: false
+                  dsl:
+                    query:
+                      bool:
+                        must:
+                          - term:
+                              __typeName.keyword: Table
+                    size: 10
+                  querySize: 10
+                approximateCount: 156
+                entities:
+                  - typeName: Table
+                    attributes:
+                      qualifiedName: default/snowflake/1699281775/ANALYTICS/PUBLIC/CUSTOMERS
+                      name: CUSTOMERS
+                      columnCount: 12
+                      rowCount: 1500
+                    guid: b9d5dbbc-ee8a-4c5e-a946-a47033892172
+                    status: ACTIVE
+                    displayText: CUSTOMERS
+                    classificationNames: []
+                    meanings: []
+                    isIncomplete: false
+                    createdBy: admin
+                    createTime: 1747185436766
+                    updateTime: 1765929858468
+                  - typeName: Table
+                    attributes:
+                      qualifiedName: default/snowflake/1699281775/ANALYTICS/PUBLIC/ORDERS
+                      name: ORDERS
+                      columnCount: 8
+                      rowCount: 25000
+                    guid: c8e6eccd-ff9b-5d6f-b057-b58144993283
+                    status: ACTIVE
+                    displayText: ORDERS
+            search_with_classifications:
+              summary: Search assets with classifications
+              description: Find assets that have specific classifications/tags applied
+              value:
+                queryType: INDEX
+                approximateCount: 50
+                entities:
+                  - typeName: Column
+                    attributes:
+                      qualifiedName: default/snowflake/1699281775/ANALYTICS/PUBLIC/CUSTOMERS/EMAIL
+                      name: EMAIL
+                    guid: d9f7fdde-0aca-6e70-c168-c69255a04394
+                    status: ACTIVE
+                    displayText: EMAIL
+                    classificationNames:
+                      - PII
+                      - Confidential
+                    classifications:
+                      - typeName: PII
+                        propagate: true
+                      - typeName: Confidential
+                        propagate: false
+            search_with_lineage:
+              summary: Search assets with lineage
+              description: Find assets that have upstream or downstream lineage
+              value:
+                queryType: INDEX
+                approximateCount: 100
+                entities:
+                  - typeName: Table
+                    attributes:
+                      qualifiedName: default/snowflake/1699281775/ANALYTICS/PROCESSED/FACT_ORDERS
+                      name: FACT_ORDERS
+                      __hasLineage: true
+                    guid: e0g8geef-1bdb-7f81-d279-d7a366b15405
+                    status: ACTIVE
+                    displayText: FACT_ORDERS
+    '400':
+      description: Invalid DSL or attributes specification
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+          example:
+            errorCode: ATLAS-400-00-001
+            errorMessage: "Invalid query: Cannot parse DSL"
+    '401':
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+          example:
+            servlet: jersey-servlet
+            message: Unauthorized
+            url: /api/meta/search/indexsearch
+            status: "401"
+    '500':
+      description: Internal search error
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'

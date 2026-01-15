@@ -1,0 +1,99 @@
+id: common-examples-readme
+title: Manage asset READMEs
+category: common-actions
+icon: zap
+relatedTypes:
+  - Asset
+  - Readme
+description: |-
+  READMEs can only be added to assets after an asset exists. (The asset itself must be created first.)
+  README content is written in HTML
+  The content of a README needs to be HTML. The HTML should be everything that would be inside the <body></body> tags, but not include the <body></body> tags themselves. (So it should also exclude the outer <html></html> tags.)
+externalDocs:
+  url: https://developer.atlan.com/snippets/common-examples/readme/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Add to an existing asset
+    description: |-
+      2.0.0 4.0.0
+      Each README can be assigned to only a single asset. To create a README and assign it to an asset:
+    notes:
+      - type: warning
+        title: Note that you are actually creating a new README asset
+        content: When adding a README through the API, you are really creating a new instance of a README asset. At the same time, you're attaching this new object to an existing asset.
+      - type: recommendation
+        title: Use a library
+        content: Most languages will provide a library to url-encode and url-decode strings. Use this, wherever possible. For an example of translating raw HTML into url-encoded form (or decoding an encoded form) you can also try urlencoder.org  and urldecoder.org , respectively.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Readme
+              attributes:
+                name: Example Term Readme
+                qualifiedName: b4113341-251b-4adc-81fb-2420501c30e6/readme
+                description: "%3Ch1%3EOverview%3C%2Fh1%3E%3Cp%3EDetails%20about%20this%20term...%3C%2Fp%3E"
+                asset:
+                  typeName: AtlasGlossaryTerm
+                  guid: b4113341-251b-4adc-81fb-2420501c30e6
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: Readme
+                attributes:
+                  qualifiedName: b4113341-251b-4adc-81fb-2420501c30e6/readme
+                  name: Example Term Readme
+                  description: "%3Ch1%3EOverview%3C%2Fh1%3E%3Cp%3EDetails%20about%20this%20term...%3C%2Fp%3E"
+                guid: d5e6f7a8-b9c0-1234-5678-90abcdef1234
+                status: ACTIVE
+                relationshipAttributes:
+                  asset:
+                    guid: b4113341-251b-4adc-81fb-2420501c30e6
+                    typeName: AtlasGlossaryTerm
+          guidAssignments:
+            "-1234567893": d5e6f7a8-b9c0-1234-5678-90abcdef1234
+  - step: 2
+    title: Retrieve a README from an existing asset
+    description: |-
+      2.0.0 4.0.0
+      To retrieve a README and its content for an existing asset:
+    method: GET
+    endpoint: /api/meta/entity/bulk
+    queryString: guid=b4113341-251b-4adc-81fb-2420501c30e6
+    examples:
+      - key: example-2-1
+        summary: GET /api/meta/entity/bulk
+  - step: 3
+    title: Update a README attached to an existing asset
+    description: |-
+      2.0.0 4.0.0
+      To update a README and its content for an existing asset:
+  - step: 4
+    title: Remove a README from an Existing Asset
+    description: |-
+      To remove a README from an existing asset, delete the README itself. (A README is treated as a separate asset with its own GUID.)
+      2.0.0 4.0.0
+      To hard-delete (purge) a README, provide the README's GUID:
+    notes:
+      - type: warning
+        title: The README will have its own GUID, separate from the asset to which it is attached
+        content: When deleting the README, you need to use the README's GUID, not the GUID of the asset to which it is attached.
+    method: DELETE
+    endpoint: /api/meta/entity/bulk
+    queryString: guid=b4113341-251b-4adc-81fb-2420501c30e6&deleteType=PURGE
+    examples:
+      - key: example-4-1
+        summary: DELETE /api/meta/entity/bulk
+        response:
+          mutatedEntities:
+            PURGE:
+              - typeName: Asset
+                attributes:
+                  qualifiedName: example/deleted/asset
+                  name: Deleted Asset
+                guid: b4113341-251b-4adc-81fb-2420501c30e6
+                status: PURGED

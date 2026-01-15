@@ -1,0 +1,161 @@
+id: advanced-examples-read
+title: Retrieving assets
+category: crud
+icon: zap
+relatedTypes:
+  - Asset
+description: |-
+  Strictly speaking, no, you do not. And in fact if you ultimately intend to update an asset you should trim it down to only what you intend to change and not send a complete asset. See Updating an asset for more details.
+  Retrieving an asset uses a slightly different pattern from the other operations. For this you can use static methods provided by the Asset class:
+externalDocs:
+  url: https://developer.atlan.com/snippets/advanced-examples/read/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: By GUID
+    description: |-
+      4.0.0 4.0.0
+      To retrieve an asset by its GUID:
+    notes:
+      - type: warning
+        title: Compile-time type checking
+        content: This operation will type-check the asset you are retrieving is of the type requested. If it is not, you will receive a NotFoundException, even if the GUID represents some other asset.
+      - type: note
+        title: Attributes and Related attributes
+        content: In this example, we are retrieving the userDescription attribute for both the glossary and its terms. You can also retrieve other attributes as illustrated above.
+      - type: warning
+        title: Run-time type checking
+        content: This operation will type-check the asset you are retrieving is of the type requested. If it is not, you will receive a NotFoundException, even if the GUID represents some other asset.
+      - type: warning
+        title: Compile-time type checking
+        content: This operation will type-check the asset you are retrieving is of the type requested. If it is not, you will receive a NotFoundException, even if the GUID represents some other asset.
+    method: GET
+    endpoint: /api/meta/entity/guid/b4113341-251b-4adc-81fb-2420501c30e6
+    queryString: ignoreRelationships=false&minExtInfo=false
+    examples:
+      - key: example-1-1
+        summary: GET /api/meta/entity/guid/b4113341-251b-4adc-81fb-2420501c30e6
+        response:
+          referredEntities: {}
+          entity:
+            typeName: Table
+            attributes:
+              qualifiedName: default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP
+              name: DIM_CUSTOMER_SP
+              displayName: Customer Dimension
+              description: Main customer dimension table for analytics
+              certificateStatus: VERIFIED
+              ownerUsers:
+                - data.steward@company.com
+              connectionQualifiedName: default/snowflake/1698696666
+              connectorName: snowflake
+              databaseName: WIDE_WORLD_IMPORTERS
+              schemaName: PROCESSED_GOLD
+              columnCount: 15
+              rowCount: 50000
+              __hasLineage: true
+            guid: b4113341-251b-4adc-81fb-2420501c30e6
+            status: ACTIVE
+            createdBy: ryan.quigley
+            createTime: 1747185436766
+            updateTime: 1765929858468
+            classifications:
+              - typeName: PII
+                propagate: true
+  - step: 2
+    title: By GUID (runtime typing)
+    description: |-
+      4.0.0 1.0.0
+      To retrieve an asset by GUID, but only resolve the type at runtime:
+    notes:
+      - type: note
+        title: Attributes and Related attributes
+        content: In this example, we are retrieving the userDescription attribute for both the glossary and its terms. You can also retrieve other attributes as illustrated above.
+      - type: warning
+        title: Does not apply to a raw API request
+        content: There is no concept of typing in a raw API request   all responses to the raw API will simply be JSON objects.
+  - step: 3
+    title: By qualifiedName
+    description: |-
+      4.0.0 4.0.0
+      To retrieve an asset by its qualifiedName:
+    notes:
+      - type: warning
+        title: Qualified name, not name
+        content: You must provide the qualifiedName for glossary objects (glossaries, categories, terms) to use this method. If you only know the name, you should instead use the findByName() operations.
+      - type: recommendation
+        title: Finding the connection portion
+        content: The one exception is likely to be the connection portion of the name (default/snowflake/1657037873 in this example). To find this portion, see Find connections.
+      - type: note
+        title: Attributes and Related attributes
+        content: In this example, we are retrieving the userDescription attribute for both the glossary and its terms. You can also retrieve other attributes as illustrated above.
+      - type: recommendation
+        title: Finding the connection portion
+        content: The one exception is likely to be the connection portion of the name (default/snowflake/1657037873 in this example). To find this portion, see Find connections.
+      - type: warning
+        title: Qualified name, not name
+        content: You must provide the qualifiedName for glossary objects (glossaries, categories, terms) to use this method. If you only know the name, you should instead use the findByName() operations.
+      - type: recommendation
+        title: Finding the connection portion
+        content: The one exception is likely to be the connection portion of the name (default/snowflake/1657037873 in this example). To find this portion, see Find connections.
+      - type: warning
+        title: URL encoding may be needed
+        content: Note that depending on the qualifiedName, you may need to URL-encode its value before sending. This is to replace any parts of the name that could be misinterpreted as actual URL components (like / or spaces).
+    method: GET
+    endpoint: /api/meta/entity/uniqueAttribute/type/Glossary
+    queryString: attr:qualifiedName=FzCMyPR2LxkPFgr8eNGrq&ignoreRelationships=false&minExtInfo=false
+    examples:
+      - key: example-3-1
+        summary: GET /api/meta/entity/uniqueAttribute/type/Glossary
+        response:
+          referredEntities: {}
+          entity:
+            typeName: Table
+            attributes:
+              qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/CUSTOMERS
+              name: CUSTOMERS
+              description: Customer master data table
+            guid: b4113341-251b-4adc-81fb-2420501c30e6
+            status: ACTIVE
+  - step: 4
+    title: Full vs minimal assets
+    description: |-
+      2.0.3 4.0.0
+      The examples above illustrate how to retrieve:
+      an asset with all of its relationships (a complete asset).
+
+       an asset without any of its relationships (a minimal asset).
+
+      You can also retrieve the opposite by explicitly requesting it:
+    notes:
+      - type: recommendation
+        title: Retrieve minimal assets where possible
+        content: You should retrieve minimal assets for better performance in cases where you do not need all of the relationships of the asset. Keep in mind that although the relationships will not be visible in the object after retrieving a minimal asset, this does not mean that there are no relationships on that asset (in Atlan).
+    method: GET
+    endpoint: /api/meta/entity/guid/b4113341-251b-4adc-81fb-2420501c30e6
+    queryString: ignoreRelationships=true&minExtInfo=true
+    examples:
+      - key: example-4-1
+        summary: GET /api/meta/entity/guid/b4113341-251b-4adc-81fb-2420501c30e6
+        response:
+          referredEntities: {}
+          entity:
+            typeName: Table
+            attributes:
+              qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/CUSTOMERS
+              name: CUSTOMERS
+              description: Customer master data table
+              certificateStatus: VERIFIED
+              ownerUsers:
+                - data.steward@company.com
+              connectionQualifiedName: default/snowflake/1698696666
+              connectorName: snowflake
+              databaseName: ANALYTICS
+              schemaName: PUBLIC
+              columnCount: 15
+              __hasLineage: true
+            guid: b4113341-251b-4adc-81fb-2420501c30e6
+            status: ACTIVE
+            createdBy: service-account-crawler
+            createTime: 1765907380083
+            updateTime: 1768499380083

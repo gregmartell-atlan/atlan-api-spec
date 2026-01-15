@@ -1,0 +1,175 @@
+id: datacontract-manage-via-sdks
+title: Manage data contracts via SDKs
+category: data-contracts
+icon: zap
+relatedTypes:
+  - Asset
+  - DataContract
+description: Manage data contracts using the Atlan SDKs. Programmatically create, update, and enforce data contracts across your data ecosystem.
+externalDocs:
+  url: https://developer.atlan.com/snippets/datacontract/manage-via-sdks/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Create a new contract
+    description: |-
+      2.5.1 4.0.0
+      To create a contract for an existing asset in Atlan:
+    notes:
+      - type: warning
+        title: Loses all comments
+        content: Be aware that doing this conversion will remove any comments in the YAML.
+      - type: recommendation
+        title: Converting an object into the string form
+        content: If you programmatically modified the specification as an object, you can convert it back to its YAML string form simply by calling .toString() on the object. You are always asked to provide the YAML string form here to ensure that if you want to keep any comments, you have the option to do so (since the object form removes any comments).
+      - type: warning
+        title: Loses all comments
+        content: Be aware that doing this conversion will remove any comments in the YAML.
+      - type: warning
+        title: Loses all comments
+        content: Be aware that doing this conversion will remove any comments in the YAML.
+      - type: recommendation
+        title: Converting an object into the string form
+        content: If you programmatically modified the specification as an object, you can convert it back to its YAML string form simply by calling .toString() on the object. You are always asked to provide the YAML string form here to ensure that if you want to keep any comments, you have the option to do so (since the object form removes any comments).
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: DataContract
+              attributes:
+                dataContractJson: "{\"type\": \"Table\", \"status\": \"DRAFT\", \"kind\": \"DataContract\", \"dataset\": \"SALE_TXN\", \"data_source\": \"snowflake\", \"description\": \"Created by Python SDK.\", \"columns\": [{\"name\": \"order_id\", \"data_type\": \"BIGNUMERIC\", \"description\": \"\"}]}"
+                name: Data contract for SALE_TXN
+                qualifiedName: default/snowflake/1717514525/RAW/WIDEWORLD/SALE_TXN/contract
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: DataContract
+                attributes:
+                  qualifiedName: default/snowflake/1717514525/RAW/WIDEWORLD/SALE_TXN/contract
+                  name: Data contract for SALE_TXN
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+  - step: 2
+    title: Retrieve a contract
+    description: |-
+      2.2.4 4.0.0
+      To retrieve the latest contract and certified contract of a given asset using its qualified name:
+    notes:
+      - type: recommendation
+        title: URL-encoded filter
+        content: "Note that the filter is URL-encoded. decoded it would be: /api/meta/entity/uniqueAttribute/type/Table?attr:qualifiedName=default/snowflake/1717514525/RAW/WIDEWORLD/SALE_TXN&minExtInfo=False&ignoreRelationships=False"
+      - type: recommendation
+        title: URL-encoded filter
+        content: |-
+          Note that the filter is URL-encoded. decoded it would be: attr:qualifiedName=default/snowflake/1717514525/RAW/WIDEWORLD/SALE_TXN/Table/contract/V1&minExtInfo=False&ignoreRelationships=False where the qualifiedName of the data contract must be in the format: <assetQualifiedName>/<assetType>/contract/V<versionNumber>. For this example:
+          assetQualifiedName: qualifiedName of a Snowflake table. assetType: type of this asset in Atlan, i.e: Table. versionNumber: specific version of the data contract to retrieve, e.g: 1, 2, and so on.
+    method: GET
+    endpoint: /api/meta/entity/uniqueAttribute/type/Table
+    queryString: attr%3AqualifiedName=default%2Fsnowflake%2F1717514525%2FRAW%2FWIDEWORLD%2FSALE_TXN&minExtInfo=False&ignoreRelationships=False
+    examples:
+      - key: example-2-1
+        summary: GET /api/meta/entity/uniqueAttribute/type/Table
+        response:
+          referredEntities: {}
+          entity:
+            typeName: Table
+            attributes:
+              qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/CUSTOMERS
+              name: CUSTOMERS
+              description: Customer master data table
+            guid: b4113341-251b-4adc-81fb-2420501c30e6
+            status: ACTIVE
+      - key: example-2-2
+        summary: GET /api/meta/entity/uniqueAttribute/type/DataContract
+        response:
+          referredEntities: {}
+          entity:
+            typeName: Table
+            attributes:
+              qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/CUSTOMERS
+              name: CUSTOMERS
+              description: Customer master data table
+            guid: b4113341-251b-4adc-81fb-2420501c30e6
+            status: ACTIVE
+  - step: 3
+    title: "By asset:"
+    description: "To retrieve the latest contract and certified contract of a given asset using its qualified name:"
+    method: GET
+    endpoint: /api/meta/entity/uniqueAttribute/type/Table
+    queryString: attr%3AqualifiedName=default%2Fsnowflake%2F1717514525%2FRAW%2FWIDEWORLD%2FSALE_TXN&minExtInfo=False&ignoreRelationships=False
+    examples:
+      - key: example-3-1
+        summary: GET /api/meta/entity/uniqueAttribute/type/Table
+        response:
+          referredEntities: {}
+          entity:
+            typeName: Table
+            attributes:
+              qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/CUSTOMERS
+              name: CUSTOMERS
+              description: Customer master data table
+            guid: b4113341-251b-4adc-81fb-2420501c30e6
+            status: ACTIVE
+  - step: 4
+    title: "By qualified name:"
+    description: "To retrieve a contract by its version (V1, V2, etc) using its qualified name:"
+    method: GET
+    endpoint: /api/meta/entity/uniqueAttribute/type/DataContract
+    queryString: attr%3AqualifiedName=dedefault%2Fsnowflake%2F1717514525%2FRAW%2FWIDEWORLD%2FSALE_TXN%2FTable%2Fcontract%2FV1&minExtInfo=False&ignoreRelationships=False
+    examples:
+      - key: example-4-1
+        summary: GET /api/meta/entity/uniqueAttribute/type/DataContract
+        response:
+          referredEntities: {}
+          entity:
+            typeName: Table
+            attributes:
+              qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/CUSTOMERS
+              name: CUSTOMERS
+              description: Customer master data table
+            guid: b4113341-251b-4adc-81fb-2420501c30e6
+            status: ACTIVE
+  - step: 5
+    title: Update a contract
+    description: |-
+      2.5.1 4.0.0
+      In the following example, we are updating the contact certificateStatus field to VERIFIED (shown as PUBLISHED in the UI):
+    notes:
+      - type: warning
+        title: Will not retain any comments
+        content: Keep in mind that when programmatically building the specification as an object, no comments will be retained. If you want to have comments in your YAML specification, you must directly manipulate the YAML string yourself.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-5-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: DataContract
+              attributes:
+                dataContractJson: "{\"type\": \"Table\", \"status\": \"VERIFIED\", \"kind\": \"DataContract\", \"dataset\": \"SALE_TXN\", \"data_source\": \"snowflake\", \"description\": \"Created by Python SDK.\", \"columns\": [{\"name\": \"order_id\", \"data_type\": \"BIGNUMERIC\", \"description\": \"\"}]}"
+                name: Data contract for SALE_TXN
+                qualifiedName: default/snowflake/1717514525/RAW/WIDEWORLD/SALE_TXN/contract
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: DataContract
+                attributes:
+                  qualifiedName: default/snowflake/1717514525/RAW/WIDEWORLD/SALE_TXN/contract
+                  name: Data contract for SALE_TXN
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+  - step: 6
+    title: Delete a contract
+    description: "To soft-delete, or archive, a contract:"
+  - step: 7
+    title: Soft-delete (archive)
+    description: "To soft-delete, or archive, a contract:"
+  - step: 8
+    title: Hard-delete (purge)
+    description: "To permanently delete (purge) a contract:"

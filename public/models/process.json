@@ -1,0 +1,117 @@
+{
+  "id": "process",
+  "title": "Process",
+  "url": "https://developer.atlan.com/models/entities/lineage/",
+  "description": "Represents a data transformation or ETL process that creates lineage between assets. A Process connects input assets to output assets, showing data flow through transformations.",
+  "inheritance": ["Asset", "Referenceable"],
+  "properties": [
+    {
+      "name": "typeName",
+      "type": "string",
+      "readOnly": true,
+      "description": "Type of this asset (Process)."
+    },
+    {
+      "name": "guid",
+      "type": "string",
+      "readOnly": true,
+      "description": "Globally unique identifier for this process."
+    },
+    {
+      "name": "qualifiedName",
+      "type": "string",
+      "readOnly": false,
+      "description": "Unique name for this process. Typically includes connection and process identifiers."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "readOnly": false,
+      "description": "Display name of the process."
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "readOnly": false,
+      "description": "Description of what this process does."
+    },
+    {
+      "name": "inputs",
+      "type": "array<Asset>",
+      "readOnly": false,
+      "description": "Input assets consumed by this process. These are the source assets in the lineage."
+    },
+    {
+      "name": "outputs",
+      "type": "array<Asset>",
+      "readOnly": false,
+      "description": "Output assets produced by this process. These are the target assets in the lineage."
+    },
+    {
+      "name": "sql",
+      "type": "string",
+      "readOnly": false,
+      "description": "SQL query or transformation logic used by this process."
+    },
+    {
+      "name": "code",
+      "type": "string",
+      "readOnly": false,
+      "description": "Code or script for the transformation."
+    },
+    {
+      "name": "ast",
+      "type": "string",
+      "readOnly": false,
+      "description": "Abstract syntax tree representation of the transformation."
+    },
+    {
+      "name": "connectionName",
+      "type": "string",
+      "readOnly": false,
+      "description": "Simple name of the connection this process belongs to."
+    },
+    {
+      "name": "connectionQualifiedName",
+      "type": "string",
+      "readOnly": false,
+      "description": "Qualified name of the connection this process belongs to."
+    },
+    {
+      "name": "connectorType",
+      "type": "string",
+      "readOnly": false,
+      "description": "Type of connector (e.g., 'spark', 'airflow', 'dbt')."
+    },
+    {
+      "name": "status",
+      "type": "enum",
+      "readOnly": true,
+      "description": "Status of the asset (ACTIVE, DELETED)."
+    },
+    {
+      "name": "createdBy",
+      "type": "string",
+      "readOnly": true,
+      "description": "User or account that created this process."
+    },
+    {
+      "name": "updatedBy",
+      "type": "string",
+      "readOnly": true,
+      "description": "User or account that last updated this process."
+    },
+    {
+      "name": "createTime",
+      "type": "timestamp",
+      "readOnly": true,
+      "description": "Time (epoch) at which this process was created, in milliseconds."
+    },
+    {
+      "name": "updateTime",
+      "type": "timestamp",
+      "readOnly": true,
+      "description": "Time (epoch) at which this process was last updated, in milliseconds."
+    }
+  ]
+}

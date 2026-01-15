@@ -1,0 +1,414 @@
+id: common-examples-lineage-manage
+title: Manage lineage
+category: common-actions
+icon: zap
+relatedTypes:
+  - Asset
+  - ColumnProcess
+  - Process
+description: Create and manage data lineage. Lineage tracks how data flows through your organization, connecting source assets to target assets through transformation processes.
+externalDocs:
+  url: https://developer.atlan.com/snippets/common-examples/lineage/manage/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Create lineage between assets
+    description: |-
+      7.0.0 4.0.0
+      To create lineage between assets, you need to create a Process entity.
+      Input and output assets must already exist
+      Note that the assets you reference as the inputs and outputs of the process must already exist, before creating the process.
+    notes:
+      - type: warning
+        title: Input and output assets must already exist
+        content: Note that the assets you reference as the inputs and outputs of the process must already exist, before creating the process.
+      - type: recommendation
+        title: Tips for the connection
+        content: |-
+          The process itself must be created within a connection for both access control and icon labelling. Use a connection qualifiedName that indicates the system that ran the process:
+          You could use the same connection qualifiedName as the source system, if it was the source system "pushing" data to the target(s). You could use the same connection qualifiedName as the target system, if it was the target system "pulling" data from the source(s). You could use a different connection qualifiedName from either source or target, if there is a system in-between doing the processing (for example an ETL engine or orchestrator).
+      - type: recommendation
+        title: Use your own ID if you can
+        content: While the SDK can generate this ID for you, since it is based on the unique combination of inputs and outputs the ID can change if those inputs or outputs change. This could result in extra processes in lineage as this process itself changes over time. By using your own ID for the process, any changes that occur in that process over time (even if the inputs or outputs change) the same single process in Atlan will be updated.
+      - type: recommendation
+        title: Tips for the connection
+        content: |-
+          The process itself must be created within a connection for both access control and icon labelling. Use a connection qualified_name that indicates the system that ran the process:
+          You could use the same connection qualified_name as the source system, if it was the source system "pushing" data to the target(s). You could use the same connection qualified_name as the target system, if it was the target system "pulling" data from the source(s). You could use a different connection qualified_name from either source or target, if there is a system in-between doing the processing (for example an ETL engine or orchestrator).
+      - type: recommendation
+        title: Use your own ID if you can
+        content: While the SDK can generate this ID for you, since it is based on the unique combination of inputs and outputs the ID can change if those inputs or outputs change. This could result in extra processes in lineage as this process itself changes over time. By using your own ID for the process, any changes that occur in that process over time (even if the inputs or outputs change) the same single process in Atlan will be updated.
+      - type: recommendation
+        title: Tips for the connection
+        content: |-
+          The process itself must be created within a connection for both access control and icon labelling. Use a connection qualifiedName that indicates the system that ran the process:
+          You could use the same connection qualifiedName as the source system, if it was the source system "pushing" data to the target(s). You could use the same connection qualifiedName as the target system, if it was the target system "pulling" data from the source(s). You could use a different connection qualifiedName from either source or target, if there is a system in-between doing the processing (for example an ETL engine or orchestrator).
+      - type: recommendation
+        title: Use your own ID if you can
+        content: While the SDK can generate this ID for you, since it is based on the unique combination of inputs and outputs the ID can change if those inputs or outputs change. This could result in extra processes in lineage as this process itself changes over time. By using your own ID for the process, any changes that occur in that process over time (even if the inputs or outputs change) the same single process in Atlan will be updated.
+      - type: warning
+        title: Warning
+        content: "Note: At least one of the optional parameters admin_roles, admin_users, or admin_groups must be provided to successfully create the connection."
+      - type: recommendation
+        title: Determines the icon
+        content: This determines the icon that Atlan will use for all the assets in the connection. If you use a value that is not a known value, you will have a default gear icon instead.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Process
+              attributes:
+                name: Source 1, Source 2, Source 3 -> Target 1, Target 2
+                qualifiedName: default/snowflake/1657025257/dag_123
+                inputs:
+                  - typeName: Table
+                    guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+                  - typeName: Table
+                    guid: d002dead-1655-4d75-abd6-ad889fa04bd4
+                  - typeName: Table
+                    uniqueAttributes:
+                      qualifiedName: default/snowflake/1657025257/OPS/DEFAULT/RUN_STATS
+                outputs:
+                  - typeName: Table
+                    guid: 86d9a061-7753-4884-b988-a02d3954bc24
+                  - typeName: Table
+                    uniqueAttributes:
+                      qualifiedName: default/snowflake/1657025257/OPS/DEFAULT/FULL_STATS
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: Process
+                attributes:
+                  qualifiedName: default/snowflake/1657025257/dag_123
+                  name: Source 1, Source 2, Source 3 -> Target 1, Target 2
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+      - key: example-1-2
+        summary: POST /api/service/credentials
+        requestRaw: |
+          {
+              "authType": "atlan_api_key",// (1)
+              "name": "default-spark-1716979138-0",
+              "connector": "spark",
+              "connectorConfigName": "atlan-connectors-spark",
+              "connectorType": "event",
+              "extra": {
+                  "events.enable-partial-assets": true,
+                  "events.enabled": true,
+                  "events.topic": "openlineage_spark",
+                  "events.urlPath": "/events/openlineage/spark/api/v1/lineage"// (7)
+              }
+          }
+        response:
+          mutatedEntities:
+            CREATE: []
+          guidAssignments: {}
+      - key: example-1-3
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Connection
+              attributes:
+                name: open_lineage_connection
+                connectorName: spark
+                qualifiedName: default/spark/123456789
+                category: connector
+                defaultCredentialGuid: 8b579147-6054-4a4c-8137-463cd349b393
+                adminRoles:
+                  - e7ae0295-c60a-469a-bd2c-fb903943aa02
+                adminGroups:
+                  - group2
+                adminUsers:
+                  - jsmith
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: Connection
+                attributes:
+                  qualifiedName: default/spark/123456789
+                  name: open_lineage_connection
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+  - step: 2
+    title: Directly
+    description: |-
+      7.0.0 4.0.0
+      To create lineage between assets, you need to create a Process entity.
+      Input and output assets must already exist
+      Note that the assets you reference as the inputs and outputs of the process must already exist, before creating the process.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-2-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Process
+              attributes:
+                name: Source 1, Source 2, Source 3 -> Target 1, Target 2
+                qualifiedName: default/snowflake/1657025257/dag_123
+                inputs:
+                  - typeName: Table
+                    guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+                  - typeName: Table
+                    guid: d002dead-1655-4d75-abd6-ad889fa04bd4
+                  - typeName: Table
+                    uniqueAttributes:
+                      qualifiedName: default/snowflake/1657025257/OPS/DEFAULT/RUN_STATS
+                outputs:
+                  - typeName: Table
+                    guid: 86d9a061-7753-4884-b988-a02d3954bc24
+                  - typeName: Table
+                    uniqueAttributes:
+                      qualifiedName: default/snowflake/1657025257/OPS/DEFAULT/FULL_STATS
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: Process
+                attributes:
+                  qualifiedName: default/snowflake/1657025257/dag_123
+                  name: Source 1, Source 2, Source 3 -> Target 1, Target 2
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+  - step: 3
+    title: Using OpenLineage
+    description: You must first configure OpenLineage before creating lineage between assets. You can either configure a Spark Assets  connection in Atlan before sending any OpenLineage events. (You can skip the Configure the integration in Apache Spark section), or you can follow the steps below to create the Spark connection via SDKs.
+    method: POST
+    endpoint: /api/service/credentials
+    queryString: testCredential=true
+    examples:
+      - key: example-3-1
+        summary: POST /api/service/credentials
+        requestRaw: |
+          {
+              "authType": "atlan_api_key",// (1)
+              "name": "default-spark-1716979138-0",
+              "connector": "spark",
+              "connectorConfigName": "atlan-connectors-spark",
+              "connectorType": "event",
+              "extra": {
+                  "events.enable-partial-assets": true,
+                  "events.enabled": true,
+                  "events.topic": "openlineage_spark",
+                  "events.urlPath": "/events/openlineage/spark/api/v1/lineage"// (7)
+              }
+          }
+        response:
+          id: 972a87c1-28d7-8bf2-896d-ea5bd3e9c691
+          name: default-spark-1716979138-0
+          host: example.host.com
+          port: 443
+          authType: atlan_api_key
+          connectorConfigName: atlan-connectors-spark
+          isValid: true
+          message: Connection successful
+      - key: example-3-2
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Connection
+              attributes:
+                name: open_lineage_connection
+                connectorName: spark
+                qualifiedName: default/spark/123456789
+                category: connector
+                defaultCredentialGuid: 8b579147-6054-4a4c-8137-463cd349b393
+                adminRoles:
+                  - e7ae0295-c60a-469a-bd2c-fb903943aa02
+                adminGroups:
+                  - group2
+                adminUsers:
+                  - jsmith
+        response:
+          id: 972a87c1-28d7-8bf2-896d-ea5bd3e9c691
+          name: credential-name
+          host: example.host.com
+          port: 443
+          authType: basic
+          connectorConfigName: atlan-connectors-snowflake
+          isValid: true
+          message: Connection successful
+  - step: 4
+    title: Create lineage between columns
+    description: |-
+      2.0.0 4.0.0
+      To create lineage between relational asset columns, it is necessary to create a ColumnProcess entity.
+      Lineage with relational columns
+      Before creating the ColumnProcess, verify lineage already exists between the associated relational assets, and ensure that the columns referenced as inputs and outputs already exist.
+    notes:
+      - type: warning
+        title: Lineage with relational columns
+        content: Before creating the ColumnProcess, verify lineage already exists between the associated relational assets, and ensure that the columns referenced as inputs and outputs already exist.
+      - type: recommendation
+        title: Tips for the connection
+        content: |-
+          The column process itself must be created within a connection for both access control and icon labelling. Use a connection qualifiedName that indicates the system that ran the column process:
+          You could use the same connection qualifiedName as the source system, if it was the source system "pushing" data to the target(s). You could use the same connection qualifiedName as the target system, if it was the target system "pulling" data from the source(s). You could use a different connection qualifiedName from either source or target, if there is a system in-between doing the processing (for example an ETL engine or orchestrator).
+      - type: recommendation
+        title: Use your own ID if you can
+        content: While the SDK can generate this ID for you, since it is based on the unique combination of inputs and outputs the ID can change if those inputs or outputs change. This could result in extra column processes in lineage as this process itself changes over time. By using your own ID for the column process, any changes that occur in that process over time (even if the inputs or outputs change) the same single process in Atlan will be updated.
+      - type: recommendation
+        title: Tips for the connection
+        content: |-
+          The column process itself must be created within a connection for both access control and icon labelling. Use a connection qualified_name that indicates the system that ran the column process:
+          You could use the same connection qualified_name as the source system, if it was the source system "pushing" data to the target(s). You could use the same connection qualified_name as the target system, if it was the target system "pulling" data from the source(s). You could use a different connection qualified_name from either source or target, if there is a system in-between doing the processing (for example an ETL engine or orchestrator).
+      - type: recommendation
+        title: Use your own ID if you can
+        content: While the SDK can generate this ID for you, since it is based on the unique combination of inputs and outputs the ID can change if those inputs or outputs change. This could result in extra column processes in lineage as this column process itself changes over time. By using your own ID for the column process, any changes that occur in that column process over time (even if the inputs or outputs change) the same single column process in Atlan will be updated.
+      - type: recommendation
+        title: Tips for the connection
+        content: |-
+          The column process itself must be created within a connection for both access control and icon labelling. Use a connection qualifiedName that indicates the system that ran the column process:
+          You could use the same connection qualifiedName as the source system, if it was the source system "pushing" data to the target(s). You could use the same connection qualifiedName as the target system, if it was the target system "pulling" data from the source(s). You could use a different connection qualifiedName from either source or target, if there is a system in-between doing the processing (for example an ETL engine or orchestrator).
+      - type: recommendation
+        title: Use your own ID if you can
+        content: While the SDK can generate this ID for you, since it is based on the unique combination of inputs and outputs the ID can change if those inputs or outputs change. This could result in extra column processes in lineage as this process itself changes over time. By using your own ID for the column process, any changes that occur in that process over time (even if the inputs or outputs change) the same single process in Atlan will be updated.
+      - type: warning
+        title: You must first configure OpenLineage
+        content: You must first configure a Spark Assets  connection in Atlan before sending any OpenLineage events. (You can skip the Configure the integration in Apache Spark section.)
+      - type: recommendation
+        title: Create input fields from input datasets
+        content: You can quickly create such a input (source) field from an input dataset using the fromField() method and the name of the column in that input dataset.
+      - type: recommendation
+        title: Create input fields from input datasets
+        content: You can quickly create such a input (source) field from an input dataset using the from_Field() method and the name of the column in that input dataset.
+      - type: recommendation
+        title: Create input fields from input datasets
+        content: You can quickly create such a input (source) field from an input dataset using the fromField() method and the name of the column in that input dataset.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-4-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: ColumnProcess
+              attributes:
+                name: Source 1, Source 2, Source 3 -> Target 1, Target 2
+                qualifiedName: default/snowflake/1657025257/dag_123
+                inputs:
+                  - typeName: Column
+                    guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+                  - typeName: Column
+                    guid: d002dead-1655-4d75-abd6-ad889fa04bd4
+                  - typeName: Column
+                    uniqueAttributes:
+                      qualifiedName: default/snowflake/1657025257/OPS/DEFAULT/RUN_STATS
+                outputs:
+                  - typeName: Column
+                    guid: 86d9a061-7753-4884-b988-a02d3954bc24
+                  - typeName: Column
+                    uniqueAttributes:
+                      qualifiedName: default/snowflake/1657025257/OPS/DEFAULT/FULL_STATS
+                process:
+                  guid: 76d9a061-7753-9884-b988-a02d3954bc25
+                  typeName: Process
+                  uniqueAttributes:
+                    qualifiedName: default/snowflake/1657025257/parent_123
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: ColumnProcess
+                attributes:
+                  qualifiedName: default/snowflake/1657025257/dag_123
+                  name: Source 1, Source 2, Source 3 -> Target 1, Target 2
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+  - step: 5
+    title: Directly
+    description: |-
+      2.0.0 4.0.0
+      To create lineage between relational asset columns, it is necessary to create a ColumnProcess entity.
+      Lineage with relational columns
+      Before creating the ColumnProcess, verify lineage already exists between the associated relational assets, and ensure that the columns referenced as inputs and outputs already exist.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-5-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: ColumnProcess
+              attributes:
+                name: Source 1, Source 2, Source 3 -> Target 1, Target 2
+                qualifiedName: default/snowflake/1657025257/dag_123
+                inputs:
+                  - typeName: Column
+                    guid: 495b1516-aaaf-4390-8cfd-b11ade7a7799
+                  - typeName: Column
+                    guid: d002dead-1655-4d75-abd6-ad889fa04bd4
+                  - typeName: Column
+                    uniqueAttributes:
+                      qualifiedName: default/snowflake/1657025257/OPS/DEFAULT/RUN_STATS
+                outputs:
+                  - typeName: Column
+                    guid: 86d9a061-7753-4884-b988-a02d3954bc24
+                  - typeName: Column
+                    uniqueAttributes:
+                      qualifiedName: default/snowflake/1657025257/OPS/DEFAULT/FULL_STATS
+                process:
+                  guid: 76d9a061-7753-9884-b988-a02d3954bc25
+                  typeName: Process
+                  uniqueAttributes:
+                    qualifiedName: default/snowflake/1657025257/parent_123
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: ColumnProcess
+                attributes:
+                  qualifiedName: default/snowflake/1657025257/dag_123
+                  name: Source 1, Source 2, Source 3 -> Target 1, Target 2
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+  - step: 6
+    title: Using OpenLineage
+    description: |-
+      2.5.1 4.0.0
+      To create column-lineage between assets through OpenLineage, you need only extend the details of the outputs you send in your OpenLineage events.
+      You must first configure OpenLineage
+      You must first configure a Spark Assets  connection in Atlan before sending any OpenLineage events. (You can skip the Configure the integration in Apache Spark section.)
+  - step: 7
+    title: (Optional) Send raw OpenLineage events
+    description: |-
+      If you have raw OpenLineage run events that you want to send directly to Atlan, use the OpenLineageEvent.emit_raw() method:
+      Unlike events constructed through the SDK, raw events are passed without strict validation. Only basic type validation occurs (string, JSON string, list[dict], or dict). This gives you flexibility but requires ensuring your event structure is correct.
+      Use with caution - malformed events may cause processing issues.
+  - step: 8
+    title: Remove lineage between assets
+    description: |-
+      7.0.0 4.0.0
+      To remove lineage between assets, you need to delete the Process entity that links them:
+      Only deletes the process indicated, no more
+      Also be aware that this will only delete the process with the GUID specified. It will not remove any column processes that may also exist. To remove those column processes as well, you must identify the GUID of each column-level process and call the same purge method against each of those GUIDs.
+    notes:
+      - type: warning
+        title: Only deletes the process indicated, no more
+        content: Also be aware that this will only delete the process with the GUID specified. It will not remove any column processes that may also exist. To remove those column processes as well, you must identify the GUID of each column-level process and call the same purge method against each of those GUIDs.
+    method: DELETE
+    endpoint: /api/meta/entity/bulk
+    queryString: guid=6fa1f0d0-5720-4041-8243-c2a5628b68bf&deleteType=PURGE
+    examples:
+      - key: example-8-1
+        summary: DELETE /api/meta/entity/bulk
+        response:
+          mutatedEntities:
+            PURGE:
+              - typeName: Asset
+                attributes:
+                  qualifiedName: example/deleted/asset
+                  name: Deleted Asset
+                guid: b4113341-251b-4adc-81fb-2420501c30e6
+                status: PURGED

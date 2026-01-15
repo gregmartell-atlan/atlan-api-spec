@@ -1,0 +1,138 @@
+post:
+  operationId: searchWorkflowRuns
+  summary: Search workflow runs
+  description: |
+    Search for workflow run history using Elasticsearch DSL.
+
+    ## Use cases
+    - [Workflow runs](https://developer.atlan.com/snippets/packages/workflows/)
+  externalDocs:
+    url: https://developer.atlan.com/snippets/packages/workflows/
+    description: Managing workflows and runs
+  tags:
+    - Workflow runs
+  security:
+    - AtlanToken: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/Search.yaml#/ServiceIndexSearchRequest'
+        examples:
+          recentRuns:
+            summary: Get recent workflow runs
+            value:
+              from: 0
+              size: 50
+              query:
+                match_all: {}
+              sort:
+                - metadata.creationTimestamp:
+                    order: desc
+          runsByStatus:
+            summary: Find failed workflow runs
+            value:
+              from: 0
+              size: 100
+              query:
+                term:
+                  status.phase.keyword: Failed
+  responses:
+    '200':
+      description: Workflow run search results
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              approximateCount:
+                type: integer
+              records:
+                type: array
+                items:
+                  type: object
+                  description: Workflow run object (Argo workflow run structure).
+          examples:
+            recent_runs:
+              summary: Recent workflow runs
+              description: List of recent workflow executions
+              value:
+                approximateCount: 150
+                records:
+                  - _index: atlan-workflowrun
+                    _source:
+                      metadata:
+                        name: atlan-snowflake-miner-1714638976-run-1
+                        namespace: default
+                        creationTimestamp: "2024-05-02T10:16:16Z"
+                        labels:
+                          workflows.argoproj.io/workflow: atlan-snowflake-miner-1714638976
+                      status:
+                        phase: Succeeded
+                        startedAt: "2024-05-02T10:16:16Z"
+                        finishedAt: "2024-05-02T10:25:42Z"
+                        progress: "5/5"
+                        nodes:
+                          atlan-snowflake-miner-1714638976-run-1:
+                            phase: Succeeded
+                            type: DAG
+                  - _source:
+                      metadata:
+                        name: atlan-snowflake-1699281775-run-3
+                        creationTimestamp: "2024-01-15T08:00:00Z"
+                      status:
+                        phase: Succeeded
+                        startedAt: "2024-01-15T08:00:00Z"
+                        finishedAt: "2024-01-15T08:45:22Z"
+            failed_runs:
+              summary: Failed workflow runs
+              description: Runs that failed or errored
+              value:
+                approximateCount: 5
+                records:
+                  - _source:
+                      metadata:
+                        name: atlan-dbt-1699281775-run-2
+                        creationTimestamp: "2024-01-10T12:00:00Z"
+                      status:
+                        phase: Failed
+                        startedAt: "2024-01-10T12:00:00Z"
+                        finishedAt: "2024-01-10T12:05:15Z"
+                        message: "Error: Connection timeout to dbt Cloud API"
+                        nodes:
+                          atlan-dbt-1699281775-run-2-main:
+                            phase: Failed
+                            message: "Connection refused"
+            running_workflows:
+              summary: Currently running workflows
+              description: Workflows currently in progress
+              value:
+                approximateCount: 2
+                records:
+                  - _source:
+                      metadata:
+                        name: atlan-snowflake-1699281775-run-current
+                        creationTimestamp: "2024-05-15T14:30:00Z"
+                      status:
+                        phase: Running
+                        startedAt: "2024-05-15T14:30:00Z"
+                        progress: "2/5"
+    '400':
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '401':
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '500':
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'

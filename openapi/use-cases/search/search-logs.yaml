@@ -1,0 +1,308 @@
+# Use Case: Accessing the search logs of an asset
+# Auto-generated from: https://developer.atlan.com/snippets/search-logs/
+# Generated at: 2026-01-13T02:58:00.307Z
+
+id: search-logs
+title: "Accessing the search logs of an asset"
+category: search
+icon: zap
+relatedTypes:
+  - Asset
+
+description: >-
+  Search logs provide valuable insights for analysts to monitor the popularity of assets within Atlan, including details such as the most visited assets, user interactions, and emerging search patterns. Accessing the search log of an asset is a flexible operation, which may seem more intricate compared to other operations. To harness the complete flexibility of Atlan's search, the SDK introduces a dedicated SearchLogRequest object.
+  
+  Similar but not identical to searching in general
+  
+  Atlan's search
+
+externalDocs:
+  url: https://developer.atlan.com/snippets/search-logs/
+  description: Official Atlan documentation
+
+steps:
+  - step: 1
+    title: "Most recent viewers of an asset"
+    description: >-
+      2.0.4
+      4.0.0
+      
+      To retrieve the most recent viewers of an asset:
+    method: POST
+    endpoint: /api/meta/search/searchlog
+    examples:
+      - key: example-1-1
+        summary: "POST /api/meta/search/searchlog"
+        request: {
+                    "dsl": {
+                              "from": 0,
+                              "size": 0,
+                              "aggregations": {
+                                        "uniqueUsers": {
+                                                  "aggregations": {
+                                                            "latestTimestamp": {
+                                                                      "max": {
+                                                                                "field": "timestamp"
+                                                                      }
+                                                            }
+                                                  },
+                                                  "terms": {
+                                                            "field": "userName",
+                                                            "order": [
+                                                                      {
+                                                                                "latestTimestamp": "desc"
+                                                                      }
+                                                            ],
+                                                            "size": 20
+                                                  }
+                                        },
+                                        "totalDistinctUsers": {
+                                                  "cardinality": {
+                                                            "field": "userName",
+                                                            "precision_threshold": 1000
+                                                  }
+                                        }
+                              },
+                              "query": {
+                                        "bool": {
+                                                  "must_not": [
+                                                            {
+                                                                      "terms": {
+                                                                                "userName": [
+                                                                                          "atlansupport"
+                                                                                ]
+                                                                      }
+                                                            }
+                                                  ],
+                                                  "filter": [
+                                                            {
+                                                                      "term": {
+                                                                                "utmTags": {
+                                                                                          "value": "action_asset_viewed"
+                                                                                }
+                                                                      }
+                                                            },
+                                                            {
+                                                                      "term": {
+                                                                                "entityGuidsAll": {
+                                                                                          "value": "955c455d-cfea-4c9c-844d-e226edf8b6da",
+                                                                                          "case_insensitive": false
+                                                                                }
+                                                                      }
+                                                            },
+                                                            {
+                                                                      "bool": {
+                                                                                "minimum_should_match": 1,
+                                                                                "should": [
+                                                                                          {
+                                                                                                    "term": {
+                                                                                                              "utmTags": {
+                                                                                                                        "value": "ui_profile"
+                                                                                                              }
+                                                                                                    }
+                                                                                          },
+                                                                                          {
+                                                                                                    "term": {
+                                                                                                              "utmTags": {
+                                                                                                                        "value": "ui_sidebar"
+                                                                                                              }
+                                                                                                    }
+                                                                                          }
+                                                                                ]
+                                                                      }
+                                                            }
+                                                  ]
+                                        }
+                              },
+                              "sort": [
+                                        {
+                                                  "timestamp": {
+                                                            "order": "asc"
+                                                  }
+                                        }
+                              ],
+                              "track_total_hits": true
+                    }
+          }
+  - step: 2
+    title: "Most viewed assets"
+    description: >-
+      2.0.4
+      4.0.0
+      
+      To retrieve the most viewed assets by its total views:
+    method: POST
+    endpoint: /api/meta/search/searchlog
+    examples:
+      - key: example-2-1
+        summary: "POST /api/meta/search/searchlog"
+        request: {
+                    "dsl": {
+                              "from": 0,
+                              "size": 0,
+                              "aggregations": {
+                                        "uniqueAssets": {
+                                                  "aggregations": {
+                                                            "uniqueUsers": {
+                                                                      "cardinality": {
+                                                                                "field": "userName",
+                                                                                "precision_threshold": 1000
+                                                                      }
+                                                            }
+                                                  },
+                                                  "terms": {
+                                                            "field": "entityGuidsAll",
+                                                            "size": 10
+                                                  }
+                                        },
+                                        "totalDistinctUsers": {
+                                                  "cardinality": {
+                                                            "field": "userName",
+                                                            "precision_threshold": 1000
+                                                  }
+                                        }
+                              },
+                              "query": {
+                                        "bool": {
+                                                  "must_not": [
+                                                            {
+                                                                      "terms": {
+                                                                                "userName": [
+                                                                                          "atlansupport"
+                                                                                ]
+                                                                      }
+                                                            }
+                                                  ],
+                                                  "filter": [
+                                                            {
+                                                                      "term": {
+                                                                                "utmTags": {
+                                                                                          "value": "action_asset_viewed"
+                                                                                }
+                                                                      }
+                                                            },
+                                                            {
+                                                                      "bool": {
+                                                                                "minimum_should_match": 1,
+                                                                                "should": [
+                                                                                          {
+                                                                                                    "term": {
+                                                                                                              "utmTags": {
+                                                                                                                        "value": "ui_profile"
+                                                                                                              }
+                                                                                                    }
+                                                                                          },
+                                                                                          {
+                                                                                                    "term": {
+                                                                                                              "utmTags": {
+                                                                                                                        "value": "ui_sidebar"
+                                                                                                              }
+                                                                                                    }
+                                                                                          }
+                                                                                ]
+                                                                      }
+                                                            }
+                                                  ]
+                                        }
+                              },
+                              "sort": [
+                                        {
+                                                  "timestamp": {
+                                                            "order": "asc"
+                                                  }
+                                        }
+                              ],
+                              "track_total_hits": true
+                    }
+          }
+  - step: 3
+    title: "Detailed search log entries"
+    description: >-
+      3.1.0
+      4.0.0
+      
+      To retrieve detailed search log entries (paged via lazy fetching):
+    notes:
+      - type: recommendation
+        title: "Independent of page size"
+        content: >-
+          Note that this is independent of page size. You could page through results 50 at a time, but only process a maximum of 100 total results this way. Since the results are lazily-loaded when streaming, only the first two pages of results would be retrieved in such a scenario.
+      - type: note
+        title: "Note"
+        content: >-
+          If the number of results exceeds the predefined threshold
+          (10,000 assets) search log search will be automatically converted into a bulk search.
+      - type: recommendation
+        title: "Independent of page size"
+        content: >-
+          Note that this is independent of page size. You could page through results 50 at a time, but only process a maximum of 100 total results this way. Since the results are lazily-loaded when streaming, only the first two pages of results would be retrieved in such a scenario.
+    method: POST
+    endpoint: /api/meta/search/searchlog
+    examples:
+      - key: example-3-1
+        summary: "POST /api/meta/search/searchlog"
+        request: {
+                    "dsl": {
+                              "from": 0,
+                              "size": 100,
+                              "query": {
+                                        "bool": {
+                                                  "must_not": [
+                                                            {
+                                                                      "terms": {
+                                                                                "userName": [
+                                                                                          "atlansupport"
+                                                                                ]
+                                                                      }
+                                                            }
+                                                  ],
+                                                  "filter": [
+                                                            {
+                                                                      "term": {
+                                                                                "utmTags": {
+                                                                                          "value": "action_asset_viewed"
+                                                                                }
+                                                                      }
+                                                            },
+                                                            {
+                                                                      "term": {
+                                                                                "entityGuidsAll": {
+                                                                                          "value": "955c455d-cfea-4c9c-844d-e226edf8b6da",
+                                                                                          "case_insensitive": false
+                                                                                }
+                                                                      }
+                                                            },
+                                                            {
+                                                                      "bool": {
+                                                                                "minimum_should_match": 1,
+                                                                                "should": [
+                                                                                          {
+                                                                                                    "term": {
+                                                                                                              "utmTags": {
+                                                                                                                        "value": "ui_profile"
+                                                                                                              }
+                                                                                                    }
+                                                                                          },
+                                                                                          {
+                                                                                                    "term": {
+                                                                                                              "utmTags": {
+                                                                                                                        "value": "ui_sidebar"
+                                                                                                              }
+                                                                                                    }
+                                                                                          }
+                                                                                ]
+                                                                      }
+                                                            }
+                                                  ]
+                                        }
+                              },
+                              "sort": [
+                                        {
+                                                  "timestamp": {
+                                                            "order": "asc"
+                                                  }
+                                        }
+                              ],
+                              "track_total_hits": true
+                    }
+          }

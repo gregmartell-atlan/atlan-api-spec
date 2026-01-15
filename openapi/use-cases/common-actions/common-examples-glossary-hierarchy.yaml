@@ -1,0 +1,138 @@
+id: common-examples-glossary-hierarchy
+title: Traverse categories
+category: common-actions
+icon: zap
+relatedTypes:
+  - Asset
+  - AtlasGlossary
+  - AtlasGlossaryCategory
+  - AtlasGlossaryTerm
+description: |-
+  You can populate glossaries in Atlan with arbitrarily deep category hierarchies.
+  graph
+      g([Glossary])
+      c1([Category 1])
+      c2([Category 2])
+      c1a([Category 1a])
+      c1b([Category 1b])
+      c1ai(["Category 1a(i)"])
+      c1aii(["Category 1a(ii)"])
+      tA([Term A])
+      tB([Term B])
+      g-->c1-->c1a
+      g-->c2
+      c1-->c1b
+      c1a-->c1ai
+      c1a-->c1aii
+      c1b-->tB
+      c1ai-->tA
+  To traverse these categories efficiently (without retrieving each level through a separate API call) you need to 
+externalDocs:
+  url: https://developer.atlan.com/snippets/common-examples/glossary/hierarchy/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Retrieve the hierarchy
+    description: |-
+      1.6.2 4.0.0
+      To retrieve a traversable hierarchy for a glossary:
+    notes:
+      - type: warning
+        title: Requires multiple API operations and non-API logic
+        content: To retrieve all categories in a glossary could require multiple API operations, to page through results. You would do this by incrementing the from in each subsequent call (in increments equal to the size) to get the next page of results. Each page of results from the search will return a flat list of categories. You will need to use the parentCategory relationship within each result to reverse-engineer the hierarchical structure of the categories from the flat lists.
+      - type: warning
+        title: Requires qualifiedName of the glossary
+        content: Note that this requires the `qualifiedName of the glossary, which therefore must first be known or found by an earlier search on glossaries.
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            from: 0
+            size: 20
+            query:
+              bool:
+                filter:
+                  - term:
+                      __state:
+                        value: ACTIVE
+                  - term:
+                      __typeName.keyword:
+                        value: AtlasGlossaryCategory
+                  - term:
+                      __glossary:
+                        value: LD5Tb30qbuYCZKsmFRpmS
+            sort:
+              - name.keyword:
+                  order: asc
+            track_total_hits: true
+          attributes:
+            - parentCategory
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"filter\":[{\"term\":{\"__state\":{\"value\":\"ACTIVE\"}}},{\"term\":{\"__typeName.keyword\":{\"value\":\"AtlasGlossaryCategory\"}}},{\"term\":{\"__glossary\":{\"value\":\"LD5Tb30qbuYCZKsmFRpmS\"}}}]}}"
+            attributes:
+              - parentCategory
+          approximateCount: 25
+          entities:
+            - typeName: AtlasGlossaryCategory
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/ATLASGLOSSARYCATEGORY_1
+                name: AtlasGlossaryCategory_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: AtlasGlossaryCategory_1
+            - typeName: AtlasGlossaryCategory
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/ATLASGLOSSARYCATEGORY_2
+                name: AtlasGlossaryCategory_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: AtlasGlossaryCategory_2
+  - step: 2
+    title: Traverse the hierarchy
+    description: |-
+      To traverse the hierarchy of categories you then have a few options.
+      1.6.2 1.0.0
+      To list every category in the hierarchy in depth-first order:
+    notes:
+      - type: recommendation
+        title: Non-API logic
+        content: |-
+          Once you have retrieved the categories using the search approach outlined above, traversing them becomes an operation entirely in your own program (does not interact with Atlan APIs). For a depth-first traversal:
+          Start by listing a single top-level category (those whose parentCategory relationship is empty). Then output a single child category of that top-level category. Then output a single child category of (2). Continue in this way down the hierarchy. Once exhausted, then move on to the next (grand-)child category and exhaust its (grand-)children. Continue in this way until all categories are listed.
+      - type: recommendation
+        title: Non-API logic
+        content: |-
+          Once you have retrieved the categories using the search approach outlined above, traversing them becomes an operation entirely in your own program (does not interact with Atlan APIs). For a breadth-first traversal:
+          Start by listing the top-level categories (those whose parentCategory relationship is empty). For each of these categories, then list all of its children. Continue the logic from (1) for each child category.
+      - type: recommendation
+        title: Non-API logic
+        content: Once you have retrieved the categories using the search approach outlined above, traversing them becomes an operation entirely in your own program (does not interact with Atlan APIs).
+  - step: 3
+    title: Depth-first traversal
+    description: |-
+      1.6.2 1.0.0
+      To list every category in the hierarchy in depth-first order:
+  - step: 4
+    title: Breadth-first traversal
+    description: |-
+      1.6.2 1.0.0
+      To list every category in the hierarchy in breadth-first order:
+  - step: 5
+    title: Build-your-own traversal
+    description: |-
+      1.6.2 1.0.0
+      Alternatively, you may want to iterate through the hierarchy in your own order. From the traversable hierarchy you can retrieve the top-level categories, and then decide what to do from there:

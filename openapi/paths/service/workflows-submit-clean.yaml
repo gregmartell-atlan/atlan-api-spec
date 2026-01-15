@@ -1,0 +1,63 @@
+# Minimal workflows/submit endpoint
+# Use-case-specific examples are in /openapi/use-cases/workflows/
+
+post:
+  operationId: submitWorkflow
+  summary: Submit a workflow for execution
+  description: |
+    Submit a workflow package for execution.
+    
+    Workflows include crawlers, miners, and utility packages.
+    See Use Cases for step-by-step guides on specific workflows.
+  externalDocs:
+    url: https://developer.atlan.com/snippets/workflows/packages/
+    description: Workflow packages documentation
+  tags:
+    - Workflows
+  security:
+    - AtlanToken: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/Workflow.yaml#/WorkflowSubmitRequest'
+        examples:
+          submit_workflow:
+            summary: Submit a workflow
+            value:
+              namespace: default
+              resourceKind: WorkflowTemplate
+              resourceName: atlan-snowflake-1684500411
+
+  responses:
+    '200':
+      description: Workflow submitted successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Workflow.yaml#/WorkflowSubmitResponse'
+          example:
+            metadata:
+              name: atlan-snowflake-1684500411-run-abc123
+              namespace: default
+            status:
+              phase: Running
+    '400':
+      description: Invalid workflow configuration
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '401':
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '404':
+      description: Workflow package not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'

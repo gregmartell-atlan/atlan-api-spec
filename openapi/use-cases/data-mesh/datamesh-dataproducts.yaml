@@ -1,0 +1,274 @@
+id: datamesh-dataproducts
+title: Manage data products
+category: data-mesh
+icon: zap
+relatedTypes:
+  - Asset
+  - DataProduct
+description: Manage data products in Atlan. Data products are curated, well-documented datasets designed for specific use cases with clear ownership and quality guarantees.
+externalDocs:
+  url: https://developer.atlan.com/snippets/datamesh/dataproducts/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Create a new data product
+    description: |-
+      4.0.0 2.0.4
+      To create a new data product:
+    notes:
+      - type: recommendation
+        title: Use SDK to create data products
+        content: The above data products assets DSL requires a filter as a nested object construct within an outer bool, rather than a list or array. It's recommended to create data products via SDK as it handles this complexity automatically.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: DataProduct
+              attributes:
+                name: Marketing Influence
+                qualifiedName: default/domain/8S8vbC9hT6iPLMY2ydXqf/super/product/marketingInfluence
+                parentDomainQualifiedName: default/domain/8S8vbC9hT6iPLMY2ydXqf/super
+                superDomainQualifiedName: default/domain/8S8vbC9hT6iPLMY2ydXqf/super
+                dataProductAssetsDSL: "{\"query\": {\"attributes\": [\"__traitNames\", \"connectorName\", \"__customAttributes\", \"certificateStatus\", \"tenantId\", \"anchor\", \"parentQualifiedName\", \"Query.parentQualifiedName\", \"AtlasGlossaryTerm.anchor\", \"databaseName\", \"schemaName\", \"parent\", \"connectionQualifiedName\", \"collectionQualifiedName\", \"announcementMessage\", \"announcementTitle\", \"announcementType\", \"announcementUpdatedAt\", \"announcementUpdatedBy\", \"allowQuery\", \"allowQueryPreview\", \"adminGroups\", \"adminRoles\", \"adminUsers\", \"category\", \"credentialStrategy\", \"connectionSSOCredentialGuid\", \"certificateStatus\", \"certificateUpdatedAt\", \"certificateUpdatedBy\", \"classifications\", \"connectionId\", \"connectionQualifiedName\", \"connectorName\", \"dataType\", \"defaultDatabaseQualifiedName\", \"defaultSchemaQualifiedName\", \"description\", \"displayName\", \"links\", \"link\", \"meanings\", \"name\", \"ownerGroups\", \"ownerUsers\", \"qualifiedName\", \"typeName\", \"userDescription\", \"displayDescription\", \"subDataType\", \"rowLimit\", \"queryTimeout\", \"previewCredentialStrategy\", \"policyStrategy\", \"policyStrategyForSamplePreview\", \"useObjectStorage\", \"objectStorageUploadThreshold\", \"outputPortDataProducts\"], \"dsl\": {\"from\": 0, \"query\": {\"bool\": {\"filter\": {\"bool\": {\"filter\": [{\"term\": {\"__state\": {\"value\": \"ACTIVE\", \"case_insensitive\": false}}}, {\"term\": {\"__typeName.keyword\": {\"value\": \"Table\", \"case_insensitive\": false}}}, {\"term\": {\"certificateStatus\": {\"value\": \"VERIFIED\", \"case_insensitive\": false}}}, {\"term\": {\"__traitNames\": {\"value\": \"Marketing\", \"case_insensitive\": false}}}]}}}}}, \"suppressLogs\": true}, \"filterScrubbed\": true}"
+                dataProductAssetsPlaybookFilter: "{\"condition\":\"AND\",\"isGroupLocked\":false,\"rules\":[]}"
+              relationshipAttributes:
+                dataDomain:
+                  typeName: DataDomain
+                  uniqueAttributes:
+                    qualifiedName: default/domain/8S8vbC9hT6iPLMY2ydXqf/super
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: DataProduct
+                attributes:
+                  qualifiedName: default/domain/8S8vbC9hT6iPLMY2ydXqf/super/product/marketingInfluence
+                  name: Marketing Influence
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+  - step: 2
+    title: Retrieve a data product
+    description: |-
+      4.0.0 2.2.1
+      To retrieve a data product by its human-readable name:
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-2-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            from: 0
+            size: 100
+            aggregations: {}
+            track_total_hits: true
+            query:
+              bool:
+                filter:
+                  - term:
+                      name.keyword:
+                        value: marketingInfluence
+                  - term:
+                      __typeName.keyword:
+                        value: DataProduct
+            sort:
+              - __guid:
+                  order: asc
+          attributes:
+            - certificateStatus
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"filter\":[{\"term\":{\"name.keyword\":{\"value\":\"marketingInfluence\"}}},{\"term\":{\"__typeName.keyword\":{\"value\":\"DataProduct\"}}}]}}"
+            attributes:
+              - certificateStatus
+          approximateCount: 25
+          entities:
+            - typeName: DataProduct
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/DATAPRODUCT_1
+                name: DataProduct_1
+                certificateStatus: VERIFIED
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: DataProduct_1
+            - typeName: DataProduct
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/DATAPRODUCT_2
+                name: DataProduct_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: DataProduct_2
+  - step: 3
+    title: Retrieve all assets linked to a data product
+    description: |-
+      4.2.2 7.0.0
+      To retrieve list of all assets associated with a data product:
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-3-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            from: 0
+            size: 100
+            aggregations: {}
+            track_total_hits: true
+            query:
+              bool:
+                filter:
+                  bool:
+                    filter:
+                      - term:
+                          __state:
+                            value: ACTIVE
+                            case_insensitive: false
+                      - term:
+                          __typeName.keyword:
+                            value: Table
+                            case_insensitive: false
+            sort: []
+          attributes:
+            - certificateStatus
+            - connectorName
+            - __customAttributes
+            - certificateStatus
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"filter\":{\"bool\":{\"filter\":[{\"term\":{\"__state\":{\"value\":\"ACTIVE\",\"case_insensitive\":false}}},{\"term\":{\"__typeName.keyword\":{\"value\":\"Table\",\"case_insensitive\":false}}}]}}}}"
+            attributes:
+              - certificateStatus
+              - connectorName
+              - __customAttributes
+              - certificateStatus
+          approximateCount: 25
+          entities:
+            - typeName: case_insensitive
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/CASE_INSENSITIVE_1
+                name: case_insensitive_1
+                certificateStatus: VERIFIED
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: case_insensitive_1
+            - typeName: case_insensitive
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/CASE_INSENSITIVE_2
+                name: case_insensitive_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: case_insensitive_2
+  - step: 4
+    title: Update a data product
+    description: |-
+      4.0.0 2.4.5
+      To update a data product:
+    notes:
+      - type: recommendation
+        title: Use SDK to update data products
+        content: The above data products assets DSL requires a filter as a nested object construct within an outer bool, rather than a list or array. It's recommended to update data products via SDK as it handles this complexity automatically.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-4-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: DataProduct
+              attributes:
+                name: Marketing Influence
+                qualifiedName: default/product/marketingInfluence
+                userDescription: Now with a description!
+                dataProductAssetsDSL: "{\"query\": {\"attributes\": [\"__traitNames\", \"connectorName\", \"__customAttributes\", \"certificateStatus\", \"tenantId\", \"anchor\", \"parentQualifiedName\", \"Query.parentQualifiedName\", \"AtlasGlossaryTerm.anchor\", \"databaseName\", \"schemaName\", \"parent\", \"connectionQualifiedName\", \"collectionQualifiedName\", \"announcementMessage\", \"announcementTitle\", \"announcementType\", \"announcementUpdatedAt\", \"announcementUpdatedBy\", \"allowQuery\", \"allowQueryPreview\", \"adminGroups\", \"adminRoles\", \"adminUsers\", \"category\", \"credentialStrategy\", \"connectionSSOCredentialGuid\", \"certificateStatus\", \"certificateUpdatedAt\", \"certificateUpdatedBy\", \"classifications\", \"connectionId\", \"connectionQualifiedName\", \"connectorName\", \"dataType\", \"defaultDatabaseQualifiedName\", \"defaultSchemaQualifiedName\", \"description\", \"displayName\", \"links\", \"link\", \"meanings\", \"name\", \"ownerGroups\", \"ownerUsers\", \"qualifiedName\", \"typeName\", \"userDescription\", \"displayDescription\", \"subDataType\", \"rowLimit\", \"queryTimeout\", \"previewCredentialStrategy\", \"policyStrategy\", \"policyStrategyForSamplePreview\", \"useObjectStorage\", \"objectStorageUploadThreshold\", \"outputPortDataProducts\"], \"dsl\": {\"from\": 0, \"query\": {\"bool\": {\"filter\": {\"bool\": {\"filter\": [{\"term\": {\"__state\": {\"value\": \"ACTIVE\", \"case_insensitive\": false}}}, {\"term\": {\"__typeName.keyword\": {\"value\": \"Table\", \"case_insensitive\": false}}}, {\"term\": {\"certificateStatus\": {\"value\": \"VERIFIED\", \"case_insensitive\": false}}}, {\"term\": {\"__traitNames\": {\"value\": \"Digital Marketing\", \"case_insensitive\": false}}}]}}}}}, \"suppressLogs\": true}, \"filterScrubbed\": true}"
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: DataProduct
+                attributes:
+                  qualifiedName: default/product/marketingInfluence
+                  name: Marketing Influence
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+  - step: 5
+    title: Delete a data product
+    description: |-
+      4.0.0 1.8.1
+      To soft-delete, or archive, a data product:
+    method: DELETE
+    endpoint: /api/meta/entity/bulk
+    queryString: guid=218c8144-dc39-43a5-b0c0-9eeb4d11e74a&deleteType=SOFT
+    examples:
+      - key: example-5-1
+        summary: DELETE /api/meta/entity/bulk
+        response:
+          mutatedEntities:
+            DELETE:
+              - typeName: Asset
+                attributes:
+                  qualifiedName: example/deleted/asset
+                  name: Deleted Asset
+                guid: b4113341-251b-4adc-81fb-2420501c30e6
+                status: DELETED
+      - key: example-5-2
+        summary: DELETE /api/meta/entity/bulk
+        response:
+          mutatedEntities:
+            DELETE:
+              - typeName: Asset
+                attributes:
+                  qualifiedName: example/deleted/asset
+                  name: Deleted Asset
+                guid: b4113341-251b-4adc-81fb-2420501c30e6
+                status: DELETED
+  - step: 6
+    title: Soft-delete (archive)
+    description: "To soft-delete, or archive, a data product:"
+    method: DELETE
+    endpoint: /api/meta/entity/bulk
+    queryString: guid=218c8144-dc39-43a5-b0c0-9eeb4d11e74a&deleteType=SOFT
+    examples:
+      - key: example-6-1
+        summary: DELETE /api/meta/entity/bulk
+        response:
+          mutatedEntities:
+            DELETE:
+              - typeName: Asset
+                attributes:
+                  qualifiedName: example/deleted/asset
+                  name: Deleted Asset
+                guid: b4113341-251b-4adc-81fb-2420501c30e6
+                status: DELETED
+  - step: 7
+    title: Hard-delete (purge)
+    description: "To permanently delete (purge) a data product:"
+    method: DELETE
+    endpoint: /api/meta/entity/bulk
+    queryString: guid=218c8144-dc39-43a5-b0c0-9eeb4d11e74a&deleteType=PURGE
+    examples:
+      - key: example-7-1
+        summary: DELETE /api/meta/entity/bulk
+        response:
+          mutatedEntities:
+            PURGE:
+              - typeName: Asset
+                attributes:
+                  qualifiedName: example/deleted/asset
+                  name: Deleted Asset
+                guid: b4113341-251b-4adc-81fb-2420501c30e6
+                status: PURGED

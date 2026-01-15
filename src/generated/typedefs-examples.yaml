@@ -1,0 +1,409 @@
+          custommetadata_create__0:
+            summary: "Create custom metadata - Create custom metadata"
+            x-useCaseTag: "Create custom metadata"
+            x-docUrl: https://developer.atlan.com/snippets/custom-metadata/create/
+            x-atlanSnippet: |-
+              {
+                "businessMetadataDefs": [ // (1)
+                  {
+                    "category": "BUSINESS_METADATA", // (2)
+                    "name": "RACI", // (3)
+                    "attributeDefs": [ // (4)
+                      {
+                        "name": "", // (5)
+                        "displayName": "Responsible", // (6)
+                        "description": "",
+                        "typeName": "string",
+                        "isOptional": true,
+                        "cardinality": "SINGLE",
+                        "valuesMinCount": 0,
+                        "valuesMaxCount": 1,
+                        "isUnique": false,
+                        "isIndexable": true,
+                        "includeInNotification": false,
+                        "options": {
+                          "applicableEntityTypes": "[\"Asset\"]",
+                          "customApplicableEntityTypes": "[\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\",\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\"]",
+                          "allowSearch": false,
+                          "maxStrLength": "100000000",
+                          "allowFiltering": true,
+                          "multiValueSelect": true, // (7)
+                          "showInOverview": false,
+                          "primitiveType": "users",
+                          "isEnum": false,
+                          "customType": "users" // (8)
+                        },
+                        "isNew": true // (9)
+                      },
+                      {
+                        "name": "",
+                        "displayName": "Accountable",
+                        "description": "",
+                        "typeName": "string",
+                        "isOptional": true,
+                        "cardinality": "SINGLE",
+                        "valuesMinCount": 0,
+                        "valuesMaxCount": 1,
+                        "isUnique": false,
+                        "isIndexable": true,
+                        "includeInNotification": false,
+                        "options": {
+                          "applicableEntityTypes": "[\"Asset\"]",
+                          "customApplicableEntityTypes": "[\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\",\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\"]",
+                          "allowSearch": false,
+                          "maxStrLength": "100000000",
+                          "allowFiltering": true,
+                          "multiValueSelect": false,
+                          "showInOverview": false,
+                          "primitiveType": "users",
+                          "isEnum": false,
+                          "customType": "users"
+                        },
+                        "isNew": true
+                      },
+                      {
+                        "name": "",
+                        "displayName": "Consulted",
+                        "description": "",
+                        "typeName": "array<string>",
+                        "isOptional": true,
+                        "cardinality": "SINGLE",
+                        "valuesMinCount": 0,
+                        "valuesMaxCount": 1,
+                        "isUnique": false,
+                        "isIndexable": true,
+                        "includeInNotification": false,
+                        "options": {
+                          "applicableEntityTypes": "[\"Asset\"]",
+                          "customApplicableEntityTypes": "[\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\",\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\"]",
+                          "allowSearch": false,
+                          "maxStrLength": "100000000",
+                          "allowFiltering": true,
+                          "multiValueSelect": true,
+                          "showInOverview": false,
+                          "primitiveType": "groups",
+                          "isEnum": false,
+                          "customType": "groups"
+                        },
+                        "isNew": true
+                      },
+                      {
+                        "name": "",
+                        "displayName": "Informed",
+                        "description": "",
+                        "typeName": "array<string>",
+                        "isOptional": true,
+                        "cardinality": "SINGLE",
+                        "valuesMinCount": 0,
+                        "valuesMaxCount": 1,
+                        "isUnique": false,
+                        "isIndexable": true,
+                        "includeInNotification": false,
+                        "options": {
+                          "applicableEntityTypes": "[\"Asset\"]",
+                          "customApplicableEntityTypes": "[\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\",\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\"]",
+                          "allowSearch": false,
+                          "maxStrLength": "100000000",
+                          "allowFiltering": true,
+                          "multiValueSelect": true,
+                          "showInOverview": false,
+                          "primitiveType": "groups",
+                          "isEnum": false,
+                          "customType": "groups"
+                        },
+                        "isNew": true
+                      }
+                    ],
+                    "displayName": "RACI", // (10)
+                    "options": { // (11)
+                      "logoType": "emoji",
+                      "emoji": "👪"
+                    }
+                  }
+                ]
+              }
+            value:
+              businessMetadataDefs:
+                - category: BUSINESS_METADATA
+                  name: RACI
+                  attributeDefs:
+                    - name: 
+                      displayName: Responsible
+                      description: 
+                      typeName: string
+                      isOptional: true
+                      cardinality: SINGLE
+                      valuesMinCount: 0
+                      valuesMaxCount: 1
+                      isUnique: false
+                      isIndexable: true
+                      includeInNotification: false
+                      options:
+                        applicableEntityTypes: "[\"Asset\"]"
+                        customApplicableEntityTypes: "[\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\",\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\"]"
+                        allowSearch: false
+                        maxStrLength: 100000000
+                        allowFiltering: true
+                        multiValueSelect: true
+                        showInOverview: false
+                        primitiveType: users
+                        isEnum: false
+                        customType: users
+                      isNew: true
+                    - name: 
+                      displayName: Accountable
+                      description: 
+                      typeName: string
+                      isOptional: true
+                      cardinality: SINGLE
+                      valuesMinCount: 0
+                      valuesMaxCount: 1
+                      isUnique: false
+                      isIndexable: true
+                      includeInNotification: false
+                      options:
+                        applicableEntityTypes: "[\"Asset\"]"
+                        customApplicableEntityTypes: "[\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\",\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\"]"
+                        allowSearch: false
+                        maxStrLength: 100000000
+                        allowFiltering: true
+                        multiValueSelect: false
+                        showInOverview: false
+                        primitiveType: users
+                        isEnum: false
+                        customType: users
+                      isNew: true
+                    - name: 
+                      displayName: Consulted
+                      description: 
+                      typeName: "array<string>"
+                      isOptional: true
+                      cardinality: SINGLE
+                      valuesMinCount: 0
+                      valuesMaxCount: 1
+                      isUnique: false
+                      isIndexable: true
+                      includeInNotification: false
+                      options:
+                        applicableEntityTypes: "[\"Asset\"]"
+                        customApplicableEntityTypes: "[\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\",\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\"]"
+                        allowSearch: false
+                        maxStrLength: 100000000
+                        allowFiltering: true
+                        multiValueSelect: true
+                        showInOverview: false
+                        primitiveType: groups
+                        isEnum: false
+                        customType: groups
+                      isNew: true
+                    - name: 
+                      displayName: Informed
+                      description: 
+                      typeName: "array<string>"
+                      isOptional: true
+                      cardinality: SINGLE
+                      valuesMinCount: 0
+                      valuesMaxCount: 1
+                      isUnique: false
+                      isIndexable: true
+                      includeInNotification: false
+                      options:
+                        applicableEntityTypes: "[\"Asset\"]"
+                        customApplicableEntityTypes: "[\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\",\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\"]"
+                        allowSearch: false
+                        maxStrLength: 100000000
+                        allowFiltering: true
+                        multiValueSelect: true
+                        showInOverview: false
+                        primitiveType: groups
+                        isEnum: false
+                        customType: groups
+                      isNew: true
+                  displayName: RACI
+                  options:
+                    logoType: emoji
+                    emoji: 👪
+
+          custommetadata_enums__1:
+            summary: "Custom metadata enums - Manage options (enumerations)"
+            x-useCaseTag: "Custom metadata enums"
+            x-docUrl: https://developer.atlan.com/snippets/custom-metadata/enums/
+            x-atlanSnippet: |-
+              {
+                "enumDefs": [ // (1)
+                  {
+                    "category": "ENUM", // (2)
+                    "name": "DataQualityDimensions", // (3)
+                    "elementDefs": [ // (4)
+                      {
+                        "value": "Accuracy",
+                        "ordinal": 0
+                      },
+                      {
+                        "value": "Completeness",
+                        "ordinal": 1
+                      },
+                      {
+                        "value": "Consistency",
+                        "ordinal": 2
+                      },
+                      {
+                        "value": "Timeliness",
+                        "ordinal": 3
+                      },
+                      {
+                        "value": "Validity",
+                        "ordinal": 4
+                      },
+                      {
+                        "value": "Uniqueness",
+                        "ordinal": 5
+                      }
+                    ]
+                  }
+                ]
+              }
+            value:
+              enumDefs:
+                - category: ENUM
+                  name: DataQualityDimensions
+                  elementDefs:
+                    - value: Accuracy
+                      ordinal: 0
+                    - value: Completeness
+                      ordinal: 1
+                    - value: Consistency
+                      ordinal: 2
+                    - value: Timeliness
+                      ordinal: 3
+                    - value: Validity
+                      ordinal: 4
+                    - value: Uniqueness
+                      ordinal: 5
+
+          custommetadata_enums__2:
+            summary: "Custom metadata enums - Manage options (enumerations)"
+            x-useCaseTag: "Custom metadata enums"
+            x-docUrl: https://developer.atlan.com/snippets/custom-metadata/enums/
+            x-atlanSnippet: |-
+              {
+                "businessMetadataDefs": [
+                  {
+                    "category": "BUSINESS_METADATA",
+                    "name": "DQ", // (1)
+                    "attributeDefs": [ // (2)
+                      {
+                        "name": "", // (3)
+                        "displayName": "Dimension",
+                        "description": "",
+                        "typeName": "DataQualityDimensions", // (4)
+                        "isOptional": true,
+                        "cardinality": "SINGLE",
+                        "valuesMinCount": 0,
+                        "valuesMaxCount": 1,
+                        "isUnique": false,
+                        "isIndexable": true,
+                        "includeInNotification": false,
+                        "options": {
+                          "applicableEntityTypes": "[\"Asset\"]",
+                          "customApplicableEntityTypes": "[\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\",\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\"]",
+                          "allowSearch": false,
+                          "maxStrLength": "100000000",
+                          "allowFiltering": true,
+                          "multiValueSelect": false,
+                          "showInOverview": false,
+                          "primitiveType": "enum", // (5)
+                          "isEnum": true,
+                          "enumType": "DataQualityDimensions"
+                        },
+                        "isNew": true,
+                        "enumValues": [
+                          "Accuracy",
+                          "Completeness",
+                          "Consistency",
+                          "Timeliness",
+                          "Validity",
+                          "Uniqueness"
+                        ]
+                      }
+                    ],
+                    "displayName": "DQ",
+                    "options": {
+                      "logoType": "emoji",
+                      "emoji": "🔖"
+                    }
+                  }
+                ]
+              }
+            value:
+              businessMetadataDefs:
+                - category: BUSINESS_METADATA
+                  name: DQ
+                  attributeDefs:
+                    - name: 
+                      displayName: Dimension
+                      description: 
+                      typeName: DataQualityDimensions
+                      isOptional: true
+                      cardinality: SINGLE
+                      valuesMinCount: 0
+                      valuesMaxCount: 1
+                      isUnique: false
+                      isIndexable: true
+                      includeInNotification: false
+                      options:
+                        applicableEntityTypes: "[\"Asset\"]"
+                        customApplicableEntityTypes: "[\"PowerBIMeasure\",\"TableauWorkbook\",\"LookerModel\",\"MetabaseCollection\",\"ModeQuery\",\"GCSBucket\",\"LookerTile\",\"Table\",\"PowerBITile\",\"PowerBIPage\",\"SalesforceOrganization\",\"PresetWorkspace\",\"TableauDatasource\",\"PresetDataset\",\"TableauCalculatedField\",\"LookerFolder\",\"TableauWorksheet\",\"MetabaseQuestion\",\"AtlasGlossary\",\"PresetChart\",\"PowerBITable\",\"LookerProject\",\"SnowflakePipe\",\"PowerBIReport\",\"SigmaDatasetColumn\",\"TableauDatasourceField\",\"TablePartition\",\"AtlasGlossaryTerm\",\"SigmaDataElementField\",\"Schema\",\"Database\",\"DbtColumnProcess\",\"S3Object\",\"LookerLook\",\"TableauSite\",\"SnowflakeStream\",\"ModeCollection\",\"LookerDashboard\",\"PowerBIWorkspace\",\"Collection\",\"AtlasGlossaryCategory\",\"TableauFlow\",\"LookerView\",\"TableauProject\",\"LookerExplore\",\"ModeReport\",\"PowerBIColumn\",\"Query\",\"ColumnProcess\",\"SalesforceDashboard\",\"SalesforceObject\",\"BIProcess\",\"DbtModelColumn\",\"S3Bucket\",\"SigmaDataElement\",\"DataStudioAsset\",\"DbtProcess\",\"DbtModel\",\"PowerBIDataset\",\"Column\",\"DbtMetric\",\"TableauDashboard\",\"SigmaDataset\",\"LookerQuery\",\"APISpec\",\"MetabaseDashboard\",\"Process\",\"PowerBIDashboard\",\"APIPath\",\"ModeChart\",\"PowerBIDataflow\",\"SalesforceField\",\"GCSObject\",\"SalesforceReport\",\"View\",\"Folder\",\"TableauMetric\",\"MaterialisedView\",\"PresetDashboard\",\"PowerBIDatasource\",\"ModeWorkspace\",\"SigmaPage\",\"LookerField\",\"SigmaWorkbook\"]"
+                        allowSearch: false
+                        maxStrLength: 100000000
+                        allowFiltering: true
+                        multiValueSelect: false
+                        showInOverview: false
+                        primitiveType: enum
+                        isEnum: true
+                        enumType: DataQualityDimensions
+                      isNew: true
+                      enumValues:
+                        - Accuracy
+                        - Completeness
+                        - Consistency
+                        - Timeliness
+                        - Validity
+                        - Uniqueness
+                  displayName: DQ
+                  options:
+                    logoType: emoji
+                    emoji: 🔖
+
+          tags_manage__3:
+            summary: "Manage tag definitions - Manage Atlan tags"
+            x-useCaseTag: "Manage tag definitions"
+            x-docUrl: https://developer.atlan.com/snippets/tags/manage/
+            x-atlanSnippet: |-
+              {
+                "classificationDefs": [ // (1)
+                  {
+                    "category": "CLASSIFICATION", // (2)
+                    "name": "PII", // (3)
+                    "description": "Personally-Identifiable Information",
+                    "displayName": "PII", // (4)
+                    "options": {
+                      "color": "Red", // (5)
+                      "icon": "PhPassword", // (6)
+                      "iconType": "icon"
+                    },
+                    "skipDisplayNameUniquenessCheck": false
+                  }
+                ]
+              }
+            value:
+              classificationDefs:
+                - category: CLASSIFICATION
+                  name: PII
+                  description: "Personally-Identifiable Information"
+                  displayName: PII
+                  options:
+                    color: Red
+                    icon: PhPassword
+                    iconType: icon
+                  skipDisplayNameUniquenessCheck: false

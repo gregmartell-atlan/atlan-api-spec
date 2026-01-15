@@ -1,0 +1,107 @@
+id: common-examples-announcements
+title: Manage announcements
+category: common-actions
+icon: zap
+relatedTypes:
+  - Asset
+description: Manage announcements on assets. Announcements are notices attached to assets to communicate important information like deprecation warnings, data quality issues, or upcoming changes.
+externalDocs:
+  url: https://developer.atlan.com/snippets/common-examples/announcements/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Add to an existing asset
+    description: |-
+      1.4.0 4.0.0
+      To add an announcement to an existing asset:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Table
+              attributes:
+                name: TOP_BEVERAGE_USERS
+                qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                announcementType: warning
+                announcementTitle: Caution!
+                announcementMessage: This table was changed.
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                  name: TOP_BEVERAGE_USERS
+                  announcementType: warning
+                  announcementTitle: Caution!
+                  announcementMessage: This table was changed.
+                guid: b9d5dbbc-ee8a-4c5e-a946-a47033892172
+                status: ACTIVE
+  - step: 2
+    title: Remove from an existing asset
+    description: |-
+      1.4.0 4.0.0
+      To remove an announcement from an existing asset:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-2-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Table
+              attributes:
+                name: TOP_BEVERAGE_USERS
+                qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                announcementType: null
+                announcementTitle: null
+                announcementMessage: null
+        response:
+          mutatedEntities:
+            DELETE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                  name: TOP_BEVERAGE_USERS
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: DELETED
+  - step: 3
+    title: When creating an asset
+    description: |-
+      2.0.0 4.0.0
+      To add an announcement when creating an asset:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-3-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Table
+              attributes:
+                name: TOP_BEVERAGE_USERS
+                qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                atlanSchema:
+                  typeName: Schema
+                  uniqueAttributes:
+                    qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV
+                announcementType: information
+                announcementTitle: New!
+                announcementMessage: This table is newly created.
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                  name: TOP_BEVERAGE_USERS
+                  announcementType: information
+                  announcementTitle: New!
+                  announcementMessage: This table is newly created.
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000

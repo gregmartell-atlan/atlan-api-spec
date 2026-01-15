@@ -1,0 +1,102 @@
+id: common-examples-profiling-and-popularity-profiling
+title: Manage column profiling information
+category: common-actions
+icon: zap
+relatedTypes:
+  - Asset
+  - Column
+  - Table
+description: |-
+  Profiling gives additional context to columns in relational stores. From profiling, you can see various summarized information such as:
+  Profiling is only available on columns
+  You will only be able to populate this summary information on columns, not on other assets in Atlan.
+externalDocs:
+  url: https://developer.atlan.com/snippets/common-examples/profiling-and-popularity/profiling/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Retrieve profiles
+    description: |-
+      1.4.0 4.0.0
+      Since profiles are only available on columns, you will need to retrieve column assets to see the profiles:
+    method: GET
+    endpoint: /api/meta/entity/uniqueAttribute/type/Column
+    queryString: attr:qualifiedName=default%2Fhive%2F1657025257%2FOPS%2FDEFAULT%2FRUN_STATS%2FSTATUS
+    examples:
+      - key: example-1-1
+        summary: GET /api/meta/entity/uniqueAttribute/type/Column
+        request:
+          entity:
+            typeName: Column
+            attributes:
+              name: STATUS
+              qualifiedName: default/hive/1657025257/OPS/DEFAULT/RUN_STATS/STATUS
+              columnDistinctValuesCount: 123
+              columnUniqueValuesCount: 123
+              columnUniquenessPercentage: 50
+              columnDuplicateValuesCount: 123
+              columnMissingValuesCount: 123
+              columnMissingValuesPercentage: 50
+              columnMax: 321
+              columnMin: 1
+              columnMean: 123
+              columnMedian: 123
+              columnStandardDeviation: 3
+              columnVariance: 1
+              columnSum: 654321
+              columnMinimumStringLength: 0
+              columnMaximumStringLength: 123
+              columnAverageLength: 123
+        response:
+          referredEntities: {}
+          entity:
+            typeName: Table
+            attributes:
+              qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/CUSTOMERS
+              name: CUSTOMERS
+              description: Customer master data table
+            guid: b4113341-251b-4adc-81fb-2420501c30e6
+            status: ACTIVE
+  - step: 2
+    title: Add your own profiles
+    description: |-
+      2.0.0 4.0.0
+      In cases where Atlan does not profile the source, you may want to add your own profiles. You can do this by either adding the profile when creating the column (programmatically) or by updating the attributes on an existing column:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-2-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Column
+              attributes:
+                name: STATUS
+                qualifiedName: default/hive/1657025257/OPS/DEFAULT/RUN_STATS/STATUS
+                columnDistinctValuesCount: 123
+                columnUniqueValuesCount: 123
+                columnUniquenessPercentage: 50
+                columnDuplicateValuesCount: 123
+                columnMissingValuesCount: 123
+                columnMissingValuesPercentage: 50
+                columnMax: 321
+                columnMin: 1
+                columnMean: 123
+                columnMedian: 123
+                columnStandardDeviation: 3
+                columnVariance: 1
+                columnSum: 654321
+                columnMinimumStringLength: 0
+                columnMaximumStringLength: 123
+                columnAverageLength: 123
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: Column
+                attributes:
+                  qualifiedName: default/hive/1657025257/OPS/DEFAULT/RUN_STATS/STATUS
+                  name: STATUS
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000

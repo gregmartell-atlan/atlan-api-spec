@@ -1,0 +1,86 @@
+id: advanced-examples-delete
+title: Deleting assets
+category: crud
+icon: zap
+relatedTypes:
+  - Asset
+description: |-
+  Deleting an asset uses a similar pattern to the retrieval operations. For this you can use static methods provided by the Asset class.
+  Avoid deleting connections
+  If you want to delete a connection and all of its assets, consider using the connection delete package instead. In particular, avoid deleting a connection directly (using the methods below) without first deleting the assets contained within it. Once you delete a connection, you will be unable to delete any assets that were within it.
+externalDocs:
+  url: https://developer.atlan.com/snippets/advanced-examples/delete/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Soft-delete an asset
+    description: |-
+      Soft-deletes (also called an archive) are a reversible operation. The status of the asset is changed to DELETED and it no longer appears in the UI, but the asset is still present in Atlan's back-end.
+      1.4.0 4.0.0
+      To soft-delete (archive) an asset, you only need to provide the GUID:
+    method: DELETE
+    endpoint: /api/meta/entity/bulk
+    queryString: guid=b4113341-251b-4adc-81fb-2420501c30e6&deleteType=SOFT
+    examples:
+      - key: example-1-1
+        summary: DELETE /api/meta/entity/bulk
+        response:
+          mutatedEntities:
+            DELETE:
+              - typeName: AtlasGlossaryTerm
+                attributes:
+                  qualifiedName: be81ac35-d93f-4b4b-a49a-b1c7046e575d
+                  name: Example Term
+                guid: b4113341-251b-4adc-81fb-2420501c30e6
+                status: DELETED
+  - step: 2
+    title: Hard-delete an asset
+    description: |-
+      Hard-deletes (also called a purge) are irreversible operations. The asset is removed from Atlan entirely, so no longer appears in the UI and also no longer exists in Atlan's back-end.
+      1.4.0 4.0.0
+      To hard-delete (purge) an asset, you only need to provide the GUID:
+    method: DELETE
+    endpoint: /api/meta/entity/bulk
+    queryString: guid=b4113341-251b-4adc-81fb-2420501c30e6&deleteType=PURGE
+    examples:
+      - key: example-2-1
+        summary: DELETE /api/meta/entity/bulk
+        response:
+          mutatedEntities:
+            PURGE:
+              - typeName: Asset
+                attributes:
+                  qualifiedName: example/deleted/asset
+                  name: Deleted Asset
+                guid: b4113341-251b-4adc-81fb-2420501c30e6
+                status: PURGED
+  - step: 3
+    title: Bulk-delete assets
+    description: |-
+      1.4.0 1.0.0
+      You can also delete a number of assets at the same time:
+      Up to a limit
+      You cannot send an unlimited number of assets to be deleted in a single request. As you can see from the  Raw REST API tab, each GUID will be sent as a query parameter in the URI   so there is a maximum beyond which the URI is too long.
+      We generally recommend sending no more than 20-50 GUIDs at a time using this approach.
+    notes:
+      - type: recommendation
+        title: Up to a limit
+        content: You cannot send an unlimited number of assets to be deleted in a single request. As you can see from the  Raw REST API tab, each GUID will be sent as a query parameter in the URI   so there is a maximum beyond which the URI is too long. We generally recommend sending no more than 20-50 GUIDs at a time using this approach.
+      - type: warning
+        title: Bulk deletion occurs asynchronously
+        content: Be aware that bulk deleting assets occurs asynchronously. The response above will come back indicating the deleted assets; however, there can still be a delay before those assets are fully deleted in Atlan.
+    method: DELETE
+    endpoint: /api/meta/entity/bulk
+    queryString: guid=b4113341-251b-4adc-81fb-2420501c30e6&guid=21e5be62-7a0b-4547-ab7a-6ddf273d0640&guid=a0fb35e5-690d-4a5b-8918-9ee267c8fa55&deleteType=SOFT
+    examples:
+      - key: example-3-1
+        summary: DELETE /api/meta/entity/bulk
+        response:
+          mutatedEntities:
+            DELETE:
+              - typeName: Asset
+                attributes:
+                  qualifiedName: example/deleted/asset
+                  name: Deleted Asset
+                guid: b4113341-251b-4adc-81fb-2420501c30e6
+                status: DELETED

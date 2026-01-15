@@ -1,0 +1,613 @@
+id: common-examples-finding-examples
+title: Search examples
+category: common-actions
+icon: zap
+relatedTypes:
+  - Asset
+description: Examples of finding assets using various search patterns and filters. Demonstrates common search scenarios for asset discovery.
+externalDocs:
+  url: https://developer.atlan.com/snippets/common-examples/finding/examples/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Connection by name and type
+    description: |-
+      You may have noticed that connections in Atlan have qualifiedNames that include a timestamp. As a result, they are not trivial to directly construct.
+      1.4.0 4.0.0
+      However, you can search for them by name and type to resolve their qualifiedName:
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            query:
+              bool:
+                filter:
+                  - term:
+                      __state:
+                        value: ACTIVE
+                  - term:
+                      __typeName.keyword:
+                        value: Connection
+                  - term:
+                      name.keyword:
+                        value: production
+                  - term:
+                      connectorName:
+                        value: snowflake
+            track_total_hits: true
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"filter\":[{\"term\":{\"__state\":{\"value\":\"ACTIVE\"}}},{\"term\":{\"__typeName.keyword\":{\"value\":\"Connection\"}}},{\"term\":{\"name.keyword\":{\"value\":\"production\"}}},{\"term\":{\"connectorName\":{\"value\":\"snowflake\"}}}]}}"
+          approximateCount: 25
+          entities:
+            - typeName: Connection
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/CONNECTION_1
+                name: Connection_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: Connection_1
+            - typeName: Connection
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/CONNECTION_2
+                name: Connection_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: Connection_2
+  - step: 2
+    title: All connections
+    description: |-
+      1.4.0 4.0.0
+      On the other hand, you may want to find all the connections that exist in the environment:
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-2-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            from: 0
+            size: 100
+            query:
+              bool:
+                filter:
+                  - term:
+                      __typeName.keyword:
+                        value: Connection
+                  - term:
+                      __state:
+                        value: ACTIVE
+            track_total_hits: true
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"filter\":[{\"term\":{\"__typeName.keyword\":{\"value\":\"Connection\"}}},{\"term\":{\"__state\":{\"value\":\"ACTIVE\"}}}]}}"
+          approximateCount: 25
+          entities:
+            - typeName: Connection
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/CONNECTION_1
+                name: Connection_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: Connection_1
+            - typeName: Connection
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/CONNECTION_2
+                name: Connection_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: Connection_2
+  - step: 3
+    title: Columns in a schema
+    description: |-
+      1.4.0 4.0.0
+      This example finds all columns that exist in a particular schema   irrespective of the table, view, or materialized view they exist within.
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-3-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            query:
+              bool:
+                filter:
+                  - prefix:
+                      qualifiedName:
+                        value: default/snowflake/1662194632/MYDB/MY_SCH
+                  - term:
+                      __typeName.keyword:
+                        value: Column
+                  - term:
+                      __state:
+                        value: ACTIVE
+            from: 0
+            size: 100
+            track_total_hits: true
+          attributes:
+            - description
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"filter\":[{\"prefix\":{\"qualifiedName\":{\"value\":\"default/snowflake/1662194632/MYDB/MY_SCH\"}}},{\"term\":{\"__typeName.keyword\":{\"value\":\"Column\"}}},{\"term\":{\"__state\":{\"value\":\"ACTIVE\"}}}]}}"
+            attributes:
+              - description
+          approximateCount: 25
+          entities:
+            - typeName: Column
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/COLUMN_1
+                name: Column_1
+                description: Example description
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: Column_1
+            - typeName: Column
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/COLUMN_2
+                name: Column_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: Column_2
+  - step: 4
+    title: Assets with custom metadata
+    description: |-
+      7.0.0 1.1.0
+      This example finds all assets with a particular custom metadata attribute populated   irrespective of the specific value of the attribute.
+    notes:
+      - type: warning
+        title: Note the use of _includesOnResults
+        content: Since the getAttributesForSearchResults() helper will return a list of strings, you'll need to use the special _includesOnResults() method to add these for inclusion.
+      - type: warning
+        title: Note the use of _includes_on_results
+        content: Since the get_attributes_for_search_results() helper will return a list of strings, you'll need to use the special _includes_on_results parameter to add these for inclusion.
+      - type: warning
+        title: Note the use of _includesOnResults
+        content: Since the getAttributesForSearchResults() helper will return a list of strings, you'll need to use the special _includesOnResults() method to add these for inclusion.
+      - type: warning
+        title: Requires multiple API operations
+        content: Before you can search for custom metadata, you first need to have the Atlan-internal hashed-string representation of the custom metadata property. You will likely need to first retrieve the hashed-string representation.
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-4-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            query:
+              exists:
+                field: omrIzGB4oYlZrFKfTIUz6D
+            track_total_hits: true
+          attributes:
+            - UQot6bU4XcGcIx8gAQ1dsW.omrIzGB4oYlZrFKfTIUz6D
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"exists\":{\"field\":\"omrIzGB4oYlZrFKfTIUz6D\"}}"
+            attributes:
+              - UQot6bU4XcGcIx8gAQ1dsW.omrIzGB4oYlZrFKfTIUz6D
+          approximateCount: 25
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/TABLE_1
+                name: Table_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: Table_1
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/TABLE_2
+                name: Table_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: Table_2
+  - step: 5
+    title: Assets with specific custom metadata value
+    description: |-
+      7.0.0 1.1.0
+      This example finds all assets with a particular custom metadata attribute populated   with a specific value for the attribute.
+    notes:
+      - type: warning
+        title: Note the use of _includesOnResults
+        content: Since the getAttributesForSearchResults() helper will return a list of strings, you'll need to use the special _includesOnResults() method to add these for inclusion.
+      - type: warning
+        title: Note the use of _includes_on_results
+        content: Since the get_attributes_for_search_results() helper will return a list of strings, you'll need to use the special _includes_on_results parameter to add these for inclusion.
+      - type: warning
+        title: Note the use of _includesOnResults
+        content: Since the getAttributesForSearchResults() helper will return a list of strings, you'll need to use the special _includesOnResults() method to add these for inclusion.
+      - type: warning
+        title: Requires multiple API operations
+        content: Before you can search for custom metadata, you first need to have the Atlan-internal hashed-string representation of the custom metadata property. You will likely need to first retrieve the hashed-string representation.
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-5-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            query:
+              term:
+                omrIzGB4oYlZrFKfTIUz6D:
+                  value: This exact value
+            track_total_hits: true
+          attributes:
+            - UQot6bU4XcGcIx8gAQ1dsW.omrIzGB4oYlZrFKfTIUz6D
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"term\":{\"omrIzGB4oYlZrFKfTIUz6D\":{\"value\":\"This exact value\"}}}"
+            attributes:
+              - UQot6bU4XcGcIx8gAQ1dsW.omrIzGB4oYlZrFKfTIUz6D
+          approximateCount: 25
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/TABLE_1
+                name: Table_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: Table_1
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/TABLE_2
+                name: Table_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: Table_2
+  - step: 6
+    title: Assets linked to a term
+    description: |-
+      This example finds all assets that are linked to a specific glossary term. (And could be extended to do find assets linked to any one of a number of glossary terms.) In this specific example we will find any assets linked to a glossary term named Revenue in a glossary named Metrics.
+      You'll need the qualifiedName of the glossary term
+      To find the assets linked to the glossary term, you'll need to search using the qualifiedName of the term. This is not the human-readable name you see in the UI. So this example is split into two parts:
+      1.4.0 4.0.0
+      For example:
+    notes:
+      - type: recommendation
+        title: You'll need the qualifiedName of the glossary term
+        content: |-
+          To find the assets linked to the glossary term, you'll need to search using the qualifiedName of the term. This is not the human-readable name you see in the UI. So this example is split into two parts:
+          Finding the qualifiedName of the glossary term from its human-readable name and the result of (1). Finding all assets linked to that glossary term.
+      - type: warning
+        title: Requires multiple API operations
+        content: Before you can search for assets linked to a term, you first need to have the qualifiedName of the term. You will likely need to first find the term by its name.
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-6-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            query:
+              terms:
+                __meanings:
+                  - 5h2wMbSbWtRN1V1b05Mtb@LD5Tb30qbuYCZKsmFRpmS
+            track_total_hits: true
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"terms\":{\"__meanings\":[\"5h2wMbSbWtRN1V1b05Mtb@LD5Tb30qbuYCZKsmFRpmS\"]}}"
+          approximateCount: 25
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/TABLE_1
+                name: Table_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: Table_1
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/TABLE_2
+                name: Table_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: Table_2
+  - step: 7
+    title: Assets with an Atlan tag
+    description: |-
+      7.0.0 2.0.0
+      This example finds all assets that are assigned a specific Atlan tag   irrespective of whether they were directly assigned the tag or it was propagated.
+    notes:
+      - type: warning
+        title: Requires multiple API operations
+        content: Before you can search for Atlan tags, you first need to have the Atlan-internal hashed-string representation of the tags. You will likely need to first retrieve the hashed-string representation.
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-7-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            query:
+              bool:
+                minimum_should_match: "1"
+                should:
+                  - terms:
+                      __traitNames:
+                        - wAI4bROOqCQzES8HCNso9F
+                  - terms:
+                      __propagatedTraitNames:
+                        - wAI4bROOqCQzES8HCNso9F
+            track_total_hits: true
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"minimum_should_match\":\"1\",\"should\":[{\"terms\":{\"__traitNames\":[\"wAI4bROOqCQzES8HCNso9F\"]}},{\"terms\":{\"__propagatedTraitNames\":[\"wAI4bROOqCQzES8HCNso9F\"]}}]}}"
+          approximateCount: 25
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/TABLE_1
+                name: Table_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: Table_1
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/TABLE_2
+                name: Table_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: Table_2
+  - step: 8
+    title: Assets with a source tag
+    description: |-
+      7.0.0 2.0.0
+      This example finds all assets that are assigned a specific source tag.
+    notes:
+      - type: warning
+        title: Requires multiple API operations
+        content: Before you can search for Atlan tags, you first need to have the Atlan-internal hashed-string representation of the tags. You will likely need to first retrieve the hashed-string representation.
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-8-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            query:
+              bool:
+                filter:
+                  - term:
+                      __traitNames:
+                        value: Z96sGJrF0S68PxYTUdKG6b
+                        case_insensitive: false
+                  - span_within:
+                      big:
+                        span_near:
+                          clauses:
+                            - span_term:
+                                __classificationsText.text:
+                                  value: Z96sGJrF0S68PxYTUdKG6b
+                            - span_term:
+                                __classificationsText.text:
+                                  value: default/snowflake/1726834662/ANALYTICS/WIDE_WORLD_IMPORTERS/CONFIDENTIAL
+                          in_order: true
+                          slop: 10000000
+                      little:
+                        span_near:
+                          clauses:
+                            - span_term:
+                                __classificationsText.text:
+                                  value: tagAttachmentValue
+                            - span_term:
+                                __classificationsText.text:
+                                  value: Highly
+                            - span_term:
+                                __classificationsText.text:
+                                  value: Restricted
+                            - span_term:
+                                __classificationsText.text:
+                                  value: tagAttachmentKey
+                          in_order: true
+                          slop: 0
+            track_total_hits: true
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"filter\":[{\"term\":{\"__traitNames\":{\"value\":\"Z96sGJrF0S68PxYTUdKG6b\",\"case_insensitive\":false}}},{\"span_within\":{\"big\":{\"span_near\":{\"clauses\":[{\"span_term\":{\"__classificationsText.text\":{\"value\":\"Z96sGJrF0S68PxYTUdKG6b\"}}},{\"span_term\":{\"__classificationsText.text\":{\"value\":\"default/snowflake/1726834662/ANALYTICS/WIDE_WORLD_IMPORTERS/CONFIDENTIAL\"}}}],\"in_order\":true,\"slop\":10000000}},\"little\":{\"span_near\":{\"clauses\":[{\"span_term\":{\"__classificationsText.text\":{\"value\":\"tagAttachmentValue\"}}},{\"span_term\":{\"__classificationsText.text\":{\"value\":\"Highly\"}}},{\"span_term\":{\"__classificationsText.text\":{\"value\":\"Restricted\"}}},{\"span_term\":{\"__classificationsText.text\":{\"value\":\"tagAttachmentKey\"}}}],\"in_order\":true,\"slop\":0}}}}]}}"
+          approximateCount: 25
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/TABLE_1
+                name: Table_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: Table_1
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/TABLE_2
+                name: Table_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: Table_2
+  - step: 9
+    title: Deprecated assets
+    description: |-
+      1.4.0 1.1.0
+      This example finds all assets that are marked as deprecated.
+    notes:
+      - type: warning
+        title: Requires multiple API operations
+        content: Before you can search for classifications, you first need to have the Atlan-internal hashed-string representation of the classification. You will likely need to first retrieve the hashed-string representation.
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-9-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            query:
+              term:
+                certificateStatus:
+                  value: DEPRECATED
+            track_total_hits: true
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"term\":{\"certificateStatus\":{\"value\":\"DEPRECATED\"}}}"
+          approximateCount: 25
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/TABLE_1
+                name: Table_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: Table_1
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/TABLE_2
+                name: Table_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: Table_2
+  - step: 10
+    title: Certified but incomplete assets
+    description: |-
+      1.4.0 1.1.0
+      This example finds all assets that are marked as verified, but are missing a description   suggesting they are in fact incomplete.
+    method: POST
+    endpoint: /api/meta/search/indexsearch
+    examples:
+      - key: example-10-1
+        summary: POST /api/meta/search/indexsearch
+        request:
+          dsl:
+            query:
+              bool:
+                filter:
+                  - term:
+                      certificateStatus:
+                        value: VERIFIED
+                must_not:
+                  - exists:
+                      field: description
+                  - exists:
+                      field: userDescription
+            track_total_hits: true
+          attributes:
+            - ownerUsers
+            - ownerGroups
+          suppressLogs: true
+          showSearchScore: false
+          excludeMeanings: false
+          excludeClassifications: false
+        response:
+          queryType: INDEX
+          searchParameters:
+            showSearchScore: false
+            suppressLogs: true
+            excludeMeanings: false
+            excludeClassifications: false
+            allowDeletedRelations: false
+            query: "{\"bool\":{\"filter\":[{\"term\":{\"certificateStatus\":{\"value\":\"VERIFIED\"}}}],\"must_not\":[{\"exists\":{\"field\":\"description\"}},{\"exists\":{\"field\":\"userDescription\"}}]}}"
+            attributes:
+              - ownerUsers
+              - ownerGroups
+          approximateCount: 25
+          entities:
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/TABLE_1
+                name: Table_1
+              guid: abcdef01-2345-6789-abcd-ef000000000000
+              status: ACTIVE
+              displayText: Table_1
+            - typeName: Table
+              attributes:
+                qualifiedName: default/snowflake/1698696666/ANALYTICS/PUBLIC/TABLE_2
+                name: Table_2
+              guid: abcdef01-2345-6789-abcd-ef000000000001
+              status: ACTIVE
+              displayText: Table_2

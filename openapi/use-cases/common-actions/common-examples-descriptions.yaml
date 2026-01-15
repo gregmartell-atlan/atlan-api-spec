@@ -1,0 +1,103 @@
+id: common-examples-descriptions
+title: Change description
+category: common-actions
+icon: zap
+relatedTypes:
+  - Asset
+description: Manage asset descriptions. Descriptions provide human-readable documentation for assets, helping users understand what data an asset contains and how to use it.
+externalDocs:
+  url: https://developer.atlan.com/snippets/common-examples/descriptions/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Change an existing asset
+    description: |-
+      Could create a new asset
+      Remember that Atlan matches the provided qualifiedName to determine whether to update or create the asset.
+      2.0.0 4.0.0
+      To change a description on an existing asset:
+    notes:
+      - type: warning
+        title: Could create a new asset
+        content: Remember that Atlan matches the provided qualifiedName to determine whether to update or create the asset.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Table
+              attributes:
+                name: TOP_BEVERAGE_USERS
+                qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                description: My new description
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                  name: TOP_BEVERAGE_USERS
+                  description: My new description
+                guid: b9d5dbbc-ee8a-4c5e-a946-a47033892172
+                status: ACTIVE
+  - step: 2
+    title: Remove from an existing asset
+    description: |-
+      2.0.0 4.0.0
+      To remove a description from an existing asset:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-2-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Table
+              attributes:
+                name: TOP_BEVERAGE_USERS
+                qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                description: null
+        response:
+          mutatedEntities:
+            DELETE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                  name: TOP_BEVERAGE_USERS
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: DELETED
+  - step: 3
+    title: When creating an asset
+    description: |-
+      2.0.0 4.0.0
+      To add a description when creating an asset:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-3-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Table
+              attributes:
+                name: TOP_BEVERAGE_USERS
+                qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                atlanSchema:
+                  typeName: Schema
+                  uniqueAttributes:
+                    qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV
+                description: My description of the asset
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: Table
+                attributes:
+                  qualifiedName: default/snowflake/1657037873/SAMPLE_DB/FOOD_BEV/TOP_BEVERAGE_USERS
+                  name: TOP_BEVERAGE_USERS
+                  description: My description of the asset
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000

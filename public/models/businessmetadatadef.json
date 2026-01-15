@@ -1,0 +1,123 @@
+{
+  "id": "businessmetadatadef",
+  "title": "BusinessMetadataDef",
+  "url": "https://developer.atlan.com/snippets/custom-metadata/create/",
+  "description": "Definition of a custom metadata (business metadata) structure. Custom metadata allows organizations to define their own attributes that can be attached to any asset type. Managed via the /api/meta/types/typedefs endpoint.",
+  "inheritance": ["TypeDef"],
+  "properties": [
+    {
+      "name": "category",
+      "type": "string",
+      "readOnly": false,
+      "description": "Type category. Always 'BUSINESS_METADATA' for custom metadata."
+    },
+    {
+      "name": "guid",
+      "type": "string",
+      "readOnly": true,
+      "description": "Globally unique identifier for this custom metadata definition."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "readOnly": false,
+      "description": "Internal hashed-string name of the custom metadata (e.g., 'WqZ3Tz9DdN2fB7mK'). Use this value when attaching custom metadata to assets via the API."
+    },
+    {
+      "name": "displayName",
+      "type": "string",
+      "readOnly": false,
+      "description": "Human-readable name displayed in the Atlan UI."
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "readOnly": false,
+      "description": "Description of what this custom metadata represents."
+    },
+    {
+      "name": "attributeDefs",
+      "type": "array<AttributeDef>",
+      "readOnly": false,
+      "description": "Attributes defined in this custom metadata structure. Each attribute has a name, displayName, typeName, and options."
+    },
+    {
+      "name": "options",
+      "type": "object",
+      "readOnly": false,
+      "description": "Visual options for the custom metadata badge display."
+    },
+    {
+      "name": "options.logoType",
+      "type": "string",
+      "readOnly": false,
+      "description": "Type of logo to display: 'icon', 'emoji', or 'image'."
+    },
+    {
+      "name": "options.iconName",
+      "type": "string",
+      "readOnly": false,
+      "description": "Phosphor icon name when logoType is 'icon' (e.g., 'PhDatabase')."
+    },
+    {
+      "name": "options.iconColor",
+      "type": "string",
+      "readOnly": false,
+      "description": "Icon color when logoType is 'icon' (e.g., 'Yellow', 'Green', 'Blue')."
+    },
+    {
+      "name": "options.emoji",
+      "type": "string",
+      "readOnly": false,
+      "description": "Emoji character when logoType is 'emoji'."
+    },
+    {
+      "name": "options.logoUrl",
+      "type": "string",
+      "readOnly": false,
+      "description": "Image URL when logoType is 'image'."
+    },
+    {
+      "name": "options.isLocked",
+      "type": "string",
+      "readOnly": false,
+      "description": "Whether the custom metadata structure is locked from editing ('true' or 'false')."
+    },
+    {
+      "name": "typeVersion",
+      "type": "string",
+      "readOnly": true,
+      "description": "Version of the type definition (e.g., '1.0')."
+    },
+    {
+      "name": "version",
+      "type": "integer",
+      "readOnly": true,
+      "description": "Numeric version counter, incremented on each update."
+    },
+    {
+      "name": "createTime",
+      "type": "timestamp",
+      "readOnly": true,
+      "description": "Epoch timestamp (milliseconds) when this custom metadata was created."
+    },
+    {
+      "name": "updateTime",
+      "type": "timestamp",
+      "readOnly": true,
+      "description": "Epoch timestamp (milliseconds) when this custom metadata was last updated."
+    },
+    {
+      "name": "createdBy",
+      "type": "string",
+      "readOnly": true,
+      "description": "Username or service account that created this custom metadata."
+    },
+    {
+      "name": "updatedBy",
+      "type": "string",
+      "readOnly": true,
+      "description": "Username or service account that last updated this custom metadata."
+    }
+  ]
+}

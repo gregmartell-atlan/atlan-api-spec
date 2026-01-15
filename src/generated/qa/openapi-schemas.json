@@ -1,0 +1,5319 @@
+{
+  "schemas": {
+    "MetaTypesTypedefstypeclassificationResponse": {
+      "type": "object",
+      "properties": {
+        "enumDefs": {
+          "type": "array",
+          "items": {},
+          "description": "Enum type definitions"
+        },
+        "structDefs": {
+          "type": "array",
+          "items": {},
+          "description": "Struct type definitions"
+        },
+        "classificationDefs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "category": {
+                "type": "string",
+                "example": "CLASSIFICATION"
+              },
+              "guid": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Unique identifier (GUID)",
+                "example": "682e6b91-9121-4748-bbae-af225ee8e98b"
+              },
+              "createdBy": {
+                "type": "string",
+                "example": "ryan.quigley",
+                "description": "User who created the entity"
+              },
+              "updatedBy": {
+                "type": "string",
+                "example": "service-account-atlan-argo",
+                "description": "User who last updated the entity"
+              },
+              "createTime": {
+                "type": "integer",
+                "format": "int64",
+                "description": "Unix timestamp in milliseconds",
+                "example": 1740600943664
+              },
+              "updateTime": {
+                "type": "integer",
+                "format": "int64",
+                "description": "Unix timestamp in milliseconds",
+                "example": 1767832413445
+              },
+              "version": {
+                "type": "integer",
+                "example": 203
+              },
+              "name": {
+                "type": "string",
+                "example": "Vyc79KGveSy62DfOKQAZ9G",
+                "description": "Name of the entity"
+              },
+              "description": {
+                "type": "string",
+                "example": "Cleansed and conformed data",
+                "description": "Description of the entity"
+              },
+              "typeVersion": {
+                "type": "string",
+                "example": "1.0"
+              },
+              "serviceType": {
+                "type": "string",
+                "example": "atlan"
+              },
+              "options": {
+                "type": "object",
+                "properties": {
+                  "imageID": {
+                    "type": "string",
+                    "example": ""
+                  },
+                  "hasTag": {
+                    "type": "string",
+                    "example": "true"
+                  },
+                  "color": {
+                    "type": "string",
+                    "example": "Gray"
+                  },
+                  "emoji": {
+                    "type": "string",
+                    "example": ""
+                  },
+                  "iconName": {
+                    "type": "string",
+                    "example": "PhMedal"
+                  },
+                  "iconType": {
+                    "type": "string",
+                    "example": "icon"
+                  },
+                  "createdFromAtlan": {
+                    "type": "string",
+                    "example": "false"
+                  }
+                }
+              },
+              "attributeDefs": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Ge0JWQ0QyADOjA6RTgg7Yl",
+                      "description": "Name of the entity"
+                    },
+                    "typeName": {
+                      "type": "string",
+                      "example": "array<SourceTagAttachment>",
+                      "description": "The type of the entity (e.g., Table, Column, Database)"
+                    },
+                    "isOptional": {
+                      "type": "boolean"
+                    },
+                    "cardinality": {
+                      "type": "string",
+                      "example": "SET"
+                    },
+                    "valuesMinCount": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "valuesMaxCount": {
+                      "type": "integer",
+                      "example": 2147483647
+                    },
+                    "isUnique": {
+                      "type": "boolean"
+                    },
+                    "isIndexable": {
+                      "type": "boolean"
+                    },
+                    "includeInNotification": {
+                      "type": "boolean"
+                    },
+                    "skipScrubbing": {
+                      "type": "boolean"
+                    },
+                    "searchWeight": {
+                      "type": "integer",
+                      "example": -1
+                    },
+                    "displayName": {
+                      "type": "string",
+                      "example": "sourceTagAttachment",
+                      "description": "Human-readable display name"
+                    },
+                    "isDefaultValueNull": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              },
+              "superTypes": {
+                "type": "array",
+                "items": {}
+              },
+              "entityTypes": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "Asset"
+                }
+              },
+              "displayName": {
+                "type": "string",
+                "example": "Silver",
+                "description": "Human-readable display name"
+              },
+              "subTypes": {
+                "type": "array",
+                "items": {}
+              }
+            }
+          },
+          "description": "Classification type definitions"
+        },
+        "entityDefs": {
+          "type": "array",
+          "items": {},
+          "description": "Entity type definitions"
+        },
+        "relationshipDefs": {
+          "type": "array",
+          "items": {},
+          "description": "Relationship type definitions"
+        },
+        "businessMetadataDefs": {
+          "type": "array",
+          "items": {},
+          "description": "Business metadata (custom metadata) definitions"
+        }
+      }
+    },
+    "MetaTypesTypedefstypebusinessMetadataResponse": {
+      "type": "object",
+      "properties": {
+        "enumDefs": {
+          "type": "array",
+          "items": {},
+          "description": "Enum type definitions"
+        },
+        "structDefs": {
+          "type": "array",
+          "items": {},
+          "description": "Struct type definitions"
+        },
+        "classificationDefs": {
+          "type": "array",
+          "items": {},
+          "description": "Classification type definitions"
+        },
+        "entityDefs": {
+          "type": "array",
+          "items": {},
+          "description": "Entity type definitions"
+        },
+        "relationshipDefs": {
+          "type": "array",
+          "items": {},
+          "description": "Relationship type definitions"
+        },
+        "businessMetadataDefs": {
+          "type": "array",
+          "items": {},
+          "description": "Business metadata (custom metadata) definitions"
+        }
+      }
+    },
+    "MetaTypesTypedefstypeenumResponse": {
+      "type": "object",
+      "properties": {
+        "enumDefs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "category": {
+                "type": "string",
+                "example": "ENUM"
+              },
+              "guid": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Unique identifier (GUID)",
+                "example": "24cdc24b-9155-4c82-a7cd-a1600da7d3e0"
+              },
+              "createdBy": {
+                "type": "string",
+                "example": "service-account-atlan-argo",
+                "description": "User who created the entity"
+              },
+              "updatedBy": {
+                "type": "string",
+                "example": "service-account-atlan-argo",
+                "description": "User who last updated the entity"
+              },
+              "createTime": {
+                "type": "integer",
+                "format": "int64",
+                "description": "Unix timestamp in milliseconds",
+                "example": 1646880651221
+              },
+              "updateTime": {
+                "type": "integer",
+                "format": "int64",
+                "description": "Unix timestamp in milliseconds",
+                "example": 1767832400723
+              },
+              "version": {
+                "type": "integer",
+                "example": 291
+              },
+              "name": {
+                "type": "string",
+                "example": "AtlasGlossaryTermRelationshipStatus",
+                "description": "Name of the entity"
+              },
+              "description": {
+                "type": "string",
+                "example": "How reliable the relationship is between two glossary terms.",
+                "description": "Description of the entity"
+              },
+              "typeVersion": {
+                "type": "string",
+                "example": "1.0"
+              },
+              "serviceType": {
+                "type": "string",
+                "example": "atlas_core"
+              },
+              "elementDefs": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string",
+                      "example": "DRAFT"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "DRAFT means the relationship is under development.",
+                      "description": "Description of the entity"
+                    },
+                    "ordinal": {
+                      "type": "integer",
+                      "example": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "description": "Enum type definitions"
+        },
+        "structDefs": {
+          "type": "array",
+          "items": {},
+          "description": "Struct type definitions"
+        },
+        "classificationDefs": {
+          "type": "array",
+          "items": {},
+          "description": "Classification type definitions"
+        },
+        "entityDefs": {
+          "type": "array",
+          "items": {},
+          "description": "Entity type definitions"
+        },
+        "relationshipDefs": {
+          "type": "array",
+          "items": {},
+          "description": "Relationship type definitions"
+        },
+        "businessMetadataDefs": {
+          "type": "array",
+          "items": {},
+          "description": "Business metadata (custom metadata) definitions"
+        }
+      }
+    },
+    "MetaSearchIndexsearchRequest": {
+      "type": "object",
+      "properties": {
+        "dsl": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "object",
+              "properties": {
+                "term": {
+                  "type": "object",
+                  "properties": {}
+                }
+              },
+              "required": [
+                "term"
+              ]
+            },
+            "size": {
+              "type": "integer",
+              "example": 100
+            }
+          },
+          "required": [
+            "query",
+            "size"
+          ]
+        },
+        "attributes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "guid"
+          },
+          "description": "Entity attributes"
+        }
+      },
+      "required": [
+        "dsl",
+        "attributes"
+      ]
+    },
+    "MetaSearchIndexsearchResponse": {
+      "type": "object",
+      "properties": {
+        "queryType": {
+          "type": "string",
+          "example": "INDEX",
+          "description": "Type of query executed"
+        },
+        "searchParameters": {
+          "type": "object",
+          "properties": {
+            "attributes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "example": "certificateStatus"
+              },
+              "description": "Entity attributes"
+            },
+            "showSearchScore": {
+              "type": "boolean"
+            },
+            "suppressLogs": {
+              "type": "boolean"
+            },
+            "excludeMeanings": {
+              "type": "boolean"
+            },
+            "excludeClassifications": {
+              "type": "boolean"
+            },
+            "enableFullRestriction": {
+              "type": "boolean"
+            },
+            "includeClassificationNames": {
+              "type": "boolean"
+            },
+            "requestMetadata": {
+              "type": "object",
+              "properties": {
+                "searchInput": {
+                  "type": "null"
+                },
+                "utmTags": {
+                  "type": "null"
+                },
+                "saveSearchLog": {
+                  "type": "boolean"
+                },
+                "persona": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "saveSearchLog"
+              ]
+            },
+            "async": {
+              "type": "object",
+              "properties": {
+                "isCallAsync": {
+                  "type": "boolean"
+                },
+                "searchContextId": {
+                  "type": "null"
+                },
+                "searchContextSequenceNo": {
+                  "type": "null"
+                },
+                "requestTimeoutInSecs": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "isCallAsync"
+              ]
+            },
+            "showHighlights": {
+              "type": "boolean"
+            },
+            "showSearchMetadata": {
+              "type": "boolean"
+            },
+            "dsl": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "object",
+                  "properties": {
+                    "terms": {
+                      "type": "object",
+                      "properties": {
+                        "qualifiedName": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "description": "Fully qualified name (FQN)",
+                            "example": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_EMPLOYEE"
+                          },
+                          "description": "Fully qualified name that uniquely identifies the asset"
+                        }
+                      },
+                      "required": [
+                        "qualifiedName"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "terms"
+                  ]
+                },
+                "size": {
+                  "type": "integer",
+                  "example": 20
+                }
+              },
+              "required": [
+                "query",
+                "size"
+              ]
+            },
+            "allowDeletedRelations": {
+              "type": "boolean"
+            },
+            "accessControlExclusive": {
+              "type": "boolean"
+            },
+            "includeRelationshipAttributes": {
+              "type": "boolean"
+            },
+            "query": {
+              "type": "string",
+              "description": "Fully qualified name (FQN)"
+            },
+            "querySize": {
+              "type": "integer",
+              "example": 20
+            },
+            "saveSearchLog": {
+              "type": "boolean"
+            },
+            "callAsync": {
+              "type": "boolean"
+            }
+          },
+          "description": "Parameters used for the search query"
+        },
+        "entities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "typeName": {
+                "type": "string",
+                "example": "Table",
+                "description": "The type of the entity (e.g., Table, Column, Database)"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "certificateStatus": {
+                    "type": "string",
+                    "example": "DEPRECATED",
+                    "description": "Certification status (VERIFIED, DRAFT, DEPRECATED)"
+                  },
+                  "connectionQualifiedName": {
+                    "type": "string",
+                    "description": "Fully qualified name (FQN)",
+                    "example": "default/snowflake/1698696666"
+                  },
+                  "databaseName": {
+                    "type": "string",
+                    "example": "WIDE_WORLD_IMPORTERS"
+                  },
+                  "userDescription": {
+                    "type": "string",
+                    "example": "testdescription",
+                    "description": "User-provided description"
+                  },
+                  "adminGroups": {
+                    "type": "array",
+                    "items": {}
+                  },
+                  "qualifiedName": {
+                    "type": "string",
+                    "description": "Fully qualified name (FQN)",
+                    "example": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP"
+                  },
+                  "databaseQualifiedName": {
+                    "type": "string",
+                    "description": "Fully qualified name (FQN)",
+                    "example": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS"
+                  },
+                  "__hasLineage": {
+                    "type": "boolean",
+                    "description": "Whether the entity has lineage relationships"
+                  },
+                  "schemaName": {
+                    "type": "string",
+                    "example": "PROCESSED_GOLD"
+                  },
+                  "meanings": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "guid": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "Unique identifier (GUID)",
+                          "example": "be81ac35-d93f-4b4b-a49a-b1c7046e575d"
+                        },
+                        "typeName": {
+                          "type": "string",
+                          "example": "AtlasGlossaryTerm",
+                          "description": "The type of the entity (e.g., Table, Column, Database)"
+                        },
+                        "uniqueAttributes": {
+                          "type": "object",
+                          "properties": {
+                            "qualifiedName": {
+                              "type": "string",
+                              "example": "LfOK1xdjCh4WRRusGVO9S@9NGZQIp0pIAay0iUTIFMx",
+                              "description": "Fully qualified name that uniquely identifies the asset"
+                            }
+                          },
+                          "required": [
+                            "qualifiedName"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "guid",
+                        "typeName",
+                        "uniqueAttributes"
+                      ]
+                    },
+                    "description": "Glossary terms linked to this entity"
+                  },
+                  "adminUsers": {
+                    "type": "array",
+                    "items": {}
+                  },
+                  "domainGUIDs": {
+                    "type": "array",
+                    "items": {}
+                  },
+                  "ownerGroups": {
+                    "type": "array",
+                    "items": {},
+                    "description": "List of groups that own this asset"
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "DIM_CUSTOMER_SP",
+                    "description": "Name of the entity"
+                  },
+                  "connectorName": {
+                    "type": "string",
+                    "example": "snowflake"
+                  },
+                  "schemaQualifiedName": {
+                    "type": "string",
+                    "description": "Fully qualified name (FQN)",
+                    "example": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD"
+                  },
+                  "ownerUsers": {
+                    "type": "array",
+                    "items": {},
+                    "description": "List of users who own this asset"
+                  }
+                },
+                "description": "Entity attributes"
+              },
+              "superTypeNames": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "Referenceable"
+                }
+              },
+              "docId": {
+                "type": "string",
+                "example": "6aye614"
+              },
+              "guid": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Unique identifier (GUID)",
+                "example": "b9d5dbbc-ee8a-4c5e-a946-a47033892172"
+              },
+              "status": {
+                "type": "string",
+                "example": "ACTIVE",
+                "description": "Entity status (ACTIVE, DELETED)"
+              },
+              "displayText": {
+                "type": "string",
+                "example": "DIM_CUSTOMER_SP"
+              },
+              "classificationNames": {
+                "type": "array",
+                "items": {}
+              },
+              "classifications": {
+                "type": "array",
+                "items": {},
+                "description": "Classifications (tags) applied to this entity"
+              },
+              "meaningNames": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "Customer"
+                }
+              },
+              "meanings": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "termGuid": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "Unique identifier (GUID)",
+                      "example": "be81ac35-d93f-4b4b-a49a-b1c7046e575d"
+                    },
+                    "relationGuid": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "Unique identifier (GUID)",
+                      "example": "8562f00b-6de9-4ede-9987-8f7213cd86ff"
+                    },
+                    "displayText": {
+                      "type": "string",
+                      "example": "Customer"
+                    },
+                    "confidence": {
+                      "type": "integer",
+                      "example": 0
+                    }
+                  },
+                  "required": [
+                    "termGuid",
+                    "relationGuid",
+                    "displayText",
+                    "confidence"
+                  ]
+                },
+                "description": "Glossary terms linked to this entity"
+              },
+              "isIncomplete": {
+                "type": "boolean",
+                "description": "Whether the entity data is incomplete"
+              },
+              "labels": {
+                "type": "array",
+                "items": {}
+              },
+              "createdBy": {
+                "type": "string",
+                "example": "ryan.quigley",
+                "description": "User who created the entity"
+              },
+              "updatedBy": {
+                "type": "string",
+                "example": "service-account-atlan-argo",
+                "description": "User who last updated the entity"
+              },
+              "createTime": {
+                "type": "integer",
+                "format": "int64",
+                "description": "Unix timestamp in milliseconds",
+                "example": 1747185436766
+              },
+              "updateTime": {
+                "type": "integer",
+                "format": "int64",
+                "description": "Unix timestamp in milliseconds",
+                "example": 1765929858468
+              }
+            }
+          },
+          "description": "Array of entity objects"
+        },
+        "approximateCount": {
+          "type": "integer",
+          "example": 31,
+          "description": "Approximate count of matching results"
+        }
+      }
+    },
+    "MetaTypesTypedefsResponse": {
+      "type": "object",
+      "properties": {
+        "enumDefs": {
+          "type": "array",
+          "items": {},
+          "description": "Enum type definitions"
+        },
+        "structDefs": {
+          "type": "array",
+          "items": {},
+          "description": "Struct type definitions"
+        },
+        "classificationDefs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "category": {
+                "type": "string",
+                "example": "CLASSIFICATION"
+              },
+              "guid": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Unique identifier (GUID)",
+                "example": "682e6b91-9121-4748-bbae-af225ee8e98b"
+              },
+              "createdBy": {
+                "type": "string",
+                "example": "ryan.quigley",
+                "description": "User who created the entity"
+              },
+              "updatedBy": {
+                "type": "string",
+                "example": "service-account-atlan-argo",
+                "description": "User who last updated the entity"
+              },
+              "createTime": {
+                "type": "integer",
+                "format": "int64",
+                "description": "Unix timestamp in milliseconds",
+                "example": 1740600943664
+              },
+              "updateTime": {
+                "type": "integer",
+                "format": "int64",
+                "description": "Unix timestamp in milliseconds",
+                "example": 1767832413445
+              },
+              "version": {
+                "type": "integer",
+                "example": 203
+              },
+              "name": {
+                "type": "string",
+                "example": "Vyc79KGveSy62DfOKQAZ9G",
+                "description": "Name of the entity"
+              },
+              "description": {
+                "type": "string",
+                "example": "Cleansed and conformed data",
+                "description": "Description of the entity"
+              },
+              "typeVersion": {
+                "type": "string",
+                "example": "1.0"
+              },
+              "serviceType": {
+                "type": "string",
+                "example": "atlan"
+              },
+              "options": {
+                "type": "object",
+                "properties": {
+                  "imageID": {
+                    "type": "string",
+                    "example": ""
+                  },
+                  "hasTag": {
+                    "type": "string",
+                    "example": "true"
+                  },
+                  "color": {
+                    "type": "string",
+                    "example": "Gray"
+                  },
+                  "emoji": {
+                    "type": "string",
+                    "example": ""
+                  },
+                  "iconName": {
+                    "type": "string",
+                    "example": "PhMedal"
+                  },
+                  "iconType": {
+                    "type": "string",
+                    "example": "icon"
+                  },
+                  "createdFromAtlan": {
+                    "type": "string",
+                    "example": "false"
+                  }
+                }
+              },
+              "attributeDefs": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Ge0JWQ0QyADOjA6RTgg7Yl",
+                      "description": "Name of the entity"
+                    },
+                    "typeName": {
+                      "type": "string",
+                      "example": "array<SourceTagAttachment>",
+                      "description": "The type of the entity (e.g., Table, Column, Database)"
+                    },
+                    "isOptional": {
+                      "type": "boolean"
+                    },
+                    "cardinality": {
+                      "type": "string",
+                      "example": "SET"
+                    },
+                    "valuesMinCount": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "valuesMaxCount": {
+                      "type": "integer",
+                      "example": 2147483647
+                    },
+                    "isUnique": {
+                      "type": "boolean"
+                    },
+                    "isIndexable": {
+                      "type": "boolean"
+                    },
+                    "includeInNotification": {
+                      "type": "boolean"
+                    },
+                    "skipScrubbing": {
+                      "type": "boolean"
+                    },
+                    "searchWeight": {
+                      "type": "integer",
+                      "example": -1
+                    },
+                    "displayName": {
+                      "type": "string",
+                      "example": "sourceTagAttachment",
+                      "description": "Human-readable display name"
+                    },
+                    "isDefaultValueNull": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              },
+              "superTypes": {
+                "type": "array",
+                "items": {}
+              },
+              "entityTypes": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "Asset"
+                }
+              },
+              "displayName": {
+                "type": "string",
+                "example": "Silver",
+                "description": "Human-readable display name"
+              },
+              "subTypes": {
+                "type": "array",
+                "items": {}
+              }
+            }
+          },
+          "description": "Classification type definitions"
+        },
+        "entityDefs": {
+          "type": "array",
+          "items": {},
+          "description": "Entity type definitions"
+        },
+        "relationshipDefs": {
+          "type": "array",
+          "items": {},
+          "description": "Relationship type definitions"
+        },
+        "businessMetadataDefs": {
+          "type": "array",
+          "items": {},
+          "description": "Business metadata (custom metadata) definitions"
+        }
+      }
+    },
+    "MetaEntityGuidB9d5dbbc-ee8a-4c5e-a946-a47033892172Response": {
+      "type": "object",
+      "properties": {
+        "referredEntities": {
+          "type": "object",
+          "properties": {}
+        },
+        "entity": {
+          "type": "object",
+          "properties": {
+            "typeName": {
+              "type": "string",
+              "example": "Table",
+              "description": "The type of the entity (e.g., Table, Column, Database)"
+            },
+            "attributes": {
+              "type": "object",
+              "properties": {
+                "popularityScore": {
+                  "type": "number",
+                  "example": 1.17549435e-38
+                },
+                "assetDbtJobLastRunQueuedDuration": {
+                  "type": "null"
+                },
+                "assetMcMonitorNames": {
+                  "type": "array",
+                  "items": {}
+                },
+                "partitionStrategy": {
+                  "type": "null"
+                },
+                "databaseName": {
+                  "type": "string",
+                  "example": "WIDE_WORLD_IMPORTERS"
+                },
+                "assetPoliciesCount": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "assetDbtTestStatus": {
+                  "type": "null"
+                },
+                "lastSyncRun": {
+                  "type": "string",
+                  "example": "atlan-snowflake-1698696666-zw9fd"
+                },
+                "assetSourceReadme": {
+                  "type": "null"
+                },
+                "tableName": {
+                  "type": "null"
+                },
+                "domainGUIDs": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetMcIncidentQualifiedNames": {
+                  "type": "array",
+                  "items": {}
+                },
+                "sourceUpdatedAt": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Unix timestamp in milliseconds",
+                  "example": 1736211544000
+                },
+                "alpha_assetDQScheduleSourceSyncedAt": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Unix timestamp in milliseconds",
+                  "example": 1747931150760
+                },
+                "icebergTableType": {
+                  "type": "null"
+                },
+                "lastProfiledAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetUserDefinedType": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunArtifactS3Path": {
+                  "type": "null"
+                },
+                "assetDbtTags": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDbtAccountName": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunOwnerThreadId": {
+                  "type": "null"
+                },
+                "assetDbtEnvironmentDbtVersion": {
+                  "type": "null"
+                },
+                "assetDQScheduleSourceSyncErrorMessage": {
+                  "type": "null"
+                },
+                "alpha_assetDQRowScopeFilterColumnQualifiedName": {
+                  "type": "null"
+                },
+                "assetDbtMeta": {
+                  "type": "null"
+                },
+                "assetDQRuleAttachedDimensions": {
+                  "type": "array",
+                  "items": {}
+                },
+                "sourceLastReadAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetDbtSourceFreshnessCriteria": {
+                  "type": "null"
+                },
+                "metrics": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDQScheduleType": {
+                  "type": "null"
+                },
+                "certificateStatus": {
+                  "type": "string",
+                  "example": "DEPRECATED",
+                  "description": "Certification status (VERIFIED, DRAFT, DEPRECATED)"
+                },
+                "hasContract": {
+                  "type": "boolean"
+                },
+                "displayName": {
+                  "type": "null",
+                  "description": "Human-readable display name"
+                },
+                "applicationFieldQualifiedName": {
+                  "type": "null"
+                },
+                "applicationQualifiedName": {
+                  "type": "null"
+                },
+                "partitionList": {
+                  "type": "null"
+                },
+                "assetDbtSemanticLayerProxyUrl": {
+                  "type": "null"
+                },
+                "alpha_assetDQRulePassedDimensions": {
+                  "type": "array",
+                  "items": {}
+                },
+                "certificateUpdatedBy": {
+                  "type": "string",
+                  "example": "service-account-atlan-argo"
+                },
+                "assetMcMonitorQualifiedNames": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDbtJobLastRunStartedAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "alpha_assetDQFreshnessValue": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "rowCount": {
+                  "type": "integer",
+                  "example": 663
+                },
+                "inputToAirflowTasks": {
+                  "type": "array",
+                  "items": {}
+                },
+                "calculationViewQualifiedName": {
+                  "type": "null"
+                },
+                "sourceOwners": {
+                  "type": "null"
+                },
+                "productGUIDs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Unique identifier (GUID)",
+                    "example": "0cf77d31-a525-4af2-b1b8-9f941cbab539"
+                  }
+                },
+                "userDescription": {
+                  "type": "string",
+                  "example": "testdescription",
+                  "description": "User-provided description"
+                },
+                "adminGroups": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetSodaSourceURL": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunCreatedAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetDbtJobNextRun": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "outputFromAirflowTasks": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetCoverImage": {
+                  "type": "null"
+                },
+                "queries": {
+                  "type": "array",
+                  "items": {}
+                },
+                "alpha_assetDQRuleFailedCount": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "externalLocation": {
+                  "type": "null"
+                },
+                "assetDQResult": {
+                  "type": "null"
+                },
+                "assetDQRulePassedRuleTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "sourceEmbedURL": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunUrl": {
+                  "type": "null"
+                },
+                "dbtSources": {
+                  "type": "array",
+                  "items": {}
+                },
+                "outputProductGUIDs": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDbtJobNextRunHumanized": {
+                  "type": "null"
+                },
+                "assetDbtJobScheduleCronHumanized": {
+                  "type": "null"
+                },
+                "alpha_assetDQRuleAttachedRuleTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDQFreshnessExpectation": {
+                  "type": "null"
+                },
+                "queryCountUpdatedAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "alpha_assetDQRuleFailedRuleTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "schemaName": {
+                  "type": "string",
+                  "example": "PROCESSED_GOLD"
+                },
+                "sqlDbtModels": {
+                  "type": "array",
+                  "items": {}
+                },
+                "queryUserCount": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "queryPreviewConfig": {
+                  "type": "null"
+                },
+                "atlanSchema": {
+                  "type": "object",
+                  "properties": {
+                    "guid": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "Unique identifier (GUID)",
+                      "example": "b5300d38-7636-402a-88ad-263bbb65f7c1"
+                    },
+                    "typeName": {
+                      "type": "string",
+                      "example": "Schema",
+                      "description": "The type of the entity (e.g., Table, Column, Database)"
+                    }
+                  },
+                  "required": [
+                    "guid",
+                    "typeName"
+                  ]
+                },
+                "announcementUpdatedAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetDQRulePassedCount": {
+                  "type": "null"
+                },
+                "partitions": {
+                  "type": "array",
+                  "items": {}
+                },
+                "qualifiedName": {
+                  "type": "string",
+                  "description": "Fully qualified name (FQN)",
+                  "example": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP"
+                },
+                "assetMcIncidentPriorities": {
+                  "type": "array",
+                  "items": {}
+                },
+                "lexicographicalSortOrder": {
+                  "type": "null"
+                },
+                "assetMcMonitorStatuses": {
+                  "type": "array",
+                  "items": {}
+                },
+                "starredBy": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "example": "edgar.degroot"
+                  }
+                },
+                "name": {
+                  "type": "string",
+                  "example": "DIM_CUSTOMER_SP",
+                  "description": "Name of the entity"
+                },
+                "certificateUpdatedAt": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Unix timestamp in milliseconds",
+                  "example": 1756317462378
+                },
+                "assetAnomaloAppliedCheckTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "announcementUpdatedBy": {
+                  "type": "null"
+                },
+                "assetAnomaloSourceUrl": {
+                  "type": "null"
+                },
+                "assetThemeHex": {
+                  "type": "null"
+                },
+                "sourceReadQueryCost": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "alpha_assetDQScheduleCrontab": {
+                  "type": "null"
+                },
+                "connectionQualifiedName": {
+                  "type": "string",
+                  "description": "Fully qualified name (FQN)",
+                  "example": "default/snowflake/1698696666"
+                },
+                "isAIGenerated": {
+                  "type": "boolean"
+                },
+                "description": {
+                  "type": "null",
+                  "description": "Description of the entity"
+                },
+                "isTemporary": {
+                  "type": "boolean"
+                },
+                "externalLocationFormat": {
+                  "type": "null"
+                },
+                "alpha_assetDQScheduleSourceSyncErrorMessage": {
+                  "type": "string",
+                  "example": "failed to fetch credential GUID: credential GUID not found or invalid"
+                },
+                "assetMcIncidentStates": {
+                  "type": "array",
+                  "items": {}
+                },
+                "alpha_assetDQRuleTotalCount": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetDbtJobLastRunUpdatedAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "ownerGroups": {
+                  "type": "array",
+                  "items": {},
+                  "description": "List of groups that own this asset"
+                },
+                "sourceReadExpensiveQueryRecordList": {
+                  "type": "array",
+                  "items": {}
+                },
+                "isPartial": {
+                  "type": "boolean"
+                },
+                "calculationViewName": {
+                  "type": "null"
+                },
+                "sourceReadTopUserList": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetMcIncidentNames": {
+                  "type": "array",
+                  "items": {}
+                },
+                "alpha_assetDQScheduleType": {
+                  "type": "null"
+                },
+                "replicatedTo": {
+                  "type": "null"
+                },
+                "adminRoles": {
+                  "type": "array",
+                  "items": {}
+                },
+                "databaseQualifiedName": {
+                  "type": "string",
+                  "description": "Fully qualified name (FQN)",
+                  "example": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS"
+                },
+                "viewQualifiedName": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunGitBranch": {
+                  "type": "null"
+                },
+                "assetDQScheduleSourceSyncRawError": {
+                  "type": "null"
+                },
+                "queryUserMap": {
+                  "type": "null"
+                },
+                "assetDbtWorkflowLastUpdated": {
+                  "type": "null"
+                },
+                "icebergCatalogSource": {
+                  "type": "null"
+                },
+                "assetDbtProjectName": {
+                  "type": "null"
+                },
+                "sizeBytes": {
+                  "type": "integer",
+                  "example": 41984
+                },
+                "sourceUpdatedBy": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunGitSha": {
+                  "type": "null"
+                },
+                "assetMcLastSyncRunAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "sourceReadUserCount": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetSmusMetadataFormNames": {
+                  "type": "array",
+                  "items": {}
+                },
+                "tableQualifiedName": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunStatusMessage": {
+                  "type": "null"
+                },
+                "sampleDataUrl": {
+                  "type": "null"
+                },
+                "assetInternalPopularityScore": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "viewerGroups": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDbtJobLastRun": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetDQRowScopeFilterColumnQualifiedName": {
+                  "type": "null"
+                },
+                "assetDQScheduleSourceSyncedAt": {
+                  "type": "null"
+                },
+                "assetAnomaloLastCheckRunAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "__hasLineage": {
+                  "type": "boolean",
+                  "description": "Whether the entity has lineage relationships"
+                },
+                "assetSodaLastSyncRunAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "starredCount": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "assetAnomaloFailedCheckCount": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "partitionCount": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "lastRowChangedAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "sourceReadRecentUserList": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetMcIncidentTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetSodaLastScanAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetDQRuleTotalCount": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunArtifactsSaved": {
+                  "type": "boolean"
+                },
+                "starredDetailsList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "typeName": {
+                        "type": "string",
+                        "example": "StarredDetails",
+                        "description": "The type of the entity (e.g., Table, Column, Database)"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "properties": {
+                          "assetStarredBy": {
+                            "type": "string",
+                            "example": "edgar.degroot"
+                          },
+                          "assetStarredAt": {
+                            "type": "integer",
+                            "format": "int64",
+                            "description": "Unix timestamp in milliseconds",
+                            "example": 1747930199238
+                          }
+                        },
+                        "required": [
+                          "assetStarredBy",
+                          "assetStarredAt"
+                        ],
+                        "description": "Entity attributes"
+                      }
+                    },
+                    "required": [
+                      "typeName",
+                      "attributes"
+                    ]
+                  }
+                },
+                "assetDbtJobLastRunQueuedDurationHumanized": {
+                  "type": "null"
+                },
+                "alpha_assetDQRuleLastRunAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetDbtJobStatus": {
+                  "type": "null"
+                },
+                "certificateStatusMessage": {
+                  "type": "null"
+                },
+                "sourceCreatedAt": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Unix timestamp in milliseconds",
+                  "example": 1736211543000
+                },
+                "assetDbtJobLastRunDequedAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "tableImpalaParameters": {
+                  "type": "null"
+                },
+                "sourceReadSlowQueryRecordList": {
+                  "type": "array",
+                  "items": {}
+                },
+                "alpha_assetDQRulePassedRuleTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "sourceQueryComputeCostList": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetExternalDQMetadataDetails": {
+                  "type": "null"
+                },
+                "sqlIsSecure": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunNotificationsSent": {
+                  "type": "boolean"
+                },
+                "airflowTask": {
+                  "type": "null"
+                },
+                "assetDQScheduleSourceSyncStatus": {
+                  "type": "null"
+                },
+                "assetMcMonitorTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "dbtModels": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDbtJobLastRunTotalDuration": {
+                  "type": "null"
+                },
+                "assetSodaCheckCount": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "outputFromSparkJobs": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDbtJobLastRunTotalDurationHumanized": {
+                  "type": "null"
+                },
+                "alpha_assetDQFreshnessExpectation": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetDQRuleFailedRuleTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "subType": {
+                  "type": "null"
+                },
+                "assetMcIncidentSeverities": {
+                  "type": "array",
+                  "items": {}
+                },
+                "connectionName": {
+                  "type": "null"
+                },
+                "assetMcAlertQualifiedNames": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetSodaCheckStatuses": {
+                  "type": "null"
+                },
+                "icebergCatalogName": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunExecutedByThreadId": {
+                  "type": "null"
+                },
+                "replicatedFrom": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunHasSourcesGenerated": {
+                  "type": "boolean"
+                },
+                "sourceCostUnit": {
+                  "type": "null"
+                },
+                "assetDbtUniqueId": {
+                  "type": "null"
+                },
+                "columns": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "guid": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Unique identifier (GUID)",
+                        "example": "b0787c19-f36b-4d68-ba06-fbc517194fac"
+                      },
+                      "typeName": {
+                        "type": "string",
+                        "example": "Column",
+                        "description": "The type of the entity (e.g., Table, Column, Database)"
+                      }
+                    }
+                  }
+                },
+                "assetSodaDQStatus": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunHasDocsGenerated": {
+                  "type": "boolean"
+                },
+                "queryCount": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetTags": {
+                  "type": "array",
+                  "items": {}
+                },
+                "alpha_assetDQScheduleSourceSyncRawError": {
+                  "type": "null"
+                },
+                "tableType": {
+                  "type": "null"
+                },
+                "assetAnomaloCheckCount": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "announcementType": {
+                  "type": "null",
+                  "description": "Type of announcement (information, warning, issue)"
+                },
+                "tableRetentionTime": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "tableObjectCount": {
+                  "type": "null"
+                },
+                "assetDQRuleLastRunAt": {
+                  "type": "null"
+                },
+                "schemaQualifiedName": {
+                  "type": "string",
+                  "description": "Fully qualified name (FQN)",
+                  "example": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD"
+                },
+                "viewerUsers": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetSmusMetadataFormDetails": {
+                  "type": "array",
+                  "items": {}
+                },
+                "viewScore": {
+                  "type": "number",
+                  "example": 1.17549435e-38
+                },
+                "assetAnomaloFailedCheckTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetSpaceName": {
+                  "type": "null"
+                },
+                "icebergCatalogTableNamespace": {
+                  "type": "null"
+                },
+                "assetDQScheduleTimeZone": {
+                  "type": "null"
+                },
+                "sourceReadPopularQueryRecordList": {
+                  "type": "array",
+                  "items": {}
+                },
+                "sqlAIModelContextQualifiedName": {
+                  "type": "null"
+                },
+                "sourceTotalCost": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetDQRuleResultTags": {
+                  "type": "array",
+                  "items": {}
+                },
+                "tenantId": {
+                  "type": "string",
+                  "example": "default"
+                },
+                "alpha_assetDQResult": {
+                  "type": "null"
+                },
+                "icebergTableBaseLocation": {
+                  "type": "null"
+                },
+                "announcementMessage": {
+                  "type": "null",
+                  "description": "Content of the announcement"
+                },
+                "lastSyncRunAt": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Unix timestamp in milliseconds",
+                  "example": 1747185085939
+                },
+                "assetDbtEnvironmentName": {
+                  "type": "null"
+                },
+                "nonCompliantAssetPolicyGUIDs": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDQRuleFailedCount": {
+                  "type": "null"
+                },
+                "sourceQueryComputeCostRecordList": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDbtJobLastRunRunDurationHumanized": {
+                  "type": "null"
+                },
+                "inputToSparkJobs": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDbtJobLastRunRunDuration": {
+                  "type": "null"
+                },
+                "adminUsers": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetMcIsMonitored": {
+                  "type": "boolean"
+                },
+                "sourceURL": {
+                  "type": "null"
+                },
+                "isSharded": {
+                  "type": "boolean"
+                },
+                "isEditable": {
+                  "type": "boolean"
+                },
+                "assetDQFreshnessValue": {
+                  "type": "null"
+                },
+                "viewName": {
+                  "type": "null"
+                },
+                "sourceReadCount": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetRedirectGUIDs": {
+                  "type": "array",
+                  "items": {}
+                },
+                "alpha_assetDQScheduleTimeZone": {
+                  "type": "null"
+                },
+                "assetDQScheduleSourceSyncErrorCode": {
+                  "type": "null"
+                },
+                "announcementTitle": {
+                  "type": "null",
+                  "description": "Title of the announcement"
+                },
+                "links": {
+                  "type": "array",
+                  "items": {}
+                },
+                "isQueryPreview": {
+                  "type": "boolean"
+                },
+                "assetDbtAlias": {
+                  "type": "null"
+                },
+                "alpha_assetDQScheduleSourceSyncErrorCode": {
+                  "type": "null"
+                },
+                "assetDQRuleFailedDimensions": {
+                  "type": "array",
+                  "items": {}
+                },
+                "icebergCatalogTableName": {
+                  "type": "null"
+                },
+                "assetSpaceQualifiedName": {
+                  "type": "null"
+                },
+                "tableExternalVolumeName": {
+                  "type": "null"
+                },
+                "alpha_assetDQRuleFailedDimensions": {
+                  "type": "array",
+                  "items": {}
+                },
+                "connectorName": {
+                  "type": "string",
+                  "example": "snowflake"
+                },
+                "assetDbtJobSchedule": {
+                  "type": "null"
+                },
+                "files": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetAnomaloCheckStatuses": {
+                  "type": "null"
+                },
+                "ownerUsers": {
+                  "type": "array",
+                  "items": {},
+                  "description": "List of users who own this asset"
+                },
+                "lastSyncWorkflowName": {
+                  "type": "string",
+                  "example": "atlan-snowflake-crawler"
+                },
+                "sourceCreatedBy": {
+                  "type": "string",
+                  "example": "ACCOUNTADMIN"
+                },
+                "assetMcIncidentSubTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "dbtQualifiedName": {
+                  "type": "null"
+                },
+                "isPartitioned": {
+                  "type": "boolean"
+                },
+                "assetPolicyGUIDs": {
+                  "type": "array",
+                  "items": {}
+                },
+                "externalLocationRegion": {
+                  "type": "null"
+                },
+                "isDiscoverable": {
+                  "type": "boolean"
+                },
+                "alias": {
+                  "type": "null"
+                },
+                "assetSmusMetadataFormKeyValueDetails": {
+                  "type": "array",
+                  "items": {}
+                },
+                "sourceReadTopUserRecordList": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetMcMonitorScheduleTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "isProfiled": {
+                  "type": "boolean"
+                },
+                "alpha_assetDQRuleAttachedDimensions": {
+                  "type": "array",
+                  "items": {}
+                },
+                "alpha_assetDQRuleResultTags": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDQRulePassedDimensions": {
+                  "type": "array",
+                  "items": {}
+                },
+                "tableDefinition": {
+                  "type": "null"
+                },
+                "alpha_assetDQScheduleSourceSyncStatus": {
+                  "type": "string",
+                  "example": "FAILURE"
+                },
+                "sourceReadRecentUserRecordList": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetIcon": {
+                  "type": "null"
+                },
+                "assetAnomaloDQStatus": {
+                  "type": "null"
+                },
+                "columnCount": {
+                  "type": "integer",
+                  "example": 19
+                },
+                "readme": {
+                  "type": "null"
+                },
+                "assetDQScheduleCrontab": {
+                  "type": "null"
+                },
+                "assetDbtPackageName": {
+                  "type": "null"
+                },
+                "sqlDBTSources": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDbtJobName": {
+                  "type": "null"
+                },
+                "assetDQRuleAttachedRuleTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "alpha_assetDQRulePassedCount": {
+                  "type": "integer",
+                  "example": 0
+                }
+              },
+              "description": "Entity attributes"
+            },
+            "guid": {
+              "type": "string",
+              "format": "uuid",
+              "description": "Unique identifier (GUID)",
+              "example": "b9d5dbbc-ee8a-4c5e-a946-a47033892172"
+            },
+            "isIncomplete": {
+              "type": "boolean",
+              "description": "Whether the entity data is incomplete"
+            },
+            "status": {
+              "type": "string",
+              "example": "ACTIVE",
+              "description": "Entity status (ACTIVE, DELETED)"
+            },
+            "createdBy": {
+              "type": "string",
+              "example": "ryan.quigley",
+              "description": "User who created the entity"
+            },
+            "updatedBy": {
+              "type": "string",
+              "example": "service-account-atlan-argo",
+              "description": "User who last updated the entity"
+            },
+            "createTime": {
+              "type": "integer",
+              "format": "int64",
+              "description": "Unix timestamp in milliseconds",
+              "example": 1747185436766
+            },
+            "updateTime": {
+              "type": "integer",
+              "format": "int64",
+              "description": "Unix timestamp in milliseconds",
+              "example": 1765929858468
+            },
+            "version": {
+              "type": "integer",
+              "example": 0
+            },
+            "superTypeNames": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "example": "Referenceable"
+              }
+            },
+            "docId": {
+              "type": "string",
+              "example": "6aye614"
+            },
+            "relationshipAttributes": {
+              "type": "object",
+              "properties": {
+                "schemaRegistrySubjects": {
+                  "type": "array",
+                  "items": {}
+                },
+                "dbtSources": {
+                  "type": "array",
+                  "items": {}
+                },
+                "dqBaseDatasetRules": {
+                  "type": "array",
+                  "items": {}
+                },
+                "columns": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "guid": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Unique identifier (GUID)",
+                        "example": "b0787c19-f36b-4d68-ba06-fbc517194fac"
+                      },
+                      "typeName": {
+                        "type": "string",
+                        "example": "Column",
+                        "description": "The type of the entity (e.g., Table, Column, Database)"
+                      },
+                      "entityStatus": {
+                        "type": "string",
+                        "example": "ACTIVE"
+                      },
+                      "displayText": {
+                        "type": "string",
+                        "example": "CREDITLIMIT"
+                      },
+                      "relationshipType": {
+                        "type": "string",
+                        "example": "table_columns"
+                      },
+                      "relationshipGuid": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Unique identifier (GUID)",
+                        "example": "7001941a-5b36-48e6-953e-4fd327a13fdd"
+                      },
+                      "relationshipStatus": {
+                        "type": "string",
+                        "example": "ACTIVE"
+                      },
+                      "relationshipAttributes": {
+                        "type": "object",
+                        "properties": {
+                          "typeName": {
+                            "type": "string",
+                            "example": "table_columns",
+                            "description": "The type of the entity (e.g., Table, Column, Database)"
+                          }
+                        },
+                        "required": [
+                          "typeName"
+                        ],
+                        "description": "Relationship attributes connecting to other entities"
+                      }
+                    }
+                  }
+                },
+                "userDefRelationshipFrom": {
+                  "type": "array",
+                  "items": {}
+                },
+                "inputToSparkJobs": {
+                  "type": "array",
+                  "items": {}
+                },
+                "alpha_dqBaseDatasetRules": {
+                  "type": "array",
+                  "items": {}
+                },
+                "facts": {
+                  "type": "array",
+                  "items": {}
+                },
+                "sqlDbtModels": {
+                  "type": "array",
+                  "items": {}
+                },
+                "partialChildFields": {
+                  "type": "array",
+                  "items": {}
+                },
+                "dbtTests": {
+                  "type": "array",
+                  "items": {}
+                },
+                "atlanSchema": {
+                  "type": "object",
+                  "properties": {
+                    "guid": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "Unique identifier (GUID)",
+                      "example": "b5300d38-7636-402a-88ad-263bbb65f7c1"
+                    },
+                    "typeName": {
+                      "type": "string",
+                      "example": "Schema",
+                      "description": "The type of the entity (e.g., Table, Column, Database)"
+                    },
+                    "entityStatus": {
+                      "type": "string",
+                      "example": "ACTIVE"
+                    },
+                    "displayText": {
+                      "type": "string",
+                      "example": "PROCESSED_GOLD"
+                    },
+                    "relationshipType": {
+                      "type": "string",
+                      "example": "schema_tables"
+                    },
+                    "relationshipGuid": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "Unique identifier (GUID)",
+                      "example": "b0ceaed0-9a0d-4d59-bf5a-d85e449abb2e"
+                    },
+                    "relationshipStatus": {
+                      "type": "string",
+                      "example": "ACTIVE"
+                    },
+                    "relationshipAttributes": {
+                      "type": "object",
+                      "properties": {
+                        "typeName": {
+                          "type": "string",
+                          "example": "schema_tables",
+                          "description": "The type of the entity (e.g., Table, Column, Database)"
+                        }
+                      },
+                      "required": [
+                        "typeName"
+                      ],
+                      "description": "Relationship attributes connecting to other entities"
+                    }
+                  }
+                },
+                "mcIncidents": {
+                  "type": "array",
+                  "items": {}
+                },
+                "links": {
+                  "type": "array",
+                  "items": {}
+                },
+                "inputToAirflowTasks": {
+                  "type": "array",
+                  "items": {}
+                },
+                "inputPortDataProducts": {
+                  "type": "array",
+                  "items": {}
+                },
+                "partitions": {
+                  "type": "array",
+                  "items": {}
+                },
+                "inputToProcesses": {
+                  "type": "array",
+                  "items": {}
+                },
+                "dataContractLatestCertified": {
+                  "type": "null"
+                },
+                "anomaloChecks": {
+                  "type": "array",
+                  "items": {}
+                },
+                "userDefRelationshipTo": {
+                  "type": "array",
+                  "items": {}
+                },
+                "modelImplementedAttributes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "outputPortDataProducts": {
+                  "type": "array",
+                  "items": {}
+                },
+                "outputFromAirflowTasks": {
+                  "type": "array",
+                  "items": {}
+                },
+                "airflowTask": {
+                  "type": "null"
+                },
+                "readme": {
+                  "type": "null"
+                },
+                "dqReferenceDatasetRules": {
+                  "type": "array",
+                  "items": {}
+                },
+                "applicationField": {
+                  "type": "null"
+                },
+                "queries": {
+                  "type": "array",
+                  "items": {}
+                },
+                "meanings": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "guid": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Unique identifier (GUID)",
+                        "example": "be81ac35-d93f-4b4b-a49a-b1c7046e575d"
+                      },
+                      "typeName": {
+                        "type": "string",
+                        "example": "AtlasGlossaryTerm",
+                        "description": "The type of the entity (e.g., Table, Column, Database)"
+                      },
+                      "entityStatus": {
+                        "type": "string",
+                        "example": "ACTIVE"
+                      },
+                      "displayText": {
+                        "type": "string",
+                        "example": "Customer"
+                      },
+                      "relationshipType": {
+                        "type": "string",
+                        "example": "AtlasGlossarySemanticAssignment"
+                      },
+                      "relationshipGuid": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Unique identifier (GUID)",
+                        "example": "8562f00b-6de9-4ede-9987-8f7213cd86ff"
+                      },
+                      "relationshipStatus": {
+                        "type": "string",
+                        "example": "ACTIVE"
+                      },
+                      "relationshipAttributes": {
+                        "type": "object",
+                        "properties": {
+                          "typeName": {
+                            "type": "string",
+                            "example": "AtlasGlossarySemanticAssignment",
+                            "description": "The type of the entity (e.g., Table, Column, Database)"
+                          },
+                          "attributes": {
+                            "type": "object",
+                            "properties": {
+                              "expression": {
+                                "type": "null"
+                              },
+                              "createdBy": {
+                                "type": "null",
+                                "description": "User who created the entity"
+                              },
+                              "steward": {
+                                "type": "null"
+                              },
+                              "confidence": {
+                                "type": "null"
+                              },
+                              "description": {
+                                "type": "null",
+                                "description": "Description of the entity"
+                              },
+                              "source": {
+                                "type": "null"
+                              },
+                              "status": {
+                                "type": "null",
+                                "description": "Entity status (ACTIVE, DELETED)"
+                              }
+                            },
+                            "description": "Entity attributes"
+                          }
+                        },
+                        "required": [
+                          "typeName",
+                          "attributes"
+                        ],
+                        "description": "Relationship attributes connecting to other entities"
+                      }
+                    }
+                  },
+                  "description": "Glossary terms linked to this entity"
+                },
+                "dataContractLatest": {
+                  "type": "object",
+                  "properties": {
+                    "guid": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "Unique identifier (GUID)",
+                      "example": "3b6f1508-98c8-4c75-9c51-bfd6e859226c"
+                    },
+                    "typeName": {
+                      "type": "string",
+                      "example": "DataContract",
+                      "description": "The type of the entity (e.g., Table, Column, Database)"
+                    },
+                    "entityStatus": {
+                      "type": "string",
+                      "example": "ACTIVE"
+                    },
+                    "displayText": {
+                      "type": "string",
+                      "example": "Data contract for DIM_CUSTOMER_SP"
+                    },
+                    "relationshipType": {
+                      "type": "string",
+                      "example": "data_contract_asset_latest_data_contract_latest"
+                    },
+                    "relationshipGuid": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "Unique identifier (GUID)",
+                      "example": "38bb2696-355b-4685-bf72-d8af4a61014d"
+                    },
+                    "relationshipStatus": {
+                      "type": "string",
+                      "example": "ACTIVE"
+                    },
+                    "relationshipAttributes": {
+                      "type": "object",
+                      "properties": {
+                        "typeName": {
+                          "type": "string",
+                          "example": "data_contract_asset_latest_data_contract_latest",
+                          "description": "The type of the entity (e.g., Table, Column, Database)"
+                        }
+                      },
+                      "required": [
+                        "typeName"
+                      ],
+                      "description": "Relationship attributes connecting to other entities"
+                    }
+                  }
+                },
+                "sqlDBTSources": {
+                  "type": "array",
+                  "items": {}
+                },
+                "alpha_dqReferenceDatasetRules": {
+                  "type": "array",
+                  "items": {}
+                },
+                "dbtModels": {
+                  "type": "array",
+                  "items": {}
+                },
+                "dbtSeedAssets": {
+                  "type": "array",
+                  "items": {}
+                },
+                "mcMonitors": {
+                  "type": "array",
+                  "items": {}
+                },
+                "outputFromSparkJobs": {
+                  "type": "array",
+                  "items": {}
+                },
+                "application": {
+                  "type": "null"
+                },
+                "files": {
+                  "type": "array",
+                  "items": {}
+                },
+                "modelImplementedEntities": {
+                  "type": "array",
+                  "items": {}
+                },
+                "metrics": {
+                  "type": "array",
+                  "items": {}
+                },
+                "sodaChecks": {
+                  "type": "array",
+                  "items": {}
+                },
+                "partialChildObjects": {
+                  "type": "array",
+                  "items": {}
+                },
+                "outputFromProcesses": {
+                  "type": "array",
+                  "items": {}
+                },
+                "dimensions": {
+                  "type": "array",
+                  "items": {}
+                }
+              },
+              "description": "Relationship attributes connecting to other entities"
+            },
+            "classifications": {
+              "type": "array",
+              "items": {},
+              "description": "Classifications (tags) applied to this entity"
+            },
+            "customAttributes": {
+              "type": "object",
+              "properties": {
+                "auto_clustering_on": {
+                  "type": "string",
+                  "example": "NO"
+                },
+                "auto_increment": {
+                  "type": "string",
+                  "example": ""
+                },
+                "columns_participating_in_part_key": {
+                  "type": "string",
+                  "example": ""
+                },
+                "engine": {
+                  "type": "string",
+                  "example": ""
+                },
+                "is_insertable_into": {
+                  "type": "string",
+                  "example": "YES"
+                },
+                "is_transient": {
+                  "type": "string",
+                  "example": "YES"
+                },
+                "is_typed": {
+                  "type": "string",
+                  "example": "YES"
+                },
+                "last_ddl": {
+                  "type": "string",
+                  "example": "1736211543000"
+                },
+                "number_columns_in_part_key": {
+                  "type": "string",
+                  "example": ""
+                },
+                "retention_time": {
+                  "type": "string",
+                  "example": "1"
+                },
+                "stage_url": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            },
+            "businessAttributes": {
+              "type": "object",
+              "properties": {
+                "cRuqNRMTmeaytXEZJPigCs": {
+                  "type": "object",
+                  "properties": {
+                    "d18B8OGcdNQvd0vF571shK": {
+                      "type": "array",
+                      "items": {}
+                    },
+                    "qIom2D1J1ZQiA2RvKxbomI": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  },
+                  "required": [
+                    "d18B8OGcdNQvd0vF571shK",
+                    "qIom2D1J1ZQiA2RvKxbomI"
+                  ]
+                },
+                "x8E67N8b0vOeOg6Xpt9Q6U": {
+                  "type": "object",
+                  "properties": {
+                    "g4bU7QnO7NgveWnGqjKdgH": {
+                      "type": "array",
+                      "items": {}
+                    },
+                    "LaAGFQ0H0Gq8W1dc8m4Yj3": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  },
+                  "required": [
+                    "g4bU7QnO7NgveWnGqjKdgH",
+                    "LaAGFQ0H0Gq8W1dc8m4Yj3"
+                  ]
+                },
+                "Sbc2h0fp0hgV9kMmfmJree": {
+                  "type": "object",
+                  "properties": {
+                    "MLKs8Mb9lVxhOFAY8F1Tc9": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  },
+                  "required": [
+                    "MLKs8Mb9lVxhOFAY8F1Tc9"
+                  ]
+                }
+              },
+              "required": [
+                "cRuqNRMTmeaytXEZJPigCs",
+                "x8E67N8b0vOeOg6Xpt9Q6U",
+                "Sbc2h0fp0hgV9kMmfmJree"
+              ]
+            },
+            "labels": {
+              "type": "array",
+              "items": {}
+            }
+          }
+        }
+      }
+    },
+    "MetaEntityUniqueAttributeTypeTableResponse": {
+      "type": "object",
+      "properties": {
+        "referredEntities": {
+          "type": "object",
+          "properties": {}
+        },
+        "entity": {
+          "type": "object",
+          "properties": {
+            "typeName": {
+              "type": "string",
+              "example": "Table",
+              "description": "The type of the entity (e.g., Table, Column, Database)"
+            },
+            "attributes": {
+              "type": "object",
+              "properties": {
+                "popularityScore": {
+                  "type": "number",
+                  "example": 1.17549435e-38
+                },
+                "assetDbtJobLastRunQueuedDuration": {
+                  "type": "null"
+                },
+                "assetMcMonitorNames": {
+                  "type": "array",
+                  "items": {}
+                },
+                "partitionStrategy": {
+                  "type": "null"
+                },
+                "databaseName": {
+                  "type": "string",
+                  "example": "WIDE_WORLD_IMPORTERS"
+                },
+                "assetPoliciesCount": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "assetDbtTestStatus": {
+                  "type": "null"
+                },
+                "lastSyncRun": {
+                  "type": "string",
+                  "example": "atlan-snowflake-1698696666-zw9fd"
+                },
+                "assetSourceReadme": {
+                  "type": "null"
+                },
+                "tableName": {
+                  "type": "null"
+                },
+                "domainGUIDs": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetMcIncidentQualifiedNames": {
+                  "type": "array",
+                  "items": {}
+                },
+                "sourceUpdatedAt": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Unix timestamp in milliseconds",
+                  "example": 1736211544000
+                },
+                "alpha_assetDQScheduleSourceSyncedAt": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Unix timestamp in milliseconds",
+                  "example": 1747931150760
+                },
+                "icebergTableType": {
+                  "type": "null"
+                },
+                "lastProfiledAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetUserDefinedType": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunArtifactS3Path": {
+                  "type": "null"
+                },
+                "assetDbtTags": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDbtAccountName": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunOwnerThreadId": {
+                  "type": "null"
+                },
+                "assetDbtEnvironmentDbtVersion": {
+                  "type": "null"
+                },
+                "assetDQScheduleSourceSyncErrorMessage": {
+                  "type": "null"
+                },
+                "alpha_assetDQRowScopeFilterColumnQualifiedName": {
+                  "type": "null"
+                },
+                "assetDbtMeta": {
+                  "type": "null"
+                },
+                "assetDQRuleAttachedDimensions": {
+                  "type": "array",
+                  "items": {}
+                },
+                "sourceLastReadAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetDbtSourceFreshnessCriteria": {
+                  "type": "null"
+                },
+                "metrics": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDQScheduleType": {
+                  "type": "null"
+                },
+                "certificateStatus": {
+                  "type": "string",
+                  "example": "DEPRECATED",
+                  "description": "Certification status (VERIFIED, DRAFT, DEPRECATED)"
+                },
+                "hasContract": {
+                  "type": "boolean"
+                },
+                "displayName": {
+                  "type": "null",
+                  "description": "Human-readable display name"
+                },
+                "applicationFieldQualifiedName": {
+                  "type": "null"
+                },
+                "applicationQualifiedName": {
+                  "type": "null"
+                },
+                "partitionList": {
+                  "type": "null"
+                },
+                "assetDbtSemanticLayerProxyUrl": {
+                  "type": "null"
+                },
+                "alpha_assetDQRulePassedDimensions": {
+                  "type": "array",
+                  "items": {}
+                },
+                "certificateUpdatedBy": {
+                  "type": "string",
+                  "example": "service-account-atlan-argo"
+                },
+                "assetMcMonitorQualifiedNames": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDbtJobLastRunStartedAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "alpha_assetDQFreshnessValue": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "rowCount": {
+                  "type": "integer",
+                  "example": 663
+                },
+                "inputToAirflowTasks": {
+                  "type": "array",
+                  "items": {}
+                },
+                "calculationViewQualifiedName": {
+                  "type": "null"
+                },
+                "sourceOwners": {
+                  "type": "null"
+                },
+                "productGUIDs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Unique identifier (GUID)",
+                    "example": "0cf77d31-a525-4af2-b1b8-9f941cbab539"
+                  }
+                },
+                "userDescription": {
+                  "type": "string",
+                  "example": "testdescription",
+                  "description": "User-provided description"
+                },
+                "adminGroups": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetSodaSourceURL": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunCreatedAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetDbtJobNextRun": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "outputFromAirflowTasks": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetCoverImage": {
+                  "type": "null"
+                },
+                "queries": {
+                  "type": "array",
+                  "items": {}
+                },
+                "alpha_assetDQRuleFailedCount": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "externalLocation": {
+                  "type": "null"
+                },
+                "assetDQResult": {
+                  "type": "null"
+                },
+                "assetDQRulePassedRuleTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "sourceEmbedURL": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunUrl": {
+                  "type": "null"
+                },
+                "dbtSources": {
+                  "type": "array",
+                  "items": {}
+                },
+                "outputProductGUIDs": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDbtJobNextRunHumanized": {
+                  "type": "null"
+                },
+                "assetDbtJobScheduleCronHumanized": {
+                  "type": "null"
+                },
+                "alpha_assetDQRuleAttachedRuleTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDQFreshnessExpectation": {
+                  "type": "null"
+                },
+                "queryCountUpdatedAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "alpha_assetDQRuleFailedRuleTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "schemaName": {
+                  "type": "string",
+                  "example": "PROCESSED_GOLD"
+                },
+                "sqlDbtModels": {
+                  "type": "array",
+                  "items": {}
+                },
+                "queryUserCount": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "queryPreviewConfig": {
+                  "type": "null"
+                },
+                "atlanSchema": {
+                  "type": "object",
+                  "properties": {
+                    "guid": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "Unique identifier (GUID)",
+                      "example": "b5300d38-7636-402a-88ad-263bbb65f7c1"
+                    },
+                    "typeName": {
+                      "type": "string",
+                      "example": "Schema",
+                      "description": "The type of the entity (e.g., Table, Column, Database)"
+                    }
+                  },
+                  "required": [
+                    "guid",
+                    "typeName"
+                  ]
+                },
+                "announcementUpdatedAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetDQRulePassedCount": {
+                  "type": "null"
+                },
+                "partitions": {
+                  "type": "array",
+                  "items": {}
+                },
+                "qualifiedName": {
+                  "type": "string",
+                  "description": "Fully qualified name (FQN)",
+                  "example": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP"
+                },
+                "assetMcIncidentPriorities": {
+                  "type": "array",
+                  "items": {}
+                },
+                "lexicographicalSortOrder": {
+                  "type": "null"
+                },
+                "assetMcMonitorStatuses": {
+                  "type": "array",
+                  "items": {}
+                },
+                "starredBy": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "example": "edgar.degroot"
+                  }
+                },
+                "name": {
+                  "type": "string",
+                  "example": "DIM_CUSTOMER_SP",
+                  "description": "Name of the entity"
+                },
+                "certificateUpdatedAt": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Unix timestamp in milliseconds",
+                  "example": 1756317462378
+                },
+                "assetAnomaloAppliedCheckTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "announcementUpdatedBy": {
+                  "type": "null"
+                },
+                "assetAnomaloSourceUrl": {
+                  "type": "null"
+                },
+                "assetThemeHex": {
+                  "type": "null"
+                },
+                "sourceReadQueryCost": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "alpha_assetDQScheduleCrontab": {
+                  "type": "null"
+                },
+                "connectionQualifiedName": {
+                  "type": "string",
+                  "description": "Fully qualified name (FQN)",
+                  "example": "default/snowflake/1698696666"
+                },
+                "isAIGenerated": {
+                  "type": "boolean"
+                },
+                "description": {
+                  "type": "null",
+                  "description": "Description of the entity"
+                },
+                "isTemporary": {
+                  "type": "boolean"
+                },
+                "externalLocationFormat": {
+                  "type": "null"
+                },
+                "alpha_assetDQScheduleSourceSyncErrorMessage": {
+                  "type": "string",
+                  "example": "failed to fetch credential GUID: credential GUID not found or invalid"
+                },
+                "assetMcIncidentStates": {
+                  "type": "array",
+                  "items": {}
+                },
+                "alpha_assetDQRuleTotalCount": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetDbtJobLastRunUpdatedAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "ownerGroups": {
+                  "type": "array",
+                  "items": {},
+                  "description": "List of groups that own this asset"
+                },
+                "sourceReadExpensiveQueryRecordList": {
+                  "type": "array",
+                  "items": {}
+                },
+                "isPartial": {
+                  "type": "boolean"
+                },
+                "calculationViewName": {
+                  "type": "null"
+                },
+                "sourceReadTopUserList": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetMcIncidentNames": {
+                  "type": "array",
+                  "items": {}
+                },
+                "alpha_assetDQScheduleType": {
+                  "type": "null"
+                },
+                "replicatedTo": {
+                  "type": "null"
+                },
+                "adminRoles": {
+                  "type": "array",
+                  "items": {}
+                },
+                "databaseQualifiedName": {
+                  "type": "string",
+                  "description": "Fully qualified name (FQN)",
+                  "example": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS"
+                },
+                "viewQualifiedName": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunGitBranch": {
+                  "type": "null"
+                },
+                "assetDQScheduleSourceSyncRawError": {
+                  "type": "null"
+                },
+                "queryUserMap": {
+                  "type": "null"
+                },
+                "assetDbtWorkflowLastUpdated": {
+                  "type": "null"
+                },
+                "icebergCatalogSource": {
+                  "type": "null"
+                },
+                "assetDbtProjectName": {
+                  "type": "null"
+                },
+                "sizeBytes": {
+                  "type": "integer",
+                  "example": 41984
+                },
+                "sourceUpdatedBy": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunGitSha": {
+                  "type": "null"
+                },
+                "assetMcLastSyncRunAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "sourceReadUserCount": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetSmusMetadataFormNames": {
+                  "type": "array",
+                  "items": {}
+                },
+                "tableQualifiedName": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunStatusMessage": {
+                  "type": "null"
+                },
+                "sampleDataUrl": {
+                  "type": "null"
+                },
+                "assetInternalPopularityScore": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "viewerGroups": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDbtJobLastRun": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetDQRowScopeFilterColumnQualifiedName": {
+                  "type": "null"
+                },
+                "assetDQScheduleSourceSyncedAt": {
+                  "type": "null"
+                },
+                "assetAnomaloLastCheckRunAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "__hasLineage": {
+                  "type": "boolean",
+                  "description": "Whether the entity has lineage relationships"
+                },
+                "assetSodaLastSyncRunAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "starredCount": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "assetAnomaloFailedCheckCount": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "partitionCount": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "lastRowChangedAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "sourceReadRecentUserList": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetMcIncidentTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetSodaLastScanAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetDQRuleTotalCount": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunArtifactsSaved": {
+                  "type": "boolean"
+                },
+                "starredDetailsList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "typeName": {
+                        "type": "string",
+                        "example": "StarredDetails",
+                        "description": "The type of the entity (e.g., Table, Column, Database)"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "properties": {
+                          "assetStarredBy": {
+                            "type": "string",
+                            "example": "edgar.degroot"
+                          },
+                          "assetStarredAt": {
+                            "type": "integer",
+                            "format": "int64",
+                            "description": "Unix timestamp in milliseconds",
+                            "example": 1747930199238
+                          }
+                        },
+                        "required": [
+                          "assetStarredBy",
+                          "assetStarredAt"
+                        ],
+                        "description": "Entity attributes"
+                      }
+                    },
+                    "required": [
+                      "typeName",
+                      "attributes"
+                    ]
+                  }
+                },
+                "assetDbtJobLastRunQueuedDurationHumanized": {
+                  "type": "null"
+                },
+                "alpha_assetDQRuleLastRunAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetDbtJobStatus": {
+                  "type": "null"
+                },
+                "certificateStatusMessage": {
+                  "type": "null"
+                },
+                "sourceCreatedAt": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Unix timestamp in milliseconds",
+                  "example": 1736211543000
+                },
+                "assetDbtJobLastRunDequedAt": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "tableImpalaParameters": {
+                  "type": "null"
+                },
+                "sourceReadSlowQueryRecordList": {
+                  "type": "array",
+                  "items": {}
+                },
+                "alpha_assetDQRulePassedRuleTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "sourceQueryComputeCostList": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetExternalDQMetadataDetails": {
+                  "type": "null"
+                },
+                "sqlIsSecure": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunNotificationsSent": {
+                  "type": "boolean"
+                },
+                "airflowTask": {
+                  "type": "null"
+                },
+                "assetDQScheduleSourceSyncStatus": {
+                  "type": "null"
+                },
+                "assetMcMonitorTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "dbtModels": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDbtJobLastRunTotalDuration": {
+                  "type": "null"
+                },
+                "assetSodaCheckCount": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "outputFromSparkJobs": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDbtJobLastRunTotalDurationHumanized": {
+                  "type": "null"
+                },
+                "alpha_assetDQFreshnessExpectation": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetDQRuleFailedRuleTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "subType": {
+                  "type": "null"
+                },
+                "assetMcIncidentSeverities": {
+                  "type": "array",
+                  "items": {}
+                },
+                "connectionName": {
+                  "type": "null"
+                },
+                "assetMcAlertQualifiedNames": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetSodaCheckStatuses": {
+                  "type": "null"
+                },
+                "icebergCatalogName": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunExecutedByThreadId": {
+                  "type": "null"
+                },
+                "replicatedFrom": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunHasSourcesGenerated": {
+                  "type": "boolean"
+                },
+                "sourceCostUnit": {
+                  "type": "null"
+                },
+                "assetDbtUniqueId": {
+                  "type": "null"
+                },
+                "columns": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "guid": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Unique identifier (GUID)",
+                        "example": "b0787c19-f36b-4d68-ba06-fbc517194fac"
+                      },
+                      "typeName": {
+                        "type": "string",
+                        "example": "Column",
+                        "description": "The type of the entity (e.g., Table, Column, Database)"
+                      }
+                    }
+                  }
+                },
+                "assetSodaDQStatus": {
+                  "type": "null"
+                },
+                "assetDbtJobLastRunHasDocsGenerated": {
+                  "type": "boolean"
+                },
+                "queryCount": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetTags": {
+                  "type": "array",
+                  "items": {}
+                },
+                "alpha_assetDQScheduleSourceSyncRawError": {
+                  "type": "null"
+                },
+                "tableType": {
+                  "type": "null"
+                },
+                "assetAnomaloCheckCount": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "announcementType": {
+                  "type": "null",
+                  "description": "Type of announcement (information, warning, issue)"
+                },
+                "tableRetentionTime": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "tableObjectCount": {
+                  "type": "null"
+                },
+                "assetDQRuleLastRunAt": {
+                  "type": "null"
+                },
+                "schemaQualifiedName": {
+                  "type": "string",
+                  "description": "Fully qualified name (FQN)",
+                  "example": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD"
+                },
+                "viewerUsers": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetSmusMetadataFormDetails": {
+                  "type": "array",
+                  "items": {}
+                },
+                "viewScore": {
+                  "type": "number",
+                  "example": 1.17549435e-38
+                },
+                "assetAnomaloFailedCheckTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetSpaceName": {
+                  "type": "null"
+                },
+                "icebergCatalogTableNamespace": {
+                  "type": "null"
+                },
+                "assetDQScheduleTimeZone": {
+                  "type": "null"
+                },
+                "sourceReadPopularQueryRecordList": {
+                  "type": "array",
+                  "items": {}
+                },
+                "sqlAIModelContextQualifiedName": {
+                  "type": "null"
+                },
+                "sourceTotalCost": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetDQRuleResultTags": {
+                  "type": "array",
+                  "items": {}
+                },
+                "tenantId": {
+                  "type": "string",
+                  "example": "default"
+                },
+                "alpha_assetDQResult": {
+                  "type": "null"
+                },
+                "icebergTableBaseLocation": {
+                  "type": "null"
+                },
+                "announcementMessage": {
+                  "type": "null",
+                  "description": "Content of the announcement"
+                },
+                "lastSyncRunAt": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Unix timestamp in milliseconds",
+                  "example": 1747185085939
+                },
+                "assetDbtEnvironmentName": {
+                  "type": "null"
+                },
+                "nonCompliantAssetPolicyGUIDs": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDQRuleFailedCount": {
+                  "type": "null"
+                },
+                "sourceQueryComputeCostRecordList": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDbtJobLastRunRunDurationHumanized": {
+                  "type": "null"
+                },
+                "inputToSparkJobs": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDbtJobLastRunRunDuration": {
+                  "type": "null"
+                },
+                "adminUsers": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetMcIsMonitored": {
+                  "type": "boolean"
+                },
+                "sourceURL": {
+                  "type": "null"
+                },
+                "isSharded": {
+                  "type": "boolean"
+                },
+                "isEditable": {
+                  "type": "boolean"
+                },
+                "assetDQFreshnessValue": {
+                  "type": "null"
+                },
+                "viewName": {
+                  "type": "null"
+                },
+                "sourceReadCount": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "assetRedirectGUIDs": {
+                  "type": "array",
+                  "items": {}
+                },
+                "alpha_assetDQScheduleTimeZone": {
+                  "type": "null"
+                },
+                "assetDQScheduleSourceSyncErrorCode": {
+                  "type": "null"
+                },
+                "announcementTitle": {
+                  "type": "null",
+                  "description": "Title of the announcement"
+                },
+                "links": {
+                  "type": "array",
+                  "items": {}
+                },
+                "isQueryPreview": {
+                  "type": "boolean"
+                },
+                "assetDbtAlias": {
+                  "type": "null"
+                },
+                "alpha_assetDQScheduleSourceSyncErrorCode": {
+                  "type": "null"
+                },
+                "assetDQRuleFailedDimensions": {
+                  "type": "array",
+                  "items": {}
+                },
+                "icebergCatalogTableName": {
+                  "type": "null"
+                },
+                "assetSpaceQualifiedName": {
+                  "type": "null"
+                },
+                "tableExternalVolumeName": {
+                  "type": "null"
+                },
+                "alpha_assetDQRuleFailedDimensions": {
+                  "type": "array",
+                  "items": {}
+                },
+                "connectorName": {
+                  "type": "string",
+                  "example": "snowflake"
+                },
+                "assetDbtJobSchedule": {
+                  "type": "null"
+                },
+                "files": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetAnomaloCheckStatuses": {
+                  "type": "null"
+                },
+                "ownerUsers": {
+                  "type": "array",
+                  "items": {},
+                  "description": "List of users who own this asset"
+                },
+                "lastSyncWorkflowName": {
+                  "type": "string",
+                  "example": "atlan-snowflake-crawler"
+                },
+                "sourceCreatedBy": {
+                  "type": "string",
+                  "example": "ACCOUNTADMIN"
+                },
+                "assetMcIncidentSubTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "dbtQualifiedName": {
+                  "type": "null"
+                },
+                "isPartitioned": {
+                  "type": "boolean"
+                },
+                "assetPolicyGUIDs": {
+                  "type": "array",
+                  "items": {}
+                },
+                "externalLocationRegion": {
+                  "type": "null"
+                },
+                "isDiscoverable": {
+                  "type": "boolean"
+                },
+                "alias": {
+                  "type": "null"
+                },
+                "assetSmusMetadataFormKeyValueDetails": {
+                  "type": "array",
+                  "items": {}
+                },
+                "sourceReadTopUserRecordList": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetMcMonitorScheduleTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "isProfiled": {
+                  "type": "boolean"
+                },
+                "alpha_assetDQRuleAttachedDimensions": {
+                  "type": "array",
+                  "items": {}
+                },
+                "alpha_assetDQRuleResultTags": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDQRulePassedDimensions": {
+                  "type": "array",
+                  "items": {}
+                },
+                "tableDefinition": {
+                  "type": "null"
+                },
+                "alpha_assetDQScheduleSourceSyncStatus": {
+                  "type": "string",
+                  "example": "FAILURE"
+                },
+                "sourceReadRecentUserRecordList": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetIcon": {
+                  "type": "null"
+                },
+                "assetAnomaloDQStatus": {
+                  "type": "null"
+                },
+                "columnCount": {
+                  "type": "integer",
+                  "example": 19
+                },
+                "readme": {
+                  "type": "null"
+                },
+                "assetDQScheduleCrontab": {
+                  "type": "null"
+                },
+                "assetDbtPackageName": {
+                  "type": "null"
+                },
+                "sqlDBTSources": {
+                  "type": "array",
+                  "items": {}
+                },
+                "assetDbtJobName": {
+                  "type": "null"
+                },
+                "assetDQRuleAttachedRuleTypes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "alpha_assetDQRulePassedCount": {
+                  "type": "integer",
+                  "example": 0
+                }
+              },
+              "description": "Entity attributes"
+            },
+            "guid": {
+              "type": "string",
+              "format": "uuid",
+              "description": "Unique identifier (GUID)",
+              "example": "b9d5dbbc-ee8a-4c5e-a946-a47033892172"
+            },
+            "isIncomplete": {
+              "type": "boolean",
+              "description": "Whether the entity data is incomplete"
+            },
+            "status": {
+              "type": "string",
+              "example": "ACTIVE",
+              "description": "Entity status (ACTIVE, DELETED)"
+            },
+            "createdBy": {
+              "type": "string",
+              "example": "ryan.quigley",
+              "description": "User who created the entity"
+            },
+            "updatedBy": {
+              "type": "string",
+              "example": "service-account-atlan-argo",
+              "description": "User who last updated the entity"
+            },
+            "createTime": {
+              "type": "integer",
+              "format": "int64",
+              "description": "Unix timestamp in milliseconds",
+              "example": 1747185436766
+            },
+            "updateTime": {
+              "type": "integer",
+              "format": "int64",
+              "description": "Unix timestamp in milliseconds",
+              "example": 1765929858468
+            },
+            "version": {
+              "type": "integer",
+              "example": 0
+            },
+            "superTypeNames": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "example": "Referenceable"
+              }
+            },
+            "docId": {
+              "type": "string",
+              "example": "6aye614"
+            },
+            "relationshipAttributes": {
+              "type": "object",
+              "properties": {
+                "schemaRegistrySubjects": {
+                  "type": "array",
+                  "items": {}
+                },
+                "dbtSources": {
+                  "type": "array",
+                  "items": {}
+                },
+                "dqBaseDatasetRules": {
+                  "type": "array",
+                  "items": {}
+                },
+                "columns": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "guid": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Unique identifier (GUID)",
+                        "example": "b0787c19-f36b-4d68-ba06-fbc517194fac"
+                      },
+                      "typeName": {
+                        "type": "string",
+                        "example": "Column",
+                        "description": "The type of the entity (e.g., Table, Column, Database)"
+                      },
+                      "entityStatus": {
+                        "type": "string",
+                        "example": "ACTIVE"
+                      },
+                      "displayText": {
+                        "type": "string",
+                        "example": "CREDITLIMIT"
+                      },
+                      "relationshipType": {
+                        "type": "string",
+                        "example": "table_columns"
+                      },
+                      "relationshipGuid": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Unique identifier (GUID)",
+                        "example": "7001941a-5b36-48e6-953e-4fd327a13fdd"
+                      },
+                      "relationshipStatus": {
+                        "type": "string",
+                        "example": "ACTIVE"
+                      },
+                      "relationshipAttributes": {
+                        "type": "object",
+                        "properties": {
+                          "typeName": {
+                            "type": "string",
+                            "example": "table_columns",
+                            "description": "The type of the entity (e.g., Table, Column, Database)"
+                          }
+                        },
+                        "required": [
+                          "typeName"
+                        ],
+                        "description": "Relationship attributes connecting to other entities"
+                      }
+                    }
+                  }
+                },
+                "userDefRelationshipFrom": {
+                  "type": "array",
+                  "items": {}
+                },
+                "inputToSparkJobs": {
+                  "type": "array",
+                  "items": {}
+                },
+                "alpha_dqBaseDatasetRules": {
+                  "type": "array",
+                  "items": {}
+                },
+                "facts": {
+                  "type": "array",
+                  "items": {}
+                },
+                "sqlDbtModels": {
+                  "type": "array",
+                  "items": {}
+                },
+                "partialChildFields": {
+                  "type": "array",
+                  "items": {}
+                },
+                "dbtTests": {
+                  "type": "array",
+                  "items": {}
+                },
+                "atlanSchema": {
+                  "type": "object",
+                  "properties": {
+                    "guid": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "Unique identifier (GUID)",
+                      "example": "b5300d38-7636-402a-88ad-263bbb65f7c1"
+                    },
+                    "typeName": {
+                      "type": "string",
+                      "example": "Schema",
+                      "description": "The type of the entity (e.g., Table, Column, Database)"
+                    },
+                    "entityStatus": {
+                      "type": "string",
+                      "example": "ACTIVE"
+                    },
+                    "displayText": {
+                      "type": "string",
+                      "example": "PROCESSED_GOLD"
+                    },
+                    "relationshipType": {
+                      "type": "string",
+                      "example": "schema_tables"
+                    },
+                    "relationshipGuid": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "Unique identifier (GUID)",
+                      "example": "b0ceaed0-9a0d-4d59-bf5a-d85e449abb2e"
+                    },
+                    "relationshipStatus": {
+                      "type": "string",
+                      "example": "ACTIVE"
+                    },
+                    "relationshipAttributes": {
+                      "type": "object",
+                      "properties": {
+                        "typeName": {
+                          "type": "string",
+                          "example": "schema_tables",
+                          "description": "The type of the entity (e.g., Table, Column, Database)"
+                        }
+                      },
+                      "required": [
+                        "typeName"
+                      ],
+                      "description": "Relationship attributes connecting to other entities"
+                    }
+                  }
+                },
+                "mcIncidents": {
+                  "type": "array",
+                  "items": {}
+                },
+                "links": {
+                  "type": "array",
+                  "items": {}
+                },
+                "inputToAirflowTasks": {
+                  "type": "array",
+                  "items": {}
+                },
+                "inputPortDataProducts": {
+                  "type": "array",
+                  "items": {}
+                },
+                "partitions": {
+                  "type": "array",
+                  "items": {}
+                },
+                "inputToProcesses": {
+                  "type": "array",
+                  "items": {}
+                },
+                "dataContractLatestCertified": {
+                  "type": "null"
+                },
+                "anomaloChecks": {
+                  "type": "array",
+                  "items": {}
+                },
+                "userDefRelationshipTo": {
+                  "type": "array",
+                  "items": {}
+                },
+                "modelImplementedAttributes": {
+                  "type": "array",
+                  "items": {}
+                },
+                "outputPortDataProducts": {
+                  "type": "array",
+                  "items": {}
+                },
+                "outputFromAirflowTasks": {
+                  "type": "array",
+                  "items": {}
+                },
+                "airflowTask": {
+                  "type": "null"
+                },
+                "readme": {
+                  "type": "null"
+                },
+                "dqReferenceDatasetRules": {
+                  "type": "array",
+                  "items": {}
+                },
+                "applicationField": {
+                  "type": "null"
+                },
+                "queries": {
+                  "type": "array",
+                  "items": {}
+                },
+                "meanings": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "guid": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Unique identifier (GUID)",
+                        "example": "be81ac35-d93f-4b4b-a49a-b1c7046e575d"
+                      },
+                      "typeName": {
+                        "type": "string",
+                        "example": "AtlasGlossaryTerm",
+                        "description": "The type of the entity (e.g., Table, Column, Database)"
+                      },
+                      "entityStatus": {
+                        "type": "string",
+                        "example": "ACTIVE"
+                      },
+                      "displayText": {
+                        "type": "string",
+                        "example": "Customer"
+                      },
+                      "relationshipType": {
+                        "type": "string",
+                        "example": "AtlasGlossarySemanticAssignment"
+                      },
+                      "relationshipGuid": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Unique identifier (GUID)",
+                        "example": "8562f00b-6de9-4ede-9987-8f7213cd86ff"
+                      },
+                      "relationshipStatus": {
+                        "type": "string",
+                        "example": "ACTIVE"
+                      },
+                      "relationshipAttributes": {
+                        "type": "object",
+                        "properties": {
+                          "typeName": {
+                            "type": "string",
+                            "example": "AtlasGlossarySemanticAssignment",
+                            "description": "The type of the entity (e.g., Table, Column, Database)"
+                          },
+                          "attributes": {
+                            "type": "object",
+                            "properties": {
+                              "expression": {
+                                "type": "null"
+                              },
+                              "createdBy": {
+                                "type": "null",
+                                "description": "User who created the entity"
+                              },
+                              "steward": {
+                                "type": "null"
+                              },
+                              "confidence": {
+                                "type": "null"
+                              },
+                              "description": {
+                                "type": "null",
+                                "description": "Description of the entity"
+                              },
+                              "source": {
+                                "type": "null"
+                              },
+                              "status": {
+                                "type": "null",
+                                "description": "Entity status (ACTIVE, DELETED)"
+                              }
+                            },
+                            "description": "Entity attributes"
+                          }
+                        },
+                        "required": [
+                          "typeName",
+                          "attributes"
+                        ],
+                        "description": "Relationship attributes connecting to other entities"
+                      }
+                    }
+                  },
+                  "description": "Glossary terms linked to this entity"
+                },
+                "dataContractLatest": {
+                  "type": "object",
+                  "properties": {
+                    "guid": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "Unique identifier (GUID)",
+                      "example": "3b6f1508-98c8-4c75-9c51-bfd6e859226c"
+                    },
+                    "typeName": {
+                      "type": "string",
+                      "example": "DataContract",
+                      "description": "The type of the entity (e.g., Table, Column, Database)"
+                    },
+                    "entityStatus": {
+                      "type": "string",
+                      "example": "ACTIVE"
+                    },
+                    "displayText": {
+                      "type": "string",
+                      "example": "Data contract for DIM_CUSTOMER_SP"
+                    },
+                    "relationshipType": {
+                      "type": "string",
+                      "example": "data_contract_asset_latest_data_contract_latest"
+                    },
+                    "relationshipGuid": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "Unique identifier (GUID)",
+                      "example": "38bb2696-355b-4685-bf72-d8af4a61014d"
+                    },
+                    "relationshipStatus": {
+                      "type": "string",
+                      "example": "ACTIVE"
+                    },
+                    "relationshipAttributes": {
+                      "type": "object",
+                      "properties": {
+                        "typeName": {
+                          "type": "string",
+                          "example": "data_contract_asset_latest_data_contract_latest",
+                          "description": "The type of the entity (e.g., Table, Column, Database)"
+                        }
+                      },
+                      "required": [
+                        "typeName"
+                      ],
+                      "description": "Relationship attributes connecting to other entities"
+                    }
+                  }
+                },
+                "sqlDBTSources": {
+                  "type": "array",
+                  "items": {}
+                },
+                "alpha_dqReferenceDatasetRules": {
+                  "type": "array",
+                  "items": {}
+                },
+                "dbtModels": {
+                  "type": "array",
+                  "items": {}
+                },
+                "dbtSeedAssets": {
+                  "type": "array",
+                  "items": {}
+                },
+                "mcMonitors": {
+                  "type": "array",
+                  "items": {}
+                },
+                "outputFromSparkJobs": {
+                  "type": "array",
+                  "items": {}
+                },
+                "application": {
+                  "type": "null"
+                },
+                "files": {
+                  "type": "array",
+                  "items": {}
+                },
+                "modelImplementedEntities": {
+                  "type": "array",
+                  "items": {}
+                },
+                "metrics": {
+                  "type": "array",
+                  "items": {}
+                },
+                "sodaChecks": {
+                  "type": "array",
+                  "items": {}
+                },
+                "partialChildObjects": {
+                  "type": "array",
+                  "items": {}
+                },
+                "outputFromProcesses": {
+                  "type": "array",
+                  "items": {}
+                },
+                "dimensions": {
+                  "type": "array",
+                  "items": {}
+                }
+              },
+              "description": "Relationship attributes connecting to other entities"
+            },
+            "classifications": {
+              "type": "array",
+              "items": {},
+              "description": "Classifications (tags) applied to this entity"
+            },
+            "customAttributes": {
+              "type": "object",
+              "properties": {
+                "auto_clustering_on": {
+                  "type": "string",
+                  "example": "NO"
+                },
+                "auto_increment": {
+                  "type": "string",
+                  "example": ""
+                },
+                "columns_participating_in_part_key": {
+                  "type": "string",
+                  "example": ""
+                },
+                "engine": {
+                  "type": "string",
+                  "example": ""
+                },
+                "is_insertable_into": {
+                  "type": "string",
+                  "example": "YES"
+                },
+                "is_transient": {
+                  "type": "string",
+                  "example": "YES"
+                },
+                "is_typed": {
+                  "type": "string",
+                  "example": "YES"
+                },
+                "last_ddl": {
+                  "type": "string",
+                  "example": "1736211543000"
+                },
+                "number_columns_in_part_key": {
+                  "type": "string",
+                  "example": ""
+                },
+                "retention_time": {
+                  "type": "string",
+                  "example": "1"
+                },
+                "stage_url": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            },
+            "businessAttributes": {
+              "type": "object",
+              "properties": {
+                "cRuqNRMTmeaytXEZJPigCs": {
+                  "type": "object",
+                  "properties": {
+                    "d18B8OGcdNQvd0vF571shK": {
+                      "type": "array",
+                      "items": {}
+                    },
+                    "qIom2D1J1ZQiA2RvKxbomI": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  },
+                  "required": [
+                    "d18B8OGcdNQvd0vF571shK",
+                    "qIom2D1J1ZQiA2RvKxbomI"
+                  ]
+                },
+                "x8E67N8b0vOeOg6Xpt9Q6U": {
+                  "type": "object",
+                  "properties": {
+                    "g4bU7QnO7NgveWnGqjKdgH": {
+                      "type": "array",
+                      "items": {}
+                    },
+                    "LaAGFQ0H0Gq8W1dc8m4Yj3": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  },
+                  "required": [
+                    "g4bU7QnO7NgveWnGqjKdgH",
+                    "LaAGFQ0H0Gq8W1dc8m4Yj3"
+                  ]
+                },
+                "Sbc2h0fp0hgV9kMmfmJree": {
+                  "type": "object",
+                  "properties": {
+                    "MLKs8Mb9lVxhOFAY8F1Tc9": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  },
+                  "required": [
+                    "MLKs8Mb9lVxhOFAY8F1Tc9"
+                  ]
+                }
+              },
+              "required": [
+                "cRuqNRMTmeaytXEZJPigCs",
+                "x8E67N8b0vOeOg6Xpt9Q6U",
+                "Sbc2h0fp0hgV9kMmfmJree"
+              ]
+            },
+            "labels": {
+              "type": "array",
+              "items": {}
+            }
+          }
+        }
+      }
+    },
+    "MetaEntityGuidB9d5dbbc-ee8a-4c5e-a946-a47033892172ClassificationsResponse": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {}
+        },
+        "startIndex": {
+          "type": "integer",
+          "example": 0
+        },
+        "pageSize": {
+          "type": "integer",
+          "example": 0
+        },
+        "totalCount": {
+          "type": "integer",
+          "example": 0
+        },
+        "sortType": {
+          "type": "string",
+          "example": "NONE"
+        }
+      }
+    },
+    "MetaEntityAuditSearchRequest": {
+      "type": "object",
+      "properties": {
+        "dsl": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "object",
+              "properties": {
+                "term": {
+                  "type": "object",
+                  "properties": {
+                    "entityId": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "Unique identifier (GUID)",
+                      "example": "b9d5dbbc-ee8a-4c5e-a946-a47033892172"
+                    }
+                  },
+                  "required": [
+                    "entityId"
+                  ]
+                }
+              },
+              "required": [
+                "term"
+              ]
+            },
+            "size": {
+              "type": "integer",
+              "example": 10
+            },
+            "sort": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "timestamp": {
+                    "type": "object",
+                    "properties": {
+                      "order": {
+                        "type": "string",
+                        "example": "desc"
+                      }
+                    },
+                    "required": [
+                      "order"
+                    ]
+                  }
+                },
+                "required": [
+                  "timestamp"
+                ]
+              }
+            }
+          },
+          "required": [
+            "query",
+            "size",
+            "sort"
+          ]
+        }
+      },
+      "required": [
+        "dsl"
+      ]
+    },
+    "MetaEntityAuditSearchResponse": {
+      "type": "object",
+      "properties": {
+        "entityAudits": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "entityQualifiedName": {
+                "type": "string",
+                "description": "Fully qualified name (FQN)",
+                "example": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP"
+              },
+              "typeName": {
+                "type": "string",
+                "example": "Table",
+                "description": "The type of the entity (e.g., Table, Column, Database)"
+              },
+              "entityId": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Unique identifier (GUID)",
+                "example": "b9d5dbbc-ee8a-4c5e-a946-a47033892172"
+              },
+              "timestamp": {
+                "type": "integer",
+                "format": "int64",
+                "description": "Unix timestamp in milliseconds",
+                "example": 1765929858468
+              },
+              "created": {
+                "type": "integer",
+                "format": "int64",
+                "description": "Unix timestamp in milliseconds",
+                "example": 1765929858697
+              },
+              "user": {
+                "type": "string",
+                "example": "service-account-atlan-argo"
+              },
+              "action": {
+                "type": "string",
+                "example": "ENTITY_UPDATE"
+              },
+              "details": {
+                "type": "null"
+              },
+              "eventKey": {
+                "type": "string",
+                "example": "b9d5dbbc-ee8a-4c5e-a946-a47033892172:1765929858468"
+              },
+              "entity": {
+                "type": "null"
+              },
+              "type": {
+                "type": "null"
+              },
+              "detail": {
+                "type": "object",
+                "properties": {
+                  "typeName": {
+                    "type": "string",
+                    "example": "Table",
+                    "description": "The type of the entity (e.g., Table, Column, Database)"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {
+                      "assetInternalPopularityScore": {
+                        "type": "string",
+                        "example": "1.0"
+                      }
+                    },
+                    "required": [
+                      "assetInternalPopularityScore"
+                    ],
+                    "description": "Entity attributes"
+                  },
+                  "guid": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Unique identifier (GUID)",
+                    "example": "b9d5dbbc-ee8a-4c5e-a946-a47033892172"
+                  },
+                  "isIncomplete": {
+                    "type": "boolean",
+                    "description": "Whether the entity data is incomplete"
+                  },
+                  "provenanceType": {
+                    "type": "integer",
+                    "example": 0
+                  },
+                  "updatedBy": {
+                    "type": "string",
+                    "example": "service-account-atlan-argo",
+                    "description": "User who last updated the entity"
+                  },
+                  "updateTime": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Unix timestamp in milliseconds",
+                    "example": 1765929858468
+                  },
+                  "version": {
+                    "type": "integer",
+                    "example": 0
+                  },
+                  "superTypeNames": {
+                    "type": "array",
+                    "items": {}
+                  },
+                  "proxy": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "entityDetail": {
+                "type": "object",
+                "properties": {
+                  "typeName": {
+                    "type": "string",
+                    "example": "Table",
+                    "description": "The type of the entity (e.g., Table, Column, Database)"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {},
+                    "description": "Entity attributes"
+                  },
+                  "superTypeNames": {
+                    "type": "array",
+                    "items": {}
+                  },
+                  "guid": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Unique identifier (GUID)",
+                    "example": "b9d5dbbc-ee8a-4c5e-a946-a47033892172"
+                  },
+                  "status": {
+                    "type": "string",
+                    "example": "ACTIVE",
+                    "description": "Entity status (ACTIVE, DELETED)"
+                  },
+                  "classifications": {
+                    "type": "array",
+                    "items": {},
+                    "description": "Classifications (tags) applied to this entity"
+                  },
+                  "isIncomplete": {
+                    "type": "boolean",
+                    "description": "Whether the entity data is incomplete"
+                  },
+                  "createdBy": {
+                    "type": "string",
+                    "example": "ryan.quigley",
+                    "description": "User who created the entity"
+                  },
+                  "updatedBy": {
+                    "type": "string",
+                    "example": "service-account-atlan-argo",
+                    "description": "User who last updated the entity"
+                  },
+                  "createTime": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Unix timestamp in milliseconds",
+                    "example": 1747185436766
+                  },
+                  "updateTime": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Unix timestamp in milliseconds",
+                    "example": 1765929858468
+                  }
+                }
+              },
+              "headers": {
+                "type": "object",
+                "properties": {
+                  "x-atlan-request-id": {
+                    "type": "string",
+                    "example": "8e1558dd231aedc4f420b32453f25cc3"
+                  },
+                  "x-atlan-route": {
+                    "type": "string",
+                    "example": "attribute-update-rest"
+                  },
+                  "x-atlan-client-origin": {
+                    "type": "string",
+                    "example": "atlan_popularity_app"
+                  },
+                  "Content-Length": {
+                    "type": "string",
+                    "example": "5900"
+                  }
+                },
+                "required": [
+                  "x-atlan-request-id",
+                  "x-atlan-route",
+                  "x-atlan-client-origin",
+                  "Content-Length"
+                ]
+              }
+            }
+          }
+        },
+        "aggregations": {
+          "type": "null"
+        },
+        "count": {
+          "type": "integer",
+          "example": 10
+        },
+        "totalCount": {
+          "type": "integer",
+          "example": 114
+        },
+        "linkedEntities": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    },
+    "ServiceWorkflowsIndexsearchRequest": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "integer",
+          "example": 0
+        },
+        "size": {
+          "type": "integer",
+          "example": 10
+        },
+        "query": {
+          "type": "object",
+          "properties": {
+            "bool": {
+              "type": "object",
+              "properties": {
+                "filter": {
+                  "type": "array",
+                  "items": {}
+                }
+              },
+              "required": [
+                "filter"
+              ]
+            }
+          },
+          "required": [
+            "bool"
+          ]
+        }
+      },
+      "required": [
+        "from",
+        "size",
+        "query"
+      ]
+    },
+    "ServiceWorkflowsIndexsearchResponse": {
+      "type": "object",
+      "properties": {
+        "took": {
+          "type": "integer",
+          "example": 2
+        },
+        "hits": {
+          "type": "object",
+          "properties": {
+            "total": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "integer",
+                  "example": 725
+                },
+                "relation": {
+                  "type": "string",
+                  "example": "eq"
+                }
+              },
+              "required": [
+                "value",
+                "relation"
+              ]
+            },
+            "max_score": {
+              "type": "integer",
+              "example": 1
+            },
+            "hits": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "_score": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "_index": {
+                    "type": "string",
+                    "example": "atlan_argo_workflow_templates"
+                  },
+                  "_type": {
+                    "type": "string",
+                    "example": "_doc"
+                  },
+                  "_id": {
+                    "type": "string",
+                    "example": "atlan-api"
+                  },
+                  "_seq_no": {
+                    "type": "null"
+                  },
+                  "_primary_term": {
+                    "type": "null"
+                  },
+                  "_source": {
+                    "type": "object",
+                    "properties": {
+                      "apiVersion": {
+                        "type": "string",
+                        "example": "argoproj.io/v1alpha1"
+                      },
+                      "kind": {
+                        "type": "string",
+                        "example": "WorkflowTemplate"
+                      },
+                      "metadata": {
+                        "type": "object",
+                        "properties": {
+                          "annotations": {
+                            "type": "object",
+                            "properties": {
+                              "kubectl.kubernetes.io/last-applied-configuration": {
+                                "type": "string",
+                                "description": "Fully qualified name (FQN)"
+                              },
+                              "package.argoproj.io/author": {
+                                "type": "string",
+                                "example": "\"Atlan\""
+                              },
+                              "package.argoproj.io/description": {
+                                "type": "string",
+                                "example": "Atlan API package"
+                              },
+                              "package.argoproj.io/homepage": {
+                                "type": "string",
+                                "example": ""
+                              },
+                              "package.argoproj.io/name": {
+                                "type": "string",
+                                "example": "@atlan/api"
+                              },
+                              "package.argoproj.io/parent": {
+                                "type": "string",
+                                "example": "@atlan/init@0.2.47"
+                              },
+                              "package.argoproj.io/registry": {
+                                "type": "string",
+                                "example": "local"
+                              },
+                              "package.argoproj.io/support": {
+                                "type": "string",
+                                "example": ""
+                              }
+                            }
+                          },
+                          "creationTimestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-09-21T05:31:08Z"
+                          },
+                          "generation": {
+                            "type": "integer",
+                            "example": 2
+                          },
+                          "labels": {
+                            "type": "object",
+                            "properties": {
+                              "package.argoproj.io/installer": {
+                                "type": "string",
+                                "example": "argopm"
+                              },
+                              "package.argoproj.io/name": {
+                                "type": "string",
+                                "example": "a-t-ratlans-l-a-s-hapi"
+                              },
+                              "package.argoproj.io/parent": {
+                                "type": "string",
+                                "example": "a-t-ratlans-l-a-s-hinita-t-r0.2.47"
+                              },
+                              "package.argoproj.io/registry": {
+                                "type": "string",
+                                "example": "local"
+                              },
+                              "package.argoproj.io/version": {
+                                "type": "string",
+                                "example": "0.0.19"
+                              }
+                            },
+                            "required": [
+                              "package.argoproj.io/installer",
+                              "package.argoproj.io/name",
+                              "package.argoproj.io/parent",
+                              "package.argoproj.io/registry",
+                              "package.argoproj.io/version"
+                            ]
+                          },
+                          "managedFields": {
+                            "type": "null"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "atlan-api",
+                            "description": "Name of the entity"
+                          },
+                          "namespace": {
+                            "type": "string",
+                            "example": "default"
+                          },
+                          "resourceVersion": {
+                            "type": "string",
+                            "example": "806064"
+                          },
+                          "uid": {
+                            "type": "string",
+                            "format": "uuid",
+                            "description": "Unique identifier (GUID)",
+                            "example": "14491867-2b01-40b0-9b8e-d18246e46664"
+                          }
+                        }
+                      },
+                      "spec": {
+                        "type": "object",
+                        "properties": {
+                          "templates": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "dag": {
+                                  "type": "object",
+                                  "properties": {
+                                    "tasks": {
+                                      "type": "object",
+                                      "additionalProperties": true
+                                    }
+                                  },
+                                  "required": [
+                                    "tasks"
+                                  ]
+                                },
+                                "inputs": {
+                                  "type": "object",
+                                  "properties": {
+                                    "parameters": {
+                                      "type": "object",
+                                      "additionalProperties": true
+                                    }
+                                  },
+                                  "required": [
+                                    "parameters"
+                                  ]
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "example": "evaluate",
+                                  "description": "Name of the entity"
+                                }
+                              }
+                            }
+                          },
+                          "workflowMetadata": {
+                            "type": "object",
+                            "properties": {
+                              "annotations": {
+                                "type": "object",
+                                "properties": {
+                                  "package.argoproj.io/name": {
+                                    "type": "string",
+                                    "example": "@atlan/api"
+                                  }
+                                },
+                                "required": [
+                                  "package.argoproj.io/name"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "annotations"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "templates",
+                          "workflowMetadata"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "apiVersion",
+                      "kind",
+                      "metadata",
+                      "spec"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "total",
+            "max_score",
+            "hits"
+          ]
+        },
+        "_shards": {
+          "type": "object",
+          "properties": {
+            "total": {
+              "type": "integer",
+              "example": 1
+            },
+            "successful": {
+              "type": "integer",
+              "example": 1
+            },
+            "failed": {
+              "type": "integer",
+              "example": 0
+            }
+          },
+          "required": [
+            "total",
+            "successful",
+            "failed"
+          ]
+        }
+      }
+    },
+    "ServiceRunsIndexsearchRequest": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "integer",
+          "example": 0
+        },
+        "size": {
+          "type": "integer",
+          "example": 10
+        },
+        "query": {
+          "type": "object",
+          "properties": {
+            "bool": {
+              "type": "object",
+              "properties": {
+                "filter": {
+                  "type": "array",
+                  "items": {}
+                }
+              },
+              "required": [
+                "filter"
+              ]
+            }
+          },
+          "required": [
+            "bool"
+          ]
+        },
+        "sort": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "metadata.creationTimestamp": {
+                "type": "object",
+                "properties": {
+                  "order": {
+                    "type": "string",
+                    "example": "desc"
+                  }
+                },
+                "required": [
+                  "order"
+                ]
+              }
+            },
+            "required": [
+              "metadata.creationTimestamp"
+            ]
+          }
+        }
+      },
+      "required": [
+        "from",
+        "size",
+        "query",
+        "sort"
+      ]
+    },
+    "ServiceRunsIndexsearchResponse": {
+      "type": "object",
+      "properties": {
+        "took": {
+          "type": "integer",
+          "example": 400
+        },
+        "hits": {
+          "type": "object",
+          "properties": {
+            "total": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "integer",
+                  "example": 10000
+                },
+                "relation": {
+                  "type": "string",
+                  "example": "gte"
+                }
+              },
+              "required": [
+                "value",
+                "relation"
+              ]
+            },
+            "hits": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "_index": {
+                    "type": "string",
+                    "example": "atlan_argo_workflows"
+                  },
+                  "_type": {
+                    "type": "string",
+                    "example": "_doc"
+                  },
+                  "_id": {
+                    "type": "string",
+                    "example": "cloud-es-index-checker-cron-1719425700"
+                  },
+                  "_seq_no": {
+                    "type": "null"
+                  },
+                  "_primary_term": {
+                    "type": "null"
+                  },
+                  "sort": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "example": -9223372036854776000
+                    }
+                  },
+                  "_source": {
+                    "type": "object",
+                    "properties": {
+                      "apiVersion": {
+                        "type": "string",
+                        "example": "argoproj.io/v1alpha1"
+                      },
+                      "kind": {
+                        "type": "string",
+                        "example": "Workflow"
+                      },
+                      "metadata": {
+                        "type": "object",
+                        "properties": {
+                          "annotations": {
+                            "type": "object",
+                            "properties": {
+                              "workflows.argoproj.io/pod-name-format": {
+                                "type": "string",
+                                "example": "v2"
+                              },
+                              "workflows.argoproj.io/scheduled-time": {
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2024-06-26T18:15:00Z"
+                              }
+                            },
+                            "required": [
+                              "workflows.argoproj.io/pod-name-format",
+                              "workflows.argoproj.io/scheduled-time"
+                            ]
+                          },
+                          "creationTimestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2024-06-26T18:15:00Z"
+                          },
+                          "generation": {
+                            "type": "integer",
+                            "example": 5
+                          },
+                          "labels": {
+                            "type": "object",
+                            "properties": {
+                              "orchestration.atlan.com/alerts": {
+                                "type": "string",
+                                "example": "false"
+                              },
+                              "orchestration.atlan.com/team": {
+                                "type": "string",
+                                "example": "cloud"
+                              },
+                              "workflows.argoproj.io/completed": {
+                                "type": "string",
+                                "example": "true"
+                              },
+                              "workflows.argoproj.io/cron-workflow": {
+                                "type": "string",
+                                "example": "cloud-es-index-checker-cron"
+                              },
+                              "workflows.argoproj.io/phase": {
+                                "type": "string",
+                                "example": "Succeeded"
+                              },
+                              "workflows.argoproj.io/workflow-archiving-status": {
+                                "type": "string",
+                                "example": "Archived"
+                              }
+                            }
+                          },
+                          "managedFields": {
+                            "type": "null"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "cloud-es-index-checker-cron-1719425700",
+                            "description": "Name of the entity"
+                          },
+                          "namespace": {
+                            "type": "string",
+                            "example": "default"
+                          },
+                          "ownerReferences": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "apiVersion": {
+                                  "type": "string",
+                                  "example": "argoproj.io/v1alpha1"
+                                },
+                                "blockOwnerDeletion": {
+                                  "type": "boolean"
+                                },
+                                "controller": {
+                                  "type": "boolean"
+                                },
+                                "kind": {
+                                  "type": "string",
+                                  "example": "CronWorkflow"
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "example": "cloud-es-index-checker-cron",
+                                  "description": "Name of the entity"
+                                },
+                                "uid": {
+                                  "type": "string",
+                                  "format": "uuid",
+                                  "description": "Unique identifier (GUID)",
+                                  "example": "6986d9b8-b3e3-4831-b76c-b3e3bcc67776"
+                                }
+                              }
+                            }
+                          },
+                          "resourceVersion": {
+                            "type": "string",
+                            "example": "219468583"
+                          },
+                          "uid": {
+                            "type": "string",
+                            "format": "uuid",
+                            "description": "Unique identifier (GUID)",
+                            "example": "e3075f12-b4d4-494c-9a08-bff442a20e70"
+                          }
+                        }
+                      },
+                      "spec": {
+                        "type": "object",
+                        "properties": {
+                          "arguments": {
+                            "type": "object",
+                            "properties": {}
+                          },
+                          "workflowTemplateRef": {
+                            "type": "object",
+                            "properties": {
+                              "clusterScope": {
+                                "type": "boolean"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "cloud-es-index-checker",
+                                "description": "Name of the entity"
+                              }
+                            },
+                            "required": [
+                              "clusterScope",
+                              "name"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "arguments",
+                          "workflowTemplateRef"
+                        ]
+                      },
+                      "status": {
+                        "type": "object",
+                        "properties": {
+                          "artifactGCStatus": {
+                            "type": "object",
+                            "properties": {
+                              "notSpecified": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "notSpecified"
+                            ]
+                          },
+                          "artifactRepositoryRef": {
+                            "type": "null"
+                          },
+                          "conditions": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "status": {
+                                  "type": "string",
+                                  "example": "False",
+                                  "description": "Entity status (ACTIVE, DELETED)"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "example": "PodRunning"
+                                }
+                              }
+                            }
+                          },
+                          "estimatedDuration": {
+                            "type": "integer",
+                            "example": 247
+                          },
+                          "finishedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2024-06-26T18:19:12Z"
+                          },
+                          "nodes": {
+                            "type": "null"
+                          },
+                          "phase": {
+                            "type": "string",
+                            "example": "Succeeded"
+                          },
+                          "progress": {
+                            "type": "string",
+                            "example": "1/1"
+                          },
+                          "resourcesDuration": {
+                            "type": "object",
+                            "properties": {
+                              "cpu": {
+                                "type": "integer",
+                                "example": 369
+                              },
+                              "memory": {
+                                "type": "integer",
+                                "example": 369
+                              }
+                            },
+                            "required": [
+                              "cpu",
+                              "memory"
+                            ]
+                          },
+                          "startedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2024-06-26T18:15:00Z"
+                          },
+                          "storedTemplates": {
+                            "type": "null"
+                          },
+                          "storedWorkflowTemplateSpec": {
+                            "type": "null"
+                          },
+                          "taskResultsCompleted": {
+                            "type": "object",
+                            "properties": {
+                              "cloud-es-index-checker-cron-1719425700-3429477811": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "cloud-es-index-checker-cron-1719425700-3429477811"
+                            ]
+                          }
+                        },
+                        "description": "Entity status (ACTIVE, DELETED)"
+                      }
+                    },
+                    "required": [
+                      "apiVersion",
+                      "kind",
+                      "metadata",
+                      "spec",
+                      "status"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "total",
+            "hits"
+          ]
+        },
+        "_shards": {
+          "type": "object",
+          "properties": {
+            "total": {
+              "type": "integer",
+              "example": 1
+            },
+            "successful": {
+              "type": "integer",
+              "example": 1
+            },
+            "failed": {
+              "type": "integer",
+              "example": 0
+            }
+          },
+          "required": [
+            "total",
+            "successful",
+            "failed"
+          ]
+        }
+      }
+    }
+  }
+}

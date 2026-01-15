@@ -1,0 +1,204 @@
+id: common-examples-term-assignment
+title: Link terms and assets
+category: common-actions
+icon: zap
+relatedTypes:
+  - Asset
+  - AtlasGlossary
+  - AtlasGlossaryTerm
+description: Common operations for managing assets in Atlan.
+externalDocs:
+  url: https://developer.atlan.com/snippets/common-examples/term-assignment/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Append terms to an asset
+    description: |-
+      1.4.0 4.0.0
+      To append new terms to an asset, without changing any of the existing terms on the asset:
+    notes:
+      - type: warning
+        title: Requires multiple steps through the raw REST API
+        content: Retrieve the existing asset. Iterate through the assigned terms that exist on the asset to build up a temporary list, including only those that are not deleted. Add the terms you want to append to the list built-up in (2). Send through the resulting complete list, as in the example below.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/entity/bulk
+        requestRaw: |
+          {
+            "entities": [
+              {
+                "typeName": "Column",
+                "attributes": {
+                  "name": "CUSTOMER_NAME",
+                  "qualifiedName": "default/snowflake/1657037873/SAMPLE_DATA/FOOD_BEVERAGE/ORDER_ANALYSIS/CUSTOMER_NAME",
+                  "meanings": [
+                    { ... },
+                    {
+                      "typeName": "AtlasGlossaryTerm",
+                      "guid": "b4113341-251b-4adc-81fb-2420501c30e6"
+                    },
+                    {
+                      "typeName": "AtlasGlossaryTerm",
+                      "guid": "b267858d-8316-4c41-a56a-6e9b840cef4a"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        response:
+          mutatedEntities:
+            UPDATE: []
+  - step: 2
+    title: Replace terms on an asset
+    description: |-
+      1.4.0 4.0.0
+      To replace all the terms on an asset, meaning any not specified in the request will be removed from the asset:
+    notes:
+      - type: info
+        title: Handling duplicate term names
+        content: You can disambiguate terms with the same name across different glossaries using the format glossaryName@termName (e.g., "Data Governance@Full Name"). Use glossaryName@termName in termNames, when term names aren't unique across glossaries.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-2-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Column
+              attributes:
+                name: CUSTOMER_NAME
+                qualifiedName: default/snowflake/1657037873/SAMPLE_DATA/FOOD_BEVERAGE/ORDER_ANALYSIS/CUSTOMER_NAME
+                meanings:
+                  - typeName: AtlasGlossaryTerm
+                    guid: b4113341-251b-4adc-81fb-2420501c30e6
+                  - typeName: AtlasGlossaryTerm
+                    guid: b267858d-8316-4c41-a56a-6e9b840cef4a
+        response:
+          mutatedEntities:
+            UPDATE:
+              - typeName: Column
+                attributes:
+                  qualifiedName: default/snowflake/1657037873/SAMPLE_DATA/FOOD_BEVERAGE/ORDER_ANALYSIS/CUSTOMER_NAME
+                  name: CUSTOMER_NAME
+                guid: c8e6dccd-ff9b-5d6e-b057-c58255993283
+                status: ACTIVE
+                relationshipAttributes:
+                  meanings:
+                    - guid: b4113341-251b-4adc-81fb-2420501c30e6
+                      typeName: AtlasGlossaryTerm
+                      displayText: Customer Name
+                    - guid: b267858d-8316-4c41-a56a-6e9b840cef4a
+                      typeName: AtlasGlossaryTerm
+                      displayText: Full Name
+  - step: 3
+    title: Remove terms from an asset
+    description: |-
+      1.4.0 4.0.0
+      To remove some terms from an asset, without removing all of the terms on the asset:
+    notes:
+      - type: warning
+        title: Requires multiple steps through the raw REST API
+        content: Retrieve the existing asset. Iterate through the assigned terms that exist on the asset to build up a temporary list, excluding any that you want to remove. Send through the resulting reduced list, as in the example below.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-3-1
+        summary: POST /api/meta/entity/bulk
+        requestRaw: |
+          {
+            "entities": [
+              {
+                "typeName": "Column",
+                "attributes": {
+                  "name": "CUSTOMER_NAME",
+                  "qualifiedName": "default/snowflake/1657037873/SAMPLE_DATA/FOOD_BEVERAGE/ORDER_ANALYSIS/CUSTOMER_NAME",
+                  "meanings": [
+                    { ... },
+                    {
+                      "typeName": "AtlasGlossaryTerm",
+                      "guid": "b267858d-8316-4c41-a56a-6e9b840cef4a"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        response:
+          mutatedEntities:
+            DELETE: []
+  - step: 4
+    title: Remove all terms from an asset
+    description: |-
+      1.4.0 4.0.0
+      To remove all terms linked to an asset:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-4-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Column
+              attributes:
+                name: CUSTOMER_NAME
+                qualifiedName: default/snowflake/1657037873/SAMPLE_DATA/FOOD_BEVERAGE/ORDER_ANALYSIS/CUSTOMER_NAME
+                meanings: []
+        response:
+          mutatedEntities:
+            DELETE:
+              - typeName: Column
+                attributes:
+                  qualifiedName: default/snowflake/1657037873/SAMPLE_DATA/FOOD_BEVERAGE/ORDER_ANALYSIS/CUSTOMER_NAME
+                  name: CUSTOMER_NAME
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: DELETED
+                relationshipAttributes:
+                  meanings: []
+  - step: 5
+    title: When creating an asset
+    description: |-
+      2.0.0 4.0.0
+      To link terms when creating an asset:
+    notes:
+      - type: info
+        title: Handling duplicate term names
+        content: You can disambiguate terms with the same name across different glossaries using the format glossaryName@termName (e.g., "Data Governance@Full Name"). Use glossaryName@termName in termNames, when term names aren't unique across glossaries.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-5-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: S3Object
+              attributes:
+                name: sample-file.csv
+                qualifiedName: default/s3/1661068484/aws::test:samples-bucket:a/prefix/sample-file.csv
+                awsArn: aws::test:samples-bucket:a/prefix/sample-file.csv
+                meanings:
+                  - typeName: AtlasGlossaryTerm
+                    guid: b4113341-251b-4adc-81fb-2420501c30e6
+                  - typeName: AtlasGlossaryTerm
+                    guid: b267858d-8316-4c41-a56a-6e9b840cef4a
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: S3Object
+                attributes:
+                  qualifiedName: default/s3/1661068484/aws::test:samples-bucket:a/prefix/sample-file.csv
+                  name: sample-file.csv
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+                relationshipAttributes:
+                  meanings:
+                    - guid: b4113341-251b-4adc-81fb-2420501c30e6
+                      typeName: AtlasGlossaryTerm
+                      displayText: Term
+                    - guid: b267858d-8316-4c41-a56a-6e9b840cef4a
+                      typeName: AtlasGlossaryTerm
+                      displayText: Term
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000

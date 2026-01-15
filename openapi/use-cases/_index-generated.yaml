@@ -1,0 +1,138 @@
+# Use Cases Index - Auto-generated from developer.atlan.com/snippets
+# Generated at: 2026-01-13T02:58:00.320Z
+# Total pages: 100
+# Total sections: 272
+# Total examples: 306
+
+version: "1.0"
+
+categories:
+  - id: general
+    name: General
+    useCases:
+  - id: access-control
+    name: Access Control
+    useCases:
+      - $ref: './access-control/access.yaml'
+      - $ref: './access-control/access-events.yaml'
+      - $ref: './access-control/access-personas.yaml'
+      - $ref: './access-control/access-policies.yaml'
+      - $ref: './access-control/access-purposes.yaml'
+      - $ref: './access-control/access-queries.yaml'
+      - $ref: './access-control/access-tokens.yaml'
+      - $ref: './access-control/users-groups.yaml'
+      - $ref: './access-control/users-groups-create.yaml'
+      - $ref: './access-control/users-groups-delete.yaml'
+      - $ref: './access-control/users-groups-read.yaml'
+      - $ref: './access-control/users-groups-sso-group-mapping.yaml'
+      - $ref: './access-control/users-groups-update.yaml'
+  - id: crud
+    name: Crud
+    useCases:
+      - $ref: './crud/advanced-examples.yaml'
+      - $ref: './crud/advanced-examples-combine.yaml'
+      - $ref: './crud/advanced-examples-create.yaml'
+      - $ref: './crud/advanced-examples-delete.yaml'
+      - $ref: './crud/advanced-examples-history.yaml'
+      - $ref: './crud/advanced-examples-read.yaml'
+      - $ref: './crud/advanced-examples-restore.yaml'
+      - $ref: './crud/advanced-examples-search.yaml'
+      - $ref: './crud/advanced-examples-suggestions.yaml'
+      - $ref: './crud/advanced-examples-update.yaml'
+  - id: common-actions
+    name: Common Actions
+    useCases:
+      - $ref: './common-actions/common-examples.yaml'
+      - $ref: './common-actions/common-examples-announcements.yaml'
+      - $ref: './common-actions/common-examples-certificates.yaml'
+      - $ref: './common-actions/common-examples-custom-metadata.yaml'
+      - $ref: './common-actions/common-examples-descriptions.yaml'
+      - $ref: './common-actions/common-examples-domain-assignment.yaml'
+      - $ref: './common-actions/common-examples-owners.yaml'
+      - $ref: './common-actions/common-examples-readme.yaml'
+      - $ref: './common-actions/common-examples-relationship-attributes.yaml'
+      - $ref: './common-actions/common-examples-resources.yaml'
+      - $ref: './common-actions/common-examples-tags.yaml'
+      - $ref: './common-actions/common-examples-term-assignment.yaml'
+      - $ref: './common-actions/common-examples-finding.yaml'
+      - $ref: './common-actions/common-examples-finding-examples.yaml'
+      - $ref: './common-actions/common-examples-glossary.yaml'
+      - $ref: './common-actions/common-examples-glossary-categorize-terms.yaml'
+      - $ref: './common-actions/common-examples-glossary-create-hierarchy.yaml'
+      - $ref: './common-actions/common-examples-glossary-create.yaml'
+      - $ref: './common-actions/common-examples-glossary-hierarchy.yaml'
+      - $ref: './common-actions/common-examples-glossary-retrieve-by-name.yaml'
+      - $ref: './common-actions/common-examples-lineage.yaml'
+      - $ref: './common-actions/common-examples-lineage-manage.yaml'
+      - $ref: './common-actions/common-examples-lineage-parse-sql.yaml'
+      - $ref: './common-actions/common-examples-lineage-traverse.yaml'
+      - $ref: './common-actions/common-examples-profiling-and-popularity.yaml'
+      - $ref: './common-actions/common-examples-profiling-and-popularity-popularity.yaml'
+      - $ref: './common-actions/common-examples-profiling-and-popularity-profiling.yaml'
+  - id: governance
+    name: Governance
+    useCases:
+      - $ref: './governance/custom-metadata.yaml'
+      - $ref: './governance/custom-metadata-badge.yaml'
+      - $ref: './governance/custom-metadata-create.yaml'
+      - $ref: './governance/custom-metadata-delete.yaml'
+      - $ref: './governance/custom-metadata-enums.yaml'
+      - $ref: './governance/custom-metadata-read.yaml'
+      - $ref: './governance/custom-metadata-update.yaml'
+      - $ref: './governance/tags.yaml'
+      - $ref: './governance/tags-manage.yaml'
+      - $ref: './governance/tags-monitor-propagation.yaml'
+  - id: data-contracts
+    name: Data Contracts
+    useCases:
+      - $ref: './data-contracts/datacontract.yaml'
+      - $ref: './data-contracts/datacontract-manage-via-sdks.yaml'
+      - $ref: './data-contracts/datacontract-manage.yaml'
+  - id: data-mesh
+    name: Data Mesh
+    useCases:
+      - $ref: './data-mesh/datamesh.yaml'
+      - $ref: './data-mesh/datamesh-datadomains.yaml'
+      - $ref: './data-mesh/datamesh-dataproducts.yaml'
+  - id: asset-specific
+    name: Asset Specific
+    useCases:
+      - $ref: './asset-specific/files.yaml'
+  - id: search
+    name: Search
+    useCases:
+      - $ref: './search/search-logs.yaml'
+  - id: workflows
+    name: Workflows
+    useCases:
+      - $ref: './workflows/workflows.yaml'
+      - $ref: './workflows/workflows-manage-schedules.yaml'
+      - $ref: './workflows/workflows-manage-workflows.yaml'
+      - $ref: './workflows/workflows-packages.yaml'
+      - $ref: './workflows/workflows-packages-api-token-connection-admin.yaml'
+      - $ref: './workflows/workflows-packages-asset-export-basic.yaml'
+      - $ref: './workflows/workflows-packages-asset-import.yaml'
+      - $ref: './workflows/workflows-packages-athena-assets.yaml'
+      - $ref: './workflows/workflows-packages-bigquery-assets.yaml'
+      - $ref: './workflows/workflows-packages-confluent-kafka-assets.yaml'
+      - $ref: './workflows/workflows-packages-connection-delete.yaml'
+      - $ref: './workflows/workflows-packages-databricks-assets.yaml'
+      - $ref: './workflows/workflows-packages-databricks-miner.yaml'
+      - $ref: './workflows/workflows-packages-dbt-assets.yaml'
+      - $ref: './workflows/workflows-packages-dynamodb-assets.yaml'
+      - $ref: './workflows/workflows-packages-fivetran-enrichment.yaml'
+      - $ref: './workflows/workflows-packages-glue-assets.yaml'
+      - $ref: './workflows/workflows-packages-lineage-builder.yaml'
+      - $ref: './workflows/workflows-packages-lineage-generator-nt.yaml'
+      - $ref: './workflows/workflows-packages-looker-assets.yaml'
+      - $ref: './workflows/workflows-packages-mongodb-assets.yaml'
+      - $ref: './workflows/workflows-packages-oracle-assets.yaml'
+      - $ref: './workflows/workflows-packages-postgres-assets.yaml'
+      - $ref: './workflows/workflows-packages-powerbi-assets.yaml'
+      - $ref: './workflows/workflows-packages-redshift-assets.yaml'
+      - $ref: './workflows/workflows-packages-relational-assets-builder.yaml'
+      - $ref: './workflows/workflows-packages-sigma-assets.yaml'
+      - $ref: './workflows/workflows-packages-snowflake-assets.yaml'
+      - $ref: './workflows/workflows-packages-snowflake-miner.yaml'
+      - $ref: './workflows/workflows-packages-sql-server-assets.yaml'
+      - $ref: './workflows/workflows-packages-tableau-assets.yaml'

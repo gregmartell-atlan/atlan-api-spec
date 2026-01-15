@@ -1,0 +1,172 @@
+{
+  "useCase": "discover-classified-assets",
+  "description": "API calls for discover-classified-assets",
+  "steps": [
+    {
+      "step": 1,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "certificateStatusMessage",
+              "certificateStatus",
+              "userDescription",
+              "... (13 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "bool": {
+                  "must": [
+                    {
+                      "exists": {
+                        "field": "__classificationNames"
+                      }
+                    }
+                  ]
+                }
+              },
+              "size": 50
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"__classificationNames\"}}]}},\"size\":50}",
+            "querySize": 50,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "entities": [
+            {
+              "typeName": "DataProduct",
+              "attributes": {
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [
+                  "engineers"
+                ],
+                "userDescription": "This is a data product for the Parkland demonstration. ",
+                "qualifiedName": "default/domain/oXS5s3EIiiYCgfb33lBhQ/super/product/iq42f3qHPovfxyco0TpTd",
+                "name": "Parkland Data Product",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": [
+                  "cameron.kayfish",
+                  "trent.jones"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "DataMesh"
+              ],
+              "docId": "3vjmnrs",
+              "guid": "a7b832b9-700e-42dd-a166-659ebe658c31",
+              "status": "DELETED",
+              "displayText": "Parkland Data Product",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "cameron.kayfish",
+              "updatedBy": "service-account-atlan-argo",
+              "createTime": 1731956819831,
+              "updateTime": 1750604879334
+            },
+            {
+              "typeName": "Column",
+              "attributes": {
+                "ownerGroups": [],
+                "userDescription": "the unique id for each customer",
+                "qualifiedName": "default/snowflake/1662973007/DBT_FOOD_BEVERAGE/RAW/INSTACART_CUSTOMER_DETAILS/USER_ID",
+                "name": "USER_ID",
+                "__hasLineage": true,
+                "meanings": [],
+                "ownerUsers": []
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "SQL"
+              ],
+              "docId": "auc66g",
+              "guid": "8d082b7f-71c2-4ec3-9d1c-938c6a12e278",
+              "status": "DELETED",
+              "displayText": "USER_ID",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "edgar.degroot",
+              "updatedBy": "edgar.degroot",
+              "createTime": 1662973256164,
+              "updateTime": 1663715884800,
+              "scrubbed": true
+            },
+            {
+              "typeName": "Column",
+              "attributes": {
+                "ownerGroups": [],
+                "qualifiedName": "default/snowflake/1662973007/DBT_FOOD_BEVERAGE/PUBLIC/INSTACART_ORDERS/user_id",
+                "name": "user_id",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": []
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "SQL"
+              ],
+              "docId": "auc9c8",
+              "guid": "76a96b03-5191-4f5f-aa14-da87ffbc9cb7",
+              "status": "DELETED",
+              "displayText": "user_id",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "edgar.degroot",
+              "updatedBy": "edgar.degroot",
+              "createTime": 1662973256164,
+              "updateTime": 1663719924792,
+              "scrubbed": true
+            },
+            "... (47 more items)"
+          ],
+          "approximateCount": 10000
+        }
+      }
+    }
+  ]
+}

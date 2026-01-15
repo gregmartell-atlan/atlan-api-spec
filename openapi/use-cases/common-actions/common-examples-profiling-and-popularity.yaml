@@ -1,0 +1,39 @@
+# Use Case: Profiling and popularity
+# Auto-generated from: https://developer.atlan.com/snippets/common-examples/profiling-and-popularity/
+# Generated at: 2026-01-13T02:58:00.303Z
+
+id: common-examples-profiling-and-popularity
+title: "Profiling and popularity"
+category: common-actions
+icon: zap
+relatedTypes:
+  - Column
+  - Table
+
+description: >-
+  Atlan crawls additional context from some sources, to give you information on the values that exist within the data and how the data is used.
+
+externalDocs:
+  url: https://developer.atlan.com/snippets/common-examples/profiling-and-popularity/
+  description: Official Atlan documentation
+
+steps:
+  - step: 1
+    title: "Profiling"
+    description: >-
+      Profiling gives additional context to columns in relational stores. From profiling, you can see various summarized information such as:
+      
+      Profiling is only available on columns
+      
+      You will only be able to populate this summary information on columns, not on other assets in Atlan.
+    notes:
+      - type: warning
+        title: "Profiling is only available on columns"
+        content: >-
+          You will only be able to populate this summary information on columns, not on other assets in Atlan.
+  - step: 2
+    title: "Popularity"
+    description: >-
+      Popularity gives additional context on how assets are being used. From popularity, you can see information such as:
+      
+      This information can be populated on all assets in Atlan.

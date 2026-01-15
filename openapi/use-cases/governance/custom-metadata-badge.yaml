@@ -1,0 +1,70 @@
+id: custom-metadata-badge
+title: Manage custom metadata badges
+category: governance
+icon: zap
+relatedTypes:
+  - Asset
+  - Badge
+  - BusinessMetadataDef
+description: |-
+  You can use badges in Atlan to provide quick indicators of key signals from custom metadata. They appear in the Overview of the asset, rather than nested within the custom metadata tab.
+  Badges are actually modeled as just another kind of asset in Atlan. This means all the standard CRUD operations apply to badges the same as any other asset.
+externalDocs:
+  url: https://developer.atlan.com/snippets/custom-metadata/badge/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Create a badge
+    description: |-
+      7.0.0 4.0.0
+      For example, to create a badge for custom metadata capturing a count of data quality checks that have run:
+    notes:
+      - type: warning
+        title: Property is renamed
+        content: The property names used have been converted to the standard python form, i.e. lowercase with spaces replaced with an underscore.
+      - type: warning
+        title: Must be a string in the JSON
+        content: The value you provide must always be a string in JSON. For actual string values (for text fields and options fields), you must further wrap the string itself in double-quotes.
+    method: POST
+    endpoint: /api/entity/bulk
+    examples:
+      - key: example-1-1
+        summary: POST /api/entity/bulk
+        request:
+          entities:
+            - typeName: Badge
+              attributes:
+                name: Count
+                badgeMetadataAttribute: gA1HGY8JClmG8wXxC9i4EX.NYcrFDTHGVpBKHv0Ihk8xC
+                qualifiedName: badges/global/gA1HGY8JClmG8wXxC9i4EX.NYcrFDTHGVpBKHv0Ihk8xC
+                userDescription: How many data quality checks ran against this asset.
+                badgeConditions:
+                  - badgeConditionOperator: gte
+                    badgeConditionValue: "5"
+                    badgeConditionColorhex: "#047960"
+                  - badgeConditionOperator: lt
+                    badgeConditionValue: "5"
+                    badgeConditionColorhex: "#F7B43D"
+                  - badgeConditionOperator: lte
+                    badgeConditionValue: "2"
+                    badgeConditionColorhex: "#BF1B1B"
+  - step: 2
+    title: Delete a badge
+    description: |-
+      1.4.0 4.0.0
+      You can delete a badge at any time using:
+    method: DELETE
+    endpoint: /api/meta/entity/bulk
+    queryString: guid=1c932bbb-fbe6-4bbc-9d0d-3df2f1fa4f81&deleteType=PURGE
+    examples:
+      - key: example-2-1
+        summary: DELETE /api/meta/entity/bulk
+        response:
+          mutatedEntities:
+            PURGE:
+              - typeName: Asset
+                attributes:
+                  qualifiedName: example/deleted/asset
+                  name: Deleted Asset
+                guid: b4113341-251b-4adc-81fb-2420501c30e6
+                status: PURGED

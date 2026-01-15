@@ -1,0 +1,311 @@
+AttributeDef:
+  type: object
+  description: Definition of an attribute within a type/structure.
+  properties:
+    name:
+      type: string
+      description: Attribute name (internal ID).
+    displayName:
+      type: string
+      description: Human-readable display name.
+    typeName:
+      type: string
+      description: |
+        Attribute data type. Common values:
+        - `string`, `boolean`, `int`, `long`, `float`, `double`, `date`
+        - `array<string>`, `array<Asset>`
+        - Reference to another type (e.g., `AtlasGlossaryTerm`)
+    isOptional:
+      type: boolean
+      default: true
+    isUnique:
+      type: boolean
+      default: false
+    cardinality:
+      type: string
+      enum: [SINGLE, LIST, SET]
+      default: SINGLE
+    description:
+      type: string
+    options:
+      type: object
+      additionalProperties: true
+      description: Additional options (e.g., enumeration values, validation).
+
+EnumElementDef:
+  type: object
+  description: A single value in an enumeration.
+  properties:
+    value:
+      type: string
+      description: The enumeration value.
+    description:
+      type: string
+      description: Description of this value.
+    ordinal:
+      type: integer
+      description: Sort order.
+
+EnumDef:
+  type: object
+  description: Definition of an enumeration type.
+  properties:
+    name:
+      type: string
+      description: Internal name of the enumeration.
+    displayName:
+      type: string
+    description:
+      type: string
+    elementDefs:
+      type: array
+      items:
+        $ref: '#/EnumElementDef'
+    category:
+      type: string
+      enum: [ENUM]
+      default: ENUM
+
+ClassificationDef:
+  type: object
+  description: |
+    Definition of an Atlan tag (classification) structure.
+
+    Atlan tags (classifications) are governance labels used to classify assets 
+    (e.g., PII, Confidential, Deprecated). They are managed via the 
+    `/api/meta/types/typedefs` endpoint.
+
+    **Important:** The `name` property uses a hashed-string representation 
+    (e.g., `S7qnUqZ5mBMBpzQ3Wzt6yD`), while `displayName` contains the 
+    human-readable name shown in the UI.
+
+    **Note:** This is different from source-synced tags (SnowflakeTag, DbtTag, etc.)
+    which are entity types representing tags from external systems.
+  properties:
+    category:
+      type: string
+      enum: [CLASSIFICATION]
+      default: CLASSIFICATION
+      description: Type category. Always "CLASSIFICATION" for Atlan tags.
+    guid:
+      type: string
+      format: uuid
+      description: Globally unique identifier for this tag definition.
+      readOnly: true
+    name:
+      type: string
+      description: |
+        Internal hashed-string name of the tag (e.g., `S7qnUqZ5mBMBpzQ3Wzt6yD`).
+        Use this value when applying tags to assets via the API.
+    displayName:
+      type: string
+      description: Human-readable name displayed in the Atlan UI.
+    description:
+      type: string
+      description: Description of what this tag represents.
+    attributeDefs:
+      type: array
+      items:
+        $ref: '#/AttributeDef'
+      description: |
+        Optional attributes that can be set when applying this tag to an asset.
+        For example, a "Sensitivity Level" attribute with allowed values.
+    superTypes:
+      type: array
+      items:
+        type: string
+      description: Parent classification types (inheritance hierarchy).
+    subTypes:
+      type: array
+      items:
+        type: string
+      description: Child classification types that inherit from this tag.
+    entityTypes:
+      type: array
+      items:
+        type: string
+      description: Asset types this tag can be applied to. Empty means all types.
+    options:
+      type: object
+      description: Visual and behavioral options for the tag.
+      properties:
+        color:
+          type: string
+          description: Tag color (e.g., "Red", "Green", "Blue", "Yellow").
+        iconType:
+          type: string
+          enum: [icon, emoji, image]
+          description: Type of icon to display.
+        icon:
+          type: string
+          description: Phosphor icon name when iconType is "icon" (e.g., "PhPassword").
+        iconName:
+          type: string
+          description: Alternative field for icon name.
+        emoji:
+          type: string
+          description: Emoji character when iconType is "emoji".
+        imageID:
+          type: string
+          description: Uploaded image ID when iconType is "image".
+      additionalProperties: true
+    skipDisplayNameUniquenessCheck:
+      type: boolean
+      default: false
+      description: Whether to skip uniqueness validation for displayName.
+    typeVersion:
+      type: string
+      description: Version of the type definition.
+      readOnly: true
+    version:
+      type: integer
+      description: Numeric version counter, incremented on each update.
+      readOnly: true
+    createTime:
+      type: integer
+      format: int64
+      description: Epoch timestamp (milliseconds) when this tag was created.
+      readOnly: true
+    updateTime:
+      type: integer
+      format: int64
+      description: Epoch timestamp (milliseconds) when this tag was last updated.
+      readOnly: true
+    createdBy:
+      type: string
+      description: Username or service account that created this tag.
+      readOnly: true
+    updatedBy:
+      type: string
+      description: Username or service account that last updated this tag.
+      readOnly: true
+  example:
+    category: "CLASSIFICATION"
+    guid: "884091b2-4fbc-4c8e-85d1-173ad90547cf"
+    name: "S7qnUqZ5mBMBpzQ3Wzt6yD"
+    displayName: "PII"
+    description: "Personally Identifiable Information"
+    attributeDefs: []
+    superTypes: []
+    subTypes: []
+    entityTypes: []
+    options:
+      color: "Red"
+      iconType: "icon"
+      icon: "PhPassword"
+    typeVersion: "1.0"
+    version: 1
+    createTime: 1716829706708
+    updateTime: 1716829706708
+    createdBy: "admin"
+    updatedBy: "admin"
+
+BusinessMetadataDef:
+  type: object
+  description: |
+    Definition of a custom metadata (business metadata) structure.
+
+    Custom metadata allows organizations to define their own attributes
+    that can be attached to any asset type.
+  properties:
+    name:
+      type: string
+      description: Internal name (often a hashed ID).
+    displayName:
+      type: string
+      description: Human-readable name.
+    description:
+      type: string
+    attributeDefs:
+      type: array
+      items:
+        $ref: '#/AttributeDef'
+      description: Attributes defined in this custom metadata structure.
+    options:
+      type: object
+      additionalProperties: true
+
+TypeDefMutationRequest:
+  type: object
+  description: Request to create or update type definitions.
+  properties:
+    enumDefs:
+      type: array
+      items:
+        $ref: '#/EnumDef'
+    classificationDefs:
+      type: array
+      items:
+        $ref: '#/ClassificationDef'
+    businessMetadataDefs:
+      type: array
+      items:
+        $ref: '#/BusinessMetadataDef'
+  example:
+    classificationDefs:
+      - name: "PII"
+        displayName: "Personally Identifiable Information"
+        description: "Data that can identify an individual"
+        attributeDefs: []
+
+TypeDefMutationResponse:
+  type: object
+  description: Response from type definition mutation.
+  properties:
+    enumDefs:
+      type: array
+      items:
+        $ref: '#/EnumDef'
+    classificationDefs:
+      type: array
+      items:
+        $ref: '#/ClassificationDef'
+    businessMetadataDefs:
+      type: array
+      items:
+        $ref: '#/BusinessMetadataDef'
+    guidAssignments:
+      type: object
+      additionalProperties:
+        type: string
+      description: Map of temporary IDs to assigned GUIDs.
+
+TypeDefListResponse:
+  type: object
+  description: Response listing all type definitions.
+  properties:
+    enumDefs:
+      type: array
+      items:
+        $ref: '#/EnumDef'
+    classificationDefs:
+      type: array
+      items:
+        $ref: '#/ClassificationDef'
+    businessMetadataDefs:
+      type: array
+      items:
+        $ref: '#/BusinessMetadataDef'
+    entityDefs:
+      type: array
+      items:
+        type: object
+      description: Entity type definitions (asset types).
+    relationshipDefs:
+      type: array
+      items:
+        type: object
+      description: Relationship type definitions.
+    structDefs:
+      type: array
+      items:
+        type: object
+      description: Struct type definitions.
+
+# Alias for backward compatibility
+TypeDefResponse:
+  $ref: '#/TypeDefListResponse'
+
+# Alias for TypeDefRequest (used in create/update operations)
+TypeDefRequest:
+  $ref: '#/TypeDefMutationRequest'

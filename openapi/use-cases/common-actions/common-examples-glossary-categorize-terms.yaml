@@ -1,0 +1,99 @@
+id: common-examples-glossary-categorize-terms
+title: Categorize terms
+category: common-actions
+icon: zap
+relatedTypes:
+  - Asset
+  - AtlasGlossary
+  - AtlasGlossaryCategory
+  - AtlasGlossaryTerm
+description: |-
+  Terms in a glossary can also be organized in one (or many) categories.
+  Remember the glossary is the container, not the category
+  Remember that the glossary is what contains the term, not the category. Therefore a term must have a glossary, but is not required to have a category. Also, a term can (optionally) be organized in many categories, but can only exist in one glossary.
+  Category must exist before creating or updating the term
+  Remember: each category must already exist before you create 
+externalDocs:
+  url: https://developer.atlan.com/snippets/common-examples/glossary/categorize-terms/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: During term creation
+    description: |-
+      2.0.0 4.0.0
+      To categorize a term during its creation:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AtlasGlossaryTerm
+              attributes:
+                name: Example Term
+                displayName: Example Term
+                anchor:
+                  typeName: AtlasGlossary
+                  guid: b4113341-251b-4adc-81fb-2420501c30e6
+                categories:
+                  - typeName: AtlasGlossaryCategory
+                    guid: dc4c0a08-a902-402b-bf24-cf935aecc343
+                  - typeName: AtlasGlossaryCategory
+                    uniqueAttributes:
+                      qualifiedName: ...
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: AtlasGlossaryTerm
+                attributes:
+                  qualifiedName: example/asset/0
+                  name: Example Term
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+                relationshipAttributes:
+                  anchor:
+                    guid: b4113341-251b-4adc-81fb-2420501c30e6
+                    typeName: AtlasGlossary
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+  - step: 2
+    title: Updating an existing term
+    description: |-
+      2.0.0 4.0.0
+      To create a child category, the steps are very similar but you add in the reference to the parent category:
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-2-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: AtlasGlossaryCategory
+              attributes:
+                name: Example Term
+                qualifiedName: gsNccqJraDZqM6WyGP3ea@FzCMyPR2LxkPFgr8eNGrq
+                anchor:
+                  typeName: AtlasGlossary
+                  guid: b4113341-251b-4adc-81fb-2420501c30e6
+                categories:
+                  - typeName: AtlasGlossaryCategory
+                    guid: dc4c0a08-a902-402b-bf24-cf935aecc343
+                  - typeName: AtlasGlossaryCategory
+                    uniqueAttributes:
+                      qualifiedName: ...
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: AtlasGlossaryCategory
+                attributes:
+                  qualifiedName: gsNccqJraDZqM6WyGP3ea@FzCMyPR2LxkPFgr8eNGrq
+                  name: Example Term
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+                relationshipAttributes:
+                  anchor:
+                    guid: b4113341-251b-4adc-81fb-2420501c30e6
+                    typeName: AtlasGlossary
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000

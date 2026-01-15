@@ -1,0 +1,72 @@
+post:
+  operationId: updateAssetBusinessMetadataByName
+  summary: Update a specific custom metadata structure on an asset
+  description: |
+    Update a specific custom metadata structure on an asset by GUID and structure name.
+
+    This endpoint allows setting or clearing attributes within a single custom metadata
+    structure without affecting other structures.
+
+    ## Use cases
+    - [Manage custom metadata](https://developer.atlan.com/snippets/common-examples/custom-metadata/)
+  externalDocs:
+    url: https://developer.atlan.com/snippets/common-examples/custom-metadata/
+    description: Managing custom metadata – Raw REST API examples
+  tags:
+    - Manage custom metadata
+  security:
+    - AtlanToken: []
+  parameters:
+    - $ref: '../../components/parameters/_index.yaml#/guid'
+    - $ref: '../../components/parameters/_index.yaml#/name'
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          additionalProperties: true
+          description: Attribute values for this custom metadata structure.
+        examples:
+          setAttributes:
+            summary: Set custom metadata attributes
+            value:
+              dataOwner: "Data Platform Team"
+              retentionDays: 365
+  responses:
+    '200':
+      description: Updated asset
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Asset.yaml'
+    '400':
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '401':
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '403':
+      description: Caller lacks permissions
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '404':
+      description: Asset or custom metadata structure not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '500':
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'

@@ -1,0 +1,696 @@
+{
+  "useCase": "discover-terms",
+  "description": "API calls for discover-terms",
+  "steps": [
+    {
+      "step": 1,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "certificateStatusMessage",
+              "certificateStatus",
+              "userDescription",
+              "... (13 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "term": {
+                  "__typeName.keyword": "AtlasGlossaryTerm"
+                }
+              },
+              "size": 100
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"term\":{\"__typeName.keyword\":\"AtlasGlossaryTerm\"}},\"size\":100}",
+            "querySize": 100,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "entities": [
+            {
+              "typeName": "AtlasGlossaryTerm",
+              "attributes": {
+                "certificateStatusMessage": "",
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [],
+                "userDescription": "Indicates if the instrument has been pledged by the bank as collateral for borrowing.",
+                "qualifiedName": "L7zGSytSlJCL598NgWmYM@dQFJkHOOdMbLviM1H2ar1",
+                "displayName": "Pledged Loan Indicator",
+                "name": "Credit Instrument Pledged Indicator",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": []
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset"
+              ],
+              "docId": "8estkeo",
+              "guid": "a0754251-76ed-427b-bb26-df41235bab10",
+              "status": "ACTIVE",
+              "displayText": "Credit Instrument Pledged Indicator",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "andrew.lentz",
+              "updatedBy": "service-account-apikey-fb413644-e145-4dbb-a6c1-ff0c017d70cb",
+              "createTime": 1764874420768,
+              "updateTime": 1764874457900
+            },
+            {
+              "typeName": "AtlasGlossaryTerm",
+              "attributes": {
+                "ownerGroups": [],
+                "userDescription": "Interest only indicator identifies a type of a financial instrument where the customer pays only the interest for a set period before transitioning to full principal and interest (P&I) payments or paying off the loan.",
+                "qualifiedName": "EsQ6YklPYYHIOTUpLlJtH@FiZUeJIjeUu90p3SgWPaD",
+                "displayName": "Interest Indicator",
+                "name": "Interest Only Indicator",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": []
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset"
+              ],
+              "docId": "7g98gyg",
+              "guid": "e042a955-8510-4a59-b7b5-cde0d708f95d",
+              "status": "DELETED",
+              "displayText": "Interest Only Indicator",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "andrew.lentz",
+              "updatedBy": "andrew.lentz",
+              "createTime": 1761231324512,
+              "updateTime": 1761231873618
+            },
+            {
+              "typeName": "AtlasGlossaryTerm",
+              "attributes": {
+                "ownerGroups": [],
+                "userDescription": "The dollar amount that would be realized upon the sale or transfer of an asset or liability in an orderly transaction between market participants in the asset’s or liability’s principal (or most advantageous) market at the measurement date.",
+                "qualifiedName": "rqf9J9Gd8EIfZeRYUap1W@YP0rRvJfveI7Xd2uROMId",
+                "displayName": "Property Fair Value",
+                "name": "Collateral Fair Value",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": []
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset"
+              ],
+              "docId": "70o8zyw",
+              "guid": "c84909eb-a766-4ac0-b89d-0547b460360b",
+              "status": "DELETED",
+              "displayText": "Collateral Fair Value",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "andrew.lentz",
+              "updatedBy": "andrew.lentz",
+              "createTime": 1761230675856,
+              "updateTime": 1761231058292
+            },
+            "... (97 more items)"
+          ],
+          "approximateCount": 5239
+        }
+      }
+    },
+    {
+      "step": 2,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "term": {
+              "__typeName.keyword": "AtlasGlossaryTerm"
+            }
+          },
+          "size": 100
+        },
+        "attributes": [
+          "guid",
+          "qualifiedName",
+          "name",
+          "typeName",
+          "description",
+          "userDescription",
+          "displayName",
+          "certificateStatus",
+          "certificateStatusMessage",
+          "ownerUsers",
+          "ownerGroups",
+          "classifications",
+          "classificationNames",
+          "meanings",
+          "meaningNames",
+          "__hasLineage"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "certificateStatusMessage",
+              "certificateStatus",
+              "userDescription",
+              "... (13 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "term": {
+                  "__typeName.keyword": "AtlasGlossaryTerm"
+                }
+              },
+              "size": 100
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"term\":{\"__typeName.keyword\":\"AtlasGlossaryTerm\"}},\"size\":100}",
+            "querySize": 100,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "entities": [
+            {
+              "typeName": "AtlasGlossaryTerm",
+              "attributes": {
+                "certificateStatusMessage": "",
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [],
+                "userDescription": "Indicates if the instrument has been pledged by the bank as collateral for borrowing.",
+                "qualifiedName": "L7zGSytSlJCL598NgWmYM@dQFJkHOOdMbLviM1H2ar1",
+                "displayName": "Pledged Loan Indicator",
+                "name": "Credit Instrument Pledged Indicator",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": []
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset"
+              ],
+              "docId": "8estkeo",
+              "guid": "a0754251-76ed-427b-bb26-df41235bab10",
+              "status": "ACTIVE",
+              "displayText": "Credit Instrument Pledged Indicator",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "andrew.lentz",
+              "updatedBy": "service-account-apikey-fb413644-e145-4dbb-a6c1-ff0c017d70cb",
+              "createTime": 1764874420768,
+              "updateTime": 1764874457900
+            },
+            {
+              "typeName": "AtlasGlossaryTerm",
+              "attributes": {
+                "ownerGroups": [],
+                "userDescription": "Interest only indicator identifies a type of a financial instrument where the customer pays only the interest for a set period before transitioning to full principal and interest (P&I) payments or paying off the loan.",
+                "qualifiedName": "EsQ6YklPYYHIOTUpLlJtH@FiZUeJIjeUu90p3SgWPaD",
+                "displayName": "Interest Indicator",
+                "name": "Interest Only Indicator",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": []
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset"
+              ],
+              "docId": "7g98gyg",
+              "guid": "e042a955-8510-4a59-b7b5-cde0d708f95d",
+              "status": "DELETED",
+              "displayText": "Interest Only Indicator",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "andrew.lentz",
+              "updatedBy": "andrew.lentz",
+              "createTime": 1761231324512,
+              "updateTime": 1761231873618
+            },
+            {
+              "typeName": "AtlasGlossaryTerm",
+              "attributes": {
+                "ownerGroups": [],
+                "userDescription": "The dollar amount that would be realized upon the sale or transfer of an asset or liability in an orderly transaction between market participants in the asset’s or liability’s principal (or most advantageous) market at the measurement date.",
+                "qualifiedName": "rqf9J9Gd8EIfZeRYUap1W@YP0rRvJfveI7Xd2uROMId",
+                "displayName": "Property Fair Value",
+                "name": "Collateral Fair Value",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": []
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset"
+              ],
+              "docId": "70o8zyw",
+              "guid": "c84909eb-a766-4ac0-b89d-0547b460360b",
+              "status": "DELETED",
+              "displayText": "Collateral Fair Value",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "andrew.lentz",
+              "updatedBy": "andrew.lentz",
+              "createTime": 1761230675856,
+              "updateTime": 1761231058292
+            },
+            "... (97 more items)"
+          ],
+          "approximateCount": 5239
+        }
+      },
+      "duration": 774
+    },
+    {
+      "step": 3,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "term": {
+              "__typeName.keyword": "AtlasGlossaryTerm"
+            }
+          },
+          "size": 100
+        },
+        "attributes": [
+          "guid",
+          "qualifiedName",
+          "name",
+          "typeName",
+          "description",
+          "userDescription",
+          "displayName",
+          "certificateStatus",
+          "certificateStatusMessage",
+          "ownerUsers",
+          "ownerGroups",
+          "classifications",
+          "classificationNames",
+          "meanings",
+          "meaningNames",
+          "__hasLineage"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "certificateStatusMessage",
+              "certificateStatus",
+              "userDescription",
+              "... (13 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "term": {
+                  "__typeName.keyword": "AtlasGlossaryTerm"
+                }
+              },
+              "size": 100
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"term\":{\"__typeName.keyword\":\"AtlasGlossaryTerm\"}},\"size\":100}",
+            "querySize": 100,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "entities": [
+            {
+              "typeName": "AtlasGlossaryTerm",
+              "attributes": {
+                "ownerGroups": [],
+                "userDescription": "Description of comodity at high livel . It corresponds to Head of Chapter f in \"comodity HS code\" edited by UNCTAD / ASYSUDA",
+                "qualifiedName": "VRKmLFvW9YMB8gsClYHF8@60zhv2EMoQYAz724YF8P2",
+                "name": "Commodity Code",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": []
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset"
+              ],
+              "docId": "47qlx2o",
+              "guid": "6496c90b-e9eb-4b2e-8e50-05a78287f9d9",
+              "status": "DELETED",
+              "displayText": "Commodity Code",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "service-account-apikey-ad9099a1-60af-4445-b7b6-d6ff850b7c4c",
+              "updatedBy": "edgar.degroot",
+              "createTime": 1730899644410,
+              "updateTime": 1730972920782
+            },
+            {
+              "typeName": "AtlasGlossaryTerm",
+              "attributes": {
+                "ownerGroups": [],
+                "userDescription": "<p style=\"margin: 0.0in;font-size: 11.0pt;font-family: Calibri , sans-serif;\">APL FNCA SAP BPC will be sunset after LISA implementation. Historical BPC data will be retained and reporting facility will be provided for business to retrieve the data.</p>",
+                "qualifiedName": "XkdDfNSZFqe3Kh6IwxMUU@60zhv2EMoQYAz724YF8P2",
+                "name": "FNCA SAP BPC Data Retention and Reporting - Data Qualification",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": []
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset"
+              ],
+              "docId": "3uve6o0",
+              "guid": "420834c2-99d7-4df8-bda0-d57a15674130",
+              "status": "DELETED",
+              "displayText": "FNCA SAP BPC Data Retention and Reporting - Data Qualification",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "service-account-apikey-ad9099a1-60af-4445-b7b6-d6ff850b7c4c",
+              "updatedBy": "edgar.degroot",
+              "createTime": 1730894964365,
+              "updateTime": 1730972920782
+            },
+            {
+              "typeName": "AtlasGlossaryTerm",
+              "attributes": {
+                "ownerGroups": [],
+                "userDescription": "<p>BP Cargo type: Cargo type is a BP marketing attribute that is used to identify customer’ cargo families / types.</p>\n<p>Those values are used in territory management, allowing or preventing the BP assignment to sales rep based on said conditions as well as in various reports.</p>\n<p>Values : Dry, Reefer, OOG (Out Of Gauge), Break-Bulk, Hazardous</p>",
+                "qualifiedName": "V3ZJHkS5DS7EI4HhtyxmP@60zhv2EMoQYAz724YF8P2",
+                "name": "Cargo Type",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": []
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset"
+              ],
+              "docId": "3q4r2aw",
+              "guid": "f0fd235a-3c92-4de8-aa8c-1384013c5c40",
+              "status": "DELETED",
+              "displayText": "Cargo Type",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "service-account-apikey-ad9099a1-60af-4445-b7b6-d6ff850b7c4c",
+              "updatedBy": "edgar.degroot",
+              "createTime": 1730894856134,
+              "updateTime": 1730972920782
+            },
+            "... (97 more items)"
+          ],
+          "approximateCount": 5239
+        }
+      },
+      "duration": 662
+    },
+    {
+      "step": 4,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "term": {
+              "__typeName.keyword": "AtlasGlossaryTerm"
+            }
+          },
+          "size": 100
+        },
+        "attributes": [
+          "guid",
+          "qualifiedName",
+          "name",
+          "typeName",
+          "description",
+          "userDescription",
+          "displayName",
+          "certificateStatus",
+          "certificateStatusMessage",
+          "ownerUsers",
+          "ownerGroups",
+          "classifications",
+          "classificationNames",
+          "meanings",
+          "meaningNames",
+          "__hasLineage"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "certificateStatusMessage",
+              "certificateStatus",
+              "userDescription",
+              "... (13 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "term": {
+                  "__typeName.keyword": "AtlasGlossaryTerm"
+                }
+              },
+              "size": 100
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"term\":{\"__typeName.keyword\":\"AtlasGlossaryTerm\"}},\"size\":100}",
+            "querySize": 100,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "entities": [
+            {
+              "typeName": "AtlasGlossaryTerm",
+              "attributes": {
+                "certificateStatusMessage": "",
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [],
+                "userDescription": "Indicates if the instrument has been pledged by the bank as collateral for borrowing.",
+                "qualifiedName": "L7zGSytSlJCL598NgWmYM@dQFJkHOOdMbLviM1H2ar1",
+                "displayName": "Pledged Loan Indicator",
+                "name": "Credit Instrument Pledged Indicator",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": []
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset"
+              ],
+              "docId": "8estkeo",
+              "guid": "a0754251-76ed-427b-bb26-df41235bab10",
+              "status": "ACTIVE",
+              "displayText": "Credit Instrument Pledged Indicator",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "andrew.lentz",
+              "updatedBy": "service-account-apikey-fb413644-e145-4dbb-a6c1-ff0c017d70cb",
+              "createTime": 1764874420768,
+              "updateTime": 1764874457900
+            },
+            {
+              "typeName": "AtlasGlossaryTerm",
+              "attributes": {
+                "ownerGroups": [],
+                "userDescription": "Interest only indicator identifies a type of a financial instrument where the customer pays only the interest for a set period before transitioning to full principal and interest (P&I) payments or paying off the loan.",
+                "qualifiedName": "EsQ6YklPYYHIOTUpLlJtH@FiZUeJIjeUu90p3SgWPaD",
+                "displayName": "Interest Indicator",
+                "name": "Interest Only Indicator",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": []
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset"
+              ],
+              "docId": "7g98gyg",
+              "guid": "e042a955-8510-4a59-b7b5-cde0d708f95d",
+              "status": "DELETED",
+              "displayText": "Interest Only Indicator",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "andrew.lentz",
+              "updatedBy": "andrew.lentz",
+              "createTime": 1761231324512,
+              "updateTime": 1761231873618
+            },
+            {
+              "typeName": "AtlasGlossaryTerm",
+              "attributes": {
+                "ownerGroups": [],
+                "userDescription": "The dollar amount that would be realized upon the sale or transfer of an asset or liability in an orderly transaction between market participants in the asset’s or liability’s principal (or most advantageous) market at the measurement date.",
+                "qualifiedName": "rqf9J9Gd8EIfZeRYUap1W@YP0rRvJfveI7Xd2uROMId",
+                "displayName": "Property Fair Value",
+                "name": "Collateral Fair Value",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": []
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset"
+              ],
+              "docId": "70o8zyw",
+              "guid": "c84909eb-a766-4ac0-b89d-0547b460360b",
+              "status": "DELETED",
+              "displayText": "Collateral Fair Value",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "andrew.lentz",
+              "updatedBy": "andrew.lentz",
+              "createTime": 1761230675856,
+              "updateTime": 1761231058292
+            },
+            "... (97 more items)"
+          ],
+          "approximateCount": 5239
+        }
+      },
+      "duration": 699
+    }
+  ]
+}

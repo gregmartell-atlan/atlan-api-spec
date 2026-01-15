@@ -1,0 +1,90 @@
+get:
+  operationId: getTypeDefByName
+  summary: Get a type definition by name
+  description: |
+    Retrieve a specific type definition by its internal name.
+  tags:
+    - Types
+  security:
+    - AtlanToken: []
+  parameters:
+    - $ref: '../../components/parameters/_index.yaml#/name'
+  responses:
+    '200':
+      description: Type definition
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: '../../components/schemas/TypeDefs.yaml#/EnumDef'
+              - $ref: '../../components/schemas/TypeDefs.yaml#/ClassificationDef'
+              - $ref: '../../components/schemas/TypeDefs.yaml#/BusinessMetadataDef'
+    '401':
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '404':
+      description: Type definition not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '500':
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+
+delete:
+  operationId: deleteTypeDefByName
+  summary: Delete a type definition by name
+  description: |
+    Delete a type definition (classification, enumeration, or custom metadata structure)
+    by its internal name.
+
+    **Warning:** Deleting a type definition may fail if assets are still using it.
+  tags:
+    - Types
+    - Custom metadata structures
+    - Tags (Atlan tags)
+    - Options (enumerations)
+  security:
+    - AtlanToken: []
+  parameters:
+    - $ref: '../../components/parameters/_index.yaml#/name'
+  responses:
+    '204':
+      description: Type definition deleted
+    '400':
+      description: Type definition is in use
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '401':
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '403':
+      description: Caller lacks permissions
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '404':
+      description: Type definition not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '500':
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'

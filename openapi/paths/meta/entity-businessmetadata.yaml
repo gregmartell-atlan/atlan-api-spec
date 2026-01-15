@@ -1,0 +1,76 @@
+post:
+  operationId: updateAssetBusinessMetadata
+  summary: Update custom metadata on an asset
+  description: |
+    Update custom metadata (business attributes) on an asset by GUID.
+
+    This endpoint allows setting or clearing individual custom metadata attributes
+    without affecting other attributes or other custom metadata structures.
+
+    ## Use cases
+    - [Manage custom metadata](https://developer.atlan.com/snippets/common-examples/custom-metadata/)
+  externalDocs:
+    url: https://developer.atlan.com/snippets/common-examples/custom-metadata/
+    description: Managing custom metadata – Raw REST API examples
+  tags:
+    - Manage custom metadata
+  security:
+    - AtlanToken: []
+  parameters:
+    - $ref: '../../components/parameters/_index.yaml#/guid'
+    - $ref: '../../components/parameters/_index.yaml#/overwriteBusinessAttributes'
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          additionalProperties: true
+          description: |
+            Map of custom metadata structure names to attribute values.
+            Structure names are often internal hashed IDs.
+        examples:
+          setGovernanceMetadata:
+            summary: Set governance custom metadata
+            value:
+              DataGovernance:
+                dataOwner: "Data Platform Team"
+                retentionDays: 365
+                lastReviewedDate: "2024-01-15"
+  responses:
+    '200':
+      description: Updated asset
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Asset.yaml'
+    '400':
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '401':
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '403':
+      description: Caller lacks permissions
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '404':
+      description: Asset not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '500':
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'

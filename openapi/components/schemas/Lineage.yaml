@@ -1,0 +1,101 @@
+LineageListRequest:
+  type: object
+  description: |
+    Request body for lineage traversal.
+
+    See [Lineage – Traverse](https://developer.atlan.com/snippets/common-examples/lineage/traverse/)
+    for examples.
+  properties:
+    guid:
+      type: string
+      format: uuid
+      description: GUID of the asset to get lineage for.
+    depth:
+      type: integer
+      minimum: 0
+      maximum: 10
+      default: 3
+      description: Number of hops to traverse.
+    direction:
+      type: string
+      enum: [UPSTREAM, DOWNSTREAM, BOTH]
+      default: BOTH
+      description: |
+        - `UPSTREAM` – sources (inputs)
+        - `DOWNSTREAM` – targets (outputs)
+        - `BOTH` – all directions
+    attributes:
+      type: array
+      items:
+        type: string
+      description: Attributes to include on each entity in the response.
+    from:
+      type: integer
+      minimum: 0
+      default: 0
+      description: Pagination offset.
+    size:
+      type: integer
+      minimum: 1
+      maximum: 10000
+      default: 100
+      description: Page size.
+    immediateNeighbors:
+      type: boolean
+      default: false
+      description: If true, only return immediate neighbors (depth=1).
+  required:
+    - guid
+  example:
+    guid: "b4113341-251b-4adc-81fb-2420501c30e6"
+    depth: 3
+    direction: "UPSTREAM"
+    attributes:
+      - name
+      - qualifiedName
+      - typeName
+
+LineageRelation:
+  type: object
+  description: A single lineage relationship between two entities.
+  properties:
+    fromEntityId:
+      type: string
+      format: uuid
+      description: Source entity GUID.
+    toEntityId:
+      type: string
+      format: uuid
+      description: Target entity GUID.
+    relationshipType:
+      type: string
+      description: Type of lineage relationship (e.g., Process).
+    processId:
+      type: string
+      format: uuid
+      description: GUID of the process entity representing this lineage edge.
+
+LineageListResponse:
+  type: object
+  description: Response from lineage traversal.
+  properties:
+    baseEntityGuid:
+      type: string
+      format: uuid
+      description: GUID of the asset lineage was requested for.
+    guidEntityMap:
+      type: object
+      additionalProperties:
+        $ref: './Asset.yaml'
+      description: Map of GUID → entity for all assets in the lineage graph.
+    relations:
+      type: array
+      items:
+        $ref: '#/LineageRelation'
+      description: Lineage edges connecting entities.
+    hasMoreUpstreamVertices:
+      type: boolean
+      description: Whether there are more upstream entities beyond the traversal depth.
+    hasMoreDownstreamVertices:
+      type: boolean
+      description: Whether there are more downstream entities beyond the traversal depth.

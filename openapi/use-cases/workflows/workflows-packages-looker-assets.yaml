@@ -1,0 +1,115 @@
+id: workflows-packages-looker-assets
+title: Looker assets package
+category: workflows
+icon: zap
+relatedTypes:
+  - Workflow
+  - WorkflowRun
+description: The Looker assets package crawls Looker assets and publishes them to Atlan for discovery.
+externalDocs:
+  url: https://developer.atlan.com/snippets/workflows/packages/looker-assets/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Direct extraction
+    description: |-
+      Will create a new connection
+      This should only be used to create the workflow the first time. Each time you run this method it will create a new connection and new assets within that connection   which could lead to duplicate assets if you run the workflow this way multiple times with the same settings.
+      Instead, when you want to re-crawl assets, re-run the existing workflow (see Re-run existing workflow below).
+      To crawl Looker assets directly from Looker:
+    notes:
+      - type: warning
+        title: Will create a new connection
+        content: This should only be used to create the workflow the first time. Each time you run this method it will create a new connection and new assets within that connection   which could lead to duplicate assets if you run the workflow this way multiple times with the same settings. Instead, when you want to re-crawl assets, re-run the existing workflow (see Re-run existing workflow below).
+      - type: warning
+        title: Workflows run asynchronously
+        content: Remember that workflows run asynchronously. See the packages and workflows introduction for details on how you can check the status and wait until the workflow has been completed.
+      - type: warning
+        title: Workflows run asynchronously
+        content: Remember that workflows run asynchronously. See the packages and workflows introduction for details on how you can check the status and wait until the workflow has been completed.
+      - type: recommendation
+        title: Create the workflow via UI only
+        content: We recommend creating the workflow only via the UI. To rerun an existing workflow, see the steps below.
+  - step: 2
+    title: Re-run existing workflow
+    description: "To re-run an existing workflow for Looker assets:"
+    notes:
+      - type: warning
+        title: Workflows run asynchronously
+        content: Remember that workflows run asynchronously. See the packages and workflows introduction for details on how you can check the status and wait until the workflow has been completed.
+      - type: warning
+        title: Workflows run asynchronously
+        content: Remember that workflows run asynchronously. See the packages and workflows introduction for details on how you can check the status and wait until the workflow has been completed.
+      - type: warning
+        title: Requires multiple steps through the raw REST API
+        content: Find the existing workflow. Send through the resulting re-run request.
+      - type: recommendation
+        title: Name of the workflow
+        content: The name of the workflow will be nested within the _source.metadata.name property of the response object. (Remember since this is a search, there could be multiple results, so you may want to use the other details in each result to determine which workflow you really want.)
+    method: POST
+    endpoint: /api/service/workflows/indexsearch
+    examples:
+      - key: example-2-1
+        summary: POST /api/service/workflows/indexsearch
+        request:
+          from: 0
+          size: 5
+          query:
+            bool:
+              filter:
+                - nested:
+                    path: metadata
+                    query:
+                      prefix:
+                        metadata.name.keyword:
+                          value: atlan-looker
+          sort:
+            - metadata.creationTimestamp:
+                nested:
+                  path: metadata
+                order: desc
+          track_total_hits: true
+        response:
+          approximateCount: 5
+          records:
+            - _index: atlan-workflow
+              _source:
+                metadata:
+                  name: atlan-snowflake-miner-1714638976
+                  namespace: default
+                  creationTimestamp: "2026-01-15T17:49:40.122Z"
+                  labels:
+                    workflows.argoproj.io/creator: admin
+                  annotations:
+                    package.argoproj.io/name: "@atlan/snowflake-miner"
+                spec:
+                  entrypoint: main
+                status:
+                  phase: Succeeded
+                  startedAt: "2026-01-15T16:49:40.122Z"
+                  finishedAt: "2026-01-15T17:49:40.122Z"
+      - key: example-2-2
+        summary: POST /api/service/workflows/submit
+        request:
+          namespace: default
+          resourceKind: WorkflowTemplate
+          resourceName: atlan-looker-1684500411
+        response:
+          approximateCount: 5
+          records:
+            - _index: atlan-workflow
+              _source:
+                metadata:
+                  name: atlan-snowflake-miner-1714638976
+                  namespace: default
+                  creationTimestamp: "2026-01-15T17:49:40.122Z"
+                  labels:
+                    workflows.argoproj.io/creator: admin
+                  annotations:
+                    package.argoproj.io/name: "@atlan/snowflake-miner"
+                spec:
+                  entrypoint: main
+                status:
+                  phase: Succeeded
+                  startedAt: "2026-01-15T16:49:40.122Z"
+                  finishedAt: "2026-01-15T17:49:40.122Z"

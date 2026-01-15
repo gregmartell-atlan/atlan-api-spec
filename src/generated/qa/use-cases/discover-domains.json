@@ -1,0 +1,741 @@
+{
+  "useCase": "discover-domains",
+  "description": "API calls for discover-domains",
+  "steps": [
+    {
+      "step": 1,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "certificateStatusMessage",
+              "certificateStatus",
+              "userDescription",
+              "... (13 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "term": {
+                  "__typeName.keyword": "DataDomain"
+                }
+              },
+              "size": 100
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"term\":{\"__typeName.keyword\":\"DataDomain\"}},\"size\":100}",
+            "querySize": 100,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "entities": [
+            {
+              "typeName": "DataDomain",
+              "attributes": {
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [],
+                "userDescription": "",
+                "qualifiedName": "default/domain/7sUKkVAwHxN470SPQ41ew/super",
+                "name": "Sony Domain",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": [
+                  "pablo.quinones"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "DataMesh"
+              ],
+              "docId": "6fo9abs",
+              "guid": "cd09ae3f-256d-439a-a31c-a9baa6798c02",
+              "status": "DELETED",
+              "displayText": "Sony Domain",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "pablo.quinones",
+              "updatedBy": "pablo.quinones",
+              "createTime": 1749842602039,
+              "updateTime": 1750814595338
+            },
+            {
+              "typeName": "DataDomain",
+              "attributes": {
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [],
+                "userDescription": "",
+                "qualifiedName": "default/domain/ginaNY3haSzsuAy2bA526/super",
+                "name": "Test Domain",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": [
+                  "mandeep.cheema"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "DataMesh"
+              ],
+              "docId": "35szgx4",
+              "guid": "44e6007c-926b-4ccc-b30c-4a23f03a95e1",
+              "status": "DELETED",
+              "displayText": "Test Domain",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "mandeep.cheema",
+              "updatedBy": "mandeep.cheema",
+              "createTime": 1723221345410,
+              "updateTime": 1723221401102
+            },
+            {
+              "typeName": "DataDomain",
+              "attributes": {
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [],
+                "userDescription": "",
+                "qualifiedName": "default/domain/9P8fzyNtvs0AUmHdcAE8l/super/domain/az5oZTdQMUKbGCEy8msmq",
+                "name": "Delete",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": [
+                  "aya.kandil"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "DataMesh"
+              ],
+              "docId": "354ryrs",
+              "guid": "5f79b312-5be8-4509-98c6-73c8c976c311",
+              "status": "DELETED",
+              "displayText": "Delete",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "aya.kandil",
+              "updatedBy": "amrapali.saha",
+              "createTime": 1724162863064,
+              "updateTime": 1724163116865
+            },
+            "... (97 more items)"
+          ],
+          "approximateCount": 120
+        }
+      }
+    },
+    {
+      "step": 2,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "term": {
+              "__typeName.keyword": "DataDomain"
+            }
+          },
+          "size": 100
+        },
+        "attributes": [
+          "guid",
+          "qualifiedName",
+          "name",
+          "typeName",
+          "description",
+          "userDescription",
+          "displayName",
+          "certificateStatus",
+          "certificateStatusMessage",
+          "ownerUsers",
+          "ownerGroups",
+          "classifications",
+          "classificationNames",
+          "meanings",
+          "meaningNames",
+          "__hasLineage"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "certificateStatusMessage",
+              "certificateStatus",
+              "userDescription",
+              "... (13 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "term": {
+                  "__typeName.keyword": "DataDomain"
+                }
+              },
+              "size": 100
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"term\":{\"__typeName.keyword\":\"DataDomain\"}},\"size\":100}",
+            "querySize": 100,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "entities": [
+            {
+              "typeName": "DataDomain",
+              "attributes": {
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [],
+                "userDescription": "",
+                "qualifiedName": "default/domain/7sUKkVAwHxN470SPQ41ew/super",
+                "name": "Sony Domain",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": [
+                  "pablo.quinones"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "DataMesh"
+              ],
+              "docId": "6fo9abs",
+              "guid": "cd09ae3f-256d-439a-a31c-a9baa6798c02",
+              "status": "DELETED",
+              "displayText": "Sony Domain",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "pablo.quinones",
+              "updatedBy": "pablo.quinones",
+              "createTime": 1749842602039,
+              "updateTime": 1750814595338
+            },
+            {
+              "typeName": "DataDomain",
+              "attributes": {
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [],
+                "userDescription": "",
+                "qualifiedName": "default/domain/ginaNY3haSzsuAy2bA526/super",
+                "name": "Test Domain",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": [
+                  "mandeep.cheema"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "DataMesh"
+              ],
+              "docId": "35szgx4",
+              "guid": "44e6007c-926b-4ccc-b30c-4a23f03a95e1",
+              "status": "DELETED",
+              "displayText": "Test Domain",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "mandeep.cheema",
+              "updatedBy": "mandeep.cheema",
+              "createTime": 1723221345410,
+              "updateTime": 1723221401102
+            },
+            {
+              "typeName": "DataDomain",
+              "attributes": {
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [],
+                "userDescription": "",
+                "qualifiedName": "default/domain/9P8fzyNtvs0AUmHdcAE8l/super/domain/az5oZTdQMUKbGCEy8msmq",
+                "name": "Delete",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": [
+                  "aya.kandil"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "DataMesh"
+              ],
+              "docId": "354ryrs",
+              "guid": "5f79b312-5be8-4509-98c6-73c8c976c311",
+              "status": "DELETED",
+              "displayText": "Delete",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "aya.kandil",
+              "updatedBy": "amrapali.saha",
+              "createTime": 1724162863064,
+              "updateTime": 1724163116865
+            },
+            "... (97 more items)"
+          ],
+          "approximateCount": 120
+        }
+      },
+      "duration": 734
+    },
+    {
+      "step": 3,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "term": {
+              "__typeName.keyword": "DataDomain"
+            }
+          },
+          "size": 100
+        },
+        "attributes": [
+          "guid",
+          "qualifiedName",
+          "name",
+          "typeName",
+          "description",
+          "userDescription",
+          "displayName",
+          "certificateStatus",
+          "certificateStatusMessage",
+          "ownerUsers",
+          "ownerGroups",
+          "classifications",
+          "classificationNames",
+          "meanings",
+          "meaningNames",
+          "__hasLineage"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "certificateStatusMessage",
+              "certificateStatus",
+              "userDescription",
+              "... (13 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "term": {
+                  "__typeName.keyword": "DataDomain"
+                }
+              },
+              "size": 100
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"term\":{\"__typeName.keyword\":\"DataDomain\"}},\"size\":100}",
+            "querySize": 100,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "entities": [
+            {
+              "typeName": "DataDomain",
+              "attributes": {
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [],
+                "userDescription": "",
+                "qualifiedName": "default/domain/7sUKkVAwHxN470SPQ41ew/super",
+                "name": "Sony Domain",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": [
+                  "pablo.quinones"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "DataMesh"
+              ],
+              "docId": "6fo9abs",
+              "guid": "cd09ae3f-256d-439a-a31c-a9baa6798c02",
+              "status": "DELETED",
+              "displayText": "Sony Domain",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "pablo.quinones",
+              "updatedBy": "pablo.quinones",
+              "createTime": 1749842602039,
+              "updateTime": 1750814595338
+            },
+            {
+              "typeName": "DataDomain",
+              "attributes": {
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [],
+                "userDescription": "",
+                "qualifiedName": "default/domain/ginaNY3haSzsuAy2bA526/super",
+                "name": "Test Domain",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": [
+                  "mandeep.cheema"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "DataMesh"
+              ],
+              "docId": "35szgx4",
+              "guid": "44e6007c-926b-4ccc-b30c-4a23f03a95e1",
+              "status": "DELETED",
+              "displayText": "Test Domain",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "mandeep.cheema",
+              "updatedBy": "mandeep.cheema",
+              "createTime": 1723221345410,
+              "updateTime": 1723221401102
+            },
+            {
+              "typeName": "DataDomain",
+              "attributes": {
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [],
+                "userDescription": "",
+                "qualifiedName": "default/domain/9P8fzyNtvs0AUmHdcAE8l/super/domain/az5oZTdQMUKbGCEy8msmq",
+                "name": "Delete",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": [
+                  "aya.kandil"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "DataMesh"
+              ],
+              "docId": "354ryrs",
+              "guid": "5f79b312-5be8-4509-98c6-73c8c976c311",
+              "status": "DELETED",
+              "displayText": "Delete",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "aya.kandil",
+              "updatedBy": "amrapali.saha",
+              "createTime": 1724162863064,
+              "updateTime": 1724163116865
+            },
+            "... (97 more items)"
+          ],
+          "approximateCount": 120
+        }
+      },
+      "duration": 717
+    },
+    {
+      "step": 4,
+      "endpoint": "POST /api/meta/search/indexsearch",
+      "request": {
+        "dsl": {
+          "query": {
+            "term": {
+              "__typeName.keyword": "DataDomain"
+            }
+          },
+          "size": 100
+        },
+        "attributes": [
+          "guid",
+          "qualifiedName",
+          "name",
+          "typeName",
+          "description",
+          "userDescription",
+          "displayName",
+          "certificateStatus",
+          "certificateStatusMessage",
+          "ownerUsers",
+          "ownerGroups",
+          "classifications",
+          "classificationNames",
+          "meanings",
+          "meaningNames",
+          "__hasLineage"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "queryType": "INDEX",
+          "searchParameters": {
+            "attributes": [
+              "certificateStatusMessage",
+              "certificateStatus",
+              "userDescription",
+              "... (13 more items)"
+            ],
+            "showSearchScore": false,
+            "suppressLogs": false,
+            "excludeMeanings": false,
+            "excludeClassifications": false,
+            "enableFullRestriction": false,
+            "includeClassificationNames": false,
+            "requestMetadata": {
+              "searchInput": null,
+              "utmTags": null,
+              "saveSearchLog": false,
+              "persona": null
+            },
+            "async": {
+              "isCallAsync": false,
+              "searchContextId": null,
+              "searchContextSequenceNo": null,
+              "requestTimeoutInSecs": null
+            },
+            "showHighlights": false,
+            "showSearchMetadata": false,
+            "dsl": {
+              "query": {
+                "term": {
+                  "__typeName.keyword": "DataDomain"
+                }
+              },
+              "size": 100
+            },
+            "allowDeletedRelations": false,
+            "accessControlExclusive": false,
+            "includeRelationshipAttributes": false,
+            "query": "{\"query\":{\"term\":{\"__typeName.keyword\":\"DataDomain\"}},\"size\":100}",
+            "querySize": 100,
+            "saveSearchLog": false,
+            "callAsync": false
+          },
+          "entities": [
+            {
+              "typeName": "DataDomain",
+              "attributes": {
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [],
+                "userDescription": "",
+                "qualifiedName": "default/domain/7sUKkVAwHxN470SPQ41ew/super",
+                "name": "Sony Domain",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": [
+                  "pablo.quinones"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "DataMesh"
+              ],
+              "docId": "6fo9abs",
+              "guid": "cd09ae3f-256d-439a-a31c-a9baa6798c02",
+              "status": "DELETED",
+              "displayText": "Sony Domain",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "pablo.quinones",
+              "updatedBy": "pablo.quinones",
+              "createTime": 1749842602039,
+              "updateTime": 1750814595338
+            },
+            {
+              "typeName": "DataDomain",
+              "attributes": {
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [],
+                "userDescription": "",
+                "qualifiedName": "default/domain/ginaNY3haSzsuAy2bA526/super",
+                "name": "Test Domain",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": [
+                  "mandeep.cheema"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "DataMesh"
+              ],
+              "docId": "35szgx4",
+              "guid": "44e6007c-926b-4ccc-b30c-4a23f03a95e1",
+              "status": "DELETED",
+              "displayText": "Test Domain",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "mandeep.cheema",
+              "updatedBy": "mandeep.cheema",
+              "createTime": 1723221345410,
+              "updateTime": 1723221401102
+            },
+            {
+              "typeName": "DataDomain",
+              "attributes": {
+                "certificateStatus": "DRAFT",
+                "ownerGroups": [],
+                "userDescription": "",
+                "qualifiedName": "default/domain/9P8fzyNtvs0AUmHdcAE8l/super/domain/az5oZTdQMUKbGCEy8msmq",
+                "name": "Delete",
+                "__hasLineage": false,
+                "meanings": [],
+                "ownerUsers": [
+                  "aya.kandil"
+                ]
+              },
+              "superTypeNames": [
+                "Referenceable",
+                "Asset",
+                "Catalog",
+                "DataMesh"
+              ],
+              "docId": "354ryrs",
+              "guid": "5f79b312-5be8-4509-98c6-73c8c976c311",
+              "status": "DELETED",
+              "displayText": "Delete",
+              "classificationNames": [],
+              "classifications": [],
+              "meaningNames": [],
+              "meanings": [],
+              "isIncomplete": false,
+              "labels": [],
+              "createdBy": "aya.kandil",
+              "updatedBy": "amrapali.saha",
+              "createTime": 1724162863064,
+              "updateTime": 1724163116865
+            },
+            "... (97 more items)"
+          ],
+          "approximateCount": 120
+        }
+      },
+      "duration": 676
+    }
+  ]
+}

@@ -1,0 +1,309 @@
+# Use Case: API tokens
+# Auto-generated from: https://developer.atlan.com/snippets/access/tokens/
+# Generated at: 2026-01-13T02:58:00.287Z
+
+id: access-tokens
+title: "API tokens"
+category: access-control
+icon: zap
+
+description: >-
+  API tokens  are a way to provide programmatic access to Atlan without relying on a user's own credentials or permissions.
+  
+  API tokens are not personal access tokens
+  
+  API tokens are commonly thought to be synonymous with personal access tokens (PAT). In other words, many developers assume that an API token will have the same privileges and permissions as the user who created them. This is not the case. API tokens are their own unique actor and carry entirely their own set of permissions, complete
+
+externalDocs:
+  url: https://developer.atlan.com/snippets/access/tokens/
+  description: Official Atlan documentation
+
+steps:
+  - step: 1
+    title: "Create an API token"
+    description: >-
+      0.0.14
+      1.4.0
+      4.0.0
+      
+      To create a new API token:
+    notes:
+      - type: warning
+        title: "Cannot be accessed again later"
+        content: >-
+          You will not be able to retrieve the actual value of the API token again at a later point, for example when retrieving or updating the API token.
+      - type: warning
+        title: "Cannot be accessed again later"
+        content: >-
+          You will not be able to retrieve the actual value of the API token again at a later point, for example when retrieving or updating the API token.
+      - type: warning
+        title: "Cannot be accessed again later"
+        content: >-
+          You will not be able to retrieve the actual value of the API token again at a later point, for example when retrieving or updating the API token.
+      - type: warning
+        title: "Cannot be accessed again later"
+        content: >-
+          You will not be able to retrieve the actual value of the API token again at a later point, for example when retrieving or updating the API token.
+      - type: warning
+        title: "Must be complete set you want linked to the API token"
+        content: >-
+          Any personas you leave out of the set will be removed from the API token, if they are already associated with it. (Further, if you send an empty set or no value at all for personas in the update, then ALL linked personas will be removed from the token.)
+    method: POST
+    endpoint: /api/service/apikeys
+    examples:
+      - key: example-1-1
+        summary: "POST /api/service/apikeys"
+        request: {
+                    "displayName": "token-name",
+                    "description": "",
+                    "personas": [],
+                    "personaQualifiedNames": [],
+                    "validitySeconds": 409968000
+          }
+  - step: 2
+    title: "Retrieve an API token"
+    description: >-
+      0.0.14
+      1.4.0
+      4.0.0
+      
+      You can retrieve an API token either by its name or its client ID (the name used when it is associated with some other object).
+    method: GET
+    endpoint: /api/service/apikeys
+    queryString: 'limit=2&offset=0&sort=-createdAt&filter={"displayName":"token-name"}'
+    examples:
+      - key: example-2-1
+        summary: "GET /api/service/apikeys"
+      - key: example-2-2
+        summary: "GET /api/service/apikeys"
+  - step: 3
+    title: "Update an API token"
+    description: >-
+      0.0.14
+      1.4.0
+      4.0.0
+      
+      There is limited information to update on an API token:
+    notes:
+      - type: warning
+        title: "Must be complete set you want linked to the API token"
+        content: >-
+          Any personas you leave out of the set will be removed from the API token, if they are already associated with it. (Further, if you send an empty set or no value at all for personas in the update, then ALL linked personas will be removed from the token.)
+    method: POST
+    endpoint: /api/service/apikeys/98fb61da-eb8f-455e-b5ea-c022ee390044
+    examples:
+      - key: example-3-1
+        summary: "POST /api/service/apikeys/98fb61da-eb8f-455e-b5ea-c022ee390044"
+        request: {
+                    "displayName": "token-name",
+                    "description": "Now with a revised description.",
+                    "personas": [],
+                    "personaQualifiedNames": []
+          }
+  - step: 4
+    title: "Delete an API token"
+    description: >-
+      0.0.14
+      1.4.0
+      4.0.0
+      
+      You can delete an API token by its GUID:
+    notes:
+      - type: warning
+        title: "Irreversible"
+        content: >-
+          Once deleted, the API token will be permanently removed and no longer usable.
+      - type: warning
+        title: "Irreversible"
+        content: >-
+          Once deleted, the API token will be permanently removed and no longer usable.
+      - type: warning
+        title: "Irreversible"
+        content: >-
+          Once deleted, the API token will be permanently removed and no longer usable.
+      - type: warning
+        title: "Irreversible"
+        content: >-
+          Once deleted, the API token will be permanently removed and no longer usable.
+      - type: warning
+        title: "Irreversible"
+        content: >-
+          Once deleted, the API token will be permanently removed and no longer usable.
+    method: DELETE
+    endpoint: /api/service/apikeys/98fb61da-eb8f-455e-b5ea-c022ee390044
+    examples:
+      - key: example-4-1
+        summary: "DELETE /api/service/apikeys/98fb61da-eb8f-455e-b5ea-c022ee390044"
+  - step: 5
+    title: "Give permissions to API token"
+    description: >-
+      As called out at the top of this page, API tokens are unique actors with their own privileges and permissions. For an API token to be able to interact with certain objects, they must be granted such permissions directly.
+      
+      0.0.14
+      1.4.0
+      4.0.0
+      
+      You can link an API token to a persona to give the API token all of the permissions granted by the policies within that persona.
+    notes:
+      - type: warning
+        title: "Must be complete set you want linked to the API token"
+        content: >-
+          Any personas you leave out of the set will be removed from the API token, if they are already associated with it. (Further, if you send an empty set or no value at all for personas in the update, then ALL linked personas will be removed from the token.)
+      - type: warning
+        title: "Must be complete set you want linked to the API token"
+        content: >-
+          Any personas you leave out of the set will be removed from the API token, if they are already associated with it. (Further, if you send an empty set or no value at all for personas in the update, then ALL linked personas will be removed from the token.)
+      - type: warning
+        title: "Must be complete set you want linked to the API token"
+        content: >-
+          Any personas you leave out of the set will be removed from the API token, if they are already associated with it. (Further, if you send an empty set or no value at all for personas in the update, then ALL linked personas will be removed from the token.)
+      - type: warning
+        title: "Must be complete set you want linked to the API token"
+        content: >-
+          Any personas you leave out of the set will be removed from the API token, if they are already associated with it. (Further, if you send an empty set or no value at all for personas in the update, then ALL linked personas will be removed from the token.)
+      - type: warning
+        title: "Must be complete set you want linked to the API token"
+        content: >-
+          Any personas you leave out of the set will be removed from the API token, if they are already associated with it. (Further, if you send an empty set or no value at all for personas in the update, then ALL linked personas will be removed from the token.)
+      - type: warning
+        title: "Must first obtain a user's bearer token"
+        content: >-
+          To carry out this operation, you must first obtain a user's bearer token. Specifically, you must obtain the bearer token for a user who is already a connection admin on the connection.
+      - type: warning
+        title: "Will add the API token, not impersonation token, as connection admin"
+        content: >-
+          Note that you are providing a user's bearer token as the impersonationToken only to give sufficient privileges to add the API token configured for the SDK as a connection admin. It is the API token configured for the SDK that you're adding as connection admin, not the user's bearer token. (The user's bearer token must already have connection admin permissions on this connection for the operation to succeed.)
+      - type: warning
+        title: "Will add the API token, not impersonation token, as connection admin"
+        content: >-
+          Note that you are providing a user's bearer token as the impersonation_token only to give sufficient privileges to add the API token configured for the SDK as a connection admin. It is the API token configured for the SDK that you're adding as connection admin, not the user's bearer token. (The user's bearer token must already have connection admin permissions on this connection for the operation to succeed.)
+      - type: warning
+        title: "Will add the API token, not impersonation token, as connection admin"
+        content: >-
+          Note that you are providing a user's bearer token as the impersonationToken only to give sufficient privileges to add the API token configured for the SDK as a connection admin. It is the API token configured for the SDK that you're adding as connection admin, not the user's bearer token. (The user's bearer token must already have connection admin permissions on this connection for the operation to succeed.)
+      - type: warning
+        title: "Not recommended"
+        content: >-
+          We do not recommend attempting this change through the Raw REST APIs as it requires a number of different API calls, carefully parsing the responses and combining elements, and has high potential for minor typos or copy/paste errors to cause mistakes.
+      - type: warning
+        title: "Must first obtain a user's bearer token"
+        content: >-
+          To carry out this operation, you must first obtain a user's bearer token. Specifically, you must obtain the bearer token for a user who is already an editor on (or owner of) the query collection.
+      - type: warning
+        title: "Will add the API token, not impersonation token, as collection editor"
+        content: >-
+          Note that you are providing a user's bearer token as the impersonationToken only to give sufficient privileges to add the API token configured for the SDK as a collection editor. It is the API token configured for the SDK that you're adding as collection editor, not the user's bearer token. (The user's bearer token must already have collection editor permissions on this collection for the operation to succeed.)
+      - type: warning
+        title: "Will add the API token, not impersonation token, as collection editor"
+        content: >-
+          Note that you are providing a user's bearer token as the impersonation_token only to give sufficient privileges to add the API token configured for the SDK as a collection editor. It is the API token configured for the SDK that you're adding as collection editor, not the user's bearer token. (The user's bearer token must already have collection editor permissions on this collection for the operation to succeed.)
+      - type: warning
+        title: "Will add the API token, not impersonation token, as collection editor"
+        content: >-
+          Note that you are providing a user's bearer token as the impersonationToken only to give sufficient privileges to add the API token configured for the SDK as a collection editor. It is the API token configured for the SDK that you're adding as collection editor, not the user's bearer token. (The user's bearer token must already have collection editor permissions on this collection for the operation to succeed.)
+      - type: warning
+        title: "Not recommended"
+        content: >-
+          We do not recommend attempting this change through the Raw REST APIs as it requires a number of different API calls, carefully parsing the responses and combining elements, and has high potential for minor typos or copy/paste errors to cause mistakes.
+      - type: warning
+        title: "Must first obtain a user's bearer token"
+        content: >-
+          To carry out this operation, you must first obtain a user's bearer token. Specifically, you must obtain the bearer token for a user who is already an editor on (or owner of) the query collection.
+      - type: warning
+        title: "Will add the API token, not impersonation token, as collection viewer"
+        content: >-
+          Note that you are providing a user's bearer token as the impersonationToken only to give sufficient privileges to add the API token configured for the SDK as a collection viewer. It is the API token configured for the SDK that you're adding as collection viewer, not the user's bearer token. (The user's bearer token must already have collection editor permissions on this collection for the operation to succeed.)
+      - type: warning
+        title: "Will add the API token, not impersonation token, as collection viewer"
+        content: >-
+          Note that you are providing a user's bearer token as the impersonation_token only to give sufficient privileges to add the API token configured for the SDK as a collection viewer. It is the API token configured for the SDK that you're adding as collection viewer, not the user's bearer token. (The user's bearer token must already have collection editor permissions on this collection for the operation to succeed.)
+      - type: warning
+        title: "Will add the API token, not impersonation token, as collection viewer"
+        content: >-
+          Note that you are providing a user's bearer token as the impersonationToken only to give sufficient privileges to add the API token configured for the SDK as a collection viewer. It is the API token configured for the SDK that you're adding as collection viewer, not the user's bearer token. (The user's bearer token must already have collection editor permissions on this collection for the operation to succeed.)
+      - type: warning
+        title: "Not recommended"
+        content: >-
+          We do not recommend attempting this change through the Raw REST APIs as it requires a number of different API calls, carefully parsing the responses and combining elements, and has high potential for minor typos or copy/paste errors to cause mistakes.
+    method: POST
+    endpoint: /api/service/apikeys/98fb61da-eb8f-455e-b5ea-c022ee390044
+    examples:
+      - key: example-5-1
+        summary: "POST /api/service/apikeys/98fb61da-eb8f-455e-b5ea-c022ee390044"
+        request: {
+                    "displayName": "token-name",
+                    "description": "",
+                    "personas": [],
+                    "personaQualifiedNames": [
+                              "default/aQi5KHtGwZYvxGnTSAYO8J"
+                    ]
+          }
+  - step: 6
+    title: "Link an API token to a persona"
+    description: >-
+      0.0.14
+      1.4.0
+      4.0.0
+      
+      You can link an API token to a persona to give the API token all of the permissions granted by the policies within that persona.
+    method: POST
+    endpoint: /api/service/apikeys/98fb61da-eb8f-455e-b5ea-c022ee390044
+    examples:
+      - key: example-6-1
+        summary: "POST /api/service/apikeys/98fb61da-eb8f-455e-b5ea-c022ee390044"
+        request: {
+                    "displayName": "token-name",
+                    "description": "",
+                    "personas": [],
+                    "personaQualifiedNames": [
+                              "default/aQi5KHtGwZYvxGnTSAYO8J"
+                    ]
+          }
+  - step: 7
+    title: "Add an API token as a connection admin"
+    description: >-
+      1.4.0
+      4.0.0
+      
+      For any actor to manage policies for a connection, that actor must be a connection admin on the connection. You must therefore add the API token as a connection admin to any connection you want it to be able to manage policies for.1
+      
+      Must first obtain a user's bearer token
+      
+      To carry out this operation, you must first obtain a user's bearer token. Specifically, you must obtain the bearer token for a user who is already a connection admin on the connection.
+  - step: 8
+    title: "Add an API token as a collection editor"
+    description: >-
+      1.4.0
+      4.0.0
+      
+      As with connections, if you want an API token to be able to manage a query collection or the queries within it, you must add the API token as an editor on the collection.
+      
+      Must first obtain a user's bearer token
+      
+      To carry out this operation, you must first obtain a user's bearer token. Specifically, you must obtain the bearer token for a user who is already an editor on (or owner of) the query collection.
+  - step: 9
+    title: "Add an API token as a collection viewer"
+    description: >-
+      1.4.0
+      4.0.0
+      
+      Alternatively, if you only want the API token to be able to view and run queries within a collection (but not change them), you can add the API token as a viewer on the collection.
+      
+      Must first obtain a user's bearer token
+      
+      To carry out this operation, you must first obtain a user's bearer token. Specifically, you must obtain the bearer token for a user who is already an editor on (or owner of) the query collection.
+  - step: 10
+    title: "Obtain a user's bearer token"
+    description: >-
+      For a few of the operations above, there is a bit of a "catch-22". For example:
+      
+      The answer is that you must use a user's own bearer token (temporarily)   specifically a user who already has the appropriate authority on the object. (In this example, a user who is already a connection admin on that connection.)
+      
+      To do this, you'll need to2:
+      
+      Paste what this has copied into a text editor:3
+    notes:
+      - type: warning
+        title: "Has a limited lifespan"
+        content: >-
+          Be aware that the user's own bearer token will have a limited lifespan. At some point the user will be automatically logged out and will be asked to log in again, at which point this bearer token will have expired and need to be re-retrieved.

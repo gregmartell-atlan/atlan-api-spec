@@ -1,0 +1,1794 @@
+post:
+  operationId: searchWorkflows
+  summary: Search workflows
+  description: |
+    Search for workflows using an Elasticsearch-style DSL.
+
+    ## Use cases
+    - [Manage workflows](https://developer.atlan.com/snippets/workflows/manage/workflows/)
+  externalDocs:
+    url: https://developer.atlan.com/snippets/workflows/manage/workflows/
+    description: Workflow management examples
+  tags:
+    - "Manage workflows"
+    - "Snowflake crawler"
+    - "Snowflake miner"
+    - "BigQuery crawler"
+    - "Redshift crawler"
+    - "Databricks crawler"
+    - "Databricks miner"
+    - "PostgreSQL crawler"
+    - "Oracle crawler"
+    - "SQL Server crawler"
+    - "Athena crawler"
+    - "AWS Glue crawler"
+    - "DynamoDB crawler"
+    - "MongoDB crawler"
+    - "Kafka crawler"
+    - "dbt crawler"
+    - "Looker crawler"
+    - "Tableau crawler"
+    - "Power BI crawler"
+    - "Sigma crawler"
+    - "Fivetran enrichment"
+    - "Asset import"
+    - "Asset export"
+    - "Relational assets builder"
+    - "Lineage builder"
+    - "Lineage generator (no transformation)"
+    - "Connection delete"
+    - "API token connection admin"
+  security:
+    - AtlanToken: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/Search.yaml#/WorkflowSearchRequest'
+        examples:
+          manage_workflows_0:
+            summary: "Manage workflows - example 1"
+            x-useCaseTag: "Manage workflows"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/manage/workflows/
+            x-atlanSnippet: |-
+              {
+                 "from": 0,
+                 "size": 1,
+                 "track_total_hits": true,
+                 "query": {
+                     "bool": {
+                     "filter": [
+                         {
+                         "nested": {
+                             "path": "metadata",
+                             "query": {
+                             "bool": {
+                                 "must": [
+                                 {
+                                     "term": {
+                                     "metadata.name.keyword": {
+                                         "value": "atlan-snowflake-miner-1714638976"
+                                          // (1)
+                                     }
+                                     }
+                                 }
+                                 ]
+                             }
+                             }
+                         }
+                         }
+                     ]
+                     }
+                 },
+                 "sort": [
+                     {
+                     "metadata.creationTimestamp": {
+                         "order": "desc",
+                         "nested": {
+                         "path": "metadata"
+                         }
+                     }
+                     }
+                 ]
+              }
+            value:
+              from: 0
+              size: 1
+              track_total_hits: true
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            bool:
+                              must:
+                                  - term:
+                                      metadata.name.keyword:
+                                        value: atlan-snowflake-miner-1714638976
+              sort:
+                  - metadata.creationTimestamp:
+                      order: desc
+                      nested:
+                        path: metadata
+
+          manage_workflows_1:
+            summary: "Manage workflows - example 2"
+            x-useCaseTag: "Manage workflows"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/manage/workflows/
+            x-atlanSnippet: |-
+              {
+                 "from": 0,
+                 "size": 5, // (1)
+                 "track_total_hits": true,
+                 "query": {
+                     "bool": {
+                     "filter": [
+                         {
+                         "nested": {
+                             "path": "metadata",
+                             "query": {
+                             "regexp": {
+                                 "metadata.name.keyword": {
+                                 "value": "atlan[-]snowflake[-]miner[-][0-9]{10}"
+                                 } // (2)
+                             }
+                             }
+                         }
+                         }
+                     ]
+                     }
+                 },
+                 "sort": [
+                     {
+                     "metadata.creationTimestamp": {
+                         "order": "desc",
+                         "nested": {
+                         "path": "metadata"
+                         }
+                     }
+                     }
+                 ]
+              }
+            value:
+              from: 0
+              size: 5
+              track_total_hits: true
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            regexp:
+                              metadata.name.keyword:
+                                value: atlan[-]snowflake[-]miner[-][0-9]{10}
+              sort:
+                  - metadata.creationTimestamp:
+                      order: desc
+                      nested:
+                        path: metadata
+
+          snowflake_crawler_2:
+            summary: "Snowflake crawler - with count"
+            x-useCaseTag: "Snowflake crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/snowflake-assets/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "atlan-snowflake" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: atlan-snowflake
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          snowflake_miner_3:
+            summary: "Snowflake miner - with count"
+            x-useCaseTag: "Snowflake miner"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/snowflake-miner/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "atlan-snowflake-miner" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: atlan-snowflake-miner
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          bigquery_crawler_4:
+            summary: "BigQuery crawler - with count"
+            x-useCaseTag: "BigQuery crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/bigquery-assets/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "atlan-bigquery" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: atlan-bigquery
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          redshift_crawler_5:
+            summary: "Redshift crawler - with count"
+            x-useCaseTag: "Redshift crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/redshift-assets/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "atlan-redshift" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: atlan-redshift
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          databricks_crawler_6:
+            summary: "Databricks crawler - with count"
+            x-useCaseTag: "Databricks crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/databricks-assets/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "atlan-databricks" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: atlan-databricks
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          databricks_miner_7:
+            summary: "Databricks miner - with count"
+            x-useCaseTag: "Databricks miner"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/databricks-miner/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "atlan-databricks-lineage" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: atlan-databricks-lineage
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          postgresql_crawler_8:
+            summary: "PostgreSQL crawler - with count"
+            x-useCaseTag: "PostgreSQL crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/postgres-assets/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "atlan-postgres" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: atlan-postgres
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          oracle_crawler_9:
+            summary: "Oracle crawler - with count"
+            x-useCaseTag: "Oracle crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/oracle-assets/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "atlan-oracle" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: atlan-oracle
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          sql_server_crawler_10:
+            summary: "SQL Server crawler - with count"
+            x-useCaseTag: "SQL Server crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/sql-server-assets/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "atlan-mssql" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: atlan-mssql
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          athena_crawler_11:
+            summary: "Athena crawler - with count"
+            x-useCaseTag: "Athena crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/athena-assets/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "atlan-athena" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: atlan-athena
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          aws_glue_crawler_12:
+            summary: "AWS Glue crawler - with count"
+            x-useCaseTag: "AWS Glue crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/glue-assets/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "atlan-glue" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: atlan-glue
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          dynamodb_crawler_13:
+            summary: "DynamoDB crawler - with count"
+            x-useCaseTag: "DynamoDB crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/dynamodb-assets/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "atlan-dynamodb" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: atlan-dynamodb
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          mongodb_crawler_14:
+            summary: "MongoDB crawler - with count"
+            x-useCaseTag: "MongoDB crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/mongodb-assets/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "atlan-mongodb" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: atlan-mongodb
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          kafka_crawler_15:
+            summary: "Kafka crawler - with count"
+            x-useCaseTag: "Kafka crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/confluent-kafka-assets/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "atlan-kafka-confluent-cloud" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: atlan-kafka-confluent-cloud
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          dbt_crawler_16:
+            summary: "dbt crawler - with count"
+            x-useCaseTag: "dbt crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/dbt-assets/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "atlan-dbt" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: atlan-dbt
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          looker_crawler_17:
+            summary: "Looker crawler - with count"
+            x-useCaseTag: "Looker crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/looker-assets/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "atlan-looker" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: atlan-looker
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          tableau_crawler_18:
+            summary: "Tableau crawler - with count"
+            x-useCaseTag: "Tableau crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/tableau-assets/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "atlan-tableau" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: atlan-tableau
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          power_bi_crawler_19:
+            summary: "Power BI crawler - with count"
+            x-useCaseTag: "Power BI crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/powerbi-assets/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "atlan-powerbi" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: atlan-powerbi
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          sigma_crawler_20:
+            summary: "Sigma crawler - with count"
+            x-useCaseTag: "Sigma crawler"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/sigma-assets/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "atlan-sigma" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: atlan-sigma
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          fivetran_enrichment_21:
+            summary: "Fivetran enrichment - example 2"
+            x-useCaseTag: "Fivetran enrichment"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/fivetran-enrichment/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "atlan-fivetran" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: atlan-fivetran
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          asset_import_22:
+            summary: "Asset import - example 3"
+            x-useCaseTag: "Asset import"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/asset-import/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "csa-asset-import" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: csa-asset-import
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          asset_export_23:
+            summary: "Asset export - example 4"
+            x-useCaseTag: "Asset export"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/asset-export-basic/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "csa-asset-export-basic" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: csa-asset-export-basic
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          relational_assets_builder_24:
+            summary: "Relational assets builder - example 5"
+            x-useCaseTag: "Relational assets builder"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/relational-assets-builder/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "csa-relational-assets-builder" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: csa-relational-assets-builder
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          lineage_builder_25:
+            summary: "Lineage builder - example 1"
+            x-useCaseTag: "Lineage builder"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/lineage-builder/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "csa-lineage-builder" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: csa-lineage-builder
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          lineage_generator_no_transformation_26:
+            summary: "Lineage generator (no transformation) - example 2"
+            x-useCaseTag: "Lineage generator (no transformation)"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/lineage-generator-nt/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "csa-lineage-generator" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: csa-lineage-generator
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          connection_delete_27:
+            summary: "Connection delete - example 3"
+            x-useCaseTag: "Connection delete"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/connection-delete/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "atlan-connection-delete" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: atlan-connection-delete
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+          api_token_connection_admin_28:
+            summary: "API token connection admin - example 4"
+            x-useCaseTag: "API token connection admin"
+            x-docUrl: https://developer.atlan.com/snippets/workflows/packages/api-token-connection-admin/
+            x-atlanSnippet: |-
+              {
+                "from": 0,
+                "size": 5,
+                "query": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "nested": {
+                          "path": "metadata",
+                          "query": {
+                            "prefix": {
+                              "metadata.name.keyword": {
+                                "value": "csa-api-token-connection-admin" // (1)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "sort": [
+                  {
+                    "metadata.creationTimestamp": {
+                      "nested": {
+                        "path": "metadata"
+                      },
+                      "order": "desc"
+                    }
+                  }
+                ],
+                "track_total_hits": true
+              }
+            value:
+              from: 0
+              size: 5
+              query:
+                bool:
+                  filter:
+                      - nested:
+                          path: metadata
+                          query:
+                            prefix:
+                              metadata.name.keyword:
+                                value: csa-api-token-connection-admin
+              sort:
+                  - metadata.creationTimestamp:
+                      nested:
+                        path: metadata
+                      order: desc
+              track_total_hits: true
+
+  responses:
+    '200':
+      description: Search results
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Search.yaml#/WorkflowSearchResponse'
+          examples:
+            workflow_list:
+              summary: List of workflows
+              description: Returns matching workflow definitions
+              value:
+                approximateCount: 25
+                records:
+                  - _index: atlan-workflow
+                    _source:
+                      metadata:
+                        name: atlan-snowflake-miner-1714638976
+                        namespace: default
+                        creationTimestamp: "2024-05-02T10:16:16Z"
+                        labels:
+                          workflows.argoproj.io/creator: admin
+                        annotations:
+                          package.argoproj.io/name: "@atlan/snowflake-miner"
+                      spec:
+                        templates:
+                          - name: main
+                            dag:
+                              tasks:
+                                - name: run
+                                  template: snowflake-miner
+                        entrypoint: main
+                        workflowMetadata:
+                          labels:
+                            package.argoproj.io/name: "@atlan/snowflake-miner"
+                      status:
+                        phase: Succeeded
+                        startedAt: "2024-05-02T10:16:16Z"
+                        finishedAt: "2024-05-02T10:25:42Z"
+                  - _index: atlan-workflow
+                    _source:
+                      metadata:
+                        name: atlan-snowflake-1699281775
+                        namespace: default
+                        creationTimestamp: "2023-11-06T14:42:55Z"
+                      spec:
+                        entrypoint: main
+                      status:
+                        phase: Succeeded
+            snowflake_crawlers:
+              summary: Snowflake crawler workflows
+              description: Filter for Snowflake-related workflows
+              value:
+                approximateCount: 8
+                records:
+                  - _source:
+                      metadata:
+                        name: atlan-snowflake-1699281775
+                        creationTimestamp: "2023-11-06T14:42:55Z"
+                        annotations:
+                          package.argoproj.io/name: "@atlan/snowflake"
+                      status:
+                        phase: Succeeded
+                        startedAt: "2023-11-06T14:42:55Z"
+                        finishedAt: "2023-11-06T15:12:30Z"
+    '400':
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '401':
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'
+    '500':
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ErrorResponse.yaml'

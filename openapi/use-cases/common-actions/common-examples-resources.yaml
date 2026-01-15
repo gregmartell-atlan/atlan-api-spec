@@ -1,0 +1,60 @@
+id: common-examples-resources
+title: Add asset resources / links
+category: common-actions
+icon: zap
+relatedTypes:
+  - Asset
+  - File
+  - Link
+description: Resources (links) can only be added to assets after an asset exists. (The asset itself must be created first.)
+externalDocs:
+  url: https://developer.atlan.com/snippets/common-examples/resources/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Add to an existing asset
+    description: |-
+      2.0.0 4.0.0
+      Each resource can be assigned to only a single asset. To create a resource and assign it to an asset:
+    notes:
+      - type: warning
+        title: Note that you are actually creating a new link asset
+        content: When adding a link through the API, you are really creating a new instance of a link asset. At the same time, you're attaching this new object to an existing asset.
+    method: POST
+    endpoint: /api/meta/entity/bulk
+    examples:
+      - key: example-1-1
+        summary: POST /api/meta/entity/bulk
+        request:
+          entities:
+            - typeName: Link
+              attributes:
+                name: Definition
+                qualifiedName: 540182b5-f47b-4ba1-a247-6ca9ffd9f37a
+                link: https://en.wikipedia.org/wiki/Customer
+                asset:
+                  - typeName: Table
+                    uniqueAttributes:
+                      qualifiedName: default/snowflake/1234567890/reln_db/reln_schema/customers
+        response:
+          mutatedEntities:
+            CREATE:
+              - typeName: Link
+                attributes:
+                  qualifiedName: 540182b5-f47b-4ba1-a247-6ca9ffd9f37a
+                  name: Definition
+                guid: abcdef01-2345-6789-abcd-ef000000000000
+                status: ACTIVE
+          guidAssignments:
+            "-1234567890": abcdef01-2345-6789-abcd-ef000000000000
+  - step: 2
+    title: Remove from an existing asset
+    description: |-
+      To remove a link from an existing asset you only need to delete the link itself. (The link is itself an asset.)
+      See Deleting an asset.
+      The link will have its own GUID, separate from the asset to which it is attached
+      When deleting the link, you need to use the link's GUID, not the GUID of the asset to which it is attached.
+    notes:
+      - type: warning
+        title: The link will have its own GUID, separate from the asset to which it is attached
+        content: When deleting the link, you need to use the link's GUID, not the GUID of the asset to which it is attached.

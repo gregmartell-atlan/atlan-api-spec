@@ -1,0 +1,565 @@
+id: workflows-manage-workflows
+title: Manage workflows
+category: workflows
+icon: zap
+relatedTypes:
+  - Workflow
+  - WorkflowRun
+description: Manage workflows in Atlan. Workflows are automated pipelines that run crawlers, sync data, and perform scheduled operations on your data catalog.
+externalDocs:
+  url: https://developer.atlan.com/snippets/workflows/manage/workflows/
+  description: Official Atlan documentation
+steps:
+  - step: 1
+    title: Retrieve workflow
+    description: |-
+      0.0.16 2.3.1 4.0.0
+      Retrieve an existing workflow by its ID:
+    method: POST
+    endpoint: /api/service/workflows/indexsearch
+    examples:
+      - key: example-1-1
+        summary: POST /api/service/workflows/indexsearch
+        request:
+          from: 0
+          size: 1
+          track_total_hits: true
+          query:
+            bool:
+              filter:
+                - nested:
+                    path: metadata
+                    query:
+                      bool:
+                        must:
+                          - term:
+                              metadata.name.keyword:
+                                value: atlan-snowflake-miner-1714638976
+          sort:
+            - metadata.creationTimestamp:
+                order: desc
+                nested:
+                  path: metadata
+        response:
+          approximateCount: 1
+          records:
+            - _index: atlan-workflow
+              _source:
+                metadata:
+                  name: atlan-snowflake-miner-1714638976
+                  namespace: default
+                  creationTimestamp: "2024-05-02T10:16:16Z"
+                  labels:
+                    workflows.argoproj.io/creator: admin
+                  annotations:
+                    package.argoproj.io/name: "@atlan/snowflake-miner"
+                spec:
+                  templates:
+                    - name: main
+                      dag:
+                        tasks:
+                          - name: run
+                            template: snowflake-miner
+                  entrypoint: main
+                status:
+                  phase: Succeeded
+                  startedAt: "2024-05-02T10:16:16Z"
+                  finishedAt: "2024-05-02T10:25:42Z"
+      - key: example-1-2
+        summary: POST /api/service/workflows/indexsearch
+        request:
+          from: 0
+          size: 5
+          track_total_hits: true
+          query:
+            bool:
+              filter:
+                - nested:
+                    path: metadata
+                    query:
+                      regexp:
+                        metadata.name.keyword:
+                          value: atlan[-]snowflake[-]miner[-][0-9]{10}
+          sort:
+            - metadata.creationTimestamp:
+                order: desc
+                nested:
+                  path: metadata
+        response:
+          approximateCount: 5
+          records:
+            - _index: atlan-workflow
+              _source:
+                metadata:
+                  name: atlan-snowflake-miner-1714638976
+                  namespace: default
+                  creationTimestamp: "2026-01-15T17:49:40.102Z"
+                  labels:
+                    workflows.argoproj.io/creator: admin
+                  annotations:
+                    package.argoproj.io/name: "@atlan/snowflake-miner"
+                spec:
+                  entrypoint: main
+                status:
+                  phase: Succeeded
+                  startedAt: "2026-01-15T16:49:40.108Z"
+                  finishedAt: "2026-01-15T17:49:40.108Z"
+  - step: 2
+    title: By ID
+    description: |-
+      0.0.16 2.3.1 4.0.0
+      Retrieve an existing workflow by its ID:
+    method: POST
+    endpoint: /api/service/workflows/indexsearch
+    examples:
+      - key: example-2-1
+        summary: POST /api/service/workflows/indexsearch
+        request:
+          from: 0
+          size: 1
+          track_total_hits: true
+          query:
+            bool:
+              filter:
+                - nested:
+                    path: metadata
+                    query:
+                      bool:
+                        must:
+                          - term:
+                              metadata.name.keyword:
+                                value: atlan-snowflake-miner-1714638976
+          sort:
+            - metadata.creationTimestamp:
+                order: desc
+                nested:
+                  path: metadata
+        response:
+          approximateCount: 5
+          records:
+            - _index: atlan-workflow
+              _source:
+                metadata:
+                  name: atlan-snowflake-miner-1714638976
+                  namespace: default
+                  creationTimestamp: "2026-01-15T17:49:40.108Z"
+                  labels:
+                    workflows.argoproj.io/creator: admin
+                  annotations:
+                    package.argoproj.io/name: "@atlan/snowflake-miner"
+                spec:
+                  entrypoint: main
+                status:
+                  phase: Succeeded
+                  startedAt: "2026-01-15T16:49:40.108Z"
+                  finishedAt: "2026-01-15T17:49:40.108Z"
+  - step: 3
+    title: By type
+    description: |-
+      0.0.16 1.9.5 4.0.0
+      Retrieve existing workflows by its type:
+    method: POST
+    endpoint: /api/service/workflows/indexsearch
+    examples:
+      - key: example-3-1
+        summary: POST /api/service/workflows/indexsearch
+        request:
+          from: 0
+          size: 5
+          track_total_hits: true
+          query:
+            bool:
+              filter:
+                - nested:
+                    path: metadata
+                    query:
+                      regexp:
+                        metadata.name.keyword:
+                          value: atlan[-]snowflake[-]miner[-][0-9]{10}
+          sort:
+            - metadata.creationTimestamp:
+                order: desc
+                nested:
+                  path: metadata
+        response:
+          approximateCount: 5
+          records:
+            - _index: atlan-workflow
+              _source:
+                metadata:
+                  name: atlan-snowflake-miner-1714638976
+                  namespace: default
+                  creationTimestamp: "2026-01-15T17:49:40.108Z"
+                  labels:
+                    workflows.argoproj.io/creator: admin
+                  annotations:
+                    package.argoproj.io/name: "@atlan/snowflake-miner"
+                spec:
+                  entrypoint: main
+                status:
+                  phase: Succeeded
+                  startedAt: "2026-01-15T16:49:40.108Z"
+                  finishedAt: "2026-01-15T17:49:40.108Z"
+  - step: 4
+    title: Create workflow credentials
+    description: "To create workflow credentials for example, for Snowflake:"
+    method: POST
+    endpoint: /api/service/credentials
+    queryString: testCredential=true
+    examples:
+      - key: example-4-1
+        summary: POST /api/service/credentials
+        requestRaw: |
+          {
+              "authType": "basic",// (1)
+              "name": "snowflake-credential",
+              "connector": "snowflake",
+              "connectorConfigName": "atlan-connectors-snowflake",
+              "username": "username",
+              "password": "password",
+              "extra": {
+                  "role": "role-here",
+                  "warehouse": "warehouse-here"},
+              "host": "test-host",
+              "port": 1234}
+        response:
+          id: 972a87c1-28d7-8bf2-896d-ea5bd3e9c691
+          name: snowflake-credential
+          host: test-host
+          port: 1234
+          authType: basic
+          connectorConfigName: atlan-connectors-snowflake
+          isValid: true
+          message: Connection successful
+  - step: 5
+    title: Retrieve all workflow credentials
+    description: "To retrive all workflow credentials for example, for Snowflake:"
+    notes:
+      - type: recommendation
+        title: URL-encoded filter
+        content: "Note that the filter is URL-encoded. Decoded it would be: {\"name\":\"atlan-snowflake-17891\"}"
+  - step: 6
+    title: Update workflow source credentials
+    description: |-
+      1.8.4 4.0.0
+      To update workflow source credentials for example, for Snowflake:
+    method: GET
+    endpoint: /api/service/credentials/972a87c1-28d7-8bf2-896d-ea5bd3e9c691
+    examples:
+      - key: example-6-1
+        summary: GET /api/service/credentials/972a87c1-28d7-8bf2-896d-ea5bd3e9c691
+      - key: example-6-2
+        summary: POST /api/service/credentials/972a87c1-28d7-8bf2-896d-ea5bd3e9c691/test
+      - key: example-6-3
+        summary: POST /api/service/credentials/test
+        request:
+          name: default-snowflake-1735595539-0
+          host: test.snowflake.com
+          port: 443
+          authType: basic
+          connectorType: jdbc
+          username: test-username
+          password: test-password
+          extra:
+            role: test-role
+            warehouse: test-warehouse
+          connectorConfigName: atlan-connectors-snowflake
+  - step: 7
+    title: Hard-delete an workflow credentials
+    description: |-
+      Hard-deletes (also called a purge) are irreversible operations. The workflow credential is removed from Atlan entirely, so no longer appears in the UI and also no longer exists in Atlan's back-end.
+      To hard-delete (purge) an asset, you only need to provide the GUID for Snowflake:
+  - step: 8
+    title: Update workflow configuration
+    description: |-
+      0.0.16 2.3.1
+      To update workflow configuration for example, for Snowflake:
+  - step: 9
+    title: Retrieve workflow run
+    description: |-
+      0.0.16 2.4.2
+      Retrieve an existing workflow run by its ID:
+    notes:
+      - type: tip
+        title: Not sure about Elasticsearch time range format?
+        content: Check out the Elasticsearch date math guide for more details.
+      - type: tip
+        title: Not sure about Elasticsearch time range format?
+        content: Check out the Elasticsearch date math guide for more details.
+    method: POST
+    endpoint: /api/service/runs/indexsearch
+    examples:
+      - key: example-9-1
+        summary: POST /api/service/runs/indexsearch
+        request:
+          from: 0
+          size: 1
+          track_total_hits: true
+          query:
+            bool:
+              filter:
+                - term:
+                    _id:
+                      value: atlan-snowflake-miner-1714638976-mzdza
+          sort:
+            - metadata.creationTimestamp:
+                order: desc
+                nested:
+                  path: metadata
+        response:
+          approximateCount: 1
+          records:
+            - _index: atlan-workflowrun
+              _source:
+                metadata:
+                  name: atlan-snowflake-miner-1714638976-mzdza
+                  namespace: default
+                  creationTimestamp: "2024-05-02T10:16:16Z"
+                  labels:
+                    workflows.argoproj.io/workflow: atlan-snowflake-miner-1714638976
+                status:
+                  phase: Succeeded
+                  startedAt: "2024-05-02T10:16:16Z"
+                  finishedAt: "2024-05-02T10:25:42Z"
+                  progress: 5/5
+                  nodes:
+                    atlan-snowflake-miner-1714638976-mzdza:
+                      phase: Succeeded
+                      type: DAG
+      - key: example-9-2
+        summary: POST /api/service/runs/indexsearch
+        request:
+          from: 0
+          size: 100
+          track_total_hits: true
+          query:
+            bool:
+              must:
+                - nested:
+                    path: metadata
+                    query:
+                      terms:
+                        metadata.labels.workflows.argoproj.io/phase.keyword:
+                          - Succeeded
+                          - Failed
+                - range:
+                    status.startedAt:
+                      gte: now-6h
+                - range:
+                    status.finishedAt:
+                      lte: now-1h
+                - nested:
+                    path: metadata
+                    query:
+                      exists:
+                        field: metadata.labels.workflows.argoproj.io/creator
+          sort:
+            - metadata.creationTimestamp:
+                order: desc
+                nested:
+                  path: metadata
+        response:
+          approximateCount: 10
+          records:
+            - _index: atlan-workflowrun
+              _source:
+                metadata:
+                  name: atlan-snowflake-miner-1714638976-run-1
+                  namespace: default
+                  creationTimestamp: "2026-01-15T17:49:40.108Z"
+                status:
+                  phase: Succeeded
+                  startedAt: "2026-01-15T16:49:40.108Z"
+                  finishedAt: "2026-01-15T17:49:40.108Z"
+                  progress: 5/5
+  - step: 10
+    title: By ID
+    description: |-
+      0.0.16 2.4.2
+      Retrieve an existing workflow run by its ID:
+    method: POST
+    endpoint: /api/service/runs/indexsearch
+    examples:
+      - key: example-10-1
+        summary: POST /api/service/runs/indexsearch
+        request:
+          from: 0
+          size: 1
+          track_total_hits: true
+          query:
+            bool:
+              filter:
+                - term:
+                    _id:
+                      value: atlan-snowflake-miner-1714638976-mzdza
+          sort:
+            - metadata.creationTimestamp:
+                order: desc
+                nested:
+                  path: metadata
+        response:
+          approximateCount: 10
+          records:
+            - _index: atlan-workflowrun
+              _source:
+                metadata:
+                  name: atlan-snowflake-miner-1714638976-run-1
+                  namespace: default
+                  creationTimestamp: "2026-01-15T17:49:40.108Z"
+                status:
+                  phase: Succeeded
+                  startedAt: "2026-01-15T16:49:40.108Z"
+                  finishedAt: "2026-01-15T17:49:40.108Z"
+                  progress: 5/5
+  - step: 11
+    title: By status and time range
+    description: "Retrieve existing workflow runs by their status and time range:"
+    method: POST
+    endpoint: /api/service/runs/indexsearch
+    examples:
+      - key: example-11-1
+        summary: POST /api/service/runs/indexsearch
+        request:
+          from: 0
+          size: 100
+          track_total_hits: true
+          query:
+            bool:
+              must:
+                - nested:
+                    path: metadata
+                    query:
+                      terms:
+                        metadata.labels.workflows.argoproj.io/phase.keyword:
+                          - Succeeded
+                          - Failed
+                - range:
+                    status.startedAt:
+                      gte: now-6h
+                - range:
+                    status.finishedAt:
+                      lte: now-1h
+                - nested:
+                    path: metadata
+                    query:
+                      exists:
+                        field: metadata.labels.workflows.argoproj.io/creator
+          sort:
+            - metadata.creationTimestamp:
+                order: desc
+                nested:
+                  path: metadata
+        response:
+          approximateCount: 10
+          records:
+            - _index: atlan-workflowrun
+              _source:
+                metadata:
+                  name: atlan-snowflake-miner-1714638976-run-1
+                  namespace: default
+                  creationTimestamp: "2026-01-15T17:49:40.108Z"
+                status:
+                  phase: Succeeded
+                  startedAt: "2026-01-15T16:49:40.108Z"
+                  finishedAt: "2026-01-15T17:49:40.108Z"
+                  progress: 5/5
+  - step: 12
+    title: Retrieve all workflow runs
+    description: |-
+      0.0.16 2.1.8
+      To retrieve all existing workflow runs based on  their phase, such as Succeeded, Running, Failed, etc
+    method: POST
+    endpoint: /api/service/runs/indexsearch
+    examples:
+      - key: example-12-1
+        summary: POST /api/service/runs/indexsearch
+        request:
+          from: 0
+          size: 100
+          track_total_hits: true
+          query:
+            bool:
+              must:
+                - nested:
+                    path: spec
+                    query:
+                      term:
+                        spec.workflowTemplateRef.name.keyword:
+                          value: atlan-snowflake-miner-1714638976
+              filter:
+                - term:
+                    status.phase.keyword:
+                      value: Succeeded
+          sort:
+            - metadata.creationTimestamp:
+                order: desc
+                nested:
+                  path: metadata
+        response:
+          approximateCount: 10
+          records:
+            - _index: atlan-workflowrun
+              _source:
+                metadata:
+                  name: atlan-snowflake-miner-1714638976-run-1
+                  namespace: default
+                  creationTimestamp: "2026-01-15T17:49:40.108Z"
+                status:
+                  phase: Succeeded
+                  startedAt: "2026-01-15T16:49:40.108Z"
+                  finishedAt: "2026-01-15T17:49:40.108Z"
+                  progress: 5/5
+  - step: 13
+    title: "By their phase:"
+    description: To retrieve all existing workflow runs based on  their phase, such as Succeeded, Running, Failed, etc
+    method: POST
+    endpoint: /api/service/runs/indexsearch
+    examples:
+      - key: example-13-1
+        summary: POST /api/service/runs/indexsearch
+        request:
+          from: 0
+          size: 100
+          track_total_hits: true
+          query:
+            bool:
+              must:
+                - nested:
+                    path: spec
+                    query:
+                      term:
+                        spec.workflowTemplateRef.name.keyword:
+                          value: atlan-snowflake-miner-1714638976
+              filter:
+                - term:
+                    status.phase.keyword:
+                      value: Succeeded
+          sort:
+            - metadata.creationTimestamp:
+                order: desc
+                nested:
+                  path: metadata
+        response:
+          approximateCount: 10
+          records:
+            - _index: atlan-workflowrun
+              _source:
+                metadata:
+                  name: atlan-snowflake-miner-1714638976-run-1
+                  namespace: default
+                  creationTimestamp: "2026-01-15T17:49:40.108Z"
+                status:
+                  phase: Succeeded
+                  startedAt: "2026-01-15T16:49:40.108Z"
+                  finishedAt: "2026-01-15T17:49:40.108Z"
+                  progress: 5/5
+  - step: 14
+    title: Stop a running workflow
+    description: |-
+      0.0.16 2.1.8
+      To stop a running workflow:
+  - step: 15
+    title: Delete a workflow
+    description: |-
+      0.0.16 2.1.8 4.0.0
+      To delete a workflow:
