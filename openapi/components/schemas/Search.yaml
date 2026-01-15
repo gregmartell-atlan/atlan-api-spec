@@ -131,3 +131,9 @@ ServiceIndexSearchRequest:
     track_total_hits: true
     query:
       match_all: {}
+
+WorkflowSearchRequest:
+  $ref: '#/ServiceIndexSearchRequest'
+
+WorkflowSearchResponse:
+  $ref: '#/MetaIndexSearchResponse'
