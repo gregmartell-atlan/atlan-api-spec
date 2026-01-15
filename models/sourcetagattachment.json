@@ -1,0 +1,51 @@
+{
+  "id": "sourcetagattachment",
+  "title": "SourceTagAttachment",
+  "url": "https://developer.atlan.com/models/entities/structs/#sourcetagattachment",
+  "description": "Represents a source-synced tag attachment on an asset. When tags from external systems (Snowflake, Databricks, dbt, BigQuery) are synced to Atlan, they appear in the classification's attributes as SourceTagAttachment objects. This structure contains details about the source tag including its name, qualified name, connector, and any tag values.",
+  "inheritance": ["Struct"],
+  "properties": [
+    {
+      "name": "sourceTagName",
+      "type": "string",
+      "readOnly": true,
+      "description": "Name of the tag in the source system (e.g., 'CONFIDENTIAL')."
+    },
+    {
+      "name": "sourceTagQualifiedName",
+      "type": "string",
+      "readOnly": true,
+      "description": "Fully qualified name of the source tag (e.g., 'default/snowflake/1726834662/ANALYTICS/WIDE_WORLD_IMPORTERS/CONFIDENTIAL')."
+    },
+    {
+      "name": "sourceTagGuid",
+      "type": "string",
+      "readOnly": true,
+      "description": "GUID of the source tag asset in Atlan."
+    },
+    {
+      "name": "sourceTagConnectorName",
+      "type": "string",
+      "readOnly": true,
+      "description": "Connector type for the source system (e.g., 'snowflake', 'databricks', 'dbt', 'bigquery')."
+    },
+    {
+      "name": "isSourceTagSynced",
+      "type": "boolean",
+      "readOnly": true,
+      "description": "Whether the source tag is currently synced with the external system."
+    },
+    {
+      "name": "sourceTagSyncTimestamp",
+      "type": "timestamp",
+      "readOnly": true,
+      "description": "Epoch timestamp (milliseconds) of the last sync with the source system."
+    },
+    {
+      "name": "sourceTagValue",
+      "type": "array<SourceTagAttachmentValue>",
+      "readOnly": false,
+      "description": "Array of tag values attached to this source tag. Each value contains a tagAttachmentValue string."
+    }
+  ]
+}
