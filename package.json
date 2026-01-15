@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "OpenAPI/Swagger specification and interactive UI for Atlan REST APIs",
   "type": "module",
+  "homepage": "https://gregmartell-atlan.github.io/atlan-api-spec",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "npm run bundle:all && tsc && vite build",
     "preview": "vite preview",
@@ -35,6 +38,7 @@
     "@types/swagger-ui-react": "^5.18.0",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.16",
+    "gh-pages": "^6.3.0",
     "js-yaml": "^4.1.0",
     "postcss": "^8.4.32",
     "tailwindcss": "^3.4.0",
