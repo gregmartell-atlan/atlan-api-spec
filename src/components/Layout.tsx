@@ -9,14 +9,14 @@ const NAV_ITEMS = [
 ] as const;
 
 export function Layout() {
-  const { theme, toggleTheme, isDark } = useTheme();
-  
+  const { toggleTheme, isDark } = useTheme();
+
   return (
     <div className="min-h-screen flex flex-col" style={{ background: 'var(--bg-primary)' }}>
       {/* Top Navigation Bar */}
-      <header 
+      <header
         className="h-14 flex items-center px-6 gap-6 shrink-0 sticky top-0 z-50 glass-panel"
-        style={{ 
+        style={{
           borderTop: 'none',
           borderLeft: 'none',
           borderRight: 'none'
@@ -24,9 +24,9 @@ export function Layout() {
       >
         {/* Logo */}
         <div className="flex items-center gap-3 group cursor-pointer">
-          <div 
+          <div
             className="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-            style={{ 
+            style={{
               background: 'var(--gradient-teal)',
               boxShadow: 'var(--shadow-glow-teal)'
             }}
@@ -34,12 +34,12 @@ export function Layout() {
             <Zap className="w-5 h-5" style={{ color: 'var(--bg-primary)' }} />
           </div>
           <div className="flex flex-col">
-            <h1 
+            <h1
               className="text-base font-bold leading-tight tracking-tight text-gradient"
             >
               Atlan API
             </h1>
-            <span 
+            <span
               className="text-[10px] uppercase tracking-widest font-bold opacity-70"
               style={{ color: 'var(--text-tertiary)' }}
             >
@@ -49,7 +49,7 @@ export function Layout() {
         </div>
 
         {/* Separator */}
-        <div 
+        <div
           className="w-px h-6"
           style={{ background: 'var(--border-default)' }}
         />
@@ -62,8 +62,7 @@ export function Layout() {
               to={to}
               end={to === '/'}
               className={({ isActive }) =>
-                `flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
-                  isActive ? '' : 'hover:bg-opacity-50'
+                `flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${isActive ? '' : 'hover:bg-opacity-50'
                 }`
               }
               style={({ isActive }) => ({
@@ -83,7 +82,7 @@ export function Layout() {
           <button
             onClick={toggleTheme}
             className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 group"
-            style={{ 
+            style={{
               background: 'var(--surface-dim)',
               border: '1px solid var(--border-subtle)'
             }}
@@ -91,22 +90,22 @@ export function Layout() {
             aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             {isDark ? (
-              <Sun 
-                className="w-4 h-4 transition-transform duration-200 group-hover:rotate-12" 
-                style={{ color: 'var(--accent-amber)' }} 
+              <Sun
+                className="w-4 h-4 transition-transform duration-200 group-hover:rotate-12"
+                style={{ color: 'var(--accent-amber)' }}
               />
             ) : (
-              <Moon 
-                className="w-4 h-4 transition-transform duration-200 group-hover:-rotate-12" 
-                style={{ color: 'var(--accent-purple)' }} 
+              <Moon
+                className="w-4 h-4 transition-transform duration-200 group-hover:-rotate-12"
+                style={{ color: 'var(--accent-purple)' }}
               />
             )}
           </button>
-          
+
           {/* Version badge */}
-          <span 
+          <span
             className="px-2 py-1 text-xs font-medium rounded"
-            style={{ 
+            style={{
               background: 'var(--surface-bright)',
               color: 'var(--text-tertiary)'
             }}

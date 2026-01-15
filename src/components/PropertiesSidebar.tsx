@@ -40,11 +40,11 @@ let assetPropertiesSet: Set<string> | null = null;
 
 async function loadEntityDetail(entityId: string): Promise<EntityDetail | null> {
   const normalizedId = entityId.toLowerCase();
-  
+
   if (entityCache.has(normalizedId)) {
     return entityCache.get(normalizedId)!;
   }
-  
+
   try {
     const response = await fetch(`/models/${normalizedId}.json`);
     if (!response.ok) throw new Error('Not found');
@@ -59,7 +59,7 @@ async function loadEntityDetail(entityId: string): Promise<EntityDetail | null> 
 
 async function getAssetPropertyNames(): Promise<Set<string>> {
   if (assetPropertiesSet) return assetPropertiesSet;
-  
+
   const assetEntity = await loadEntityDetail('asset');
   if (assetEntity?.properties) {
     assetPropertiesSet = new Set(assetEntity.properties.map(p => p.name));
@@ -115,16 +115,16 @@ function CopyButton({ text }: { text: string }) {
 function PropertyItem({ property, isTypeSpecific }: { property: Property; isTypeSpecific?: boolean }) {
   const [expanded, setExpanded] = useState(false);
   const typeStyle = TYPE_COLORS[property.type] || TYPE_COLORS.unknown;
-  
+
   return (
-    <div 
+    <div
       className="group"
       style={{ borderBottom: '1px solid var(--border-subtle)' }}
     >
       <div
         onClick={() => property.description && setExpanded(!expanded)}
         className="w-full flex items-center gap-2 py-2 px-3 text-left transition-colors hover:bg-opacity-50"
-        style={{ 
+        style={{
           background: expanded ? 'var(--surface-hover)' : 'transparent',
           cursor: property.description ? 'pointer' : 'default'
         }}
@@ -146,14 +146,16 @@ function PropertyItem({ property, isTypeSpecific }: { property: Property; isType
         ) : (
           <div className="w-3" />
         )}
-        
+
         <div className="flex-1 min-w-0 flex items-center gap-1.5">
           {isTypeSpecific && (
-            <Sparkles className="w-3 h-3 shrink-0" style={{ color: 'var(--accent-teal)' }} title="Type-specific property" />
+            <span title="Type-specific property">
+              <Sparkles className="w-3 h-3 shrink-0" style={{ color: 'var(--accent-teal)' }} />
+            </span>
           )}
-          <span 
+          <span
             className="text-xs truncate"
-            style={{ 
+            style={{
               fontFamily: 'var(--font-mono)',
               color: isTypeSpecific ? 'var(--accent-teal)' : 'var(--text-primary)'
             }}
@@ -162,23 +164,25 @@ function PropertyItem({ property, isTypeSpecific }: { property: Property; isType
           </span>
           <CopyButton text={property.name} />
           {property.readOnly && (
-            <Lock className="w-2.5 h-2.5 shrink-0" style={{ color: 'var(--text-tertiary)' }} title="Read-only" />
+            <span title="Read-only">
+              <Lock className="w-2.5 h-2.5 shrink-0" style={{ color: 'var(--text-tertiary)' }} />
+            </span>
           )}
         </div>
-        
-        <span 
+
+        <span
           className="text-[10px] px-1.5 py-0.5 rounded-full shrink-0"
           style={{ background: typeStyle.bg, color: typeStyle.text }}
         >
           {property.type}
         </span>
       </div>
-      
+
       {expanded && property.description && (
-        <div 
+        <div
           className="px-3 pb-2 pl-8"
         >
-          <p 
+          <p
             className="text-xs leading-relaxed"
             style={{ color: 'var(--text-secondary)' }}
           >
@@ -190,24 +194,24 @@ function PropertyItem({ property, isTypeSpecific }: { property: Property; isType
   );
 }
 
-function TypeSection({ 
-  entity, 
+function TypeSection({
+  entity,
   assetPropertyNames,
-  defaultExpanded = false 
-}: { 
-  entity: EntityDetail; 
+  defaultExpanded = false
+}: {
+  entity: EntityDetail;
   assetPropertyNames: Set<string>;
   defaultExpanded?: boolean;
 }) {
   const [expanded, setExpanded] = useState(defaultExpanded);
-  
+
   // Separate type-specific vs inherited properties
   const { typeSpecific, inherited } = useMemo(() => {
     if (!entity.properties) return { typeSpecific: [], inherited: [] };
-    
+
     const specific: Property[] = [];
     const inherit: Property[] = [];
-    
+
     for (const prop of entity.properties) {
       // If it's not in Asset, it's type-specific
       if (!assetPropertyNames.has(prop.name)) {
@@ -216,18 +220,18 @@ function TypeSection({
         inherit.push(prop);
       }
     }
-    
+
     return { typeSpecific: specific, inherited: inherit };
   }, [entity.properties, assetPropertyNames]);
-  
+
   const [showAllInherited, setShowAllInherited] = useState(false);
   const INITIAL_INHERITED_COUNT = 5;
   const visibleInherited = showAllInherited ? inherited : inherited.slice(0, INITIAL_INHERITED_COUNT);
-  
+
   return (
-    <div 
+    <div
       className="rounded-lg overflow-hidden"
-      style={{ 
+      style={{
         background: 'var(--surface-default)',
         border: '1px solid var(--border-subtle)'
       }}
@@ -236,22 +240,22 @@ function TypeSection({
       <button
         onClick={() => setExpanded(!expanded)}
         className="w-full flex items-center gap-2 p-3 text-left transition-colors"
-        style={{ 
+        style={{
           background: 'var(--surface-dim)',
           borderBottom: expanded ? '1px solid var(--border-subtle)' : 'none'
         }}
       >
         <Box className="w-4 h-4" style={{ color: 'var(--accent-teal)' }} />
-        <span 
+        <span
           className="flex-1 text-sm font-medium"
-          style={{ 
+          style={{
             fontFamily: 'var(--font-mono)',
             color: 'var(--text-primary)'
           }}
         >
           {entity.title}
         </span>
-        <span 
+        <span
           className="text-xs"
           style={{ color: 'var(--text-tertiary)' }}
         >
@@ -263,21 +267,21 @@ function TypeSection({
           <ChevronRight className="w-4 h-4" style={{ color: 'var(--text-tertiary)' }} />
         )}
       </button>
-      
+
       {expanded && (
         <div>
           {/* Type-specific properties */}
           {typeSpecific.length > 0 && (
             <div>
-              <div 
+              <div
                 className="flex items-center gap-2 px-3 py-2"
-                style={{ 
+                style={{
                   background: 'var(--accent-teal-dim)',
                   borderBottom: '1px solid var(--border-subtle)'
                 }}
               >
                 <Sparkles className="w-3.5 h-3.5" style={{ color: 'var(--accent-teal)' }} />
-                <span 
+                <span
                   className="text-xs font-medium"
                   style={{ color: 'var(--accent-teal)' }}
                 >
@@ -291,19 +295,19 @@ function TypeSection({
               </div>
             </div>
           )}
-          
+
           {/* Inherited properties */}
           {inherited.length > 0 && (
             <div>
-              <div 
+              <div
                 className="flex items-center gap-2 px-3 py-2"
-                style={{ 
+                style={{
                   background: 'var(--surface-bright)',
                   borderBottom: '1px solid var(--border-subtle)'
                 }}
               >
                 <Layers className="w-3.5 h-3.5" style={{ color: 'var(--text-tertiary)' }} />
-                <span 
+                <span
                   className="text-xs font-medium"
                   style={{ color: 'var(--text-tertiary)' }}
                 >
@@ -320,22 +324,22 @@ function TypeSection({
                     className="w-full px-3 py-2 text-xs font-medium transition-colors text-left"
                     style={{ color: 'var(--accent-teal)' }}
                   >
-                    {showAllInherited 
-                      ? 'Show less' 
+                    {showAllInherited
+                      ? 'Show less'
                       : `Show ${inherited.length - INITIAL_INHERITED_COUNT} more inherited properties`}
                   </button>
                 )}
               </div>
             </div>
           )}
-          
+
           {/* Link to full docs */}
           <a
             href={entity.url}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 px-3 py-2 text-xs transition-colors"
-            style={{ 
+            style={{
               color: 'var(--accent-teal)',
               background: 'var(--surface-dim)',
               borderTop: '1px solid var(--border-subtle)'
@@ -354,16 +358,16 @@ export function PropertiesSidebar({ relatedTypes }: PropertiesSidebarProps) {
   const [entities, setEntities] = useState<EntityDetail[]>([]);
   const [assetPropertyNames, setAssetPropertyNames] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
     if (relatedTypes.length === 0) {
       setEntities([]);
       setLoading(false);
       return;
     }
-    
+
     setLoading(true);
-    
+
     Promise.all([
       getAssetPropertyNames(),
       ...relatedTypes.map(type => loadEntityDetail(type))
@@ -373,39 +377,39 @@ export function PropertiesSidebar({ relatedTypes }: PropertiesSidebarProps) {
       setLoading(false);
     });
   }, [relatedTypes]);
-  
+
   if (relatedTypes.length === 0) {
     return null;
   }
-  
+
   return (
-    <aside 
+    <aside
       className="w-80 border-l shrink-0 hidden xl:flex flex-col"
-      style={{ 
+      style={{
         background: 'var(--bg-secondary)',
         borderColor: 'var(--border-subtle)'
       }}
     >
       {/* Header */}
-      <div 
+      <div
         className="p-4 border-b"
         style={{ borderColor: 'var(--border-subtle)' }}
       >
-        <h3 
+        <h3
           className="text-sm font-semibold flex items-center gap-2"
           style={{ color: 'var(--text-primary)' }}
         >
           <Box className="w-4 h-4" style={{ color: 'var(--accent-teal)' }} />
           Related Types
         </h3>
-        <p 
+        <p
           className="text-xs mt-1"
           style={{ color: 'var(--text-tertiary)' }}
         >
           Properties for asset types used in this use case
         </p>
       </div>
-      
+
       {/* Content */}
       <div className="flex-1 overflow-y-auto p-3 space-y-3">
         {loading ? (
@@ -413,7 +417,7 @@ export function PropertiesSidebar({ relatedTypes }: PropertiesSidebarProps) {
             <Loader2 className="w-6 h-6 animate-spin" style={{ color: 'var(--accent-teal)' }} />
           </div>
         ) : entities.length === 0 ? (
-          <p 
+          <p
             className="text-sm text-center py-10"
             style={{ color: 'var(--text-tertiary)' }}
           >
@@ -421,8 +425,8 @@ export function PropertiesSidebar({ relatedTypes }: PropertiesSidebarProps) {
           </p>
         ) : (
           entities.map((entity) => (
-            <TypeSection 
-              key={entity.id} 
+            <TypeSection
+              key={entity.id}
               entity={entity}
               assetPropertyNames={assetPropertyNames}
               defaultExpanded={entities.length === 1}

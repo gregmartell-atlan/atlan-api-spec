@@ -1500,6 +1500,115 @@
                       "description": "Related entities referenced by this asset."
                     }
                   }
+                },
+                "examples": {
+                  "table_asset": {
+                    "summary": "Table asset with full details",
+                    "description": "A Snowflake table with classifications, owners, and metadata",
+                    "value": {
+                      "referredEntities": {},
+                      "entity": {
+                        "typeName": "Table",
+                        "attributes": {
+                          "qualifiedName": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP",
+                          "name": "DIM_CUSTOMER_SP",
+                          "displayName": "Customer Dimension",
+                          "description": "Dimension table for customer data",
+                          "userDescription": "Customer dimension for analytics",
+                          "certificateStatus": "VERIFIED",
+                          "certificateStatusMessage": "Production-ready",
+                          "ownerUsers": [
+                            "data.steward@company.com"
+                          ],
+                          "ownerGroups": [
+                            "Analytics Team"
+                          ],
+                          "connectionQualifiedName": "default/snowflake/1698696666",
+                          "connectorName": "snowflake",
+                          "databaseName": "WIDE_WORLD_IMPORTERS",
+                          "databaseQualifiedName": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS",
+                          "schemaName": "PROCESSED_GOLD",
+                          "schemaQualifiedName": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD",
+                          "columnCount": 15,
+                          "rowCount": 50000,
+                          "sizeBytes": 2048000,
+                          "queryCount": 1250,
+                          "queryUserCount": 12,
+                          "isProfiled": true,
+                          "lastProfiledAt": 1765929858468,
+                          "__hasLineage": true,
+                          "__state": "ACTIVE"
+                        },
+                        "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                        "status": "ACTIVE",
+                        "createdBy": "ryan.quigley",
+                        "updatedBy": "service-account-atlan-argo",
+                        "createTime": 1747185436766,
+                        "updateTime": 1765929858468,
+                        "version": 42,
+                        "classifications": [
+                          {
+                            "typeName": "PII",
+                            "entityGuid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                            "propagate": true
+                          }
+                        ],
+                        "relationshipAttributes": {
+                          "atlanSchema": {
+                            "guid": "a8c5caab-de7a-4b4d-8835-a36022781061",
+                            "typeName": "Schema",
+                            "displayText": "PROCESSED_GOLD"
+                          },
+                          "columns": [
+                            {
+                              "guid": "c9d6dcbc-ff9b-5d6e-a057-b47144882061",
+                              "typeName": "Column",
+                              "displayText": "CUSTOMER_ID"
+                            },
+                            {
+                              "guid": "d0e7edcd-0aca-6e7f-b168-c58255993172",
+                              "typeName": "Column",
+                              "displayText": "CUSTOMER_NAME"
+                            }
+                          ],
+                          "meanings": [
+                            {
+                              "guid": "be81ac35-d93f-4b4b-a49a-b1c7046e575d",
+                              "typeName": "AtlasGlossaryTerm",
+                              "displayText": "Customer"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "column_asset": {
+                    "summary": "Column asset",
+                    "description": "A table column with data type and profiling info",
+                    "value": {
+                      "referredEntities": {},
+                      "entity": {
+                        "typeName": "Column",
+                        "attributes": {
+                          "qualifiedName": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP/CUSTOMER_ID",
+                          "name": "CUSTOMER_ID",
+                          "dataType": "NUMBER",
+                          "order": 1,
+                          "isPrimary": true,
+                          "isNullable": false,
+                          "precision": 38,
+                          "scale": 0,
+                          "maxLength": 0,
+                          "isPartition": false,
+                          "isClustered": false,
+                          "__hasLineage": true
+                        },
+                        "guid": "c9d6dcbc-ff9b-5d6e-a057-b47144882061",
+                        "status": "ACTIVE",
+                        "classifications": []
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -1537,6 +1646,10 @@
                     "errorCode",
                     "errorMessage"
                   ]
+                },
+                "example": {
+                  "errorCode": "ATLAS-400-00-001",
+                  "errorMessage": "Invalid GUID format"
                 }
               }
             }
@@ -1574,6 +1687,12 @@
                     "errorCode",
                     "errorMessage"
                   ]
+                },
+                "example": {
+                  "servlet": "jersey-servlet",
+                  "message": "Unauthorized",
+                  "url": "/api/meta/entity/guid/b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                  "status": "401"
                 }
               }
             }
@@ -1648,6 +1767,10 @@
                     "errorCode",
                     "errorMessage"
                   ]
+                },
+                "example": {
+                  "errorCode": "ATLAS-404-00-005",
+                  "errorMessage": "Given instance guid b9d5dbbc-ee8a-4c5e-a946-a47033892172 is invalid/not found"
                 }
               }
             }
@@ -2672,6 +2795,67 @@
                       }
                     }
                   }
+                },
+                "examples": {
+                  "table_by_qualified_name": {
+                    "summary": "Table retrieved by qualifiedName",
+                    "description": "Full table details including relationships",
+                    "value": {
+                      "referredEntities": {},
+                      "entity": {
+                        "typeName": "Table",
+                        "attributes": {
+                          "qualifiedName": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP",
+                          "name": "DIM_CUSTOMER_SP",
+                          "displayName": "Customer Dimension",
+                          "description": "Main customer dimension table",
+                          "certificateStatus": "VERIFIED",
+                          "ownerUsers": [
+                            "data.steward@company.com"
+                          ],
+                          "connectionQualifiedName": "default/snowflake/1698696666",
+                          "connectorName": "snowflake",
+                          "databaseName": "WIDE_WORLD_IMPORTERS",
+                          "schemaName": "PROCESSED_GOLD",
+                          "columnCount": 15,
+                          "rowCount": 50000,
+                          "__hasLineage": true
+                        },
+                        "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                        "status": "ACTIVE",
+                        "createdBy": "ryan.quigley",
+                        "createTime": 1747185436766,
+                        "updateTime": 1765929858468,
+                        "classifications": [
+                          {
+                            "typeName": "PII",
+                            "propagate": true
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "column_by_qualified_name": {
+                    "summary": "Column retrieved by qualifiedName",
+                    "description": "Column with data type and profiling info",
+                    "value": {
+                      "referredEntities": {},
+                      "entity": {
+                        "typeName": "Column",
+                        "attributes": {
+                          "qualifiedName": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER_SP/EMAIL",
+                          "name": "EMAIL",
+                          "dataType": "VARCHAR",
+                          "order": 5,
+                          "isPrimary": false,
+                          "isNullable": true,
+                          "maxLength": 256
+                        },
+                        "guid": "c9d6dcbc-ff9b-5d6e-a057-b47144882061",
+                        "status": "ACTIVE"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -2820,6 +3004,10 @@
                     "errorCode",
                     "errorMessage"
                   ]
+                },
+                "example": {
+                  "errorCode": "ATLAS-404-00-001",
+                  "errorMessage": "No entity found with type Table and qualifiedName default/snowflake/123/missing/table"
                 }
               }
             }
@@ -2988,6 +3176,92 @@
                           }
                         }
                       }
+                    }
+                  }
+                },
+                "examples": {
+                  "audit_history": {
+                    "summary": "Audit history for an asset",
+                    "description": "Shows the change history for a specific asset",
+                    "value": {
+                      "count": 15,
+                      "entityAudits": [
+                        {
+                          "entityId": "b4113341-251b-4adc-81fb-2420501c30e6",
+                          "typeName": "Table",
+                          "action": "ENTITY_UPDATE",
+                          "user": "data.steward@company.com",
+                          "timestamp": 1765929858468,
+                          "created": 1765929858468,
+                          "detail": {
+                            "typeName": "Table",
+                            "attributes": {
+                              "certificateStatus": "VERIFIED",
+                              "certificateStatusMessage": "Reviewed and approved"
+                            },
+                            "guid": "b4113341-251b-4adc-81fb-2420501c30e6"
+                          },
+                          "eventKey": "b4113341-251b-4adc-81fb-2420501c30e6:1765929858468"
+                        },
+                        {
+                          "entityId": "b4113341-251b-4adc-81fb-2420501c30e6",
+                          "typeName": "Table",
+                          "action": "CLASSIFICATION_ADD",
+                          "user": "admin@company.com",
+                          "timestamp": 1765929758000,
+                          "created": 1765929758000,
+                          "detail": {
+                            "typeName": "Table",
+                            "classifications": [
+                              {
+                                "typeName": "PII",
+                                "entityGuid": "b4113341-251b-4adc-81fb-2420501c30e6",
+                                "propagate": true
+                              }
+                            ],
+                            "guid": "b4113341-251b-4adc-81fb-2420501c30e6"
+                          },
+                          "eventKey": "b4113341-251b-4adc-81fb-2420501c30e6:1765929758000"
+                        },
+                        {
+                          "entityId": "b4113341-251b-4adc-81fb-2420501c30e6",
+                          "typeName": "Table",
+                          "action": "ENTITY_CREATE",
+                          "user": "service-account-crawler",
+                          "timestamp": 1747185436766,
+                          "created": 1747185436766,
+                          "detail": {
+                            "typeName": "Table",
+                            "attributes": {
+                              "qualifiedName": "default/snowflake/1698696666/ANALYTICS/PUBLIC/CUSTOMERS",
+                              "name": "CUSTOMERS"
+                            },
+                            "guid": "b4113341-251b-4adc-81fb-2420501c30e6"
+                          },
+                          "eventKey": "b4113341-251b-4adc-81fb-2420501c30e6:1747185436766"
+                        }
+                      ]
+                    }
+                  },
+                  "audit_by_action": {
+                    "summary": "Filter by action type",
+                    "description": "Only ENTITY_UPDATE events",
+                    "value": {
+                      "count": 8,
+                      "entityAudits": [
+                        {
+                          "entityId": "b4113341-251b-4adc-81fb-2420501c30e6",
+                          "typeName": "Table",
+                          "action": "ENTITY_UPDATE",
+                          "user": "data.steward@company.com",
+                          "timestamp": 1765929858468,
+                          "detail": {
+                            "attributes": {
+                              "description": "Updated customer table description"
+                            }
+                          }
+                        }
+                      ]
                     }
                   }
                 }
@@ -4637,6 +4911,129 @@
                       "description": "Echo of the search parameters used."
                     }
                   }
+                },
+                "examples": {
+                  "search_tables": {
+                    "summary": "Search for Tables",
+                    "description": "Search for all Table assets with pagination",
+                    "value": {
+                      "queryType": "INDEX",
+                      "searchParameters": {
+                        "attributes": [
+                          "name",
+                          "qualifiedName",
+                          "columnCount",
+                          "rowCount"
+                        ],
+                        "showSearchScore": false,
+                        "excludeMeanings": false,
+                        "excludeClassifications": false,
+                        "dsl": {
+                          "query": {
+                            "bool": {
+                              "must": [
+                                {
+                                  "term": {
+                                    "__typeName.keyword": "Table"
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "size": 10
+                        },
+                        "querySize": 10
+                      },
+                      "approximateCount": 156,
+                      "entities": [
+                        {
+                          "typeName": "Table",
+                          "attributes": {
+                            "qualifiedName": "default/snowflake/1699281775/ANALYTICS/PUBLIC/CUSTOMERS",
+                            "name": "CUSTOMERS",
+                            "columnCount": 12,
+                            "rowCount": 1500
+                          },
+                          "guid": "b9d5dbbc-ee8a-4c5e-a946-a47033892172",
+                          "status": "ACTIVE",
+                          "displayText": "CUSTOMERS",
+                          "classificationNames": [],
+                          "meanings": [],
+                          "isIncomplete": false,
+                          "createdBy": "admin",
+                          "createTime": 1747185436766,
+                          "updateTime": 1765929858468
+                        },
+                        {
+                          "typeName": "Table",
+                          "attributes": {
+                            "qualifiedName": "default/snowflake/1699281775/ANALYTICS/PUBLIC/ORDERS",
+                            "name": "ORDERS",
+                            "columnCount": 8,
+                            "rowCount": 25000
+                          },
+                          "guid": "c8e6eccd-ff9b-5d6f-b057-b58144993283",
+                          "status": "ACTIVE",
+                          "displayText": "ORDERS"
+                        }
+                      ]
+                    }
+                  },
+                  "search_with_classifications": {
+                    "summary": "Search assets with classifications",
+                    "description": "Find assets that have specific classifications/tags applied",
+                    "value": {
+                      "queryType": "INDEX",
+                      "approximateCount": 50,
+                      "entities": [
+                        {
+                          "typeName": "Column",
+                          "attributes": {
+                            "qualifiedName": "default/snowflake/1699281775/ANALYTICS/PUBLIC/CUSTOMERS/EMAIL",
+                            "name": "EMAIL"
+                          },
+                          "guid": "d9f7fdde-0aca-6e70-c168-c69255a04394",
+                          "status": "ACTIVE",
+                          "displayText": "EMAIL",
+                          "classificationNames": [
+                            "PII",
+                            "Confidential"
+                          ],
+                          "classifications": [
+                            {
+                              "typeName": "PII",
+                              "propagate": true
+                            },
+                            {
+                              "typeName": "Confidential",
+                              "propagate": false
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "search_with_lineage": {
+                    "summary": "Search assets with lineage",
+                    "description": "Find assets that have upstream or downstream lineage",
+                    "value": {
+                      "queryType": "INDEX",
+                      "approximateCount": 100,
+                      "entities": [
+                        {
+                          "typeName": "Table",
+                          "attributes": {
+                            "qualifiedName": "default/snowflake/1699281775/ANALYTICS/PROCESSED/FACT_ORDERS",
+                            "name": "FACT_ORDERS",
+                            "__hasLineage": true
+                          },
+                          "guid": "e0g8geef-1bdb-7f81-d279-d7a366b15405",
+                          "status": "ACTIVE",
+                          "displayText": "FACT_ORDERS"
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -4674,6 +5071,10 @@
                     "errorCode",
                     "errorMessage"
                   ]
+                },
+                "example": {
+                  "errorCode": "ATLAS-400-00-001",
+                  "errorMessage": "Invalid query: Cannot parse DSL"
                 }
               }
             }
@@ -4711,6 +5112,12 @@
                     "errorCode",
                     "errorMessage"
                   ]
+                },
+                "example": {
+                  "servlet": "jersey-servlet",
+                  "message": "Unauthorized",
+                  "url": "/api/meta/search/indexsearch",
+                  "status": "401"
                 }
               }
             }
@@ -5313,6 +5720,117 @@
                       "description": "Whether there are more downstream entities beyond the traversal depth."
                     }
                   }
+                },
+                "examples": {
+                  "downstream_lineage": {
+                    "summary": "Downstream lineage from a Table",
+                    "description": "Returns downstream assets (OUTPUT direction) from a source table",
+                    "value": {
+                      "searchParameters": {
+                        "guid": "495b1516-aaaf-4390-8cfd-b11ade7a7799",
+                        "depth": 1000000,
+                        "direction": "OUTPUT",
+                        "from": 0,
+                        "size": 10
+                      },
+                      "approximateCount": 5,
+                      "entities": [
+                        {
+                          "typeName": "ColumnProcess",
+                          "attributes": {
+                            "qualifiedName": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/lineage/process_001",
+                            "name": "ETL_TRANSFORM_CUSTOMERS"
+                          },
+                          "guid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                          "status": "ACTIVE",
+                          "displayText": "ETL_TRANSFORM_CUSTOMERS"
+                        },
+                        {
+                          "typeName": "Table",
+                          "attributes": {
+                            "qualifiedName": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/PROCESSED_GOLD/DIM_CUSTOMER",
+                            "name": "DIM_CUSTOMER",
+                            "__hasLineage": true
+                          },
+                          "guid": "b2c3d4e5-f6a7-8901-bcde-f23456789012",
+                          "status": "ACTIVE",
+                          "displayText": "DIM_CUSTOMER"
+                        }
+                      ],
+                      "hasMore": false
+                    }
+                  },
+                  "upstream_lineage": {
+                    "summary": "Upstream lineage to a Table",
+                    "description": "Returns upstream assets (INPUT direction) to a target table",
+                    "value": {
+                      "searchParameters": {
+                        "guid": "495b1516-aaaf-4390-8cfd-b11ade7a7799",
+                        "depth": 1000000,
+                        "direction": "INPUT",
+                        "from": 0,
+                        "size": 10
+                      },
+                      "approximateCount": 3,
+                      "entities": [
+                        {
+                          "typeName": "Table",
+                          "attributes": {
+                            "qualifiedName": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/BRONZE/RAW_CUSTOMERS",
+                            "name": "RAW_CUSTOMERS"
+                          },
+                          "guid": "c3d4e5f6-a7b8-9012-cdef-345678901234",
+                          "status": "ACTIVE",
+                          "displayText": "RAW_CUSTOMERS"
+                        },
+                        {
+                          "typeName": "Process",
+                          "attributes": {
+                            "qualifiedName": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/lineage/ingest_001",
+                            "name": "INGEST_CUSTOMERS"
+                          },
+                          "guid": "d4e5f6a7-b8c9-0123-defa-456789012345",
+                          "status": "ACTIVE"
+                        }
+                      ],
+                      "hasMore": false
+                    }
+                  },
+                  "lineage_with_filter": {
+                    "summary": "Filtered lineage (only VERIFIED assets)",
+                    "description": "Lineage filtered to only show assets with VERIFIED certificate",
+                    "value": {
+                      "searchParameters": {
+                        "guid": "495b1516-aaaf-4390-8cfd-b11ade7a7799",
+                        "depth": 1000000,
+                        "direction": "INPUT",
+                        "entityFilters": {
+                          "condition": "AND",
+                          "criterion": [
+                            {
+                              "attributeName": "certificateStatus",
+                              "operator": "contains",
+                              "attributeValue": "VERIFIED"
+                            }
+                          ]
+                        }
+                      },
+                      "approximateCount": 1,
+                      "entities": [
+                        {
+                          "typeName": "Table",
+                          "attributes": {
+                            "qualifiedName": "default/snowflake/1698696666/WIDE_WORLD_IMPORTERS/SILVER/CLEANED_CUSTOMERS",
+                            "name": "CLEANED_CUSTOMERS",
+                            "certificateStatus": "VERIFIED"
+                          },
+                          "guid": "e5f6a7b8-c9d0-1234-efab-567890123456",
+                          "status": "ACTIVE"
+                        }
+                      ],
+                      "hasMore": false
+                    }
+                  }
                 }
               }
             }
@@ -5350,6 +5868,20 @@
                     "errorCode",
                     "errorMessage"
                   ]
+                },
+                "examples": {
+                  "missing_from": {
+                    "summary": "Missing required 'from' parameter",
+                    "value": {
+                      "error": "The 'from' parameter is missing or invalid"
+                    }
+                  },
+                  "invalid_direction": {
+                    "summary": "Invalid direction value",
+                    "value": {
+                      "error": "Cannot deserialize value of type LineageDirection from String \"BOTH\": not one of the values accepted for Enum class: [OUTPUT, INPUT]"
+                    }
+                  }
                 }
               }
             }
@@ -5424,6 +5956,10 @@
                     "errorCode",
                     "errorMessage"
                   ]
+                },
+                "example": {
+                  "errorCode": "ATLAS-404-00-005",
+                  "errorMessage": "Given instance guid 495b1516-aaaf-4390-8cfd-b11ade7a7799 is invalid/not found"
                 }
               }
             }
@@ -5832,6 +6368,9 @@
           "required": true,
           "content": {
             "application/json": {
+              "schema": {
+                "$ref": "#/TypeDefMutationRequest"
+              },
               "examples": {
                 "create_custom_metadata_0": {
                   "summary": "Create custom metadata - example 1",
@@ -6083,7 +6622,11 @@
           "200": {
             "description": "Type definitions created",
             "content": {
-              "application/json": {}
+              "application/json": {
+                "schema": {
+                  "$ref": "#/TypeDefListResponse"
+                }
+              }
             }
           },
           "400": {
@@ -6259,6 +6802,9 @@
           "required": true,
           "content": {
             "application/json": {
+              "schema": {
+                "$ref": "#/TypeDefMutationRequest"
+              },
               "examples": {
                 "update_custom_metadata_0": {
                   "summary": "Update custom metadata - example 1",
@@ -6372,7 +6918,11 @@
           "200": {
             "description": "Type definitions updated",
             "content": {
-              "application/json": {}
+              "application/json": {
+                "schema": {
+                  "$ref": "#/TypeDefListResponse"
+                }
+              }
             }
           },
           "400": {
@@ -6528,7 +7078,7 @@
       "get": {
         "operationId": "getTypeDefs",
         "summary": "Get all type definitions",
-        "description": "Retrieve all type definitions from the Atlan instance.\n",
+        "description": "Retrieve all type definitions from the Atlan instance.\n\nUse the `type` query parameter to filter by type category:\n- `classification` - Tag/classification definitions\n- `businessMetadata` - Custom metadata definitions  \n- `enum` - Enum type definitions\n- `entity` - Entity type definitions\n",
         "tags": [
           "Custom metadata structures",
           "Tag (classification) structures"
@@ -6538,11 +7088,173 @@
             "AtlanToken": []
           }
         ],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Filter by type category",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "classification",
+                "businessMetadata",
+                "enum",
+                "entity"
+              ]
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "All type definitions",
             "content": {
-              "application/json": {}
+              "application/json": {
+                "schema": {
+                  "$ref": "#/TypeDefListResponse"
+                },
+                "examples": {
+                  "classification_defs": {
+                    "summary": "Classification (tag) definitions",
+                    "description": "Returns all classification/tag type definitions",
+                    "value": {
+                      "enumDefs": [],
+                      "structDefs": [],
+                      "classificationDefs": [
+                        {
+                          "category": "CLASSIFICATION",
+                          "guid": "682e6b91-9121-4748-bbae-af225ee8e98b",
+                          "createdBy": "ryan.quigley",
+                          "updatedBy": "service-account-atlan-argo",
+                          "createTime": 1740600943664,
+                          "updateTime": 1767832413445,
+                          "version": 203,
+                          "name": "Vyc79KGveSy62DfOKQAZ9G",
+                          "description": "Cleansed and conformed data",
+                          "typeVersion": "1.0",
+                          "serviceType": "atlan",
+                          "options": {
+                            "imageID": "",
+                            "hasTag": "true",
+                            "color": "Gray",
+                            "emoji": "",
+                            "iconName": "PhMedal",
+                            "iconType": "icon",
+                            "createdFromAtlan": "false"
+                          },
+                          "attributeDefs": [],
+                          "superTypes": [],
+                          "entityTypes": [
+                            "Asset"
+                          ],
+                          "displayName": "Silver",
+                          "subTypes": []
+                        },
+                        {
+                          "category": "CLASSIFICATION",
+                          "guid": "fa29e6d6-a37b-42a1-9c04-ab4cb9bf4f67",
+                          "createdBy": "service-account-apikey-9471cf12-f45c-4275-b280-3e01d26f57e8",
+                          "createTime": 1646914738761,
+                          "version": 219,
+                          "name": "VwN5VzRHlHVIWB4cbaxM5R",
+                          "description": "Data that may be freely disclosed in public.",
+                          "displayName": "Public",
+                          "options": {
+                            "color": "Green"
+                          }
+                        }
+                      ],
+                      "entityDefs": [],
+                      "relationshipDefs": [],
+                      "businessMetadataDefs": []
+                    }
+                  },
+                  "business_metadata_defs": {
+                    "summary": "Business metadata (custom metadata) definitions",
+                    "description": "Returns all custom metadata structure definitions",
+                    "value": {
+                      "enumDefs": [],
+                      "structDefs": [],
+                      "classificationDefs": [],
+                      "entityDefs": [],
+                      "relationshipDefs": [],
+                      "businessMetadataDefs": [
+                        {
+                          "category": "BUSINESS_METADATA",
+                          "guid": "917ffec9-fa84-4c59-8e6c-c7b114d04be3",
+                          "name": "MNJ8mpLsIOaP4OQnLNhRta",
+                          "displayName": "RACI",
+                          "description": "Responsibility Assignment Matrix",
+                          "typeVersion": "1.0",
+                          "serviceType": "atlan",
+                          "attributeDefs": [
+                            {
+                              "name": "fWMB77RSjRGNYoFeD4FcGi",
+                              "displayName": "Responsible",
+                              "typeName": "string",
+                              "isOptional": true,
+                              "cardinality": "SINGLE",
+                              "isIndexable": true,
+                              "options": {
+                                "primitiveType": "users",
+                                "customType": "users",
+                                "allowFiltering": true
+                              }
+                            }
+                          ],
+                          "options": {
+                            "logoType": "emoji",
+                            "emoji": "👪"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "enum_defs": {
+                    "summary": "Enum type definitions",
+                    "description": "Returns all enum definitions used in custom metadata",
+                    "value": {
+                      "enumDefs": [
+                        {
+                          "category": "ENUM",
+                          "name": "DataQualityDimensions",
+                          "elementDefs": [
+                            {
+                              "value": "Accuracy",
+                              "ordinal": 0
+                            },
+                            {
+                              "value": "Completeness",
+                              "ordinal": 1
+                            },
+                            {
+                              "value": "Consistency",
+                              "ordinal": 2
+                            },
+                            {
+                              "value": "Timeliness",
+                              "ordinal": 3
+                            },
+                            {
+                              "value": "Validity",
+                              "ordinal": 4
+                            },
+                            {
+                              "value": "Uniqueness",
+                              "ordinal": 5
+                            }
+                          ]
+                        }
+                      ],
+                      "structDefs": [],
+                      "classificationDefs": [],
+                      "entityDefs": [],
+                      "relationshipDefs": [],
+                      "businessMetadataDefs": []
+                    }
+                  }
+                }
+              }
             }
           },
           "401": {
@@ -6578,6 +7290,12 @@
                     "errorCode",
                     "errorMessage"
                   ]
+                },
+                "example": {
+                  "servlet": "jersey-servlet",
+                  "message": "Unauthorized",
+                  "url": "/api/meta/types/typedefs",
+                  "status": "401"
                 }
               }
             }
@@ -6685,37 +7403,157 @@
                     },
                     {
                       "type": "object",
-                      "description": "Definition of an Atlan tag (classification) structure.\n\nTags are used to classify assets (e.g., PII, Confidential, Deprecated).\n",
+                      "description": "Definition of an Atlan tag (classification) structure.\n\nAtlan tags (classifications) are governance labels used to classify assets \n(e.g., PII, Confidential, Deprecated). They are managed via the \n`/api/meta/types/typedefs` endpoint.\n\n**Important:** The `name` property uses a hashed-string representation \n(e.g., `S7qnUqZ5mBMBpzQ3Wzt6yD`), while `displayName` contains the \nhuman-readable name shown in the UI.\n\n**Note:** This is different from source-synced tags (SnowflakeTag, DbtTag, etc.)\nwhich are entity types representing tags from external systems.\n",
                       "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "CLASSIFICATION"
+                          ],
+                          "default": "CLASSIFICATION",
+                          "description": "Type category. Always \"CLASSIFICATION\" for Atlan tags."
+                        },
+                        "guid": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "Globally unique identifier for this tag definition.",
+                          "readOnly": true
+                        },
                         "name": {
                           "type": "string",
-                          "description": "Internal name of the tag."
+                          "description": "Internal hashed-string name of the tag (e.g., `S7qnUqZ5mBMBpzQ3Wzt6yD`).\nUse this value when applying tags to assets via the API.\n"
                         },
                         "displayName": {
-                          "type": "string"
+                          "type": "string",
+                          "description": "Human-readable name displayed in the Atlan UI."
                         },
                         "description": {
-                          "type": "string"
+                          "type": "string",
+                          "description": "Description of what this tag represents."
                         },
                         "attributeDefs": {
                           "type": "array",
                           "items": {
                             "$ref": "#/AttributeDef"
                           },
-                          "description": "Optional attributes that can be set when applying this tag."
+                          "description": "Optional attributes that can be set when applying this tag to an asset.\nFor example, a \"Sensitivity Level\" attribute with allowed values.\n"
                         },
                         "superTypes": {
                           "type": "array",
                           "items": {
                             "type": "string"
                           },
-                          "description": "Parent classification types (inheritance)."
+                          "description": "Parent classification types (inheritance hierarchy)."
+                        },
+                        "subTypes": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "Child classification types that inherit from this tag."
+                        },
+                        "entityTypes": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "Asset types this tag can be applied to. Empty means all types."
                         },
                         "options": {
                           "type": "object",
-                          "additionalProperties": true,
-                          "description": "Tag options (e.g., color, icon)."
+                          "description": "Visual and behavioral options for the tag.",
+                          "properties": {
+                            "color": {
+                              "type": "string",
+                              "description": "Tag color (e.g., \"Red\", \"Green\", \"Blue\", \"Yellow\")."
+                            },
+                            "iconType": {
+                              "type": "string",
+                              "enum": [
+                                "icon",
+                                "emoji",
+                                "image"
+                              ],
+                              "description": "Type of icon to display."
+                            },
+                            "icon": {
+                              "type": "string",
+                              "description": "Phosphor icon name when iconType is \"icon\" (e.g., \"PhPassword\")."
+                            },
+                            "iconName": {
+                              "type": "string",
+                              "description": "Alternative field for icon name."
+                            },
+                            "emoji": {
+                              "type": "string",
+                              "description": "Emoji character when iconType is \"emoji\"."
+                            },
+                            "imageID": {
+                              "type": "string",
+                              "description": "Uploaded image ID when iconType is \"image\"."
+                            }
+                          },
+                          "additionalProperties": true
+                        },
+                        "skipDisplayNameUniquenessCheck": {
+                          "type": "boolean",
+                          "default": false,
+                          "description": "Whether to skip uniqueness validation for displayName."
+                        },
+                        "typeVersion": {
+                          "type": "string",
+                          "description": "Version of the type definition.",
+                          "readOnly": true
+                        },
+                        "version": {
+                          "type": "integer",
+                          "description": "Numeric version counter, incremented on each update.",
+                          "readOnly": true
+                        },
+                        "createTime": {
+                          "type": "integer",
+                          "format": "int64",
+                          "description": "Epoch timestamp (milliseconds) when this tag was created.",
+                          "readOnly": true
+                        },
+                        "updateTime": {
+                          "type": "integer",
+                          "format": "int64",
+                          "description": "Epoch timestamp (milliseconds) when this tag was last updated.",
+                          "readOnly": true
+                        },
+                        "createdBy": {
+                          "type": "string",
+                          "description": "Username or service account that created this tag.",
+                          "readOnly": true
+                        },
+                        "updatedBy": {
+                          "type": "string",
+                          "description": "Username or service account that last updated this tag.",
+                          "readOnly": true
                         }
+                      },
+                      "example": {
+                        "category": "CLASSIFICATION",
+                        "guid": "884091b2-4fbc-4c8e-85d1-173ad90547cf",
+                        "name": "S7qnUqZ5mBMBpzQ3Wzt6yD",
+                        "displayName": "PII",
+                        "description": "Personally Identifiable Information",
+                        "attributeDefs": [],
+                        "superTypes": [],
+                        "subTypes": [],
+                        "entityTypes": [],
+                        "options": {
+                          "color": "Red",
+                          "iconType": "icon",
+                          "icon": "PhPassword"
+                        },
+                        "typeVersion": "1.0",
+                        "version": 1,
+                        "createTime": 1716829706708,
+                        "updateTime": 1716829706708,
+                        "createdBy": "admin",
+                        "updatedBy": "admin"
                       }
                     },
                     {
@@ -7319,6 +8157,9 @@
           "required": true,
           "content": {
             "application/json": {
+              "schema": {
+                "$ref": "#/ServiceIndexSearchRequest"
+              },
               "examples": {
                 "find_by_prefix": {
                   "summary": "Find workflows by name prefix",
@@ -7389,7 +8230,11 @@
           "200": {
             "description": "Search results",
             "content": {
-              "application/json": {}
+              "application/json": {
+                "schema": {
+                  "$ref": "#/MetaIndexSearchResponse"
+                }
+              }
             }
           },
           "400": {
@@ -7746,6 +8591,9 @@
           "required": true,
           "content": {
             "application/json": {
+              "schema": {
+                "$ref": "#/ServiceIndexSearchRequest"
+              },
               "examples": {
                 "find_runs_by_workflow": {
                   "summary": "Find runs for a workflow",
@@ -7813,7 +8661,11 @@
           "200": {
             "description": "Search results",
             "content": {
-              "application/json": {}
+              "application/json": {
+                "schema": {
+                  "$ref": "#/MetaIndexSearchResponse"
+                }
+              }
             }
           },
           "400": {
@@ -9084,37 +9936,157 @@
       },
       "ClassificationDef": {
         "type": "object",
-        "description": "Definition of an Atlan tag (classification) structure.\n\nTags are used to classify assets (e.g., PII, Confidential, Deprecated).\n",
+        "description": "Definition of an Atlan tag (classification) structure.\n\nAtlan tags (classifications) are governance labels used to classify assets \n(e.g., PII, Confidential, Deprecated). They are managed via the \n`/api/meta/types/typedefs` endpoint.\n\n**Important:** The `name` property uses a hashed-string representation \n(e.g., `S7qnUqZ5mBMBpzQ3Wzt6yD`), while `displayName` contains the \nhuman-readable name shown in the UI.\n\n**Note:** This is different from source-synced tags (SnowflakeTag, DbtTag, etc.)\nwhich are entity types representing tags from external systems.\n",
         "properties": {
+          "category": {
+            "type": "string",
+            "enum": [
+              "CLASSIFICATION"
+            ],
+            "default": "CLASSIFICATION",
+            "description": "Type category. Always \"CLASSIFICATION\" for Atlan tags."
+          },
+          "guid": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Globally unique identifier for this tag definition.",
+            "readOnly": true
+          },
           "name": {
             "type": "string",
-            "description": "Internal name of the tag."
+            "description": "Internal hashed-string name of the tag (e.g., `S7qnUqZ5mBMBpzQ3Wzt6yD`).\nUse this value when applying tags to assets via the API.\n"
           },
           "displayName": {
-            "type": "string"
+            "type": "string",
+            "description": "Human-readable name displayed in the Atlan UI."
           },
           "description": {
-            "type": "string"
+            "type": "string",
+            "description": "Description of what this tag represents."
           },
           "attributeDefs": {
             "type": "array",
             "items": {
               "$ref": "#/AttributeDef"
             },
-            "description": "Optional attributes that can be set when applying this tag."
+            "description": "Optional attributes that can be set when applying this tag to an asset.\nFor example, a \"Sensitivity Level\" attribute with allowed values.\n"
           },
           "superTypes": {
             "type": "array",
             "items": {
               "type": "string"
             },
-            "description": "Parent classification types (inheritance)."
+            "description": "Parent classification types (inheritance hierarchy)."
+          },
+          "subTypes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Child classification types that inherit from this tag."
+          },
+          "entityTypes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Asset types this tag can be applied to. Empty means all types."
           },
           "options": {
             "type": "object",
-            "additionalProperties": true,
-            "description": "Tag options (e.g., color, icon)."
+            "description": "Visual and behavioral options for the tag.",
+            "properties": {
+              "color": {
+                "type": "string",
+                "description": "Tag color (e.g., \"Red\", \"Green\", \"Blue\", \"Yellow\")."
+              },
+              "iconType": {
+                "type": "string",
+                "enum": [
+                  "icon",
+                  "emoji",
+                  "image"
+                ],
+                "description": "Type of icon to display."
+              },
+              "icon": {
+                "type": "string",
+                "description": "Phosphor icon name when iconType is \"icon\" (e.g., \"PhPassword\")."
+              },
+              "iconName": {
+                "type": "string",
+                "description": "Alternative field for icon name."
+              },
+              "emoji": {
+                "type": "string",
+                "description": "Emoji character when iconType is \"emoji\"."
+              },
+              "imageID": {
+                "type": "string",
+                "description": "Uploaded image ID when iconType is \"image\"."
+              }
+            },
+            "additionalProperties": true
+          },
+          "skipDisplayNameUniquenessCheck": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether to skip uniqueness validation for displayName."
+          },
+          "typeVersion": {
+            "type": "string",
+            "description": "Version of the type definition.",
+            "readOnly": true
+          },
+          "version": {
+            "type": "integer",
+            "description": "Numeric version counter, incremented on each update.",
+            "readOnly": true
+          },
+          "createTime": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Epoch timestamp (milliseconds) when this tag was created.",
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Epoch timestamp (milliseconds) when this tag was last updated.",
+            "readOnly": true
+          },
+          "createdBy": {
+            "type": "string",
+            "description": "Username or service account that created this tag.",
+            "readOnly": true
+          },
+          "updatedBy": {
+            "type": "string",
+            "description": "Username or service account that last updated this tag.",
+            "readOnly": true
           }
+        },
+        "example": {
+          "category": "CLASSIFICATION",
+          "guid": "884091b2-4fbc-4c8e-85d1-173ad90547cf",
+          "name": "S7qnUqZ5mBMBpzQ3Wzt6yD",
+          "displayName": "PII",
+          "description": "Personally Identifiable Information",
+          "attributeDefs": [],
+          "superTypes": [],
+          "subTypes": [],
+          "entityTypes": [],
+          "options": {
+            "color": "Red",
+            "iconType": "icon",
+            "icon": "PhPassword"
+          },
+          "typeVersion": "1.0",
+          "version": 1,
+          "createTime": 1716829706708,
+          "updateTime": 1716829706708,
+          "createdBy": "admin",
+          "updatedBy": "admin"
         }
       },
       "BusinessMetadataDef": {
@@ -9245,6 +10217,13 @@
               "type": "object"
             },
             "description": "Relationship type definitions."
+          },
+          "structDefs": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Struct type definitions."
           }
         }
       }
